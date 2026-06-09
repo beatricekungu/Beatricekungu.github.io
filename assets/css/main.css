@@ -3950,3 +3950,17 @@ input, select, textarea {
 			opacity: 1;
 			visibility: visible;
 		}
+		/* Keeps tile icons and titles on the same line */
+		.tile-title {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+		}
+		
+		.tile-title h3 {
+			margin: 0;
+		}
+		
+		.tile-title .icon {
+			margin: 0;
+		}
