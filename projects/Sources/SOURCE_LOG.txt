@@ -1,0 +1,31 @@
+# Source Log
+
+## Purpose
+
+This source log documents the public materials used to support the Florida Public-Sector NIST Compliance Review project.
+
+The purpose of this file is to show the evidence trail behind the project. These sources support the control mapping, audit themes, NIST alignment, compliance review logic, risk rating, and remediation recommendations.
+
+## NIST Sources
+
+| Source | Link | How I Used It |
+|---|---|---|
+| NIST Cybersecurity Framework 2.0 | https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final | Used as the primary cybersecurity framework for organizing governance, identify, protect, detect, respond, and recover themes. |
+| NIST SP 800-53 Rev. 5 | https://csrc.nist.gov/pubs/sp/800/53/r5/final | Used as the control catalog for mapping audit themes to security and privacy control areas. |
+| NIST SP 800-53A Rev. 5 | https://csrc.nist.gov/pubs/sp/800/53/a/r5/final | Used to understand how security and privacy controls can be assessed. |
+| NIST SP 800-61 Rev. 3 | https://csrc.nist.gov/pubs/sp/800/61/r3/final | Used to support incident response, reporting, escalation, and recovery review areas. |
+| NIST SP 800-30 Rev. 1 | https://csrc.nist.gov/pubs/sp/800/30/r1/final | Used to support risk assessment logic and risk-level assignment. |
+
+## Florida Public-Sector Sources
+
+| Source | Link | How I Used It |
+|---|---|---|
+| Florida Office of Chief Inspector General Cybersecurity Resources | https://www.floridaoig.com/cyberSecurity.htm | Used to support the connection between Florida public-sector cybersecurity audits, Chapter 60GG, Florida Administrative Code, and the NIST Framework. |
+| City of Tallahassee Audit of Cybersecurity | https://www.talgov.com/Uploads/Public/documents/transparency/ig/fy24/ar-2404.pdf | Used as a Florida local-government example for cybersecurity governance, documentation review, audit methodology, and public-sector control evaluation. |
+| Florida Department of Health Cybersecurity Incident Response, Reporting, and Recovery Audit | https://www.floridahealth.gov/wp-content/uploads/2025/08/A-2324-001FinalReport.pdf | Used as a Florida public-sector example for incident response, reporting, recovery, and cybersecurity audit planning. |
+
+## Project Note
+
+This project does not claim to be a full internal audit of a Florida agency or private company.
+
+This is a public-source GRC portfolio project that uses publicly available cybersecurity audit materials and NIST publications to demonstrate control mapping, evidence review, compliance status assignment, risk rating, and remediation planning.
