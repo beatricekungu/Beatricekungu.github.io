@@ -3964,3 +3964,67 @@ input, select, textarea {
 		.tile-title .icon {
 			margin: 0;
 		}
+
+
+/* Custom card colors + matching title colors */
+
+/* Card 1: Bright blue / cyan */
+.tiles article:nth-child(1):before {
+	background-color: #6fc3df !important;
+}
+
+.tiles article:nth-child(1) h3 a {
+	color: #6fc3df !important;
+}
+
+/* Card 2: Purple */
+.tiles article:nth-child(2):before {
+	background-color: #8d82c4 !important;
+}
+
+.tiles article:nth-child(2) h3 a {
+	color: #8d82c4 !important;
+}
+
+/* Card 3: Bright pink / coral */
+.tiles article:nth-child(3):before {
+	background-color: #ec8d81 !important;
+}
+
+.tiles article:nth-child(3) h3 a {
+	color: #ec8d81 !important;
+}
+
+/* Card 4: Orange / peach */
+.tiles article:nth-child(4):before {
+	background-color: #e7b788 !important;
+}
+
+.tiles article:nth-child(4) h3 a {
+	color: #e7b788 !important;
+}
+
+/* Card 5: Soft blue / periwinkle */
+.tiles article:nth-child(5):before {
+	background-color: #8ea9e8 !important;
+}
+
+.tiles article:nth-child(5) h3 a {
+	color: #8ea9e8 !important;
+}
+
+/* Card 6: Green / mint */
+.tiles article:nth-child(6):before {
+	background-color: #87c5a4 !important;
+}
+
+.tiles article:nth-child(6) h3 a {
+	color: #87c5a4 !important;
+}
+
+/* Makes the colored title easier to read */
+.tiles article h3 a {
+	background: rgba(255, 255, 255, 0.9);
+	padding: 0.25em 0.45em;
+	border-radius: 4px;
+}
