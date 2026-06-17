@@ -4028,3 +4028,42 @@ input, select, textarea {
 	padding: 0.25em 0.45em;
 	border-radius: 4px;
 }
+
+/* NIST Project Image Cards */
+
+.project-image-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 2em;
+	margin-top: 2em;
+}
+
+.project-image-card {
+	background: rgba(255, 255, 255, 0.05);
+	padding: 1.5em;
+	border-radius: 8px;
+	text-align: center;
+}
+
+.project-image-card img {
+	width: 100%;
+	height: auto;
+	border-radius: 6px;
+	margin-bottom: 1em;
+}
+
+.project-image-card h3 {
+	margin-bottom: 0.75em;
+}
+
+.project-image-card p {
+	font-size: 0.95em;
+	line-height: 1.6;
+}
+
+/* Mobile view */
+@media screen and (max-width: 980px) {
+	.project-image-grid {
+		grid-template-columns: 1fr;
+	}
+}
