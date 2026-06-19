@@ -1,82 +1,76 @@
-# Florida Public-Sector NIST Compliance Review
+```markdown
+# Federal Benefits Case Management Portal: Cybersecurity Program Gap Assessment
 
 ## Project Overview
 
-This project uses publicly available Florida public-sector cybersecurity audit resources to simulate a NIST-aligned Governance, Risk, and Compliance review. The purpose of the project is to evaluate audit findings, map them to cybersecurity control areas, assign compliance status and risk level, and recommend remediation actions that improve audit readiness.
+This project is a cybersecurity Governance, Risk, and Compliance portfolio project for a fictional Federal Benefits Case Management Portal. The purpose of the project is to demonstrate how cybersecurity risks can be reviewed, organized, prioritized, and translated into practical remediation actions.
 
-The project demonstrates my ability to translate public cybersecurity audit findings into practical review steps, assess documentation quality, identify compliance gaps, and communicate findings in a clear business-friendly format.
+The assessment focuses on three cybersecurity program areas:
+
+- Access Control
+- Incident Response
+- Vulnerability Management
 
 ## Business Problem
 
-Public-sector organizations are often required to demonstrate that cybersecurity controls are documented, implemented, monitored, and reviewed. Public audit reports often identify gaps such as incomplete access reviews, missing policy review dates, limited evidence of monitoring, or unclear remediation tracking.
+A federal benefits case management portal may contain sensitive applicant information, case records, supporting documents, user activity logs, and internal workflow data.
 
-These issues can make audit preparation slower, increase operational risk, and make it harder for leadership to understand which security gaps should be prioritized first.
+If cybersecurity processes are not clearly documented, the organization may face increased risk related to unauthorized access, delayed incident response, unresolved vulnerabilities, and limited audit readiness.
 
 ## Solution
 
-I created a lightweight compliance review tracker that uses public Florida cybersecurity audit themes and NIST-aligned control areas. Each item is reviewed and assigned a compliance status, risk level, and remediation action.
+I created a lightweight cybersecurity program gap assessment that identifies nine findings across access control, incident response, and vulnerability management.
 
-The tracker helps turn public audit themes into structured GRC findings that can be reviewed by project teams, compliance owners, and leadership.
+Each finding includes:
+
+- Current-state assumption
+- Gap identified
+- Risk rating
+- Recommended remediation action
 
 ## Methodology
 
-This project is based on publicly available Florida cybersecurity audit resources and local-government IT security audit themes. I reviewed public audit language, translated the findings into NIST-aligned control areas, and evaluated each item based on evidence quality, business impact, and audit readiness.
+This project uses a simple gap assessment approach:
 
-Compliance status was assigned using the following logic:
+1. Identify the expected cybersecurity practice.
+2. Describe the current-state assumption for the fictional portal.
+3. Identify the gap between the expected practice and the current state.
+4. Assign a risk rating of High, Medium, or Low.
+5. Recommend practical remediation actions.
 
-- **Compliant:** Evidence shows the control is documented, implemented, and reviewable.
-- **Partially Compliant:** Some evidence exists, but documentation, ownership, review cadence, approval history, or closure evidence is incomplete.
-- **Non-Compliant:** Evidence does not show that the control is being performed.
+Because this is a fictional portfolio project, the assessment uses reasonable assumptions instead of real agency or company data. In a real environment, detailed control evidence, access logs, vulnerability scan results, incident records, and system configurations would likely be internal or company-controlled information and would not be shared publicly.
 
-Risk level was assigned based on the potential business and security impact of the gap.
+## Findings Summary
 
-## Source Evidence
+The assessment identified nine cybersecurity program findings:
 
-The project includes a source folder with official NIST publications and public Florida cybersecurity audit references. These materials were used to support the control mapping, risk rating logic, and remediation recommendations in the review tracker.
+- 3 Access Control findings
+- 3 Incident Response findings
+- 3 Vulnerability Management findings
 
-The source materials are included to make the project transparent and to show the evidence trail behind the analysis.
+The highest-risk findings were related to access approval, periodic access review, incident response procedures, vulnerability scanning, and patch management timelines.
 
 ## Skills Demonstrated
 
-| GRC Documentation Review | NIST Control Interpretation | Compliance Gap Analysis | Risk-Based Prioritization | Audit Readiness Support |
-|---|---|---|---|---|
-| AI-Assisted Control Review | Evidence Evaluation | Governance Documentation Management | Executive-Level Reporting | Remediation Planning |
-
-## Tools Used
-
-- GitHub
-- Markdown
-- CSV
-- NIST Cybersecurity Framework concepts
-- Public cybersecurity audit reports
-- AI-assisted analysis logic
+- Cybersecurity governance documentation
+- Gap assessment
+- Risk rating and prioritization
+- Remediation planning
+- Audit readiness support
+- NIST-aligned control thinking
+- Business-friendly cybersecurity communication
 
 ## Project Files
 
 | File | Purpose |
 |---|---|
-| `florida-nist-control-review.csv` | Main control review tracker with compliance status, risk level, and remediation actions. |
-| `audit-summary.md` | Executive-style summary of findings, risks, and recommended next steps. |
-| `sources/SOURCE_LOG.md` | Source evidence log with public NIST and Florida cybersecurity audit references. |
-
-## Sample Controls Reviewed
-
-| Control Area | Review Focus |
-|---|---|
-| Access Control | User access review and least privilege |
-| Incident Response | Incident documentation, escalation, reporting, and recovery |
-| Audit Logging | Monitoring and log review |
-| Security Awareness | Cybersecurity training completion and tracking |
-| Policy Governance | Policy review, approval, ownership, and version control |
-| Vulnerability Management | Vulnerability tracking and remediation |
-| Contingency Planning | Continuity planning and testing |
+| `federal-benefits-gap-assessment.pdf` | Final cybersecurity program gap assessment report |
+| `gap-assessment-findings.csv` | Findings tracker with risk ratings and remediation actions |
+| `README.md` | Project overview and explanation |
 
 ## Project Outcome
 
-The final output is a structured control review file based on public Florida cybersecurity audit themes. It shows how public audit findings can be translated into compliance status, risk level, and remediation actions.
+This project demonstrates how cybersecurity findings can be organized and communicated clearly for both technical and non-technical stakeholders.
 
-This project demonstrates how GRC analysis can help organizations identify gaps, prioritize risks, assign ownership, and prepare for audit readiness.
-
-## Recruiter Summary
-
-This project demonstrates my ability to quickly learn cybersecurity governance concepts and apply them to a real-world public-sector audit scenario. It connects my consulting, documentation, implementation, and stakeholder coordination experience to GRC, cybersecurity compliance, audit readiness, and risk remediation work.
+It shows how a fictional federal system can be assessed for program-level security gaps and how those gaps can be translated into practical remediation actions.
+```
