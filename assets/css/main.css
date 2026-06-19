@@ -4083,3 +4083,31 @@ input, select, textarea {
 	}
 }
 ```
+/* Federal Benefits Project Page Fix */
+
+#federal-benefits-project .inner {
+	max-width: 900px;
+}
+
+#federal-benefits-project h2 {
+	font-size: 2em;
+	line-height: 1.2;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+#federal-benefits-project header.major p {
+	font-size: 1.1em;
+	letter-spacing: 0.05em;
+	text-transform: none;
+	margin-top: 0.5em;
+}
+
+#federal-benefits-project .actions {
+	margin-top: 2em;
+	flex-wrap: wrap;
+}
+
+#federal-benefits-project .button {
+	margin-bottom: 0.75em;
+}
