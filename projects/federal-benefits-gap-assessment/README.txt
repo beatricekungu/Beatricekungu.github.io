@@ -1,77 +1,89 @@
-```markdown
 # Federal Benefits Case Management Portal: Cybersecurity Program Gap Assessment
 
-## Project Overview
+## Executive Overview
+This project is a cybersecurity Governance, Risk, and Compliance (GRC) case study evaluating a simulated Federal Benefits Case Management Portal. The purpose of this assessment is to demonstrate enterprise-level risk identification, control prioritization, and the translation of complex security gaps into actionable remediation strategies.
 
-This project is a cybersecurity Governance, Risk, and Compliance portfolio project for a fictional Federal Benefits Case Management Portal. The purpose of the project is to demonstrate how cybersecurity risks can be reviewed, organized, prioritized, and translated into practical remediation actions.
-
-The assessment focuses on three cybersecurity program areas:
-
+The assessment focuses on three critical cybersecurity program areas:
 - Access Control
 - Incident Response
 - Vulnerability Management
 
-## Business Problem
+## Business Context & Problem Statement
+Federal case management systems inherently process high-value, sensitive data, including applicant personally identifiable information (PII), restricted case records, and internal workflow telemetry. 
 
-A federal benefits case management portal may contain sensitive applicant information, case records, supporting documents, user activity logs, and internal workflow data.
+In the absence of mature, thoroughly documented cybersecurity controls, organizations face compounded risks regarding unauthorized access, delayed threat mitigation, unpatched vulnerabilities, and severe audit deficiencies.
 
-If cybersecurity processes are not clearly documented, the organization may face increased risk related to unauthorized access, delayed incident response, unresolved vulnerabilities, and limited audit readiness.
+## Solution Architecture
+This lightweight cybersecurity program gap assessment identifies nine distinct control findings across access control, incident response, and vulnerability management. 
 
-## Solution
+Each finding is structured to provide:
+- Current-State Architecture Assumption
+- Identified Control Gap
+- Assigned Risk Rating
+- Recommended Remediation Strategy
 
-I created a lightweight cybersecurity program gap assessment that identifies nine findings across access control, incident response, and vulnerability management.
+## Assessment Methodology
+This project executes a structured gap assessment framework:
+1. Identify the expected NIST-aligned cybersecurity practice.
+2. Define the current-state architecture of the simulated portal.
+3. Isolate the operational gap between expected compliance and current state.
+4. Assign a risk-impact rating (High, Medium, or Low).
+5. Architect practical, business-aligned remediation actions.
 
-Each finding includes:
+---
 
-- Current-state assumption
-- Gap identified
-- Risk rating
-- Recommended remediation action
+## Assessment Metrics
 
-## Methodology
+### Overall Findings
+| Control Area | Number of Findings |
+|---|---:|
+| Access Control | 3 |
+| Incident Response | 3 |
+| Vulnerability Management | 3 |
 
-This project uses a simple gap assessment approach:
+### Risk Summary
+| Risk Rating | Number of Findings |
+|---|---:|
+| High | 5 |
+| Medium | 3 |
+| Low | 1 |
 
-1. Identify the expected cybersecurity practice.
-2. Describe the current-state assumption for the fictional portal.
-3. Identify the gap between the expected practice and the current state.
-4. Assign a risk rating of High, Medium, or Low.
-5. Recommend practical remediation actions.
+---
 
-Because this is a fictional portfolio project, the assessment uses reasonable assumptions instead of real agency or company data. In a real environment, detailed control evidence, access logs, vulnerability scan results, incident records, and system configurations would likely be internal or company-controlled information and would not be shared publicly.
+## Key Executive Findings
 
-## Findings Summary
+### 1. Access Control: Identity Governance Deficiencies
+The assessment identified critical gaps within access approval workflows, periodic access reviews, and audit logging parameters. These control failures increase the risk of privilege creep and limit the forensic visibility required for consistent activity auditing.
 
-The assessment identified nine cybersecurity program findings:
+### 2. Incident Response: Operational Ownership Gaps
+The assessment identified workflow gaps related to incident response procedures, role-based responsibilities, and post-incident lessons learned. A mature, documented incident response playbook is required to ensure that cybersecurity events are systematically reported, triaged, escalated, and resolved.
 
-- 3 Access Control findings
-- 3 Incident Response findings
-- 3 Vulnerability Management findings
+### 3. Vulnerability Management: Remediation Tracking Limitations
+The assessment isolated gaps within vulnerability scanning cadences, severity-based patch management timelines, and executive reporting. An enterprise vulnerability management framework is necessary to ensure security weaknesses are aggressively prioritized, assigned, and tracked to closure.
 
-The highest-risk findings were related to access approval, periodic access review, incident response procedures, vulnerability scanning, and patch management timelines.
+---
 
-## Skills Demonstrated
+## Strategic Remediation Roadmap
+1. **Priority 1:** Architect formal identity governance workflows for access requests, approvals, and quarterly access reviews.
+2. **Priority 2:** Formalize the incident response playbook, strictly defining escalation paths, role responsibilities, and documentation requirements.
+3. **Priority 3:** Enforce vulnerability scanning cadences and strictly defined patch management Service Level Agreements (SLAs) based on risk severity.
+4. **Priority 4:** Baseline audit logging parameters and assign clear ownership for continuous log ingestion and review.
+5. **Priority 5:** Implement executive-level GRC reporting for open vulnerabilities, overdue remediation items, and systemic security weaknesses.
 
-- Cybersecurity governance documentation
-- Gap assessment
-- Risk rating and prioritization
-- Remediation planning
-- Audit readiness support
-- NIST-aligned control thinking
-- Business-friendly cybersecurity communication
+## Core Competencies Demonstrated
+- Enterprise Cybersecurity Governance
+- GRC Gap Assessment & Risk Rating
+- Remediation Planning & Strategic Roadmapping
+- Audit Readiness & Compliance Support
+- NIST-Aligned Control Application (SP 800-53, SP 800-61, SP 800-40)
+- Executive-Level Technical Communication
 
-## Project Files
-
+## Repository Architecture
 | File | Purpose |
 |---|---|
-| `federal-benefits-gap-assessment.pdf` | Final cybersecurity program gap assessment report |
-| `gap-assessment-findings.csv` | Findings tracker with risk ratings and remediation actions |
-| `README.md` | Project overview and explanation |
+| `Federal Benefits Case Management Portal.pdf` | Comprehensive gap assessment report and remediation playbook |
+| `gap-assessment-findings.csv` | Master findings tracker detailing risk ratings and strategic actions |
+| `README.md` | Executive overview, metrics dashboard, and project context |
 
-## Project Outcome
-
-This project demonstrates how cybersecurity findings can be organized and communicated clearly for both technical and non-technical stakeholders.
-
-It shows how a fictional federal system can be assessed for program-level security gaps and how those gaps can be translated into practical remediation actions.
-```
-
+## Case Study Parameters
+To maintain strict confidentiality protocols, this case study utilizes a sanitized, simulated environment to demonstrate enterprise GRC capabilities. No proprietary agency data, live production system details, or sensitive client information are included. The assessment relies on anonymized architecture and industry-standard compliance assumptions to showcase practical, scalable remediation strategies.
