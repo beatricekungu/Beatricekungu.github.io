@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Success - Message Sent</title>
+  
+  <style>
+    /* Inherit the standard font and dark background from your template */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #161b22; 
+      color: #8a939e;
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    /* Container to hold the message */
+    .success-container {
+      background-color: #1a1e23;
+      padding: 50px 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    /* Large checkmark using your primary blue */
+    .success-icon {
+      color: #1387C1;
+      font-size: 3.5rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    /* Main heading */
+    .success-container h1 {
+      color: #ffffff;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    /* Paragraph text */
+    .success-container p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 35px;
+    }
+
+    /* Rectangle Button Styling */
+    .btn-return {
+      display: inline-block;
+      background-color: #1387C1;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 2px; /* Set to 2px for a sharp, clean rectangle */
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-return:hover {
+      background-color: #0E6490;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="success-container">
+    <div class="success-icon">&#10003;</div>
+    <h1>Message Received</h1>
+    <p>Thank you for reaching out. Your message has been securely routed to my inbox, and I will be in touch shortly.</p>
+    
+    <!-- This link sends them back to your main portfolio page -->
+    <a href="index.html" class="btn-return">Return to Portfolio</a>
+  </div>
+
+</body>
+</html>
