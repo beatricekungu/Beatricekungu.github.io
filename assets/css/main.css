@@ -2853,3 +2853,9 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+/* Fix for Folio Portfolio Image Heights */
+.portfolio .portfolio-wrap img {
+  width: 100%;
+  height: 250px; /* Adjust this number based on how tall you want the thumbnails */
+  object-fit: cover; /* This forces the image to crop nicely instead of stretching */
+}
