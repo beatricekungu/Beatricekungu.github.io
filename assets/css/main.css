@@ -2853,18 +2853,3 @@ section,
 .starter-section {
   /* Add your styles here */
 }
-.portfolio-img {
-  position: relative;
-  overflow: hidden;
-}
-
-.portfolio-img img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-.portfolio-overlay {
-  position: absolute;
-  inset: 0;
-}
