@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Azure SQL Dynamic Data Masking PoC | Beatrice Kungu</title>
+  <meta name="description" content="Azure SQL Dynamic Data Masking proof of concept showing role-based PII and PHI protection, control validation, and CISO-ready security evidence.">
+  <meta name="keywords" content="Azure SQL, Dynamic Data Masking, data privacy, GRC, HIPAA, PCI DSS, cybersecurity portfolio">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .ddm-case-study {
+      --ddm-ink: #16202a;
+      --ddm-muted: #667085;
+      --ddm-line: #d9e2ec;
+      --ddm-panel: #ffffff;
+      --ddm-soft: #f6f8fb;
+      --ddm-blue: #0b74b8;
+      --ddm-green: #138a63;
+      --ddm-amber: #9a6b10;
+      --ddm-red: #b42318;
+      color: var(--ddm-ink);
+    }
+
+    .ddm-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    .ddm-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 26px;
+      color: var(--ddm-blue);
+      font-weight: 600;
+    }
+
+    .ddm-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+      gap: 34px;
+      align-items: center;
+      padding-bottom: 34px;
+      border-bottom: 1px solid var(--ddm-line);
+    }
+
+    .ddm-eyebrow {
+      color: var(--ddm-blue);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      margin-bottom: 12px;
+    }
+
+    .ddm-hero h1 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.1;
+      margin: 0 0 18px;
+      letter-spacing: 0;
+    }
+
+    .ddm-lead {
+      font-size: 1.08rem;
+      color: var(--ddm-muted);
+      margin-bottom: 22px;
+    }
+
+    .ddm-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .ddm-chip-row li {
+      background: #eef6fb;
+      color: #075985;
+      border: 1px solid #c8e4f4;
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .ddm-hero-visual {
+      margin: 0;
+      background: var(--ddm-panel);
+      border: 1px solid var(--ddm-line);
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 16px 40px rgba(22, 32, 42, 0.08);
+    }
+
+    .ddm-hero-visual img,
+    .ddm-shot img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+    }
+
+    .ddm-caption {
+      color: var(--ddm-muted);
+      font-size: 0.9rem;
+      margin: 10px 2px 0;
+    }
+
+    .ddm-section {
+      padding: 42px 0;
+      border-bottom: 1px solid var(--ddm-line);
+    }
+
+    .ddm-section h2 {
+      font-size: 1.65rem;
+      margin-bottom: 12px;
+      letter-spacing: 0;
+    }
+
+    .ddm-section-intro {
+      color: var(--ddm-muted);
+      max-width: 820px;
+      margin-bottom: 24px;
+    }
+
+    .ddm-metrics,
+    .ddm-proof-grid,
+    .ddm-evidence-grid,
+    .ddm-boundary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .ddm-metric,
+    .ddm-proof,
+    .ddm-boundary,
+    .ddm-game-panel {
+      background: var(--ddm-panel);
+      border: 1px solid var(--ddm-line);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .ddm-metric strong {
+      display: block;
+      font-size: 1.8rem;
+      color: var(--ddm-blue);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .ddm-metric span,
+    .ddm-proof p,
+    .ddm-boundary p {
+      color: var(--ddm-muted);
+      font-size: 0.94rem;
+    }
+
+    .ddm-proof h3,
+    .ddm-boundary h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .ddm-proof i,
+    .ddm-boundary i {
+      color: var(--ddm-blue);
+      margin-right: 8px;
+    }
+
+    .ddm-control-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--ddm-panel);
+      border: 1px solid var(--ddm-line);
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 0.95rem;
+    }
+
+    .ddm-control-table th,
+    .ddm-control-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--ddm-line);
+      vertical-align: top;
+    }
+
+    .ddm-control-table th {
+      background: #eef3f7;
+      color: #25313d;
+      font-weight: 700;
+    }
+
+    .ddm-control-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .ddm-shot {
+      background: var(--ddm-panel);
+      border: 1px solid var(--ddm-line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .ddm-evidence-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ddm-simulator {
+      border: 1px solid var(--ddm-line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(22, 32, 42, 0.08);
+      background: #101828;
+    }
+
+    .ddm-simulator iframe {
+      width: 100%;
+      min-height: 500px;
+      border: 0;
+      display: block;
+    }
+
+    .ddm-game {
+      background: linear-gradient(180deg, #f8fbfd 0%, #eef5f8 100%);
+      border-bottom: 0;
+    }
+
+    .ddm-game-shell {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .ddm-game-visual {
+      background: #ffffff;
+      border: 1px solid var(--ddm-line);
+      border-radius: 8px;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 360px;
+    }
+
+    .ddm-game-visual svg {
+      width: min(250px, 100%);
+      height: auto;
+    }
+
+    .ddm-game-panel {
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ddm-game-status {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 18px;
+      color: var(--ddm-muted);
+      font-weight: 600;
+    }
+
+    .ddm-progress {
+      height: 8px;
+      background: #e5edf3;
+      border-radius: 999px;
+      overflow: hidden;
+      flex: 1;
+      min-width: 110px;
+    }
+
+    .ddm-progress span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--ddm-blue);
+      transition: width 0.25s ease;
+    }
+
+    .ddm-request-label {
+      color: var(--ddm-blue);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+    }
+
+    .ddm-game h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .ddm-game-request {
+      color: var(--ddm-muted);
+      margin-bottom: 16px;
+    }
+
+    .ddm-field-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .ddm-field-list li {
+      border: 1px solid #d3e2ec;
+      background: #f8fbfd;
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-size: 0.88rem;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    .ddm-game-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .ddm-game-actions button,
+    .ddm-next-btn {
+      border: 0;
+      border-radius: 6px;
+      min-height: 44px;
+      padding: 10px 16px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    }
+
+    .ddm-game-actions button:hover,
+    .ddm-next-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(22, 32, 42, 0.12);
+    }
+
+    .ddm-mask-btn {
+      background: var(--ddm-green);
+      color: #ffffff;
+    }
+
+    .ddm-unmask-btn {
+      background: var(--ddm-amber);
+      color: #ffffff;
+    }
+
+    .ddm-next-btn {
+      background: var(--ddm-blue);
+      color: #ffffff;
+    }
+
+    .ddm-game-actions button:disabled,
+    .ddm-next-btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .ddm-feedback {
+      border-left: 4px solid var(--ddm-blue);
+      background: #f8fbfd;
+      padding: 14px 16px;
+      border-radius: 6px;
+      min-height: 82px;
+      color: #344054;
+    }
+
+    .ddm-feedback.correct {
+      border-left-color: var(--ddm-green);
+    }
+
+    .ddm-feedback.incorrect {
+      border-left-color: var(--ddm-red);
+    }
+
+    .ddm-feedback strong {
+      display: block;
+      color: var(--ddm-ink);
+      margin-bottom: 4px;
+    }
+
+    .ddm-table-wrap {
+      overflow-x: auto;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 992px) {
+      .ddm-hero,
+      .ddm-game-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .ddm-metrics,
+      .ddm-proof-grid,
+      .ddm-boundary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .ddm-metrics,
+      .ddm-proof-grid,
+      .ddm-evidence-grid,
+      .ddm-boundary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ddm-control-table {
+        min-width: 720px;
+      }
+
+      .ddm-game-status {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .ddm-progress {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <!-- =======================================================
+  * Template Name: FolioOne
+  * Template URL: https://bootstrapmade.com/folioone-bootstrap-portfolio-website-template/
+  * Updated: Aug 23 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="portfolio-details-page">
+
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a class="nav-link scrollto" href="index.html">Home</a></li>
+          <li><a class="nav-link scrollto" href="about.html">About</a></li>
+          <li><a class="nav-link scrollto active" href="portfolio.html">Projects</a></li>
+          <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-resume d-flex align-items-center">
+        <a href="assets/Bkungu.Resume.pdf" target="_blank" class="btn btn-lg d-flex align-items-center" style="background-color: #1387C1; border-color: #1387C1; color: #ffffff; border-radius: 30px; font-weight: 600; padding: 8px 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <i class="bi bi-file-earmark-pdf-fill" style="font-size: 1.5rem; margin-right: 8px;"></i>
+          View Resume
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main ddm-case-study">
+
+    <section id="portfolio-details" class="portfolio-details section">
+      <div class="ddm-wrap">
+        <a class="ddm-back-link" href="portfolio.html"><i class="bi bi-arrow-left"></i> Back to Projects</a>
+
+        <div class="ddm-hero" data-aos="fade-up">
+          <div>
+            <div class="ddm-eyebrow">Cloud Security Case Study</div>
+            <h1>Azure SQL Dynamic Data Masking PoC</h1>
+            <p class="ddm-lead">A GlobalMed proof of concept showing how Azure SQL can reduce accidental exposure of PII, PHI, and payment data through role-aware masking and tightly controlled `UNMASK` access.</p>
+            <ul class="ddm-chip-row" aria-label="Project skills">
+              <li>Azure SQL</li>
+              <li>Dynamic Data Masking</li>
+              <li>Least Privilege</li>
+              <li>Audit Evidence</li>
+            </ul>
+          </div>
+
+          <figure class="ddm-hero-visual">
+            <img src="assets/img/portfolio/Azure Sql.jpg" alt="Azure SQL security dashboard showing protected healthcare data fields">
+            <figcaption class="ddm-caption">Project focus: field-level exposure reduction for sensitive healthcare data.</figcaption>
+          </figure>
+        </div>
+
+        <div class="ddm-section" data-aos="fade-up">
+          <h2>CISO Value</h2>
+          <p class="ddm-section-intro">This project is stronger when it reads like a security-control story instead of a screenshot gallery. The goal is to show that you can translate privacy risk into implementation, testing, evidence, and executive-ready recommendations.</p>
+
+          <div class="ddm-metrics">
+            <div class="ddm-metric">
+              <strong>5</strong>
+              <span>Enterprise roles tested against different access needs.</span>
+            </div>
+            <div class="ddm-metric">
+              <strong>4</strong>
+              <span>Sensitive data classes protected with masking rules.</span>
+            </div>
+            <div class="ddm-metric">
+              <strong>1</strong>
+              <span>Privileged role granted explicit `UNMASK` permission.</span>
+            </div>
+            <div class="ddm-metric">
+              <strong>0</strong>
+              <span>Application-code changes required to protect query results.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ddm-section" data-aos="fade-up">
+          <h2>What I Built</h2>
+          <p class="ddm-section-intro">I designed a database-level masking model that protects sensitive healthcare records by default, then validated how query results change under different execution contexts.</p>
+
+          <div class="ddm-proof-grid">
+            <div class="ddm-proof">
+              <h3><i class="bi bi-database-lock"></i>Control Design</h3>
+              <p>Applied native Azure SQL masking functions to names, email addresses, SSNs, and card data so sensitive fields are protected at the database layer.</p>
+            </div>
+            <div class="ddm-proof">
+              <h3><i class="bi bi-person-check"></i>Access Model</h3>
+              <p>Separated routine operational users from privileged compliance reviewers, with `UNMASK` reserved for a high-trust role.</p>
+            </div>
+            <div class="ddm-proof">
+              <h3><i class="bi bi-clipboard2-check"></i>Validation</h3>
+              <p>Compared masked and unmasked query output to prove that the same underlying records render differently based on role context.</p>
+            </div>
+            <div class="ddm-proof">
+              <h3><i class="bi bi-graph-up-arrow"></i>Business Outcome</h3>
+              <p>Reduced unnecessary data exposure while preserving legitimate workflows for support, billing, clinical, and compliance teams.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ddm-section" data-aos="fade-up">
+          <h2>Control Mapping</h2>
+          <p class="ddm-section-intro">A CISO will want to see the relationship between data type, masking behavior, access need, and evidence. This table makes that logic clear.</p>
+
+          <div class="ddm-table-wrap">
+            <table class="ddm-control-table">
+              <thead>
+                <tr>
+                  <th>Data Class</th>
+                  <th>Masking Rule</th>
+                  <th>Risk Reduced</th>
+                  <th>Privileged Access</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Patient names</td>
+                  <td>Partial masking for non-privileged users</td>
+                  <td>Reduces casual exposure during operational support and analytics review.</td>
+                  <td>Visible only where role context requires identity validation.</td>
+                </tr>
+                <tr>
+                  <td>Email addresses</td>
+                  <td>Azure SQL `email()` masking function</td>
+                  <td>Protects contact details from broad internal visibility.</td>
+                  <td>Unmasked for approved compliance or investigation workflows.</td>
+                </tr>
+                <tr>
+                  <td>SSN / national identifier</td>
+                  <td>Default string masking</td>
+                  <td>Limits high-impact identity exposure from routine database reads.</td>
+                  <td>Restricted to explicitly authorized privacy/compliance review.</td>
+                </tr>
+                <tr>
+                  <td>Payment card</td>
+                  <td>Partial masking with last-four visibility</td>
+                  <td>Supports billing verification without exposing full card values.</td>
+                  <td>Full value access requires a documented privileged use case.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="ddm-section" data-aos="fade-up">
+          <h2>Validation Evidence</h2>
+          <p class="ddm-section-intro">The screenshots demonstrate the control in action: routine access sees masked values, while the authorized compliance role can view unmasked records for legitimate review.</p>
+
+          <div class="ddm-evidence-grid">
+            <figure class="ddm-shot">
+              <img src="assets/img/portfolio/Helpdesk.jpg" alt="HelpDesk query output with sensitive fields masked">
+              <figcaption class="ddm-caption">Routine support context: sensitive fields remain masked.</figcaption>
+            </figure>
+            <figure class="ddm-shot">
+              <img src="assets/img/portfolio/CCO.jpg" alt="Chief Compliance Officer query output with authorized unmasked fields">
+              <figcaption class="ddm-caption">Privileged compliance context: `UNMASK` access validates authorized review.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="ddm-section" data-aos="fade-up">
+          <h2>Control Boundaries</h2>
+          <p class="ddm-section-intro">The page is more credible when it explains where DDM fits and where it does not. This shows mature judgment, not just tool familiarity.</p>
+
+          <div class="ddm-boundary-grid">
+            <div class="ddm-boundary">
+              <h3><i class="bi bi-shield-check"></i>Good Fit</h3>
+              <p>Reducing accidental exposure of sensitive fields in query results for users who do not need full values.</p>
+            </div>
+            <div class="ddm-boundary">
+              <h3><i class="bi bi-exclamation-triangle"></i>Not Enough Alone</h3>
+              <p>DDM is not encryption, data loss prevention, or row-level security. It should complement stronger data controls.</p>
+            </div>
+            <div class="ddm-boundary">
+              <h3><i class="bi bi-clock-history"></i>Privilege Governance</h3>
+              <p>`UNMASK` should be approved, time-bound where possible, monitored, and reviewed during access recertification.</p>
+            </div>
+            <div class="ddm-boundary">
+              <h3><i class="bi bi-journal-check"></i>Audit Readiness</h3>
+              <p>Evidence should include masking configuration, role assignments, query results, and privileged-access review notes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ddm-section" data-aos="fade-up">
+          <h2>Interactive Role Simulator</h2>
+          <p class="ddm-section-intro">The simulator shows how the same dataset changes when a user executes a query under different enterprise roles.</p>
+
+          <div class="ddm-simulator">
+            <iframe src="ddm-explorer.html" title="Dynamic Data Masking role simulator"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="masking-game" class="ddm-section ddm-game">
+      <div class="ddm-wrap" data-aos="fade-up">
+        <h2>Masking Decision Challenge</h2>
+        <p class="ddm-section-intro">A small least-privilege game: decide whether each request should stay masked or receive privileged `UNMASK` access.</p>
+
+        <div class="ddm-game-shell">
+          <div class="ddm-game-visual" aria-hidden="true">
+            <svg viewBox="0 0 260 260" role="img">
+              <defs>
+                <linearGradient id="vaultGradient" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#dff1fb" />
+                  <stop offset="100%" stop-color="#f7fbfd" />
+                </linearGradient>
+              </defs>
+              <rect x="18" y="18" width="224" height="224" rx="18" fill="url(#vaultGradient)" stroke="#c9dbe8" />
+              <ellipse cx="130" cy="72" rx="70" ry="24" fill="#0b74b8" opacity="0.95" />
+              <path d="M60 72v86c0 13 31 24 70 24s70-11 70-24V72" fill="#eaf4fa" stroke="#0b74b8" stroke-width="5" />
+              <ellipse cx="130" cy="158" rx="70" ry="24" fill="#ffffff" stroke="#0b74b8" stroke-width="5" />
+              <rect x="88" y="104" width="84" height="64" rx="8" fill="#ffffff" stroke="#138a63" stroke-width="5" />
+              <path d="M106 104V86c0-14 10-24 24-24s24 10 24 24v18" fill="none" stroke="#138a63" stroke-width="9" stroke-linecap="round" />
+              <circle cx="130" cy="134" r="8" fill="#138a63" />
+              <path d="M130 142v14" stroke="#138a63" stroke-width="6" stroke-linecap="round" />
+              <text x="130" y="218" text-anchor="middle" fill="#16202a" font-family="Arial, sans-serif" font-size="18" font-weight="700">MASK FIRST</text>
+            </svg>
+          </div>
+
+          <div class="ddm-game-panel">
+            <div>
+              <div class="ddm-game-status">
+                <span id="ddm-round">Round 1 of 6</span>
+                <div class="ddm-progress" aria-hidden="true"><span id="ddm-progress-bar"></span></div>
+                <span id="ddm-score">Score 0</span>
+              </div>
+
+              <div class="ddm-request-label" id="ddm-case-type">Access Request</div>
+              <h3 id="ddm-case-role">HelpDesk Support</h3>
+              <p class="ddm-game-request" id="ddm-case-request">Troubleshoot a login issue and asks for full patient identifiers.</p>
+              <ul class="ddm-field-list" id="ddm-field-list"></ul>
+            </div>
+
+            <div>
+              <div class="ddm-game-actions">
+                <button type="button" class="ddm-mask-btn" id="ddm-mask-btn"><i class="bi bi-eye-slash"></i> Keep Masked</button>
+                <button type="button" class="ddm-unmask-btn" id="ddm-unmask-btn"><i class="bi bi-unlock"></i> Grant UNMASK</button>
+              </div>
+              <div class="ddm-feedback" id="ddm-feedback" aria-live="polite">
+                <strong>Decision pending</strong>
+                Choose the access level that best supports least privilege.
+              </div>
+              <button type="button" class="ddm-next-btn mt-3" id="ddm-next-btn" disabled><i class="bi bi-arrow-right"></i> Next Request</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>&copy; <span>Copyright</span> <strong class="px-1 sitename">FolioOne</strong> <span>All Rights Reserved<br></span></p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> | <a href="https://bootstrapmade.com/tools/">DevTools</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    const ddmCases = [
+      {
+        type: "Operational support",
+        role: "HelpDesk Support",
+        request: "Troubleshoot a login issue and asks for full patient identifiers.",
+        fields: ["First name", "Last name", "Email", "SSN", "Credit card"],
+        answer: "mask",
+        correct: "Correct: keep sensitive fields masked.",
+        incorrect: "Too much exposure for a support task.",
+        why: "Help desk can resolve most account issues with limited identity cues. SSN and payment data should remain protected."
+      },
+      {
+        type: "Compliance review",
+        role: "Chief Compliance Officer",
+        request: "Investigate a verified privacy incident with a documented case number.",
+        fields: ["Patient name", "Email", "SSN", "Audit context"],
+        answer: "unmask",
+        correct: "Correct: grant controlled UNMASK access.",
+        incorrect: "This role has a legitimate, documented investigation need.",
+        why: "Privileged review can justify unmasked access when approval, audit logging, and scope are clear."
+      },
+      {
+        type: "Payment workflow",
+        role: "Billing Specialist",
+        request: "Confirm the card used for a payment dispute.",
+        fields: ["Patient ID", "Invoice number", "Last four card digits"],
+        answer: "mask",
+        correct: "Correct: keep full values masked.",
+        incorrect: "Full card values are not needed for this workflow.",
+        why: "Last-four visibility is enough for payment verification. Full payment data should stay masked."
+      },
+      {
+        type: "Clinical operation",
+        role: "Lead Nurse",
+        request: "Confirm a patient identity before a care handoff.",
+        fields: ["Patient name", "Appointment time", "Clinical unit", "SSN"],
+        answer: "mask",
+        correct: "Correct: keep high-risk fields masked.",
+        incorrect: "Clinical identity checks do not require broad unmasked identifiers.",
+        why: "Names and appointment context may support care delivery, but SSN should not be broadly exposed."
+      },
+      {
+        type: "Engineering request",
+        role: "Data Engineer",
+        request: "Debug slow query performance in production.",
+        fields: ["Query plan", "Index usage", "Full patient records"],
+        answer: "mask",
+        correct: "Correct: keep patient values masked.",
+        incorrect: "Performance tuning does not require raw PII or PHI.",
+        why: "Engineering can troubleshoot schema and performance with masked or synthetic data."
+      },
+      {
+        type: "Legal response",
+        role: "Privacy Officer",
+        request: "Fulfill an approved legal disclosure with documented authorization.",
+        fields: ["Patient name", "Contact details", "Identifier", "Disclosure record"],
+        answer: "unmask",
+        correct: "Correct: grant scoped UNMASK access.",
+        incorrect: "A verified legal request can justify carefully controlled access.",
+        why: "The access should be approved, scoped, logged, and revoked after the disclosure workflow is complete."
+      }
+    ];
+
+    const roundEl = document.getElementById("ddm-round");
+    const scoreEl = document.getElementById("ddm-score");
+    const progressEl = document.getElementById("ddm-progress-bar");
+    const typeEl = document.getElementById("ddm-case-type");
+    const roleEl = document.getElementById("ddm-case-role");
+    const requestEl = document.getElementById("ddm-case-request");
+    const fieldListEl = document.getElementById("ddm-field-list");
+    const feedbackEl = document.getElementById("ddm-feedback");
+    const maskBtn = document.getElementById("ddm-mask-btn");
+    const unmaskBtn = document.getElementById("ddm-unmask-btn");
+    const nextBtn = document.getElementById("ddm-next-btn");
+
+    let ddmIndex = 0;
+    let ddmScore = 0;
+    let ddmAnswered = false;
+    let ddmComplete = false;
+
+    function renderDdmCase() {
+      const current = ddmCases[ddmIndex];
+      ddmAnswered = false;
+      ddmComplete = false;
+      roundEl.textContent = `Round ${ddmIndex + 1} of ${ddmCases.length}`;
+      scoreEl.textContent = `Score ${ddmScore}`;
+      progressEl.style.width = `${(ddmIndex / ddmCases.length) * 100}%`;
+      typeEl.textContent = current.type;
+      roleEl.textContent = current.role;
+      requestEl.textContent = current.request;
+      fieldListEl.innerHTML = current.fields.map(field => `<li>${field}</li>`).join("");
+      feedbackEl.className = "ddm-feedback";
+      feedbackEl.innerHTML = "<strong>Decision pending</strong> Choose the access level that best supports least privilege.";
+      maskBtn.disabled = false;
+      unmaskBtn.disabled = false;
+      nextBtn.disabled = true;
+      nextBtn.innerHTML = '<i class="bi bi-arrow-right"></i> Next Request';
+    }
+
+    function chooseDdmAccess(choice) {
+      if (ddmAnswered) return;
+      const current = ddmCases[ddmIndex];
+      const isCorrect = choice === current.answer;
+      ddmAnswered = true;
+      if (isCorrect) ddmScore += 1;
+
+      feedbackEl.className = `ddm-feedback ${isCorrect ? "correct" : "incorrect"}`;
+      feedbackEl.innerHTML = `<strong>${isCorrect ? current.correct : current.incorrect}</strong>${current.why}`;
+      scoreEl.textContent = `Score ${ddmScore}`;
+      maskBtn.disabled = true;
+      unmaskBtn.disabled = true;
+      nextBtn.disabled = false;
+
+      if (ddmIndex === ddmCases.length - 1) {
+        nextBtn.innerHTML = '<i class="bi bi-arrow-clockwise"></i> Show Result';
+      }
+    }
+
+    function nextDdmCase() {
+      if (ddmComplete) {
+        resetDdmGame();
+        return;
+      }
+
+      if (!ddmAnswered) return;
+      if (ddmIndex < ddmCases.length - 1) {
+        ddmIndex += 1;
+        renderDdmCase();
+        return;
+      }
+
+      progressEl.style.width = "100%";
+      typeEl.textContent = "Final Score";
+      roleEl.textContent = `${ddmScore} of ${ddmCases.length} decisions aligned to least privilege`;
+      requestEl.textContent = ddmScore >= 5
+        ? "Strong access judgment. This is the mindset a security leader wants to see: protect data by default, then grant exceptions with evidence."
+        : "Good practice round. The safest pattern is to keep sensitive values masked unless the role, task, approval, and audit trail justify unmasking.";
+      fieldListEl.innerHTML = "";
+      feedbackEl.className = "ddm-feedback correct";
+      feedbackEl.innerHTML = "<strong>Takeaway</strong> Dynamic masking is strongest when paired with privileged-access governance, monitoring, and recertification.";
+      maskBtn.disabled = true;
+      unmaskBtn.disabled = true;
+      nextBtn.disabled = false;
+      nextBtn.innerHTML = '<i class="bi bi-arrow-clockwise"></i> Play Again';
+      ddmAnswered = true;
+      ddmComplete = true;
+    }
+
+    function resetDdmGame() {
+      ddmIndex = 0;
+      ddmScore = 0;
+      renderDdmCase();
+    }
+
+    maskBtn.addEventListener("click", () => chooseDdmAccess("mask"));
+    unmaskBtn.addEventListener("click", () => chooseDdmAccess("unmask"));
+    nextBtn.addEventListener("click", nextDdmCase);
+    renderDdmCase();
+  </script>
+
+</body>
+
+</html>

@@ -1,66 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DDM Explorer</title>
-    <style>
-        body { font-family: system-ui, -apple-system, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 25px; }
-        .header { display: flex; align-items: center; gap: 10px; color: #38bdf8; margin-top: 0; margin-bottom: 5px; font-size: 1.5em; font-weight: bold;}
-        .subtitle { font-size: 0.95em; color: #94a3b8; margin-bottom: 20px; }
-        .btn { border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s; margin-bottom: 8px; margin-right: 5px; font-size: 0.9em; }
-        .btn-active { background: #38bdf8; color: #0f172a; box-shadow: 0 4px 6px -1px rgba(56, 189, 248, 0.3); }
-        .btn-inactive { background: #1e293b; color: #cbd5e1; border: 1px solid #334155; }
-        .btn-inactive:hover { background: #334155; }
-        .context-box { background: #1e293b; padding: 15px; border-left: 4px solid #34d399; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.9em; color: #a7f3d0; margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.95em; text-align: left; background: #1e293b; border-radius: 8px; overflow: hidden; }
-        th { background: #334155; padding: 12px 15px; color: #e2e8f0; font-weight: 600; }
-        td { padding: 12px 15px; border-bottom: 1px solid #334155; color: #f1f5f9; }
-        tr:last-child td { border-bottom: none; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DDM Role Simulator</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #667085;
+      --line: #d9e2ec;
+      --panel: #ffffff;
+      --soft: #f4f7fa;
+      --blue: #0b74b8;
+      --green: #138a63;
+      --amber: #9a6b10;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f7f9fb;
+      color: var(--ink);
+      margin: 0;
+      padding: 24px;
+    }
+
+    .sim-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: 1.45rem;
+      margin: 0 0 6px;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin: 0;
+      max-width: 760px;
+    }
+
+    .role-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    button {
+      border: 1px solid #c8d8e4;
+      background: #ffffff;
+      color: #25313d;
+      padding: 10px 13px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    button.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #ffffff;
+    }
+
+    .context-box {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--green);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      color: #344054;
+    }
+
+    .context-label {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    code {
+      color: #075985;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    table {
+      width: 100%;
+      min-width: 740px;
+      border-collapse: collapse;
+      font-size: 0.94rem;
+      text-align: left;
+    }
+
+    th {
+      background: #eef3f7;
+      padding: 12px 14px;
+      color: #25313d;
+      font-weight: 800;
+      border-bottom: 1px solid var(--line);
+    }
+
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      color: #1f2933;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .masked {
+      color: var(--amber);
+      font-weight: 800;
+    }
+
+    .visible {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .role-summary {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      padding: 12px 14px;
+      min-width: 210px;
+    }
+
+    .role-summary strong {
+      display: block;
+      color: var(--blue);
+      margin-bottom: 2px;
+    }
+
+    .role-summary span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 18px;
+      }
+
+      .sim-header {
+        flex-direction: column;
+      }
+
+      .role-summary {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
+
 <body>
-
-    <div class="header">🛡️ Globalmed Live DDM Role Simulator</div>
-    <div class="subtitle">Select an enterprise identity role to see how Azure SQL transforms data on-the-fly:</div>
-    
-    <div id="btn-group">
-        <button class="btn btn-active" onclick="updateRole('admin')" id="btn-admin">Database Admin / CCO</button>
-        <button class="btn btn-inactive" onclick="updateRole('nurse')" id="btn-nurse">Lead Nurse</button>
-        <button class="btn btn-inactive" onclick="updateRole('billing')" id="btn-billing">Billing Specialist</button>
-        <button class="btn btn-inactive" onclick="updateRole('helpdesk')" id="btn-helpdesk">HelpDesk Support</button>
-        <button class="btn btn-inactive" onclick="updateRole('research')" id="btn-research">Medical Researcher</button>
+  <div class="sim-header">
+    <div>
+      <h1>GlobalMed DDM Role Simulator</h1>
+      <p class="subtitle">Select a role to see how Azure SQL Dynamic Data Masking changes the presentation of the same patient records.</p>
     </div>
-
-    <div class="context-box">
-        <span style="color: #94a3b8;">-- Active Security Context:</span><br>
-        <span id="sql-context">EXECUTE AS USER = 'ChiefComplianceOfficer'; -- (Implicit Admin/UNMASK)</span>
+    <div class="role-summary">
+      <strong id="role-risk">Privileged access</strong>
+      <span id="role-note">Full values are visible only for approved compliance review.</span>
     </div>
+  </div>
 
-    <div style="overflow-x: auto; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);">
-        <table id="data-table">
-            <thead>
-                <tr><th>PatientID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>SSN</th><th>Credit Card</th></tr>
-            </thead>
-            <tbody id="table-body"></tbody>
-        </table>
-    </div>
+  <div class="role-buttons" id="role-buttons">
+    <button type="button" data-role="admin" class="active">Database Admin / CCO</button>
+    <button type="button" data-role="nurse">Lead Nurse</button>
+    <button type="button" data-role="billing">Billing Specialist</button>
+    <button type="button" data-role="helpdesk">HelpDesk Support</button>
+    <button type="button" data-role="research">Medical Researcher</button>
+  </div>
 
-<script>
-const dataStates = {
-    admin: { context: "EXECUTE AS USER = 'ChiefComplianceOfficer'; -- (Has Explicit UNMASK Permission)", rows: [["1", "John", "Doe", "johndoe@globalmed.com", "123-45-6789", "1111-2222-3333-4444"], ["2", "Jane", "Smith", "janesmith@globalmed.com", "987-65-4321", "5555-6666-7777-8888"]] },
-    nurse: { context: "EXECUTE AS USER = 'LeadNurse'; -- (DDM Active: Names unmasked for ID Verification)", rows: [["1", "John", "Doe", "jXXX@XXXX.com", "XXXX", "XXXX-XXXX-XXXX-4444"], ["2", "Jane", "Smith", "jXXX@XXXX.com", "XXXX", "XXXX-XXXX-XXXX-8888"]] },
-    billing: { context: "EXECUTE AS USER = 'BillingSpecialist'; -- (DDM Active: Focused on Financial Fields)", rows: [["1", "JXXXX", "DXXXX", "jXXX@XXXX.com", "XXXX", "1111-2222-3333-4444"], ["2", "JXXXX", "SXXXX", "jXXX@XXXX.com", "XXXX", "5555-6666-7777-8888"]] },
-    helpdesk: { context: "EXECUTE AS USER = 'HelpDeskSupport'; -- (DDM Active: Maximum Masking Enforced)", rows: [["1", "JXXXX", "DXXXX", "jXXX@XXXX.com", "XXXX", "XXXX-XXXX-XXXX-4444"], ["2", "JXXXX", "SXXXX", "jXXX@XXXX.com", "XXXX", "XXXX-XXXX-XXXX-8888"]] },
-    research: { context: "EXECUTE AS USER = 'MedicalResearcher'; -- (DDM Active: Fully Anonymized Dataset)", rows: [["1", "JXXXX", "DXXXX", "jXXX@XXXX.com", "XXXX", "XXXX-XXXX-XXXX-XXXX"], ["2", "JXXXX", "SXXXX", "jXXX@XXXX.com", "XXXX", "XXXX-XXXX-XXXX-XXXX"]] }
-};
+  <div class="context-box">
+    <div class="context-label">Active Security Context</div>
+    <code id="sql-context">EXECUTE AS USER = 'ChiefComplianceOfficer'; -- Has explicit UNMASK permission</code>
+  </div>
 
-function updateRole(role) {
-    document.getElementById("sql-context").innerText = dataStates[role].context;
-    document.getElementById("table-body").innerHTML = dataStates[role].rows.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('');
-    ['admin', 'nurse', 'billing', 'helpdesk', 'research'].forEach(r => { document.getElementById(`btn-${r}`).className = (r === role) ? "btn btn-active" : "btn btn-inactive"; });
-}
-updateRole('admin');
-</script>
+  <div class="table-wrap">
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>PatientID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>SSN</th>
+          <th>Credit Card</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const dataStates = {
+      admin: {
+        context: "EXECUTE AS USER = 'ChiefComplianceOfficer'; -- Has explicit UNMASK permission",
+        risk: "Privileged access",
+        note: "Full values are visible only for approved compliance review.",
+        rows: [
+          ["1", "John", "Doe", "johndoe@globalmed.com", "123-45-6789", "1111-2222-3333-4444"],
+          ["2", "Jane", "Smith", "janesmith@globalmed.com", "987-65-4321", "5555-6666-7777-8888"]
+        ]
+      },
+      nurse: {
+        context: "EXECUTE AS USER = 'LeadNurse'; -- Names visible, high-risk identifiers masked",
+        risk: "Care delivery",
+        note: "Clinical context receives useful identity data, not broad identifier exposure.",
+        rows: [
+          ["1", "John", "Doe", "jXXX@XXXX.com", "XXXX", "XXXX-XXXX-XXXX-4444"],
+          ["2", "Jane", "Smith", "jXXX@XXXX.com", "XXXX", "XXXX-XXXX-XXXX-8888"]
+        ]
+      },
+      billing: {
+        context: "EXECUTE AS USER = 'BillingSpecialist'; -- Payment workflow with constrained exposure",
+        risk: "Payment verification",
+        note: "Billing can verify payment context without unnecessary identity exposure.",
+        rows: [
+          ["1", "JXXXX", "DXXXX", "jXXX@XXXX.com", "XXXX", "XXXX-XXXX-XXXX-4444"],
+          ["2", "JXXXX", "SXXXX", "jXXX@XXXX.com", "XXXX", "XXXX-XXXX-XXXX-8888"]
+        ]
+      },
+      helpdesk: {
+        context: "EXECUTE AS USER = 'HelpDeskSupport'; -- Maximum masking for routine support",
+        risk: "Routine support",
+        note: "Support receives only what is needed to resolve service issues.",
+        rows: [
+          ["1", "JXXXX", "DXXXX", "jXXX@XXXX.com", "XXXX", "XXXX-XXXX-XXXX-4444"],
+          ["2", "JXXXX", "SXXXX", "jXXX@XXXX.com", "XXXX", "XXXX-XXXX-XXXX-8888"]
+        ]
+      },
+      research: {
+        context: "EXECUTE AS USER = 'MedicalResearcher'; -- Anonymized research view",
+        risk: "Analytics access",
+        note: "Research workflows should avoid direct identifiers wherever possible.",
+        rows: [
+          ["1", "JXXXX", "DXXXX", "jXXX@XXXX.com", "XXXX", "XXXX-XXXX-XXXX-XXXX"],
+          ["2", "JXXXX", "SXXXX", "jXXX@XXXX.com", "XXXX", "XXXX-XXXX-XXXX-XXXX"]
+        ]
+      }
+    };
+
+    const buttons = document.querySelectorAll("[data-role]");
+    const contextEl = document.getElementById("sql-context");
+    const tableBody = document.getElementById("table-body");
+    const roleRisk = document.getElementById("role-risk");
+    const roleNote = document.getElementById("role-note");
+
+    function cellClass(value) {
+      return value.includes("XXXX") ? "masked" : "visible";
+    }
+
+    function updateRole(role) {
+      const state = dataStates[role];
+      contextEl.textContent = state.context;
+      roleRisk.textContent = state.risk;
+      roleNote.textContent = state.note;
+      tableBody.innerHTML = state.rows.map(row => (
+        `<tr>${row.map(cell => `<td class="${cellClass(cell)}">${cell}</td>`).join("")}</tr>`
+      )).join("");
+
+      buttons.forEach(button => {
+        const isActive = button.dataset.role === role;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => updateRole(button.dataset.role));
+    });
+
+    updateRole("admin");
+  </script>
 </body>
+
 </html>
