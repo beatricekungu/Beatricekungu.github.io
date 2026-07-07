@@ -7,14 +7,19 @@
   <title>DDM Role Simulator</title>
   <style>
     :root {
-      --ink: #17212b;
-      --muted: #667085;
-      --line: #d9e2ec;
-      --panel: #ffffff;
-      --soft: #f4f7fa;
-      --blue: #0b74b8;
-      --green: #138a63;
-      --amber: #9a6b10;
+      --background-color: #0b1120;
+      --surface-color: #111827;
+      --default-color: #d8e2ee;
+      --heading-color: #f8fafc;
+      --accent-color: #1d9bbe;
+      --ink: var(--default-color);
+      --muted: color-mix(in srgb, var(--default-color), transparent 30%);
+      --line: color-mix(in srgb, var(--default-color), transparent 84%);
+      --panel: color-mix(in srgb, var(--surface-color), var(--background-color) 18%);
+      --soft: color-mix(in srgb, var(--surface-color), var(--background-color) 38%);
+      --blue: var(--accent-color);
+      --green: #22c55e;
+      --amber: #f59e0b;
     }
 
     * {
@@ -23,7 +28,7 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f7f9fb;
+      background: var(--background-color);
       color: var(--ink);
       margin: 0;
       padding: 24px;
@@ -57,9 +62,9 @@
     }
 
     button {
-      border: 1px solid #c8d8e4;
-      background: #ffffff;
-      color: #25313d;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--default-color);
       padding: 10px 13px;
       border-radius: 6px;
       cursor: pointer;
@@ -74,11 +79,11 @@
     button.active {
       background: var(--blue);
       border-color: var(--blue);
-      color: #ffffff;
+      color: var(--background-color);
     }
 
     .context-box {
-      background: #ffffff;
+      background: var(--panel);
       border: 1px solid var(--line);
       border-left: 4px solid var(--green);
       border-radius: 8px;
@@ -96,7 +101,7 @@
     }
 
     code {
-      color: #075985;
+      color: var(--accent-color);
       white-space: normal;
       word-break: break-word;
     }
@@ -105,7 +110,7 @@
       overflow-x: auto;
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: #ffffff;
+      background: var(--panel);
     }
 
     table {
@@ -117,9 +122,9 @@
     }
 
     th {
-      background: #eef3f7;
+      background: color-mix(in srgb, var(--surface-color), var(--accent-color) 8%);
       padding: 12px 14px;
-      color: #25313d;
+      color: var(--heading-color);
       font-weight: 800;
       border-bottom: 1px solid var(--line);
     }
@@ -127,7 +132,7 @@
     td {
       padding: 12px 14px;
       border-bottom: 1px solid var(--line);
-      color: #1f2933;
+      color: var(--default-color);
     }
 
     tr:last-child td {

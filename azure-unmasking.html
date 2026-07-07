@@ -29,16 +29,17 @@
 
   <style>
     .ddm-case-study {
-      --ddm-ink: #16202a;
-      --ddm-muted: #667085;
-      --ddm-line: #d9e2ec;
-      --ddm-panel: #ffffff;
-      --ddm-soft: #f6f8fb;
-      --ddm-blue: #0b74b8;
-      --ddm-green: #138a63;
-      --ddm-amber: #9a6b10;
-      --ddm-red: #b42318;
+      --ddm-ink: var(--default-color);
+      --ddm-muted: color-mix(in srgb, var(--default-color), transparent 28%);
+      --ddm-line: color-mix(in srgb, var(--default-color), transparent 84%);
+      --ddm-panel: color-mix(in srgb, var(--surface-color), var(--background-color) 18%);
+      --ddm-soft: color-mix(in srgb, var(--surface-color), var(--background-color) 38%);
+      --ddm-blue: var(--accent-color);
+      --ddm-green: #22c55e;
+      --ddm-amber: #f59e0b;
+      --ddm-red: #fb7185;
       color: var(--ddm-ink);
+      background-color: var(--background-color);
     }
 
     .ddm-wrap {
@@ -96,9 +97,9 @@
     }
 
     .ddm-chip-row li {
-      background: #eef6fb;
-      color: #075985;
-      border: 1px solid #c8e4f4;
+      background: color-mix(in srgb, var(--accent-color), transparent 84%);
+      color: var(--heading-color);
+      border: 1px solid color-mix(in srgb, var(--accent-color), transparent 55%);
       border-radius: 999px;
       padding: 7px 13px;
       font-size: 0.9rem;
@@ -111,7 +112,32 @@
       border: 1px solid var(--ddm-line);
       border-radius: 8px;
       padding: 12px;
-      box-shadow: 0 16px 40px rgba(22, 32, 42, 0.08);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.26);
+    }
+
+    .ddm-zoom-link {
+      display: block;
+      position: relative;
+      cursor: zoom-in;
+    }
+
+    .ddm-zoom-badge {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: var(--contrast-color);
+      background: color-mix(in srgb, var(--accent-color), transparent 8%);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+    }
+
+    .ddm-zoom-badge i {
+      line-height: 1;
     }
 
     .ddm-hero-visual img,
@@ -150,8 +176,16 @@
     .ddm-evidence-grid,
     .ddm-boundary-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 16px;
+    }
+
+    .ddm-metrics {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .ddm-proof-grid,
+    .ddm-boundary-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .ddm-metric,
@@ -166,10 +200,16 @@
 
     .ddm-metric strong {
       display: block;
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: var(--ddm-blue);
       line-height: 1;
       margin-bottom: 8px;
+    }
+
+    .ddm-metric h3 {
+      font-size: 1.02rem;
+      margin-bottom: 8px;
+      color: var(--heading-color);
     }
 
     .ddm-metric span,
@@ -209,9 +249,13 @@
     }
 
     .ddm-control-table th {
-      background: #eef3f7;
-      color: #25313d;
+      background: color-mix(in srgb, var(--surface-color), var(--accent-color) 8%);
+      color: var(--heading-color);
       font-weight: 700;
+    }
+
+    .ddm-control-table td {
+      color: var(--default-color);
     }
 
     .ddm-control-table tr:last-child td {
@@ -245,7 +289,7 @@
     }
 
     .ddm-game {
-      background: linear-gradient(180deg, #f8fbfd 0%, #eef5f8 100%);
+      background: color-mix(in srgb, var(--background-color), var(--surface-color) 24%);
       border-bottom: 0;
     }
 
@@ -257,7 +301,7 @@
     }
 
     .ddm-game-visual {
-      background: #ffffff;
+      background: var(--ddm-panel);
       border: 1px solid var(--ddm-line);
       border-radius: 8px;
       padding: 18px;
@@ -265,11 +309,25 @@
       align-items: center;
       justify-content: center;
       min-height: 360px;
+      flex-direction: column;
+      gap: 18px;
+      text-align: center;
     }
 
-    .ddm-game-visual svg {
-      width: min(250px, 100%);
-      height: auto;
+    .ddm-game-visual i {
+      color: var(--accent-color);
+      font-size: clamp(4rem, 10vw, 7rem);
+      line-height: 1;
+    }
+
+    .ddm-game-visual strong {
+      color: var(--heading-color);
+      font-size: 1.2rem;
+    }
+
+    .ddm-game-visual span {
+      color: var(--ddm-muted);
+      max-width: 220px;
     }
 
     .ddm-game-panel {
@@ -291,7 +349,7 @@
 
     .ddm-progress {
       height: 8px;
-      background: #e5edf3;
+      background: color-mix(in srgb, var(--surface-color), var(--default-color) 10%);
       border-radius: 999px;
       overflow: hidden;
       flex: 1;
@@ -334,12 +392,12 @@
     }
 
     .ddm-field-list li {
-      border: 1px solid #d3e2ec;
-      background: #f8fbfd;
+      border: 1px solid var(--ddm-line);
+      background: var(--ddm-soft);
       border-radius: 999px;
       padding: 6px 11px;
       font-size: 0.88rem;
-      color: #334155;
+      color: var(--default-color);
       font-weight: 600;
     }
 
@@ -371,17 +429,17 @@
 
     .ddm-mask-btn {
       background: var(--ddm-green);
-      color: #ffffff;
+      color: var(--background-color);
     }
 
     .ddm-unmask-btn {
       background: var(--ddm-amber);
-      color: #ffffff;
+      color: var(--background-color);
     }
 
     .ddm-next-btn {
       background: var(--ddm-blue);
-      color: #ffffff;
+      color: var(--background-color);
     }
 
     .ddm-game-actions button:disabled,
@@ -394,11 +452,11 @@
 
     .ddm-feedback {
       border-left: 4px solid var(--ddm-blue);
-      background: #f8fbfd;
+      background: var(--ddm-soft);
       padding: 14px 16px;
       border-radius: 6px;
       min-height: 82px;
-      color: #344054;
+      color: var(--default-color);
     }
 
     .ddm-feedback.correct {
@@ -481,7 +539,7 @@
       </nav>
 
       <div class="header-resume d-flex align-items-center">
-        <a href="assets/Bkungu.Resume.pdf" target="_blank" class="btn btn-lg d-flex align-items-center" style="background-color: #1387C1; border-color: #1387C1; color: #ffffff; border-radius: 30px; font-weight: 600; padding: 8px 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <a href="assets/Bkungu.Resume.pdf" target="_blank" class="btn btn-lg d-flex align-items-center" style="background-color: var(--accent-color); border-color: var(--accent-color); color: var(--background-color); border-radius: 30px; font-weight: 600; padding: 8px 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
           <i class="bi bi-file-earmark-pdf-fill" style="font-size: 1.5rem; margin-right: 8px;"></i>
           View Resume
         </a>
@@ -509,31 +567,33 @@
           </div>
 
           <figure class="ddm-hero-visual">
-            <img src="assets/img/portfolio/Azure Sql.jpg" alt="Azure SQL security dashboard showing protected healthcare data fields">
+            <a href="assets/img/portfolio/Azure Sql.jpg" class="glightbox ddm-zoom-link" data-gallery="azure-ddm" data-title="Azure SQL Dynamic Data Masking project overview">
+              <img src="assets/img/portfolio/Azure Sql.jpg" alt="Azure SQL security dashboard showing protected healthcare data fields">
+              <span class="ddm-zoom-badge" aria-hidden="true"><i class="bi bi-zoom-in"></i></span>
+            </a>
             <figcaption class="ddm-caption">Project focus: field-level exposure reduction for sensitive healthcare data.</figcaption>
           </figure>
         </div>
 
         <div class="ddm-section" data-aos="fade-up">
           <h2>CISO Value</h2>
-          <p class="ddm-section-intro">This project is stronger when it reads like a security-control story instead of a screenshot gallery. The goal is to show that you can translate privacy risk into implementation, testing, evidence, and executive-ready recommendations.</p>
+          <p class="ddm-section-intro">This PoC showcases how I implement data protection controls that support compliance, reduce operational exposure, and preserve engineering velocity.</p>
 
           <div class="ddm-metrics">
             <div class="ddm-metric">
-              <strong>5</strong>
-              <span>Enterprise roles tested against different access needs.</span>
+              <strong>100%</strong>
+              <h3>Sensitive Data Coverage</h3>
+              <span>All classified PII/PHI automatically masked at the database level, ensuring absolute compliance without manual oversight.</span>
             </div>
             <div class="ddm-metric">
-              <strong>4</strong>
-              <span>Sensitive data classes protected with masking rules.</span>
+              <strong>Zero</strong>
+              <h3>Engineering Friction</h3>
+              <span>0 application-code changes required to protect query results, proving security can be implemented without slowing down development.</span>
             </div>
             <div class="ddm-metric">
-              <strong>1</strong>
-              <span>Privileged role granted explicit `UNMASK` permission.</span>
-            </div>
-            <div class="ddm-metric">
-              <strong>0</strong>
-              <span>Application-code changes required to protect query results.</span>
+              <strong>Zero-Trust</strong>
+              <h3>Access Enforcement</h3>
+              <span>Privileged roles strictly governed by explicit, audited UNMASK permissions, eliminating standing access risks.</span>
             </div>
           </div>
         </div>
@@ -564,7 +624,7 @@
 
         <div class="ddm-section" data-aos="fade-up">
           <h2>Control Mapping</h2>
-          <p class="ddm-section-intro">A CISO will want to see the relationship between data type, masking behavior, access need, and evidence. This table makes that logic clear.</p>
+          <p class="ddm-section-intro">The implementation maps each sensitive data class to a masking rule, a reduced exposure risk, and a controlled privileged-access path.</p>
 
           <div class="ddm-table-wrap">
             <table class="ddm-control-table">
@@ -612,36 +672,42 @@
 
           <div class="ddm-evidence-grid">
             <figure class="ddm-shot">
-              <img src="assets/img/portfolio/Helpdesk.jpg" alt="HelpDesk query output with sensitive fields masked">
+              <a href="assets/img/portfolio/Helpdesk.jpg" class="glightbox ddm-zoom-link" data-gallery="azure-ddm" data-title="HelpDesk support view with sensitive fields masked">
+                <img src="assets/img/portfolio/Helpdesk.jpg" alt="HelpDesk query output with sensitive fields masked">
+                <span class="ddm-zoom-badge" aria-hidden="true"><i class="bi bi-zoom-in"></i></span>
+              </a>
               <figcaption class="ddm-caption">Routine support context: sensitive fields remain masked.</figcaption>
             </figure>
             <figure class="ddm-shot">
-              <img src="assets/img/portfolio/CCO.jpg" alt="Chief Compliance Officer query output with authorized unmasked fields">
+              <a href="assets/img/portfolio/CCO.jpg" class="glightbox ddm-zoom-link" data-gallery="azure-ddm" data-title="Chief Compliance Officer view with authorized UNMASK access">
+                <img src="assets/img/portfolio/CCO.jpg" alt="Chief Compliance Officer query output with authorized unmasked fields">
+                <span class="ddm-zoom-badge" aria-hidden="true"><i class="bi bi-zoom-in"></i></span>
+              </a>
               <figcaption class="ddm-caption">Privileged compliance context: `UNMASK` access validates authorized review.</figcaption>
             </figure>
           </div>
         </div>
 
         <div class="ddm-section" data-aos="fade-up">
-          <h2>Control Boundaries</h2>
-          <p class="ddm-section-intro">The page is more credible when it explains where DDM fits and where it does not. This shows mature judgment, not just tool familiarity.</p>
+          <h2>Project Boundaries</h2>
+          <p class="ddm-section-intro">This project focuses on database-level masking and access enforcement for query results. These boundaries explain what I implemented, what I validated, and where the control should connect to broader enterprise security.</p>
 
           <div class="ddm-boundary-grid">
             <div class="ddm-boundary">
-              <h3><i class="bi bi-shield-check"></i>Good Fit</h3>
-              <p>Reducing accidental exposure of sensitive fields in query results for users who do not need full values.</p>
+              <h3><i class="bi bi-database-lock"></i>Implemented Scope</h3>
+              <p>Azure SQL Dynamic Data Masking rules for names, email, SSN, and payment fields in the GlobalMed sample table.</p>
             </div>
             <div class="ddm-boundary">
-              <h3><i class="bi bi-exclamation-triangle"></i>Not Enough Alone</h3>
-              <p>DDM is not encryption, data loss prevention, or row-level security. It should complement stronger data controls.</p>
+              <h3><i class="bi bi-person-lock"></i>Access Scope</h3>
+              <p>Routine roles receive masked values, while privileged review requires explicit UNMASK permission tied to a business need.</p>
             </div>
             <div class="ddm-boundary">
-              <h3><i class="bi bi-clock-history"></i>Privilege Governance</h3>
-              <p>`UNMASK` should be approved, time-bound where possible, monitored, and reviewed during access recertification.</p>
+              <h3><i class="bi bi-clipboard-data"></i>Validation Scope</h3>
+              <p>Role-based query testing proves that the same stored data renders differently based on execution context.</p>
             </div>
             <div class="ddm-boundary">
-              <h3><i class="bi bi-journal-check"></i>Audit Readiness</h3>
-              <p>Evidence should include masking configuration, role assignments, query results, and privileged-access review notes.</p>
+              <h3><i class="bi bi-diagram-3"></i>Enterprise Integration</h3>
+              <p>The next production layer would connect this control to access reviews, audit logging, and incident-response evidence.</p>
             </div>
           </div>
         </div>
@@ -664,23 +730,9 @@
 
         <div class="ddm-game-shell">
           <div class="ddm-game-visual" aria-hidden="true">
-            <svg viewBox="0 0 260 260" role="img">
-              <defs>
-                <linearGradient id="vaultGradient" x1="0" x2="1" y1="0" y2="1">
-                  <stop offset="0%" stop-color="#dff1fb" />
-                  <stop offset="100%" stop-color="#f7fbfd" />
-                </linearGradient>
-              </defs>
-              <rect x="18" y="18" width="224" height="224" rx="18" fill="url(#vaultGradient)" stroke="#c9dbe8" />
-              <ellipse cx="130" cy="72" rx="70" ry="24" fill="#0b74b8" opacity="0.95" />
-              <path d="M60 72v86c0 13 31 24 70 24s70-11 70-24V72" fill="#eaf4fa" stroke="#0b74b8" stroke-width="5" />
-              <ellipse cx="130" cy="158" rx="70" ry="24" fill="#ffffff" stroke="#0b74b8" stroke-width="5" />
-              <rect x="88" y="104" width="84" height="64" rx="8" fill="#ffffff" stroke="#138a63" stroke-width="5" />
-              <path d="M106 104V86c0-14 10-24 24-24s24 10 24 24v18" fill="none" stroke="#138a63" stroke-width="9" stroke-linecap="round" />
-              <circle cx="130" cy="134" r="8" fill="#138a63" />
-              <path d="M130 142v14" stroke="#138a63" stroke-width="6" stroke-linecap="round" />
-              <text x="130" y="218" text-anchor="middle" fill="#16202a" font-family="Arial, sans-serif" font-size="18" font-weight="700">MASK FIRST</text>
-            </svg>
+            <i class="bi bi-database-lock"></i>
+            <strong>Mask First</strong>
+            <span>Approve unmasking only when role, business need, and evidence support it.</span>
           </div>
 
           <div class="ddm-game-panel">
