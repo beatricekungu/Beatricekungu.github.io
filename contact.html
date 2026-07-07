@@ -124,7 +124,7 @@
             <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
               <h3>Get In Touch</h3>
               <p>Send a message below and I'll be in touch as soon as possible!</p>
-<form action="https://formspree.io/f/mpqgnqjj" method="POST" data-aos="fade-up" data-aos-delay="200">
+<form id="contact-form" action="https://formspree.io/f/mpqgnqjj" method="POST" data-success-url="success.html" data-aos="fade-up" data-aos-delay="200">
   <input type="hidden" name="_next" value="https://beatricekungu.github.io/success.html">
   
   <div class="row gy-4">
@@ -148,6 +148,7 @@
       <p style="font-size: 0.8rem; color: #8a939e; margin-top: 12px; margin-bottom: 0; text-align: center;">
         *Privacy Notice: Your information is encrypted in transit and will only be used to respond to your professional inquiry. No data is stored on this web server.
       </p>
+      <p id="contact-form-status" style="font-size: 0.9rem; color: #d8e2ee; margin-top: 12px; margin-bottom: 0; text-align: center;" aria-live="polite"></p>
     </div>
   </div>
 </form>
@@ -168,8 +169,6 @@
     <div class="container">
       <div class="copyright text-center ">
         <p>© <span>Copyright</span> <strong class="px-1 sitename">FolioOne</strong> <span>All Rights Reserved<br></span></p>
-      </div>
-     
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -202,6 +201,58 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const contactForm = document.getElementById("contact-form");
+      if (!contactForm) return;
+
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const statusMessage = document.getElementById("contact-form-status");
+      const originalButtonText = submitButton ? submitButton.textContent : "";
+
+      contactForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = "Sending...";
+        }
+
+        if (statusMessage) {
+          statusMessage.textContent = "";
+        }
+
+        try {
+          const response = await fetch(contactForm.action, {
+            method: "POST",
+            body: new FormData(contactForm),
+            headers: {
+              "Accept": "application/json"
+            }
+          });
+
+          if (response.ok) {
+            window.location.href = contactForm.dataset.successUrl || "success.html";
+            return;
+          }
+
+          if (statusMessage) {
+            statusMessage.textContent = "Your message could not be sent. Please try again or email me directly.";
+          }
+        } catch (error) {
+          if (statusMessage) {
+            statusMessage.textContent = "Your message could not be sent. Please email me directly.";
+          }
+        }
+
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
+      });
+    });
+  </script>
 
 </body>
 
