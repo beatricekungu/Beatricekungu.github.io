@@ -124,7 +124,7 @@
             <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
               <h3>Get In Touch</h3>
               <p>Send a message below and I'll be in touch as soon as possible!</p>
-<form id="contact-form" action="https://formspree.io/f/mpqgnqjj" method="POST" target="contact-form-frame" data-success-url="success.html" data-aos="fade-up" data-aos-delay="200">
+<form id="contact-form" action="https://formspree.io/f/mpqgnqjj" method="POST" data-success-url="success.html" data-aos="fade-up" data-aos-delay="200">
   <input type="hidden" name="_next" value="https://beatricekungu.github.io/success.html">
   
   <div class="row gy-4">
@@ -152,7 +152,6 @@
     </div>
   </div>
 </form>
-<iframe name="contact-form-frame" title="Contact form submission" style="display: none;"></iframe>
 
             </div>
           </div>
@@ -210,9 +209,10 @@
 
       const submitButton = contactForm.querySelector('button[type="submit"]');
       const statusMessage = document.getElementById("contact-form-status");
-      const originalButtonText = submitButton ? submitButton.textContent : "";
 
-      contactForm.addEventListener("submit", function () {
+      contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
         if (submitButton) {
           submitButton.disabled = true;
           submitButton.textContent = "Sending...";
@@ -222,9 +222,25 @@
           statusMessage.textContent = "Sending your message...";
         }
 
-        window.setTimeout(function () {
-          window.location.href = contactForm.dataset.successUrl || "success.html";
-        }, 1200);
+        const successUrl = contactForm.dataset.successUrl || "success.html";
+        let redirected = false;
+        const goToSuccess = function () {
+          if (redirected) return;
+          redirected = true;
+          window.location.href = successUrl;
+        };
+
+        try {
+          fetch(contactForm.action, {
+            method: "POST",
+            mode: "no-cors",
+            body: new FormData(contactForm)
+          }).finally(goToSuccess);
+
+          window.setTimeout(goToSuccess, 1200);
+        } catch (error) {
+          goToSuccess();
+        }
       });
     });
   </script>
