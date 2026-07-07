@@ -15,7 +15,11 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS for rapid styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,9 +27,134 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+        .rbac-project {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        /* Advanced Glassmorphism */
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Permission Badge Micro-interactions */
+        .perm-badge {
+            display: inline-block;
+            padding: 0.375rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+            width: 90px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .perm-badge:hover {
+            transform: translateY(-2px) scale(1.05);
+            filter: brightness(1.2);
+        }
+
+        /* Specific Badge Colors & Glows */
+        .perm-None { background-color: rgba(71, 85, 105, 0.2); color: #94a3b8; border: 1px solid #475569; }
+        .perm-View { background-color: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid #0284c7; box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+        .perm-Read { background-color: rgba(52, 211, 153, 0.1); color: #34d399; border: 1px solid #059669; box-shadow: 0 0 10px rgba(52, 211, 153, 0.2); }
+        .perm-Write { background-color: rgba(251, 191, 36, 0.1); color: #fbbf24; border: 1px solid #d97706; box-shadow: 0 0 10px rgba(251, 191, 36, 0.2); }
+        .perm-Admin { background-color: rgba(248, 113, 113, 0.15); color: #f87171; border: 1px solid #dc2626; box-shadow: 0 0 15px rgba(248, 113, 113, 0.4); animation: pulse-red 2s infinite; }
+
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+        }
+
+        /* Table Styling */
+        .rbac-project table { border-collapse: separate; border-spacing: 0; width: 100%; }
+        .rbac-project th, .rbac-project td { padding: 1.25rem 1rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .rbac-project th { font-weight: 600; color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .rbac-project td:first-child { font-weight: 500; color: #f1f5f9; }
+
+        /* Alert Animations */
+        .alert-item {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            backdrop-filter: blur(4px);
+        }
+        .alert-high { background-color: rgba(220, 38, 38, 0.1); border-left: 4px solid #ef4444; color: #fca5a5; }
+        .alert-good { background-color: rgba(16, 185, 129, 0.1); border-left: 4px solid #10b981; color: #6ee7b7; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Risk Meter Progress Bar */
+        .risk-meter-bg {
+            background-color: #334155;
+            border-radius: 9999px;
+            height: 12px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .risk-meter-fill {
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 0.5s ease-out, background-color 0.5s ease;
+        }
+
+        /* Deploy Button Styling */
+        .deploy-btn {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .deploy-btn:disabled {
+            background-color: #334155;
+            color: #64748b;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        .deploy-btn:not(:disabled) {
+            background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+            cursor: pointer;
+        }
+        .deploy-btn:not(:disabled):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6);
+        }
+    </style>
 </head>
 
 <body class="portfolio-details-page">
@@ -39,7 +168,7 @@
   <li><a class="nav-link scrollto" href="about.html">About</a></li>
   <li><a class="nav-link scrollto active" href="portfolio.html">Projects</a></li>
   <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
-  
+
   <li class="ms-auto"></li>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -53,11 +182,104 @@
     </div>
   </header>
 
-  <main class="main">
-    <section class="section" style="min-height: 60vh;">
-      <div class="container">
-      </div>
-    </section>
+  <main class="main rbac-project p-4 md:p-8">
+    <div class="max-w-[1400px] mx-auto space-y-8">
+        <!-- Header -->
+        <header class="space-y-4">
+            <div class="flex items-center gap-4">
+                <div class="p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                    <i class="fa-solid fa-network-wired text-blue-400 text-2xl"></i>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">OmniData Exchange Architecture</h1>
+            </div>
+            <p class="text-slate-400 max-w-4xl leading-relaxed text-sm md:text-base">
+                <strong>Project Scope:</strong> Managing a global enterprise data marketplace requires strict adherence to Cross-Border Data Sovereignty, Third-Party Risk Management (TPRM), and Segregation of Duties (SoD).
+                <br><br><span class="text-sky-400 font-medium"><i class="fa-solid fa-hand-pointer mr-2"></i>Interactive Demo: Click the badges below to cycle through permission levels and observe the real-time compliance CI/CD pipeline engine.</span>
+            </p>
+        </header>
+
+        <!-- Recruiter Gamification Section -->
+        <div class="glass-panel p-5 border border-purple-500/30">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                <h3 class="text-lg font-bold text-white flex items-center">
+                    <i class="fa-solid fa-gamepad text-purple-400 mr-3 text-xl"></i>
+                    Recruiter Challenge: Scenario Simulator
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                    <button onclick="loadScenario(1)" class="text-xs bg-orange-500/20 hover:bg-orange-500/40 border border-orange-500/50 text-orange-300 px-4 py-2 rounded-lg transition font-semibold tracking-wide">
+                        <i class="fa-solid fa-bug mr-2"></i>Load Scenario 1
+                    </button>
+                    <button onclick="loadScenario(2)" class="text-xs bg-indigo-500/20 hover:bg-indigo-500/40 border border-indigo-500/50 text-indigo-300 px-4 py-2 rounded-lg transition font-semibold tracking-wide">
+                        <i class="fa-solid fa-globe mr-2"></i>Load Scenario 2
+                    </button>
+                    <!-- NEW: Auto-Solve Button (Hidden by default) -->
+                    <button id="solveBtn" onclick="solveCurrentScenario()" class="hidden text-xs bg-emerald-500/20 hover:bg-emerald-500/40 border border-emerald-500/50 text-emerald-300 px-4 py-2 rounded-lg transition font-semibold tracking-wide">
+                        <i class="fa-solid fa-magic-wand-sparkles mr-2"></i>Solve for Me
+                    </button>
+                </div>
+            </div>
+            <div id="objectiveBox" class="p-3 bg-slate-900/80 rounded-lg border border-slate-700 text-sm text-slate-300 leading-relaxed shadow-inner">
+                <i class="fa-solid fa-info-circle text-sky-400 mr-2"></i> Select a scenario above to test your IAM auditing skills.
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+
+            <!-- Matrix Section (Spans 2 columns) -->
+            <div class="xl:col-span-2 glass-panel p-2 md:p-6 overflow-x-auto">
+                <div class="flex justify-between items-center mb-6 px-4">
+                    <h2 class="text-xl font-semibold text-white"><i class="fa-solid fa-table-list mr-2 text-slate-400"></i> Identity & Access Matrix</h2>
+                    <button onclick="resetMatrix()" class="text-sm bg-slate-700/50 hover:bg-slate-600 border border-slate-600 px-4 py-2 rounded-lg transition text-slate-300">
+                        <i class="fa-solid fa-rotate-left mr-2"></i>Reset Baseline
+                    </button>
+                </div>
+
+                <table id="rbacTable">
+                    <thead>
+                        <tr>
+                            <th>Identity / Persona</th>
+                            <th class="text-center"><i class="fa-solid fa-store block text-lg mb-1 text-sky-400"></i>Catalog</th>
+                            <th class="text-center"><i class="fa-solid fa-id-card block text-lg mb-1 text-purple-400"></i>US PII Data</th>
+                            <th class="text-center"><i class="fa-solid fa-earth-americas block text-lg mb-1 text-emerald-400"></i>Global Data</th>
+                            <th class="text-center"><i class="fa-solid fa-server block text-lg mb-1 text-orange-400"></i>Vendor API</th>
+                        </tr>
+                    </thead>
+                    <tbody id="matrixBody">
+                        <!-- Javascript populates this -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Audit & CI/CD Sidebar (Spans 1 column) -->
+            <div class="glass-panel p-6 flex flex-col h-[700px]">
+                <h2 class="text-xl font-semibold text-white mb-2"><i class="fa-solid fa-shield-halved mr-2 text-emerald-400"></i> Active Compliance Audit</h2>
+                <p class="text-slate-400 text-xs mb-6">Evaluating current matrix against TPRM and Data Sovereignty rules.</p>
+
+                <!-- Gamified Risk Meter -->
+                <div class="mb-6 p-4 bg-slate-800/50 rounded-xl border border-slate-700">
+                    <div class="flex justify-between text-sm mb-2 font-medium">
+                        <span class="text-slate-300">Architecture Risk Score</span>
+                        <span id="riskPercentage" class="text-emerald-400 font-bold">0% (Secure)</span>
+                    </div>
+                    <div class="risk-meter-bg">
+                        <div id="riskMeterFill" class="risk-meter-fill w-0 bg-emerald-500"></div>
+                    </div>
+                </div>
+
+                <!-- Audit Logs -->
+                <div id="auditLog" class="flex-grow space-y-3 overflow-y-auto pr-2 custom-scrollbar">
+                    <!-- Javascript populates alerts here -->
+                </div>
+
+                <!-- CI/CD Deploy Guardrail -->
+                <div class="mt-6 pt-6 border-t border-slate-700">
+                    <button id="deployBtn" class="deploy-btn" disabled>
+                        <i class="fa-solid fa-lock"></i> Fix Risks to Deploy
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
   </main>
 
   <footer id="footer" class="footer">
@@ -94,6 +316,246 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <script>
+        // Data Structure defining the domains and initial secure baseline
+        const rolesData = [
+            { id: "US Firm Practitioner", icon: "fa-user-tie", color: "text-blue-400", desc: "Internal Staff" },
+            { id: "Global Member Firm", icon: "fa-globe", color: "text-indigo-400", desc: "Intl. Partner" },
+            { id: "Third-Party Vendor", icon: "fa-building-shield", color: "text-orange-400", desc: "External Contractor" },
+            { id: "Platform DBA", icon: "fa-database", color: "text-red-400", desc: "SysAdmin" }
+        ];
+
+        const systems = ["catalog", "us_data", "global_data", "vendor_api"];
+        const permLevels = ["None", "View", "Read", "Write", "Admin"];
+
+        // Initial secure state
+        const baselineState = {
+            "US Firm Practitioner": { catalog: "View", us_data: "Read", global_data: "Read", vendor_api: "None" },
+            "Global Member Firm": { catalog: "View", us_data: "None", global_data: "Read", vendor_api: "None" },
+            "Third-Party Vendor": { catalog: "View", us_data: "None", global_data: "None", vendor_api: "Write" },
+            "Platform DBA": { catalog: "View", us_data: "Admin", global_data: "Admin", vendor_api: "Admin" }
+        };
+
+        // Gamification Scenarios
+        const scenarios = {
+            1: {
+                title: "Scenario 1: The Over-Privileged Vendor",
+                desc: "A Third-Party Vendor was accidentally granted Admin access to US PII. <b>How to fix:</b> Click the Vendor's 'US PII Data' and 'Global Data' badges until they both say <b>'None'</b>.",
+                state: {
+                    "US Firm Practitioner": { catalog: "View", us_data: "Read", global_data: "Read", vendor_api: "None" },
+                    "Global Member Firm": { catalog: "View", us_data: "None", global_data: "Read", vendor_api: "None" },
+                    "Third-Party Vendor": { catalog: "View", us_data: "Admin", global_data: "Admin", vendor_api: "Admin" },
+                    "Platform DBA": { catalog: "View", us_data: "Admin", global_data: "Admin", vendor_api: "Admin" }
+                }
+            },
+            2: {
+                title: "Scenario 2: Data Sovereignty Breach",
+                desc: "A Global Member Firm was given 'Read' access to US PII Data, violating cross-border compliance. <b>How to fix:</b> Click the Global Firm's 'US PII Data' badge until it says <b>'None'</b>.",
+                state: {
+                    "US Firm Practitioner": { catalog: "View", us_data: "Read", global_data: "Read", vendor_api: "None" },
+                    "Global Member Firm": { catalog: "View", us_data: "Read", global_data: "Read", vendor_api: "None" },
+                    "Third-Party Vendor": { catalog: "View", us_data: "None", global_data: "None", vendor_api: "Write" },
+                    "Platform DBA": { catalog: "View", us_data: "Admin", global_data: "Admin", vendor_api: "Admin" }
+                }
+            }
+        };
+
+        let activeScenario = null;
+        let currentState = {};
+
+        // Deep copy baseline to current state
+        function resetMatrix() {
+            currentState = JSON.parse(JSON.stringify(baselineState));
+            activeScenario = null;
+            document.getElementById('objectiveBox').innerHTML = '<i class="fa-solid fa-info-circle text-sky-400 mr-2"></i> Baseline loaded. Select a scenario above to test your IAM auditing skills.';
+            document.getElementById('solveBtn').classList.add('hidden');
+            renderTable();
+        }
+
+        // Load a specific gamified scenario
+        function loadScenario(scenarioId) {
+            activeScenario = scenarioId;
+            currentState = JSON.parse(JSON.stringify(scenarios[scenarioId].state));
+
+            const objBox = document.getElementById('objectiveBox');
+            objBox.innerHTML = `<span class="text-purple-400 font-bold"><i class="fa-solid fa-crosshairs mr-2"></i>${scenarios[scenarioId].title}:</span> ${scenarios[scenarioId].desc}`;
+
+            // Show the "Solve for Me" button
+            document.getElementById('solveBtn').classList.remove('hidden');
+
+            renderTable();
+        }
+
+        // NEW: Auto-Solve function for recruiters who get stuck
+        function solveCurrentScenario() {
+            // Revert to secure baseline
+            currentState = JSON.parse(JSON.stringify(baselineState));
+            renderTable();
+            document.getElementById('solveBtn').classList.add('hidden');
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('matrixBody');
+            tbody.innerHTML = '';
+
+            rolesData.forEach(roleObj => {
+                const tr = document.createElement('tr');
+
+                // Role Name Column with Icon
+                const tdRole = document.createElement('td');
+                tdRole.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center border border-slate-700">
+                            <i class="fa-solid ${roleObj.icon} ${roleObj.color}"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium text-slate-200">${roleObj.id}</div>
+                            <div class="text-[0.65rem] text-slate-500 uppercase tracking-wider">${roleObj.desc}</div>
+                        </div>
+                    </div>
+                `;
+                tr.appendChild(tdRole);
+
+                // System Columns
+                systems.forEach(sys => {
+                    const td = document.createElement('td');
+                    td.className = "text-center";
+                    const currentPerm = currentState[roleObj.id][sys];
+
+                    const badge = document.createElement('span');
+                    badge.className = `perm-badge perm-${currentPerm}`;
+                    badge.textContent = currentPerm;
+                    // Add micro-interaction: clicking cycles permission
+                    badge.onclick = () => cyclePermission(roleObj.id, sys);
+
+                    td.appendChild(badge);
+                    tr.appendChild(td);
+                });
+
+                tbody.appendChild(tr);
+            });
+
+            runComplianceAudit();
+        }
+
+        function cyclePermission(roleId, sys) {
+            const current = currentState[roleId][sys];
+            const currentIndex = permLevels.indexOf(current);
+            const nextIndex = (currentIndex + 1) % permLevels.length;
+
+            currentState[roleId][sys] = permLevels[nextIndex];
+            renderTable(); // Re-render to update badges and audit
+        }
+
+        function runComplianceAudit() {
+            const auditLog = document.getElementById('auditLog');
+            auditLog.innerHTML = '';
+
+            let violations = 0;
+            const MAX_POSSIBLE_VIOLATIONS = 4; // Used for meter scaling
+
+            // Rule 1: Data Sovereignty
+            const globalUsAccess = currentState["Global Member Firm"]["us_data"];
+            if (globalUsAccess !== "None") {
+                violations++;
+                addAlert('alert-high', 'fa-triangle-exclamation', 'Data Sovereignty Violation', `Global Member Firm has <b>${globalUsAccess}</b> access to US Client Data. Violates cross-border PII residency policies.`);
+            }
+
+            // Rule 2: TPRM / Vendor Risk
+            const vendorUsAccess = currentState["Third-Party Vendor"]["us_data"];
+            const vendorGlobalAccess = currentState["Third-Party Vendor"]["global_data"];
+            if (vendorUsAccess !== "None" || vendorGlobalAccess !== "None") {
+                violations++;
+                addAlert('alert-high', 'fa-handcuffs', 'TPRM Security Breach', `Third-Party Vendor has direct data access. External vendors must only interact via the restricted Vendor API Gateway.`);
+            }
+
+            // Rule 3: SoD / Least Privilege (Practitioners shouldn't have Admin)
+            const usAdmin = Object.values(currentState["US Firm Practitioner"]).includes("Admin");
+            if (usAdmin) {
+                violations++;
+                addAlert('alert-high', 'fa-user-shield', 'Least Privilege Violation', `US Practitioner has Admin rights. Staff should only have Read/Write access to prevent structural platform changes.`);
+            }
+
+            // Rule 4: System Governance (DBA shouldn't be locked out)
+            const dbaCatalog = currentState["Platform DBA"]["catalog"];
+            if (dbaCatalog === "None") {
+                violations++;
+                addAlert('alert-high', 'fa-server', 'Operational Risk', `Platform DBA is locked out of the catalog. Admins require baseline visibility to maintain systems.`);
+            }
+
+            // Update Gamified Risk Meter
+            updateRiskMeter(violations, MAX_POSSIBLE_VIOLATIONS);
+
+            // If secure
+            if (violations === 0) {
+                addAlert('alert-good', 'fa-circle-check', 'Architecture Compliant', 'All access controls align with Data Sovereignty, TPRM, and Least Privilege frameworks.');
+            }
+        }
+
+        function updateRiskMeter(violations, maxViolations) {
+            const fill = document.getElementById('riskMeterFill');
+            const percentText = document.getElementById('riskPercentage');
+            const deployBtn = document.getElementById('deployBtn');
+
+            // Calculate percentage based on arbitrary max scale for visual effect
+            let percentage = (violations / maxViolations) * 100;
+            if (percentage > 100) percentage = 100;
+
+            fill.style.width = `${percentage}%`;
+
+            if (violations === 0) {
+                fill.className = 'risk-meter-fill bg-emerald-500';
+                percentText.textContent = '0% (Secure)';
+                percentText.className = 'text-emerald-400 font-bold';
+
+                // Unlock Deploy Button
+                deployBtn.disabled = false;
+
+                // Show Scenario Win State if playing a scenario
+                if (activeScenario) {
+                    deployBtn.innerHTML = '<i class="fa-solid fa-trophy text-yellow-400"></i> Scenario Passed! Deploy Policies';
+                    deployBtn.classList.add('animate-pulse');
+                } else {
+                    deployBtn.innerHTML = '<i class="fa-solid fa-rocket"></i> Deploy Access Policies';
+                    deployBtn.classList.remove('animate-pulse');
+                }
+            } else if (violations === 1) {
+                fill.className = 'risk-meter-fill bg-yellow-500';
+                percentText.textContent = '25% (Moderate Risk)';
+                percentText.className = 'text-yellow-400 font-bold';
+
+                // Lock Deploy Button
+                deployBtn.disabled = true;
+                deployBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Fix Risks to Deploy';
+            } else {
+                fill.className = 'risk-meter-fill bg-red-500';
+                percentText.textContent = `${Math.round(percentage)}% (Critical Risk)`;
+                percentText.className = 'text-red-400 font-bold';
+
+                // Lock Deploy Button
+                deployBtn.disabled = true;
+                deployBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Fix Risks to Deploy';
+            }
+        }
+
+        function addAlert(typeClass, iconClass, title, message) {
+            const log = document.getElementById('auditLog');
+
+            const html = `
+                <div class="alert-item ${typeClass}">
+                    <i class="fa-solid ${iconClass} mt-1 text-lg"></i>
+                    <div>
+                        <h4 class="font-bold text-sm mb-1">${title}</h4>
+                        <p class="text-xs leading-relaxed opacity-90">${message}</p>
+                    </div>
+                </div>
+            `;
+            log.insertAdjacentHTML('beforeend', html);
+        }
+
+        // Initialize on load
+        resetMatrix();
+    </script>
 </body>
 
 </html>
