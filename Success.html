@@ -1,88 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Message Sent | Beatrice Kungu</title>
-  
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Message Received | Beatrice Kungu</title>
+  <meta name="description" content="Thank-you page for messages sent to Beatrice Kungu.">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700&family=Poppins:wght@400;500;600;700&family=Raleway:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
   <style>
-    /* Inherit the standard font and dark background from your template */
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #161b22; 
-      color: #8a939e;
-      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+    .message-received {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+      background-color: var(--background-color);
+    }
+
+    .message-panel {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 42px;
+      background-color: var(--surface-color);
+      border: 1px solid color-mix(in srgb, var(--default-color), transparent 86%);
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+    }
+
+    .message-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
-
-    /* Container to hold the message */
-    .success-container {
-      background-color: #1a1e23;
-      padding: 50px 40px;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      max-width: 500px;
-      width: 90%;
-    }
-
-    /* Large checkmark using your primary blue */
-    .success-icon {
-      color: #1387C1;
-      font-size: 3.5rem;
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
-
-    /* Main heading */
-    .success-container h1 {
-      color: #ffffff;
+      color: var(--background-color);
+      background-color: var(--accent-color);
       font-size: 2rem;
-      margin-bottom: 15px;
+    }
+
+    .message-panel h1 {
+      margin-bottom: 18px;
+      color: var(--heading-color);
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: 0;
+    }
+
+    .message-panel p {
+      color: color-mix(in srgb, var(--default-color), transparent 12%);
+      font-size: 1.08rem;
+      line-height: 1.75;
+      margin-bottom: 30px;
+    }
+
+    .message-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .message-actions a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 18px;
+      border-radius: 30px;
       font-weight: 600;
     }
 
-    /* Paragraph text */
-    .success-container p {
-      font-size: 1rem;
-      line-height: 1.5;
-      margin-bottom: 35px;
+    .message-actions .primary-link {
+      color: var(--background-color);
+      background-color: var(--accent-color);
     }
 
-    /* Rectangle Button Styling */
-    .btn-return {
-      display: inline-block;
-      background-color: #1387C1;
-      color: #ffffff;
-      text-decoration: none;
-      padding: 12px 30px;
-      border-radius: 2px; /* Set to 2px for a sharp, clean rectangle */
-      font-weight: 600;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-return:hover {
-      background-color: #0E6490;
+    .message-actions .secondary-link {
+      color: var(--accent-color);
+      border: 1px solid color-mix(in srgb, var(--accent-color), transparent 45%);
     }
   </style>
 </head>
+
 <body>
 
-  <div class="success-container">
-    <div class="success-icon">&#10003;</div>
-    <h1>Message Received</h1>
-    <p>Thank you for reaching out. Your message has been securely routed to my inbox, and I will be in touch shortly.</p>
-    
-    <!-- This link sends them back to your main portfolio page -->
-    <a href="index.html" class="btn-return">Return to Portfolio</a>
-  </div>
+  <main class="message-received">
+    <div class="container">
+      <section class="message-panel" aria-labelledby="message-received-title">
+        <div class="message-icon" aria-hidden="true">
+          <i class="bi bi-check-lg"></i>
+        </div>
+        <h1 id="message-received-title">Thank you for sending me a message.</h1>
+        <p>I just received your message. I read every note that comes through and will get back to you as soon as possible, usually within 1 to 2 business days. In the meantime, feel free to check out my website or connect with me on LinkedIn.</p>
+        <div class="message-actions">
+          <a class="primary-link" href="index.html"><i class="bi bi-house-door"></i> Visit Website</a>
+          <a class="secondary-link" href="https://www.linkedin.com/in/beatricekungu/" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i> Connect on LinkedIn</a>
+        </div>
+      </section>
+    </div>
+  </main>
 
 </body>
+
 </html>
