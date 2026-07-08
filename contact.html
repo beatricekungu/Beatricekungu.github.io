@@ -209,8 +209,41 @@
 
       const submitButton = contactForm.querySelector('button[type="submit"]');
       const statusMessage = document.getElementById("contact-form-status");
+      const defaultButtonText = submitButton ? submitButton.textContent : "";
+      const successUrl = new URL(contactForm.dataset.successUrl || "success.html", window.location.href).href;
 
-      contactForm.addEventListener("submit", function (event) {
+      const updateStatus = function (message, isError) {
+        if (!statusMessage) return;
+        statusMessage.textContent = message;
+        statusMessage.style.color = isError ? "#ffb4b4" : "#d8e2ee";
+      };
+
+      const resetButton = function () {
+        if (!submitButton) return;
+        submitButton.disabled = false;
+        submitButton.textContent = defaultButtonText;
+      };
+
+      const getFormspreeError = async function (response) {
+        try {
+          const data = await response.json();
+          if (data.errors && data.errors.length) {
+            return data.errors.map(function (error) {
+              return error.message;
+            }).join(" ");
+          }
+
+          if (data.error) {
+            return data.error;
+          }
+        } catch (error) {
+          return "The message service did not return a readable error.";
+        }
+
+        return "The message service could not accept the submission.";
+      };
+
+      contactForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
         if (submitButton) {
@@ -218,28 +251,31 @@
           submitButton.textContent = "Sending...";
         }
 
-        if (statusMessage) {
-          statusMessage.textContent = "Sending your message...";
-        }
+        updateStatus("Sending your message...", false);
 
-        const successUrl = contactForm.dataset.successUrl || "success.html";
-        let redirected = false;
-        const goToSuccess = function () {
-          if (redirected) return;
-          redirected = true;
-          window.location.href = successUrl;
-        };
+        const formData = new FormData(contactForm);
+        const isLocalPreview = window.location.protocol === "file:";
 
         try {
-          fetch(contactForm.action, {
+          const response = await fetch(contactForm.action, {
             method: "POST",
-            mode: "no-cors",
-            body: new FormData(contactForm)
-          }).finally(goToSuccess);
+            body: formData,
+            headers: isLocalPreview ? undefined : {
+              "Accept": "application/json"
+            },
+            mode: isLocalPreview ? "no-cors" : "cors"
+          });
 
-          window.setTimeout(goToSuccess, 1200);
+          if (isLocalPreview || response.ok) {
+            contactForm.reset();
+            window.location.assign(successUrl);
+            return;
+          }
+
+          throw new Error(await getFormspreeError(response));
         } catch (error) {
-          goToSuccess();
+          updateStatus("There was an issue sending the message. Please try again, or connect with me on LinkedIn.", true);
+          resetButton();
         }
       });
     });
