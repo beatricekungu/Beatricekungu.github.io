@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>GRC Evidence Mapping Challenge | Beatrice Kungu</title>
+  <meta name="description" content="Interactive GRC evidence mapping challenge by Beatrice Kungu.">
+  <meta name="keywords" content="GRC, audit evidence, NIST, compliance, control mapping, Beatrice Kungu">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Poppins:ital,wght@0,100;0,300;0,500;0,600;0,700;0,800&family=Raleway:ital,wght@0,400;0,600;0,700;0,800&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/project-labs.css" rel="stylesheet">
+</head>
+
+<body class="portfolio-details-page lab-page">
+
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a class="nav-link scrollto" href="index.html">Home</a></li>
+          <li><a class="nav-link scrollto" href="about.html">About</a></li>
+          <li><a class="nav-link scrollto active" href="portfolio.html">Projects</a></li>
+          <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
+          <li class="ms-auto"></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-resume d-flex align-items-center">
+        <a href="assets/Bkungu.Resume.pdf" target="_blank" class="btn btn-lg d-flex align-items-center" style="background-color: #1387C1; border-color: #1387C1; color: #ffffff; border-radius: 30px; font-weight: 600; padding: 8px 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <i class="bi bi-file-earmark-pdf-fill" style="font-size: 1.5rem; margin-right: 8px;"></i>
+          View Resume
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="lab-main" data-evidence-lab>
+      <div class="lab-shell">
+        <div class="lab-hero">
+          <div class="lab-panel" data-aos="fade-up">
+            <span class="lab-eyebrow"><i class="bi bi-clipboard2-check"></i> GRC audit-readiness lab</span>
+            <h1>GRC Evidence Mapping Challenge</h1>
+            <p class="lab-lede">An interactive control-mapping exercise that shows how I translate real-world artifacts into audit-ready evidence for security, compliance, and risk conversations.</p>
+            <div class="lab-tags">
+              <span><i class="bi bi-diagram-3"></i> Control Mapping</span>
+              <span><i class="bi bi-folder-check"></i> Evidence Review</span>
+              <span><i class="bi bi-patch-check"></i> NIST-Aligned</span>
+            </div>
+          </div>
+
+          <aside class="lab-panel lab-visual" data-aos="fade-up" data-aos-delay="100">
+            <img src="assets/img/portfolio/CCO.jpg" alt="SQL evidence screenshot showing compliance role testing">
+            <div class="lab-visual-body">
+              <div class="lab-meter-row">
+                <span>Audit readiness</span>
+                <strong id="grc-score">0%</strong>
+              </div>
+              <div class="lab-meter" aria-hidden="true">
+                <div id="grc-score-meter" class="lab-meter-fill"></div>
+              </div>
+              <p id="grc-feedback" class="mt-3 mb-0">Select an evidence artifact, then choose the control it proves.</p>
+            </div>
+          </aside>
+        </div>
+
+        <div class="lab-kpis" data-aos="fade-up" data-aos-delay="150">
+          <div class="lab-kpi">
+            <i class="bi bi-link-45deg"></i>
+            <div><strong id="grc-mapped">0/5</strong><span>Evidence mapped</span></div>
+          </div>
+          <div class="lab-kpi">
+            <i class="bi bi-shield-check"></i>
+            <div><strong>5</strong><span>Controls in scope</span></div>
+          </div>
+          <div class="lab-kpi">
+            <i class="bi bi-file-earmark-check"></i>
+            <div><strong>1</strong><span>Audit packet goal</span></div>
+          </div>
+        </div>
+
+        <div class="lab-grid">
+          <div class="lab-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="d-flex flex-wrap justify-content-between gap-3 align-items-center mb-3">
+              <div>
+                <h2 class="h3 mb-2">Evidence Artifacts</h2>
+                <p class="mb-0">Click an artifact, then map it to the control it supports.</p>
+              </div>
+              <button id="grc-reset" class="lab-button" type="button"><i class="bi bi-arrow-clockwise"></i> Reset</button>
+            </div>
+
+            <div class="lab-evidence-grid">
+              <button class="lab-evidence" type="button" data-evidence="ac2">
+                <strong><i class="bi bi-people"></i> Quarterly access review export</strong>
+                <span>Manager attestations, disabled accounts, and privileged access exceptions.</span>
+              </button>
+              <button class="lab-evidence" type="button" data-evidence="ir4">
+                <strong><i class="bi bi-chat-square-text"></i> Incident bridge timeline</strong>
+                <span>Detection time, containment decision, owner handoff, and lessons learned.</span>
+              </button>
+              <button class="lab-evidence" type="button" data-evidence="ra5">
+                <strong><i class="bi bi-bug"></i> Vulnerability scan report</strong>
+                <span>Critical findings, remediation owner, SLA target, and retest status.</span>
+              </button>
+              <button class="lab-evidence" type="button" data-evidence="cp9">
+                <strong><i class="bi bi-cloud-arrow-down"></i> Restore test screenshot</strong>
+                <span>Backup source, restore timestamp, validation query, and RTO note.</span>
+              </button>
+              <button class="lab-evidence" type="button" data-evidence="au6">
+                <strong><i class="bi bi-search"></i> Audit log query export</strong>
+                <span>Security events reviewed, anomalies noted, and reviewer signoff captured.</span>
+              </button>
+            </div>
+          </div>
+
+          <aside class="lab-log" data-aos="fade-up" data-aos-delay="250">
+            <h2 class="h4 mb-3">Control Story</h2>
+            <ul>
+              <li>Shows how evidence supports control language.</li>
+              <li>Highlights missing proof before an audit.</li>
+              <li>Creates a cleaner conversation between GRC, security, and operations.</li>
+            </ul>
+            <div class="mt-4">
+              <span id="grc-status" class="lab-status"><i class="bi bi-folder-check"></i> Evidence mapping in progress</span>
+            </div>
+          </aside>
+        </div>
+
+        <div class="lab-card mt-4" data-aos="fade-up" data-aos-delay="300">
+          <h2 class="h3 mb-3">Map to Controls</h2>
+          <div class="lab-drop-grid">
+            <button class="lab-drop" type="button" data-control="ac2">
+              <strong>AC-02 Account Management</strong>
+              <span data-drop-result>Awaiting evidence</span>
+            </button>
+            <button class="lab-drop" type="button" data-control="ir4">
+              <strong>IR-04 Incident Handling</strong>
+              <span data-drop-result>Awaiting evidence</span>
+            </button>
+            <button class="lab-drop" type="button" data-control="ra5">
+              <strong>RA-05 Vulnerability Monitoring</strong>
+              <span data-drop-result>Awaiting evidence</span>
+            </button>
+            <button class="lab-drop" type="button" data-control="cp9">
+              <strong>CP-09 System Backup</strong>
+              <span data-drop-result>Awaiting evidence</span>
+            </button>
+            <button class="lab-drop" type="button" data-control="au6">
+              <strong>AU-06 Audit Review</strong>
+              <span data-drop-result>Awaiting evidence</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>&copy; <span>Copyright</span> <strong class="px-1 sitename">FolioOne</strong> <span>All Rights Reserved<br></span></p>
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> | <a href="https://bootstrapmade.com/tools/">DevTools</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/project-labs.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Incident Response Decision Room | Beatrice Kungu</title>
+  <meta name="description" content="Interactive incident response decision room by Beatrice Kungu.">
+  <meta name="keywords" content="incident response, cybersecurity, containment, escalation, executive reporting, Beatrice Kungu">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Poppins:ital,wght@0,100;0,300;0,500;0,600;0,700;0,800&family=Raleway:ital,wght@0,400;0,600;0,700;0,800&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/project-labs.css" rel="stylesheet">
+</head>
+
+<body class="portfolio-details-page lab-page">
+
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a class="nav-link scrollto" href="index.html">Home</a></li>
+          <li><a class="nav-link scrollto" href="about.html">About</a></li>
+          <li><a class="nav-link scrollto active" href="portfolio.html">Projects</a></li>
+          <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
+          <li class="ms-auto"></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-resume d-flex align-items-center">
+        <a href="assets/Bkungu.Resume.pdf" target="_blank" class="btn btn-lg d-flex align-items-center" style="background-color: #1387C1; border-color: #1387C1; color: #ffffff; border-radius: 30px; font-weight: 600; padding: 8px 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <i class="bi bi-file-earmark-pdf-fill" style="font-size: 1.5rem; margin-right: 8px;"></i>
+          View Resume
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="lab-main" data-ir-lab>
+      <div class="lab-shell">
+        <div class="lab-hero">
+          <div class="lab-panel" data-aos="fade-up">
+            <span class="lab-eyebrow"><i class="bi bi-broadcast-pin"></i> Cybersecurity response lab</span>
+            <h1>Incident Response Decision Room</h1>
+            <p class="lab-lede">A scenario-based decision game showing how I think through triage, containment, evidence preservation, stakeholder communication, and executive reporting during a security event.</p>
+            <div class="lab-tags">
+              <span><i class="bi bi-lightning-charge"></i> Triage</span>
+              <span><i class="bi bi-shield-exclamation"></i> Containment</span>
+              <span><i class="bi bi-journal-text"></i> Executive Brief</span>
+            </div>
+          </div>
+
+          <aside class="lab-panel lab-visual" data-aos="fade-up" data-aos-delay="100">
+            <img src="assets/img/portfolio/cyber 5.jpg" alt="Cybersecurity shield and lock visual for incident response">
+            <div class="lab-visual-body">
+              <div class="lab-meter-row">
+                <span>Response confidence</span>
+                <strong id="ir-confidence">0%</strong>
+              </div>
+              <div class="lab-meter" aria-hidden="true">
+                <div id="ir-risk-meter" class="lab-meter-fill"></div>
+              </div>
+              <p class="mt-3 mb-0">Choose the best response in each stage to lower residual risk.</p>
+            </div>
+          </aside>
+        </div>
+
+        <div class="lab-kpis" data-aos="fade-up" data-aos-delay="150">
+          <div class="lab-kpi">
+            <i class="bi bi-fire"></i>
+            <div><strong id="ir-risk">85</strong><span>Residual risk</span></div>
+          </div>
+          <div class="lab-kpi">
+            <i class="bi bi-check2-square"></i>
+            <div><strong id="ir-complete">0/5</strong><span>Decisions made</span></div>
+          </div>
+          <div class="lab-kpi">
+            <i class="bi bi-person-lines-fill"></i>
+            <div><strong>5</strong><span>Response stages</span></div>
+          </div>
+        </div>
+
+        <div class="lab-grid">
+          <div class="lab-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="d-flex flex-wrap justify-content-between gap-3 align-items-center mb-3">
+              <div>
+                <h2 class="h3 mb-2">Scenario: Suspicious Login and Data Access Spike</h2>
+                <p class="mb-0">A privileged account shows impossible travel and a sudden export from a sensitive dataset.</p>
+              </div>
+              <span id="ir-status" class="lab-status"><i class="bi bi-broadcast-pin"></i> Response still developing</span>
+            </div>
+
+            <div class="lab-step" data-ir-step="triage">
+              <h3><i class="bi bi-search"></i> 1. Triage</h3>
+              <div class="lab-choice-grid">
+                <button class="lab-choice" type="button" data-impact="22"><strong>Correlate identity, database, and network logs</strong><span>Build a reliable timeline before declaring scope.</span></button>
+                <button class="lab-choice" type="button" data-impact="8"><strong>Wait for another alert</strong><span>Delays containment and leaves uncertainty high.</span></button>
+                <button class="lab-choice" type="button" data-impact="13"><strong>Ask the user if they logged in</strong><span>Helpful, but not enough without evidence.</span></button>
+              </div>
+            </div>
+
+            <div class="lab-step" data-ir-step="contain">
+              <h3><i class="bi bi-shield-lock"></i> 2. Containment</h3>
+              <div class="lab-choice-grid">
+                <button class="lab-choice" type="button" data-impact="23"><strong>Disable token/session and restrict privileged access</strong><span>Stops active misuse while preserving investigation paths.</span></button>
+                <button class="lab-choice" type="button" data-impact="6"><strong>Delete the account immediately</strong><span>May destroy context needed for review.</span></button>
+                <button class="lab-choice" type="button" data-impact="12"><strong>Change the password only</strong><span>Partial containment if sessions or tokens remain active.</span></button>
+              </div>
+            </div>
+
+            <div class="lab-step" data-ir-step="evidence">
+              <h3><i class="bi bi-archive"></i> 3. Evidence</h3>
+              <div class="lab-choice-grid">
+                <button class="lab-choice" type="button" data-impact="20"><strong>Preserve logs, queries, timestamps, and owner notes</strong><span>Keeps evidence usable for after-action and audit.</span></button>
+                <button class="lab-choice" type="button" data-impact="7"><strong>Export only screenshots</strong><span>Screenshots help, but they are not complete evidence.</span></button>
+                <button class="lab-choice" type="button" data-impact="10"><strong>Document after recovery</strong><span>Risky because details can be lost during the response.</span></button>
+              </div>
+            </div>
+
+            <div class="lab-step" data-ir-step="communicate">
+              <h3><i class="bi bi-megaphone"></i> 4. Communication</h3>
+              <div class="lab-choice-grid">
+                <button class="lab-choice" type="button" data-impact="18"><strong>Send role-based updates to security, legal, and business owners</strong><span>Keeps decision-makers informed without over-sharing.</span></button>
+                <button class="lab-choice" type="button" data-impact="5"><strong>Message everyone immediately</strong><span>Creates noise before scope is confirmed.</span></button>
+                <button class="lab-choice" type="button" data-impact="11"><strong>Keep it only within IT</strong><span>May miss legal, privacy, or business obligations.</span></button>
+              </div>
+            </div>
+
+            <div class="lab-step" data-ir-step="recover">
+              <h3><i class="bi bi-clipboard-check"></i> 5. Recovery</h3>
+              <div class="lab-choice-grid">
+                <button class="lab-choice" type="button" data-impact="19"><strong>Validate access, monitor recurrence, and write the after-action report</strong><span>Closes the incident with lessons and control improvements.</span></button>
+                <button class="lab-choice" type="button" data-impact="7"><strong>Reopen access as soon as login stops</strong><span>Recovery without validation can reintroduce exposure.</span></button>
+                <button class="lab-choice" type="button" data-impact="12"><strong>Only close the ticket</strong><span>Leaves the control story weak for leadership.</span></button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="lab-summary" data-aos="fade-up" data-aos-delay="250">
+            <h2 class="h4 mb-3">Executive Summary</h2>
+            <p id="ir-summary">Complete each decision stage to generate an executive incident summary.</p>
+            <div class="lab-result-list">
+              <div><i class="bi bi-check2-circle"></i><span>Demonstrates triage logic and containment judgment.</span></div>
+              <div><i class="bi bi-check2-circle"></i><span>Shows evidence preservation and communication boundaries.</span></div>
+              <div><i class="bi bi-check2-circle"></i><span>Connects response actions to business risk reduction.</span></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>&copy; <span>Copyright</span> <strong class="px-1 sitename">FolioOne</strong> <span>All Rights Reserved<br></span></p>
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> | <a href="https://bootstrapmade.com/tools/">DevTools</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/project-labs.js"></script>
+</body>
+
+</html>
