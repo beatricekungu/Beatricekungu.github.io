@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Marketplace Provisioning Simulator | Beatrice Kungu</title>
-  <meta name="description" content="Marketplace Provisioning Simulator project by Beatrice Kungu.">
-  <meta name="keywords" content="access provisioning, IAM, data marketplace, procurement, GRC, Beatrice Kungu">
+  <title>Identity Governance: From Operations to Architecture | Beatrice Kungu</title>
+  <meta name="description" content="Identity governance project showing the transition from manual access provisioning operations to secure enterprise RBAC architecture.">
+  <meta name="keywords" content="identity governance, IAM, RBAC, access provisioning, segregation of duties, Beatrice Kungu">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS for rapid styling -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -33,21 +33,79 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-        .marketplace-simulator { font-family: 'Inter', sans-serif; background-color: #f1f5f9; color: #334155; }
-        .glass-card { background: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; }
+        .identity-governance-page {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
 
-        /* Custom Toggle Switch */
+        /* Glassmorphism Panels */
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Badges & Toggles */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .badge-none { background-color: rgba(71, 85, 105, 0.2); color: #94a3b8; border: 1px solid #475569; }
+        .badge-read { background-color: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid #0284c7; }
+        .badge-write { background-color: rgba(251, 191, 36, 0.1); color: #fbbf24; border: 1px solid #d97706; }
+        .badge-admin { background-color: rgba(248, 113, 113, 0.15); color: #f87171; border: 1px solid #dc2626; }
+
+        /* Custom Toggle Switch for Simulator */
         .toggle-checkbox:checked { right: 0; border-color: #3b82f6; }
         .toggle-checkbox:checked + .toggle-label { background-color: #3b82f6; }
-        .toggle-checkbox { right: 0; z-index: 1; border-color: #e2e8f0; transition: all 0.3s; }
-        .toggle-label { width: 3rem; height: 1.5rem; background-color: #cbd5e1; border-radius: 9999px; transition: all 0.3s; cursor: pointer; }
+        .toggle-checkbox { right: 0; z-index: 1; border-color: #334155; transition: all 0.3s; }
+        .toggle-label { width: 3rem; height: 1.5rem; background-color: #475569; border-radius: 9999px; transition: all 0.3s; cursor: pointer; }
         .toggle-circle { width: 1.25rem; height: 1.25rem; background-color: white; border-radius: 50%; top: 0.125rem; left: 0.125rem; transition: all 0.3s; }
         .toggle-checkbox:checked ~ .toggle-circle { transform: translateX(1.5rem); }
 
-        /* Inbox Item Hover */
+        /* Inbox Items */
         .inbox-item { transition: all 0.2s ease; border-left: 4px solid transparent; }
-        .inbox-item:hover { background-color: #f8fafc; }
-        .inbox-item.active { background-color: #eff6ff; border-left-color: #3b82f6; }
+        .inbox-item:hover { background-color: rgba(255,255,255,0.02); }
+        .inbox-item.active { background-color: rgba(56, 189, 248, 0.05); border-left-color: #38bdf8; }
+
+        /* Matrix Table */
+        .rbac-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+        .rbac-table th, .rbac-table td { padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; }
+        .rbac-table th { color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; }
+        .rbac-table td:first-child { font-weight: 500; }
+
+        /* Toxic Highlight Animation */
+        .toxic-violation {
+            position: relative;
+            animation: pulse-border 2s infinite;
+        }
+        .toxic-violation::after {
+            content: "SoD Risk";
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ef4444;
+            color: white;
+            font-size: 0.55rem;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
     </style>
 </head>
 
@@ -76,119 +134,196 @@
     </div>
   </header>
 
-  <main class="main marketplace-simulator">
-    <section class="min-h-screen p-4 md:p-8">
+  <main class="main identity-governance-page p-4 md:p-8">
+    <div class="max-w-6xl mx-auto space-y-16">
 
-    <div class="max-w-6xl mx-auto space-y-6">
-
-        <!-- Header -->
-        <header class="mb-8">
-            <h1 class="text-3xl font-bold text-slate-800 flex items-center">
-                <i class="fa-solid fa-database text-blue-500 mr-3"></i> Enterprise Data Marketplace Admin
+        <header class="space-y-6 text-center max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">
+                Identity Governance: From Operations to Architecture
             </h1>
-            <p class="text-slate-500 mt-2 max-w-3xl">
-                <strong>Scenario:</strong> You are the platform DBA. Employees and vendors email you to request access to the Data Marketplace (e.g., LexisNexis, Bloomberg data). You must toggle their access based on licensing rules to bypass the 1-year internal procurement process safely.
-            </p>
+
+            <div class="glass-panel p-6 text-left text-slate-300 leading-relaxed text-sm md:text-base shadow-lg">
+                <h3 class="text-xl font-semibold text-white mb-3"><i class="fa-solid fa-briefcase text-sky-400 mr-2"></i> Why I Chose This Project</h3>
+                <p class="mb-4">
+                    During my time as a Project Manager and DBA at Deloitte, I managed access requests for an enterprise Data Marketplace. I was responsible for evaluating requests from internal practitioners, global member firms, and third-party vendors. I had to ensure that access provisions adhered to strict licensing agreements, Third-Party Risk Management (TPRM) guidelines, and cross-border data sovereignty laws.
+                </p>
+                <p>
+                    This portfolio page is a two-part showcase. <strong>Phase 1</strong> is an interactive simulator demonstrating my operational day-to-day experience managing provisioning workflows. <strong>Phase 2</strong> demonstrates my architectural growth: after earning my <strong>CompTIA Certification</strong>, I learned how to formalize these operational rules into a "Secure by Design" Enterprise RBAC Matrix to prevent Segregation of Duties (SoD) conflicts automatically.
+                </p>
+            </div>
         </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold text-white flex items-center border-b border-slate-700 pb-3">
+                <i class="fa-solid fa-1 text-sky-500 mr-3"></i> Phase 1: Access Provisioning Operations
+            </h2>
+            <p class="text-slate-400 text-sm">
+                <strong>Scenario:</strong> You are the IAM Admin. Read the incoming requests and toggle the marketplace permissions. Be careful - giving a third-party vendor the ability to execute procurement contracts violates licensing rules!
+            </p>
 
-            <!-- Left Column: Email Inbox -->
-            <div class="glass-card flex flex-col h-[600px] overflow-hidden">
-                <div class="bg-slate-50 p-4 border-b border-slate-200 flex justify-between items-center">
-                    <h2 class="font-semibold text-slate-700"><i class="fa-solid fa-inbox mr-2 text-slate-400"></i> Access Requests</h2>
-                    <span id="ticketCount" class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full">3 Pending</span>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Inbox -->
+                <div class="glass-panel flex flex-col h-[500px] overflow-hidden">
+                    <div class="bg-slate-800/50 p-4 border-b border-slate-700 flex justify-between items-center">
+                        <h3 class="font-semibold text-slate-200"><i class="fa-solid fa-inbox mr-2"></i> Pending Requests</h3>
+                    </div>
+                    <div id="inboxList" class="overflow-y-auto flex-grow custom-scrollbar">
+                        <!-- JS populated tickets -->
+                    </div>
                 </div>
 
-                <div id="inboxList" class="overflow-y-auto flex-grow">
-                    <!-- Javascript populates tickets here -->
+                <!-- Admin Console -->
+                <div class="lg:col-span-2 glass-panel p-6 h-[500px] flex flex-col relative">
+                    <!-- Empty State -->
+                    <div id="emptyState" class="absolute inset-0 flex flex-col items-center justify-center z-10 bg-slate-900/90 rounded-xl backdrop-blur-sm">
+                        <i class="fa-regular fa-envelope-open text-5xl text-slate-600 mb-4"></i>
+                        <p class="text-slate-400">Select an access request from the inbox to review.</p>
+                    </div>
+
+                    <!-- Active Ticket State -->
+                    <div id="activeState" class="hidden flex-col h-full">
+                        <div class="mb-6 pb-6 border-b border-slate-700">
+                            <h3 id="reqName" class="text-xl font-bold text-white">Name</h3>
+                            <p id="reqRole" class="text-sm text-sky-400 mb-3"><i class="fa-solid fa-sitemap mr-1"></i> Role</p>
+                            <div class="bg-slate-800/50 p-4 rounded-lg text-sm text-slate-300 font-mono border border-slate-700">
+                                <strong>Request:</strong> <span id="reqSubject">Subject</span><br><br>
+                                <span id="reqBody">Body</span>
+                            </div>
+                        </div>
+
+                        <h4 class="font-semibold text-white mb-4"><i class="fa-solid fa-sliders text-sky-500 mr-2"></i> Provisioning Controls</h4>
+
+                        <div class="space-y-3 mb-6 flex-grow">
+                            <!-- Toggles -->
+                            <div class="flex items-center justify-between p-3 border border-slate-700 rounded-lg bg-slate-800/30">
+                                <div><h5 class="text-sm font-semibold text-slate-200">Marketplace Catalog View</h5></div>
+                                <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                                    <input type="checkbox" id="toggle-catalog" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                                    <label for="toggle-catalog" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                                    <div class="toggle-circle absolute block"></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-3 border border-slate-700 rounded-lg bg-slate-800/30">
+                                <div><h5 class="text-sm font-semibold text-slate-200">View Licensing Pricing</h5></div>
+                                <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                                    <input type="checkbox" id="toggle-pricing" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                                    <label for="toggle-pricing" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                                    <div class="toggle-circle absolute block"></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-3 border border-slate-700 rounded-lg bg-slate-800/30">
+                                <div><h5 class="text-sm font-semibold text-slate-200">Initiate Procurement Contract</h5></div>
+                                <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                                    <input type="checkbox" id="toggle-procure" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                                    <label for="toggle-procure" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                                    <div class="toggle-circle absolute block"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action -->
+                        <div class="flex justify-between items-center mt-auto">
+                            <div id="feedbackMsg" class="text-sm font-medium"></div>
+                            <button onclick="grantAccess()" class="bg-sky-600 hover:bg-sky-500 text-white px-6 py-2 rounded-lg font-semibold transition">
+                                Provision Access
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Right Column: Admin Console -->
-            <div class="md:col-span-2 glass-card p-6 h-[600px] flex flex-col relative">
+        <section class="space-y-6 pt-8 border-t border-slate-800">
+            <h2 class="text-2xl font-bold text-white flex items-center pb-3">
+                <i class="fa-solid fa-2 text-indigo-500 mr-3"></i> Phase 2: Enterprise RBAC Architecture
+            </h2>
 
-                <!-- Empty State -->
-                <div id="emptyState" class="absolute inset-0 flex flex-col items-center justify-center bg-white z-10 rounded-xl">
-                    <i class="fa-regular fa-envelope-open text-6xl text-slate-200 mb-4"></i>
-                    <p class="text-slate-500">Select an email request from the inbox to review.</p>
+            <div class="glass-panel p-6 text-sm md:text-base text-slate-300 shadow-lg border-indigo-500/30 border-l-4">
+                <p class="mb-4">
+                    <strong>The CompTIA Evolution:</strong> Relying on human admins to manually toggle checkboxes (like in Phase 1) introduces the risk of human error and insider threats. While studying for my CompTIA certification, I learned the importance of shifting from manual provisioning to <strong>"Secure by Design"</strong> architecture.
+                </p>
+                <p>
+                    Below is the formal <strong>Role-Based Access Control (RBAC) Matrix</strong> I designed to automate those business rules. This matrix acts as the absolute source of truth for IAM governance.
+                </p>
+            </div>
+
+            <!-- RBAC Matrix Visualization -->
+            <div class="glass-panel overflow-hidden">
+                <div class="bg-slate-800/50 p-4 border-b border-slate-700 flex justify-between items-center flex-wrap gap-4">
+                    <h3 class="font-semibold text-slate-200"><i class="fa-solid fa-sitemap mr-2"></i> Authorized Access Matrix</h3>
+                    <button onclick="toggleToxicCombos()" id="sodBtn" class="text-xs bg-red-500/20 border border-red-500/50 text-red-400 px-4 py-2 rounded-lg hover:bg-red-500/30 transition font-semibold">
+                        <i class="fa-solid fa-magnifying-glass-chart mr-2"></i> Audit Toxic Combinations (SoD)
+                    </button>
                 </div>
 
-                <!-- Active Ticket State -->
-                <div id="activeState" class="hidden flex-col h-full opacity-0 transition-opacity duration-300">
+                <div class="overflow-x-auto p-4">
+                    <table class="rbac-table w-full whitespace-nowrap">
+                        <thead>
+                            <tr>
+                                <th>Enterprise Persona</th>
+                                <th>Data Catalog UI</th>
+                                <th>Internal US Data</th>
+                                <th>Global Data Silo</th>
+                                <th>Procurement Contracts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <i class="fa-solid fa-user-tie text-blue-400 mr-2 w-4"></i> US Practitioner
+                                </td>
+                                <td><span class="badge badge-read">Read</span></td>
+                                <td><span class="badge badge-write">Write</span></td>
+                                <td><span class="badge badge-none">None</span></td>
+                                <td><span class="badge badge-read">Read</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fa-solid fa-globe text-indigo-400 mr-2 w-4"></i> Global Member Firm
+                                </td>
+                                <td><span class="badge badge-read">Read</span></td>
+                                <td><span class="badge badge-none toxic-cell">None</span></td>
+                                <td><span class="badge badge-write">Write</span></td>
+                                <td><span class="badge badge-none">None</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fa-solid fa-building-shield text-orange-400 mr-2 w-4"></i> Third-Party Vendor
+                                </td>
+                                <td><span class="badge badge-read">Read</span></td>
+                                <td><span class="badge badge-none">None</span></td>
+                                <td><span class="badge badge-none">None</span></td>
+                                <td><span class="badge badge-none toxic-cell">None</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fa-solid fa-database text-red-400 mr-2 w-4"></i> Platform DBA (IT)
+                                </td>
+                                <td><span class="badge badge-admin">Admin</span></td>
+                                <td><span class="badge badge-admin">Admin</span></td>
+                                <td><span class="badge badge-admin">Admin</span></td>
+                                <td><span class="badge badge-none toxic-cell">None</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                    <!-- Email Content -->
-                    <div class="mb-6 pb-6 border-b border-slate-100">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 id="requesterName" class="text-xl font-bold text-slate-800">John Doe</h3>
-                                <p id="requesterRole" class="text-sm text-slate-500"><i class="fa-solid fa-briefcase mr-1"></i> US Firm Practitioner</p>
-                            </div>
-                            <span id="requestDate" class="text-xs text-slate-400">Today, 9:41 AM</span>
-                        </div>
-                        <div class="bg-slate-50 p-4 rounded-lg text-sm text-slate-700 font-mono">
-                            <strong>Subject:</strong> <span id="emailSubject">Requesting LexisNexis Access</span><br><br>
-                            <span id="emailBody">Hi Admin, I need access to the marketplace to procure LexisNexis data for a new US client engagement. Thanks!</span>
-                        </div>
-                    </div>
-
-                    <!-- Admin Toggles -->
-                    <h4 class="font-semibold text-slate-700 mb-4"><i class="fa-solid fa-sliders text-blue-500 mr-2"></i> Provisioning Controls</h4>
-
-                    <div class="space-y-4 mb-6">
-                        <!-- Toggle 1 -->
-                        <div class="flex items-center justify-between p-4 border border-slate-200 rounded-lg bg-white hover:border-blue-300 transition">
-                            <div>
-                                <h5 class="font-semibold text-sm">Marketplace Catalog View</h5>
-                                <p class="text-xs text-slate-500">Allows user to see available data providers.</p>
-                            </div>
-                            <div class="relative inline-block w-12 mr-2 align-middle select-none">
-                                <input type="checkbox" id="toggle-catalog" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
-                                <label for="toggle-catalog" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-                                <div class="toggle-circle absolute block"></div>
-                            </div>
-                        </div>
-
-                        <!-- Toggle 2 -->
-                        <div class="flex items-center justify-between p-4 border border-slate-200 rounded-lg bg-white hover:border-blue-300 transition">
-                            <div>
-                                <h5 class="font-semibold text-sm">View Internal Pricing</h5>
-                                <p class="text-xs text-slate-500">Shows pre-negotiated master license costs.</p>
-                            </div>
-                            <div class="relative inline-block w-12 mr-2 align-middle select-none">
-                                <input type="checkbox" id="toggle-pricing" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
-                                <label for="toggle-pricing" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-                                <div class="toggle-circle absolute block"></div>
-                            </div>
-                        </div>
-
-                        <!-- Toggle 3 -->
-                        <div class="flex items-center justify-between p-4 border border-slate-200 rounded-lg bg-white hover:border-blue-300 transition">
-                            <div>
-                                <h5 class="font-semibold text-sm">Initiate Procurement</h5>
-                                <p class="text-xs text-slate-500">Allows user to execute licensing paperwork.</p>
-                            </div>
-                            <div class="relative inline-block w-12 mr-2 align-middle select-none">
-                                <input type="checkbox" id="toggle-procure" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
-                                <label for="toggle-procure" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-                                <div class="toggle-circle absolute block"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Feedback & Action -->
-                    <div class="mt-auto flex justify-between items-center">
-                        <div id="feedbackMessage" class="text-sm font-medium"></div>
-                        <button onclick="grantAccess()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition shadow-md flex items-center">
-                            <i class="fa-solid fa-check mr-2"></i> Grant Access
-                        </button>
-                    </div>
-
+                <div id="sodExplanation" class="hidden bg-slate-900/80 p-4 border-t border-slate-700 text-sm text-slate-300">
+                    <h4 class="text-red-400 font-bold mb-2"><i class="fa-solid fa-shield-halved mr-2"></i> Audit Findings: Segregation of Duties (SoD)</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>Global Firm + US Data:</strong> Giving a Global member firm 'Read' access to US Data creates a cross-border Data Sovereignty violation. The matrix enforces 'None'.</li>
+                        <li><strong>Vendor + Procurement:</strong> Vendors cannot hold 'Write' or 'Admin' rights in Procurement systems to prevent fraudulent self-contracting.</li>
+                        <li><strong>DBA + Procurement:</strong> The DBA holds 'Admin' keys to the databases. Giving them 'Write' access to Procurement creates a Toxic Combination where an IT admin could manipulate financial contracts.</li>
+                    </ul>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <footer class="text-center text-slate-500 text-sm pb-8 border-t border-slate-800 pt-8">
+            Integrated IAM Portfolio Component - Designed for Technical Recruitment
+        </footer>
+
     </div>
-    </section>
   </main>
 
   <footer id="footer" class="footer">
@@ -226,137 +361,118 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-        // Ticket Data based on real rules
+        /* --- PHASE 1: SIMULATOR LOGIC --- */
         const tickets = [
-            {
-                id: 1,
-                name: "Sarah Jenkins",
-                role: "US Firm Practitioner",
-                subject: "Marketplace Access for LexisNexis",
-                body: "Hi, I need full access to the marketplace to view LexisNexis data and handle the procurement paperwork for my team.",
-                solution: { catalog: true, pricing: true, procure: true },
-                completed: false
-            },
-            {
-                id: 2,
-                name: "David Chen",
-                role: "Third-Party Vendor",
-                subject: "Browse Data Providers",
-                body: "Hello, my consulting firm was asked to see what data providers are available on your platform to help plan our integration.",
-                solution: { catalog: true, pricing: false, procure: false }, // Vendors shouldn't see internal pricing or procure
-                completed: false
-            },
-            {
-                id: 3,
-                name: "Elena Rodriguez",
-                role: "Global Member Firm (Spain)",
-                subject: "Pricing visibility",
-                body: "Hi team, I need to look at the catalog and see the US pricing to compare it with our local Spanish vendors.",
-                solution: { catalog: true, pricing: true, procure: false }, // Global can see, but usually can't procure on US licenses
-                completed: false
-            }
+            { id: 1, name: "Sarah Jenkins", role: "US Firm Practitioner", subject: "Marketplace Access", body: "I need to view the catalog and pricing to procure datasets for my US client team.", sol: { cat: true, price: true, proc: true }, done: false },
+            { id: 2, name: "David Chen", role: "Third-Party Vendor", subject: "API Integration Planning", body: "My consulting firm needs to see what datasets exist in the catalog to plan our integration.", sol: { cat: true, price: false, proc: false }, done: false },
+            { id: 3, name: "Elena Rodriguez", role: "Global Member Firm", subject: "Pricing visibility", body: "I need to look at the catalog and see US pricing to compare with local vendors.", sol: { cat: true, price: true, proc: false }, done: false },
+
+            { id: 4, name: "Marcus Vance", role: "Platform DBA (IT)", subject: "System Health Check", body: "I need to view the catalog to verify the database indexes are rendering the UI correctly. I do not need pricing or procurement access.", sol: { cat: true, price: false, proc: false }, done: false },
+            { id: 5, name: "Liam O'Connor", role: "Third-Party Vendor", subject: "Cost-Analysis Tool Build", body: "I am building a cost-analysis tool for your team. I need to view the catalog, pricing, and initiate mock procurements for testing.", sol: { cat: true, price: false, proc: false }, done: false },
+            { id: 6, name: "Yuki Tanaka", role: "Global Member Firm", subject: "GDPR Dataset Check", body: "I just need to see if the European GDPR datasets are listed in the catalog. No purchasing needed right now.", sol: { cat: true, price: false, proc: false }, done: false },
+            { id: 7, name: "Chloe Adams", role: "US Firm Practitioner", subject: "Just-in-case Access", body: "I only need to view the catalog today to browse, but please give me pricing and procurement access just in case I need them next year.", sol: { cat: true, price: false, proc: false }, done: false },
+            { id: 8, name: "Mateo Silva", role: "Global Member Firm", subject: "Procuring Data for Brazil", body: "I need catalog, pricing, and I'd like to initiate a procurement contract for a Brazilian client engagement.", sol: { cat: true, price: true, proc: false }, done: false },
+            { id: 9, name: "Jamal Washington", role: "US Firm Practitioner", subject: "Budgeting for Q3", body: "I need to see the catalog and pricing to plan my client's budget. I don't need to purchase anything yet.", sol: { cat: true, price: true, proc: false }, done: false },
+            { id: 10, name: "Priya Patel", role: "Third-Party Vendor", subject: "Pricing API Sync", body: "We are syncing your catalog to our external portal. Please grant catalog and pricing access so we can map the costs.", sol: { cat: true, price: false, proc: false }, done: false }
         ];
 
-        let activeTicketId = null;
+        let activeId = null;
 
-        // Initialize UI
         function renderInbox() {
-            const inboxList = document.getElementById('inboxList');
-            inboxList.innerHTML = '';
-
-            let pendingCount = 0;
-
-            tickets.forEach(ticket => {
-                if (!ticket.completed) pendingCount++;
-
+            const list = document.getElementById('inboxList');
+            list.innerHTML = '';
+            tickets.forEach(t => {
                 const div = document.createElement('div');
-                div.className = `inbox-item p-4 border-b border-slate-100 cursor-pointer ${activeTicketId === ticket.id ? 'active' : ''} ${ticket.completed ? 'opacity-50' : ''}`;
-                div.onclick = () => loadTicket(ticket.id);
-
+                div.className = `inbox-item p-4 border-b border-slate-700/50 cursor-pointer ${activeId === t.id ? 'active' : ''} ${t.done ? 'opacity-40' : ''}`;
+                div.onclick = () => { if(!t.done) loadTicket(t.id) };
                 div.innerHTML = `
                     <div class="flex justify-between mb-1">
-                        <span class="font-semibold text-slate-800 ${ticket.completed ? 'line-through' : ''}">${ticket.name}</span>
-                        ${ticket.completed ? '<i class="fa-solid fa-check-circle text-green-500"></i>' : '<span class="w-2 h-2 rounded-full bg-blue-500 mt-1.5"></span>'}
+                        <span class="font-semibold text-slate-200 ${t.done ? 'line-through' : ''}">${t.name}</span>
+                        ${t.done ? '<i class="fa-solid fa-check text-emerald-500"></i>' : '<span class="w-2 h-2 rounded-full bg-sky-500 mt-1.5"></span>'}
                     </div>
-                    <div class="text-xs text-slate-500 mb-2">${ticket.role}</div>
-                    <div class="text-sm text-slate-600 truncate">${ticket.subject}</div>
+                    <div class="text-xs text-sky-400/80 mb-2">${t.role}</div>
+                    <div class="text-sm text-slate-400 truncate">${t.subject}</div>
                 `;
-                inboxList.appendChild(div);
+                list.appendChild(div);
             });
-
-            document.getElementById('ticketCount').innerText = `${pendingCount} Pending`;
         }
 
         function loadTicket(id) {
-            activeTicketId = id;
-            const ticket = tickets.find(t => t.id === id);
+            activeId = id;
+            const t = tickets.find(x => x.id === id);
 
-            // UI State Swapping
             document.getElementById('emptyState').classList.add('hidden');
-            const activeState = document.getElementById('activeState');
-            activeState.classList.remove('hidden');
-            setTimeout(() => activeState.classList.remove('opacity-0'), 50); // fade in
+            document.getElementById('activeState').classList.remove('hidden');
+            document.getElementById('activeState').style.display = 'flex';
 
-            // Populate Data
-            document.getElementById('requesterName').innerText = ticket.name;
-            document.getElementById('requesterRole').innerHTML = `<i class="fa-solid fa-briefcase mr-1"></i> ${ticket.role}`;
-            document.getElementById('emailSubject').innerText = ticket.subject;
-            document.getElementById('emailBody').innerText = ticket.body;
+            document.getElementById('reqName').innerText = t.name;
+            document.getElementById('reqRole').innerHTML = `<i class="fa-solid fa-user-tag mr-1"></i> ${t.role}`;
+            document.getElementById('reqSubject').innerText = t.subject;
+            document.getElementById('reqBody').innerText = t.body;
 
-            // Reset Toggles & Feedback
-            document.getElementById('toggle-catalog').checked = false;
-            document.getElementById('toggle-pricing').checked = false;
-            document.getElementById('toggle-procure').checked = false;
-            document.getElementById('feedbackMessage').innerHTML = '';
-
+            ['catalog', 'pricing', 'procure'].forEach(k => document.getElementById(`toggle-${k}`).checked = false);
+            document.getElementById('feedbackMsg').innerHTML = '';
             renderInbox();
         }
 
         function grantAccess() {
-            if (!activeTicketId) return;
-            const ticket = tickets.find(t => t.id === activeTicketId);
+            if (!activeId) return;
+            const t = tickets.find(x => x.id === activeId);
 
-            const selectedCatalog = document.getElementById('toggle-catalog').checked;
-            const selectedPricing = document.getElementById('toggle-pricing').checked;
-            const selectedProcure = document.getElementById('toggle-procure').checked;
+            const cat = document.getElementById('toggle-catalog').checked;
+            const price = document.getElementById('toggle-pricing').checked;
+            const proc = document.getElementById('toggle-procure').checked;
+            const msg = document.getElementById('feedbackMsg');
 
-            const feedback = document.getElementById('feedbackMessage');
-
-            // Evaluate Business Logic / Licensing Rules
-            if (ticket.role === "Third-Party Vendor" && (selectedPricing || selectedProcure)) {
-                feedback.innerHTML = '<span class="text-red-500"><i class="fa-solid fa-triangle-exclamation"></i> Licensing Error: Vendors cannot view pricing or initiate procurement.</span>';
+            // Business Rules
+            if (t.role === "Third-Party Vendor" && (price || proc)) {
+                msg.innerHTML = '<span class="text-red-400"><i class="fa-solid fa-shield-virus"></i> TPRM Violation: Vendors cannot view internal pricing or procure.</span>';
+                return;
+            }
+            if (t.role === "Global Member Firm" && proc) {
+                msg.innerHTML = '<span class="text-red-400"><i class="fa-solid fa-gavel"></i> Licensing Error: Global firms cannot execute US contracts.</span>';
                 return;
             }
 
-            if (ticket.role === "Global Member Firm (Spain)" && selectedProcure) {
-                feedback.innerHTML = '<span class="text-red-500"><i class="fa-solid fa-triangle-exclamation"></i> Policy Error: Global firms cannot execute US master licenses.</span>';
-                return;
-            }
-
-            // If rules passed, check if it matches the ideal solution
-            if (selectedCatalog === ticket.solution.catalog &&
-                selectedPricing === ticket.solution.pricing &&
-                selectedProcure === ticket.solution.procure) {
-
-                feedback.innerHTML = '<span class="text-green-600"><i class="fa-solid fa-check"></i> Success! Access provisioned correctly.</span>';
-                ticket.completed = true;
-
+            if (cat === t.sol.cat && price === t.sol.price && proc === t.sol.proc) {
+                msg.innerHTML = '<span class="text-emerald-400"><i class="fa-solid fa-check-circle"></i> Provisioned Securely.</span>';
+                t.done = true;
                 setTimeout(() => {
-                    activeTicketId = null;
+                    activeId = null;
                     document.getElementById('emptyState').classList.remove('hidden');
-                    document.getElementById('activeState').classList.add('opacity-0');
-                    setTimeout(() => document.getElementById('activeState').classList.add('hidden'), 300);
+                    document.getElementById('activeState').classList.add('hidden');
                     renderInbox();
                 }, 1500);
-
             } else {
-                feedback.innerHTML = '<span class="text-yellow-600"><i class="fa-solid fa-circle-exclamation"></i> Warning: Did you forget to toggle required permissions?</span>';
+                msg.innerHTML = '<span class="text-yellow-400"><i class="fa-solid fa-triangle-exclamation"></i> Check Least Privilege: Incorrect permissions toggled.</span>';
             }
         }
 
-        // Initialize
+        /* --- PHASE 2: MATRIX LOGIC --- */
+        let sodActive = false;
+        function toggleToxicCombos() {
+            sodActive = !sodActive;
+            const btn = document.getElementById('sodBtn');
+            const exp = document.getElementById('sodExplanation');
+            const cells = document.querySelectorAll('.toxic-cell');
+
+            if (sodActive) {
+                btn.classList.replace('bg-red-500/20', 'bg-red-500');
+                btn.classList.replace('text-red-400', 'text-white');
+                exp.classList.remove('hidden');
+                cells.forEach(c => c.classList.add('toxic-violation'));
+            } else {
+                btn.classList.replace('bg-red-500', 'bg-red-500/20');
+                btn.classList.replace('text-white', 'text-red-400');
+                exp.classList.add('hidden');
+                cells.forEach(c => c.classList.remove('toxic-violation'));
+            }
+        }
+
+        // Init
         renderInbox();
     </script>
+
 </body>
 
 </html>
