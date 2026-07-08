@@ -124,9 +124,7 @@
             <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
               <h3>Get In Touch</h3>
               <p>Send a message below and I'll be in touch as soon as possible!</p>
-<form id="contact-form" action="https://formspree.io/f/mpqgnqjj" method="POST" data-success-url="success.html" data-aos="fade-up" data-aos-delay="200">
-  <input type="hidden" name="_next" value="https://beatricekungu.github.io/success.html">
-  
+<form id="contact-form" action="https://formspree.io/f/mpqgnqjj" method="POST" data-aos="fade-up" data-aos-delay="200">
   <div class="row gy-4">
     <div class="col-md-6">
       <input type="text" name="name" class="form-control" placeholder="Your Name" required>
@@ -203,81 +201,50 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    function connectContactForm() {
       const contactForm = document.getElementById("contact-form");
       if (!contactForm) return;
 
-      const submitButton = contactForm.querySelector('button[type="submit"]');
       const statusMessage = document.getElementById("contact-form-status");
-      const defaultButtonText = submitButton ? submitButton.textContent : "";
-      const successUrl = new URL(contactForm.dataset.successUrl || "success.html", window.location.href).href;
-
-      const updateStatus = function (message, isError) {
-        if (!statusMessage) return;
-        statusMessage.textContent = message;
-        statusMessage.style.color = isError ? "#ffb4b4" : "#d8e2ee";
-      };
-
-      const resetButton = function () {
-        if (!submitButton) return;
-        submitButton.disabled = false;
-        submitButton.textContent = defaultButtonText;
-      };
-
-      const getFormspreeError = async function (response) {
-        try {
-          const data = await response.json();
-          if (data.errors && data.errors.length) {
-            return data.errors.map(function (error) {
-              return error.message;
-            }).join(" ");
-          }
-
-          if (data.error) {
-            return data.error;
-          }
-        } catch (error) {
-          return "The message service did not return a readable error.";
-        }
-
-        return "The message service could not accept the submission.";
-      };
 
       contactForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
-        if (submitButton) {
-          submitButton.disabled = true;
-          submitButton.textContent = "Sending...";
+        if (statusMessage) {
+          statusMessage.textContent = "Sending message...";
+          statusMessage.style.color = "#d8e2ee";
         }
-
-        updateStatus("Sending your message...", false);
-
-        const formData = new FormData(contactForm);
-        const isLocalPreview = window.location.protocol === "file:";
 
         try {
           const response = await fetch(contactForm.action, {
-            method: "POST",
-            body: formData,
-            headers: isLocalPreview ? undefined : {
+            method: contactForm.method,
+            body: new FormData(contactForm),
+            headers: {
               "Accept": "application/json"
-            },
-            mode: isLocalPreview ? "no-cors" : "cors"
+            }
           });
 
-          if (isLocalPreview || response.ok) {
-            contactForm.reset();
-            window.location.assign(successUrl);
-            return;
+          if (!response.ok) {
+            throw new Error("Formspree submission failed");
           }
 
-          throw new Error(await getFormspreeError(response));
+          if (statusMessage) {
+            statusMessage.textContent = "Message sent successfully!";
+            statusMessage.style.color = "#4ade80";
+          }
+
+          contactForm.reset();
         } catch (error) {
-          updateStatus("There was an issue sending the message. Please try again, or connect with me on LinkedIn.", true);
-          resetButton();
+          if (statusMessage) {
+            statusMessage.textContent = "Oops! There was a problem submitting your form.";
+            statusMessage.style.color = "#f87171";
+          }
         }
       });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      connectContactForm();
     });
   </script>
 
