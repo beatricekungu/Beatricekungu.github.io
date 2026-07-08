@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>GlobalMed Compliance Dashboard | Beatrice Kungu</title>
-  <meta name="description" content="GlobalMed Compliance Dashboard project by Beatrice Kungu.">
-  <meta name="keywords" content="GRC, compliance dashboard, risk analytics, Beatrice Kungu">
+  <title>Cybersecurity Program Gap Assessment | Beatrice Kungu</title>
+  <meta name="description" content="Cybersecurity Program Gap Assessment dashboard by Beatrice Kungu, focused on access control, incident response, vulnerability management, and NIST-aligned remediation planning.">
+  <meta name="keywords" content="GRC, cybersecurity gap assessment, NIST, risk register, access control, incident response, vulnerability management, Beatrice Kungu">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -15,7 +15,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +26,599 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .gap-dashboard-page {
+      --glass-bg: linear-gradient(145deg, rgba(17, 24, 39, 0.72), rgba(17, 24, 39, 0.48) 48%, rgba(29, 155, 190, 0.08));
+      --glass-border: rgba(216, 226, 238, 0.18);
+      --glass-highlight: rgba(248, 250, 252, 0.16);
+      --glass-shadow: 0 24px 70px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(248, 250, 252, 0.12);
+      color: #d8e2ee;
+      background:
+        linear-gradient(115deg, rgba(29, 155, 190, 0.12), transparent 34%),
+        linear-gradient(250deg, rgba(15, 23, 42, 0.72), transparent 42%),
+        linear-gradient(135deg, #0b1120 0%, #111827 52%, #1e1e1e 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .gap-dashboard-page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(120deg, transparent 0%, rgba(248, 250, 252, 0.055) 18%, transparent 34%),
+        linear-gradient(300deg, transparent 0%, rgba(29, 155, 190, 0.08) 58%, transparent 76%);
+      opacity: 0.9;
+    }
+
+    .gap-wrap {
+      width: min(1500px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 54px 0 72px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gap-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.55fr);
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 24px;
+    }
+
+    .gap-panel,
+    .metric-card,
+    .domain-card,
+    .finding-card,
+    .detail-panel,
+    .roadmap-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      background: var(--glass-bg);
+      box-shadow: var(--glass-shadow);
+      backdrop-filter: blur(18px) saturate(145%);
+      -webkit-backdrop-filter: blur(18px) saturate(145%);
+    }
+
+    .gap-panel::before,
+    .metric-card::before,
+    .domain-card::before,
+    .finding-card::before,
+    .detail-panel::before,
+    .roadmap-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, var(--glass-highlight), transparent 28%),
+        linear-gradient(315deg, rgba(29, 155, 190, 0.08), transparent 36%);
+      opacity: 0.78;
+    }
+
+    .gap-panel > *,
+    .metric-card > *,
+    .domain-card > *,
+    .finding-card > *,
+    .detail-panel > *,
+    .roadmap-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .gap-panel {
+      padding: 28px;
+    }
+
+    .gap-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 11px;
+      border: 1px solid rgba(29, 155, 190, 0.35);
+      border-radius: 999px;
+      color: #80e4ff;
+      background: rgba(29, 155, 190, 0.1);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .gap-hero h1 {
+      max-width: 980px;
+      margin: 22px 0 14px;
+      color: #f8fafc;
+      font-size: clamp(2.2rem, 5vw, 4.9rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .gap-hero p {
+      max-width: 820px;
+      margin: 0;
+      color: #b8c4d6;
+      font-size: 1.02rem;
+      line-height: 1.72;
+    }
+
+    .gap-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .gap-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border: 0;
+      border-radius: 20px;
+      color: var(--accent-color);
+      background: color-mix(in srgb, var(--accent-color), transparent 90%);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .gap-tag i {
+      color: var(--accent-color);
+    }
+
+    .assessment-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+
+    .assessment-card h2,
+    .section-heading h2,
+    .detail-panel h2 {
+      margin: 0;
+      color: #f8fafc;
+      font-size: 1.25rem;
+      letter-spacing: 0;
+    }
+
+    .assessment-card dl {
+      display: grid;
+      gap: 14px;
+      margin: 20px 0 0;
+    }
+
+    .assessment-card dt {
+      color: #94a3b8;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .assessment-card dd {
+      margin: 4px 0 0;
+      color: #f8fafc;
+      font-weight: 700;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .metric-card {
+      width: 100%;
+      min-height: 138px;
+      justify-self: center;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto;
+      column-gap: 18px;
+      align-items: center;
+      justify-content: start;
+      padding: 22px;
+      border-radius: 999px;
+      text-align: left;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .metric-card:hover,
+    .domain-card:hover,
+    .finding-card:hover,
+    .roadmap-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(29, 155, 190, 0.38);
+      box-shadow: 0 24px 62px rgba(29, 155, 190, 0.16), inset 0 1px 0 rgba(248, 250, 252, 0.16);
+    }
+
+    .metric-icon {
+      width: 62px;
+      min-width: 62px;
+      height: 62px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      grid-row: 1 / span 2;
+      margin-bottom: 0;
+      border-radius: 0;
+      color: #80e4ff;
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      font-size: 2.85rem;
+    }
+
+    .metric-card strong {
+      display: block;
+      grid-column: 2;
+      color: #f8fafc;
+      font-size: 2.25rem;
+      line-height: 1;
+    }
+
+    .metric-card > span:not(.metric-icon) {
+      display: block;
+      margin-top: 8px;
+      color: #aab8ca;
+      font-size: 0.9rem;
+      max-width: 170px;
+      grid-column: 2;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .section-heading p {
+      margin: 6px 0 0;
+      color: #aab8ca;
+      font-size: 0.94rem;
+    }
+
+    .severity-panel {
+      padding: 22px;
+    }
+
+    .severity-row {
+      display: grid;
+      grid-template-columns: 90px 1fr 42px;
+      gap: 12px;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .severity-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #f8fafc;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .severity-track {
+      height: 14px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(216, 226, 238, 0.09);
+    }
+
+    .severity-fill {
+      height: 100%;
+      border-radius: inherit;
+      transition: width 300ms ease;
+    }
+
+    .sev-high { background: linear-gradient(90deg, #ef4444, #f97316); box-shadow: 0 0 24px rgba(239, 68, 68, 0.32); }
+    .sev-medium { background: linear-gradient(90deg, #f59e0b, #fde047); box-shadow: 0 0 20px rgba(245, 158, 11, 0.22); }
+    .sev-low { background: linear-gradient(90deg, #16a34a, #22c55e); box-shadow: 0 0 20px rgba(34, 197, 94, 0.18); }
+
+    .domain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .domain-card {
+      padding: 18px;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .domain-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0;
+      color: #f8fafc;
+      font-size: 1.05rem;
+      letter-spacing: 0;
+    }
+
+    .domain-card h3 i {
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      color: var(--accent-color);
+      background: transparent;
+      box-shadow: none;
+      font-size: 1.7rem;
+    }
+
+    .domain-card p {
+      min-height: 72px;
+      margin: 12px 0 16px;
+      color: #aab8ca;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .domain-counts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 9px;
+      border: 1px solid rgba(216, 226, 238, 0.12);
+      border-radius: 999px;
+      color: #d8e2ee;
+      background: rgba(11, 17, 32, 0.62);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .pill.high { color: #fecaca; border-color: rgba(239, 68, 68, 0.32); background: rgba(239, 68, 68, 0.12); }
+    .pill.medium { color: #fde68a; border-color: rgba(245, 158, 11, 0.32); background: rgba(245, 158, 11, 0.12); }
+    .pill.low { color: #bbf7d0; border-color: rgba(34, 197, 94, 0.3); background: rgba(34, 197, 94, 0.12); }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 16px;
+    }
+
+    .filter-btn {
+      min-height: 38px;
+      padding: 8px 12px;
+      border: 1px solid rgba(216, 226, 238, 0.13);
+      border-radius: 8px;
+      color: #cbd5e1;
+      background: rgba(17, 24, 39, 0.58);
+      font-size: 0.85rem;
+      font-weight: 800;
+      box-shadow: inset 0 1px 0 rgba(248, 250, 252, 0.07);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      transform: translateY(-1px);
+      border-color: rgba(29, 155, 190, 0.74);
+      color: #e5f8ff;
+      background: rgba(29, 155, 190, 0.22);
+    }
+
+    .risk-register {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(340px, 1.08fr);
+      gap: 20px;
+      align-items: start;
+      margin-top: 24px;
+    }
+
+    .finding-list {
+      display: grid;
+      gap: 10px;
+      max-height: 720px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .finding-card {
+      width: 100%;
+      padding: 14px;
+      text-align: left;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .finding-card.active {
+      border-color: rgba(29, 155, 190, 0.64);
+      box-shadow: 0 0 0 1px rgba(29, 155, 190, 0.18), 0 22px 52px rgba(29, 155, 190, 0.16), inset 0 1px 0 rgba(248, 250, 252, 0.14);
+    }
+
+    .finding-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+
+    .finding-id {
+      color: #f8fafc;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+    }
+
+    .finding-card p {
+      margin: 0;
+      color: #aab8ca;
+      font-size: 0.88rem;
+      line-height: 1.48;
+    }
+
+    .detail-panel {
+      position: sticky;
+      top: 92px;
+      padding: 22px;
+    }
+
+    .detail-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 18px;
+    }
+
+    .detail-section {
+      padding: 16px 0;
+      border-top: 1px solid rgba(216, 226, 238, 0.1);
+    }
+
+    .detail-section h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 8px;
+      color: #f8fafc;
+      font-size: 0.98rem;
+      letter-spacing: 0;
+    }
+
+    .detail-section p {
+      margin: 0;
+      color: #b8c4d6;
+      font-size: 0.94rem;
+      line-height: 1.62;
+    }
+
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(180px, 1fr));
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .roadmap-card {
+      min-width: 190px;
+      padding: 16px;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .roadmap-card strong {
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      color: #07121e;
+      background: linear-gradient(145deg, #9cecff, #1d9bbe);
+      box-shadow: 0 12px 28px rgba(29, 155, 190, 0.26), inset 0 1px 0 rgba(248, 250, 252, 0.45);
+      font-weight: 900;
+    }
+
+    .roadmap-card h3 {
+      margin: 0 0 8px;
+      color: #f8fafc;
+      font-size: 0.98rem;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+
+    .roadmap-card p {
+      margin: 0 0 12px;
+      color: #aab8ca;
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .framework-item {
+      padding: 13px;
+      border: 1px solid rgba(216, 226, 238, 0.11);
+      border-radius: 999px;
+      color: #d8e2ee;
+      background: rgba(11, 17, 32, 0.42);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font-size: 0.87rem;
+      font-weight: 800;
+    }
+
+    @media (max-width: 1199px) {
+      .gap-hero,
+      .dashboard-grid,
+      .risk-register {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-panel {
+        position: static;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .metric-grid,
+      .domain-grid,
+      .framework-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .gap-wrap {
+        width: min(100% - 20px, 1500px);
+        padding-top: 34px;
+      }
+
+      .gap-panel {
+        padding: 20px;
+      }
+
+      .metric-grid,
+      .domain-grid,
+      .framework-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .severity-row {
+        grid-template-columns: 76px 1fr 34px;
+      }
+    }
+  </style>
 </head>
 
 <body class="portfolio-details-page">
@@ -39,7 +632,7 @@
   <li><a class="nav-link scrollto" href="about.html">About</a></li>
   <li><a class="nav-link scrollto active" href="portfolio.html">Projects</a></li>
   <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
-  
+
   <li class="ms-auto"></li>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -53,11 +646,171 @@
     </div>
   </header>
 
-  <main class="main">
-    <section class="section" style="min-height: 60vh;">
-      <div class="container">
-      </div>
-    </section>
+  <main class="main gap-dashboard-page">
+    <div class="gap-wrap">
+      <section class="gap-hero" aria-labelledby="gap-dashboard-title">
+        <div class="gap-panel" data-aos="fade-up">
+          <span class="gap-eyebrow"><i class="bi bi-shield-check"></i> GRC Portfolio Project</span>
+          <h1 id="gap-dashboard-title">Cybersecurity Program Gap Assessment</h1>
+          <p>
+            A simulated Federal Benefits Case Management Portal assessment translated into an executive-ready dashboard. The project demonstrates how I identify control gaps, quantify risk, align remediation to NIST guidance, and communicate next steps to technical and business stakeholders.
+          </p>
+          <div class="gap-tags" aria-label="Dashboard focus areas">
+            <span class="gap-tag"><i class="bi bi-person-lock"></i> Access Control</span>
+            <span class="gap-tag"><i class="bi bi-broadcast"></i> Incident Response</span>
+            <span class="gap-tag"><i class="bi bi-bug"></i> Vulnerability Management</span>
+            <span class="gap-tag"><i class="bi bi-clipboard2-check"></i> NIST Alignment</span>
+          </div>
+        </div>
+
+        <aside class="gap-panel assessment-card" data-aos="fade-up" data-aos-delay="100">
+          <div>
+            <h2>Assessment Snapshot</h2>
+            <dl>
+              <div>
+                <dt>System</dt>
+                <dd>Federal Benefits Case Management Portal</dd>
+              </div>
+              <div>
+                <dt>Method</dt>
+                <dd>Targeted cybersecurity gap analysis</dd>
+              </div>
+              <div>
+                <dt>Scope</dt>
+                <dd>Programmatic controls, simulated data, no live agency records</dd>
+              </div>
+            </dl>
+          </div>
+        </aside>
+      </section>
+
+      <section class="metric-grid" aria-label="Assessment key metrics" data-aos="fade-up" data-aos-delay="150">
+        <article class="metric-card">
+          <span class="metric-icon"><i class="bi bi-list-check"></i></span>
+          <strong id="totalFindings">0</strong>
+          <span>Total control findings</span>
+        </article>
+        <article class="metric-card">
+          <span class="metric-icon"><i class="bi bi-exclamation-triangle"></i></span>
+          <strong id="highFindings">0</strong>
+          <span>High-risk priorities</span>
+        </article>
+        <article class="metric-card">
+          <span class="metric-icon"><i class="bi bi-diagram-3"></i></span>
+          <strong id="domainCount">0</strong>
+          <span>Control domains reviewed</span>
+        </article>
+        <article class="metric-card">
+          <span class="metric-icon"><i class="bi bi-arrow-up-right-circle"></i></span>
+          <strong>5</strong>
+          <span>Roadmap actions</span>
+        </article>
+      </section>
+
+      <section class="dashboard-grid" data-aos="fade-up" data-aos-delay="200">
+        <div class="gap-panel severity-panel">
+          <div class="section-heading">
+            <div>
+              <h2>Risk Severity Distribution</h2>
+              <p>Risk register breakdown from the companion findings CSV.</p>
+            </div>
+          </div>
+          <div id="severityChart" aria-label="Risk severity distribution"></div>
+        </div>
+
+        <div class="gap-panel">
+          <div class="section-heading">
+            <div>
+              <h2>Executive Message</h2>
+              <p>The dashboard converts a long assessment document into a decision-ready risk story.</p>
+            </div>
+          </div>
+          <p style="color:#b8c4d6; line-height:1.7; margin:0;">
+            The strongest exposures come from undefined workflows: access provisioning and recurring UAR, incident escalation procedures, vulnerability scanning cadence, and risk-based patch SLAs. The remediation story is not just "find problems"; it is "sequence the fixes so leadership knows what to fund first."
+          </p>
+          <div class="framework-grid" aria-label="Framework alignment">
+            <div class="framework-item">NIST SP 800-53 Rev. 5</div>
+            <div class="framework-item">NIST SP 800-61 Rev. 2</div>
+            <div class="framework-item">NIST SP 800-40 Rev. 4</div>
+            <div class="framework-item">Section 508 / USAGov Context</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gap-panel" data-aos="fade-up" data-aos-delay="250">
+        <div class="section-heading">
+          <div>
+            <h2>Control Domains Reviewed</h2>
+            <p>Each domain contains three findings and maps to a different governance capability.</p>
+          </div>
+        </div>
+        <div id="domainCards" class="domain-grid"></div>
+      </section>
+
+      <section class="risk-register" data-aos="fade-up" data-aos-delay="300">
+        <div>
+          <div class="section-heading">
+            <div>
+              <h2>Interactive Risk Register</h2>
+              <p>Select a finding to review the baseline, gap, severity, and remediation plan.</p>
+            </div>
+          </div>
+          <div class="filter-bar" aria-label="Risk register filters">
+            <button class="filter-btn active" type="button" data-filter="ALL">All</button>
+            <button class="filter-btn" type="button" data-filter="HIGH">High</button>
+            <button class="filter-btn" type="button" data-filter="MEDIUM">Medium</button>
+            <button class="filter-btn" type="button" data-filter="LOW">Low</button>
+            <button class="filter-btn" type="button" data-filter="Access Control">Access Control</button>
+            <button class="filter-btn" type="button" data-filter="Incident Response">Incident Response</button>
+            <button class="filter-btn" type="button" data-filter="Vulnerability Management">Vulnerability Management</button>
+          </div>
+          <div id="findingList" class="finding-list"></div>
+        </div>
+
+        <aside id="findingDetail" class="detail-panel" aria-live="polite"></aside>
+      </section>
+
+      <section class="gap-panel" data-aos="fade-up" data-aos-delay="350">
+        <div class="section-heading">
+          <div>
+            <h2>Prioritized Remediation Roadmap</h2>
+            <p>Roadmap sequencing mirrors the assessment recommendation: fix foundational workflows before optimizing reporting.</p>
+          </div>
+        </div>
+        <div class="roadmap-grid">
+          <article class="roadmap-card">
+            <strong>1</strong>
+            <h3>Formalize IAM Provisioning and UAR</h3>
+            <p>Implement documented approvals, role justification, de-provisioning, and quarterly access reviews.</p>
+            <span class="pill high">AC-01, AC-02</span>
+          </article>
+          <article class="roadmap-card">
+            <strong>2</strong>
+            <h3>Build the Incident Response Plan</h3>
+            <p>Define reporting workflows, escalation matrices, containment roles, and stakeholder communication paths.</p>
+            <span class="pill high">IR-01, IR-02, IR-03</span>
+          </article>
+          <article class="roadmap-card">
+            <strong>3</strong>
+            <h3>Automate Vulnerability Management</h3>
+            <p>Establish scanning cadence, review ownership, SLA-based remediation, and closure tracking.</p>
+            <span class="pill high">VM-01, VM-02</span>
+          </article>
+          <article class="roadmap-card">
+            <strong>4</strong>
+            <h3>Formalize Monitoring Ownership</h3>
+            <p>Set log retention, review frequency, reviewer ownership, and anomaly detection expectations.</p>
+            <span class="pill medium">AC-03</span>
+          </article>
+          <article class="roadmap-card">
+            <strong>5</strong>
+            <h3>Create Executive Reporting</h3>
+            <p>Track open findings, overdue remediation, recurring systemic weaknesses, and SLA performance.</p>
+            <span class="pill medium">VM-03</span>
+          </article>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer id="footer" class="footer">
@@ -94,6 +847,238 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const findings = [
+        {
+          id: "AC-01",
+          domain: "Access Control",
+          baseline: "User access is provisioned as needed to support benefits case processing.",
+          deficiency: "Lack of a formalized access provisioning workflow. There is no documented evidence of role justification or managerial approval prior to granting system access.",
+          severity: "HIGH",
+          remediation: "Implement a formalized access request and approval workflow. Require and retain documentation of manager approval and role justification before provisioning access."
+        },
+        {
+          id: "AC-02",
+          domain: "Access Control",
+          baseline: "Users frequently retain portal access after lateral movement, role changes, or shifting responsibilities.",
+          deficiency: "Absence of a defined User Access Review (UAR) cadence, resulting in the accumulation of over-provisioned accounts and violations of the least privilege principle.",
+          severity: "HIGH",
+          remediation: "Institute quarterly User Access Reviews (UAR) to validate that assigned roles remain appropriate. Enforce strict de-provisioning workflows for users undergoing role changes."
+        },
+        {
+          id: "IR-01",
+          domain: "Incident Response",
+          baseline: "Personnel report suspicious system activity on an ad-hoc basis when anomalies are noticed.",
+          deficiency: "Lack of a formalized Incident Response Plan (IRP) detailing exact procedures for reporting, triaging, escalating, and containing security events.",
+          severity: "HIGH",
+          remediation: "Develop and enforce a comprehensive Incident Response Plan (IRP) that establishes reporting workflows, severity classifications, escalation matrices, and containment timelines."
+        },
+        {
+          id: "VM-01",
+          domain: "Vulnerability Management",
+          baseline: "The portal environment relies on various web applications, databases, and supporting cloud infrastructure.",
+          deficiency: "Undefined vulnerability scanning cadence. There is no structured schedule to continuously monitor the infrastructure for emerging security weaknesses.",
+          severity: "HIGH",
+          remediation: "Establish a recurring, automated vulnerability scanning cadence. Document scan frequencies, assign review owners, and implement a tracking mechanism to monitor findings through to closure."
+        },
+        {
+          id: "VM-02",
+          domain: "Vulnerability Management",
+          baseline: "Security patches are applied ad-hoc when updates become available or IT identifies system degradation.",
+          deficiency: "Absence of risk-based Service Level Agreements (SLAs) for patch management, increasing the exposure window for critical vulnerabilities.",
+          severity: "HIGH",
+          remediation: "Define and enforce strict patch management SLAs based on risk severity, with critical vulnerabilities prioritized immediately, followed by high, medium, and low."
+        },
+        {
+          id: "AC-03",
+          domain: "Access Control",
+          baseline: "The application generates basic activity logs capturing user authentication and case modifications.",
+          deficiency: "Undefined audit logging and continuous monitoring policies. Expectations for log retention, review frequency, and designated reviewers are unassigned.",
+          severity: "MEDIUM",
+          remediation: "Formalize audit logging requirements to capture authentications, failed access attempts, and administrative actions. Assign strict ownership for continuous log review and anomaly detection."
+        },
+        {
+          id: "IR-02",
+          domain: "Incident Response",
+          baseline: "Multiple cross-functional teams, including case workers, IT support, and security staff, engage during a security event.",
+          deficiency: "Undefined Incident Response Team (IRT) roles and responsibilities, creating operational friction and communication delays during active security events.",
+          severity: "MEDIUM",
+          remediation: "Clearly define IRT roles. Establish an escalation matrix dictating who investigates anomalies, who authorizes containment actions, and who approves stakeholder communications."
+        },
+        {
+          id: "VM-03",
+          domain: "Vulnerability Management",
+          baseline: "Technical teams track open vulnerabilities internally following system reviews.",
+          deficiency: "Lack of executive-level visibility. There is no standardized reporting mechanism to escalate overdue remediation items or recurring systemic weaknesses.",
+          severity: "MEDIUM",
+          remediation: "Create a recurring vulnerability tracking dashboard for senior stakeholders detailing open findings, risk severity, assigned owners, and SLA compliance."
+        },
+        {
+          id: "IR-03",
+          domain: "Incident Response",
+          baseline: "The organization conducts informal discussions following the resolution of major security events.",
+          deficiency: "Inconsistent post-incident Root Cause Analysis (RCA). The failure to document lessons learned results in missed process optimizations and recurring vulnerabilities.",
+          severity: "LOW",
+          remediation: "Standardize a post-incident Root Cause Analysis (RCA) template to formally document the incident timeline, containment efficacy, and strategic process improvements."
+        }
+      ];
+
+      const domainDescriptions = {
+        "Access Control": "Evaluates provisioning, de-provisioning, least privilege, access reviews, audit logging, and monitoring ownership.",
+        "Incident Response": "Evaluates reporting workflows, escalation paths, containment authority, communication ownership, and post-incident learning.",
+        "Vulnerability Management": "Evaluates scanning cadence, risk-based patch SLAs, ownership, closure tracking, and executive visibility."
+      };
+
+      const severityOrder = ["HIGH", "MEDIUM", "LOW"];
+      const severityClass = {
+        HIGH: "high",
+        MEDIUM: "medium",
+        LOW: "low"
+      };
+      const domainIcons = {
+        "Access Control": "bi-person-lock",
+        "Incident Response": "bi-broadcast",
+        "Vulnerability Management": "bi-bug"
+      };
+
+      let activeFilter = "ALL";
+      let activeFindingId = findings[0].id;
+
+      const findingList = document.getElementById("findingList");
+      const findingDetail = document.getElementById("findingDetail");
+
+      function countBy(items, key) {
+        return items.reduce(function (counts, item) {
+          counts[item[key]] = (counts[item[key]] || 0) + 1;
+          return counts;
+        }, {});
+      }
+
+      function severityPill(severity) {
+        return '<span class="pill ' + severityClass[severity] + '"><i class="bi bi-circle-fill"></i>' + severity + '</span>';
+      }
+
+      function renderMetrics() {
+        const severityCounts = countBy(findings, "severity");
+        const domainCounts = countBy(findings, "domain");
+        document.getElementById("totalFindings").textContent = findings.length;
+        document.getElementById("highFindings").textContent = severityCounts.HIGH || 0;
+        document.getElementById("domainCount").textContent = Object.keys(domainCounts).length;
+      }
+
+      function renderSeverityChart() {
+        const severityCounts = countBy(findings, "severity");
+        const maxCount = Math.max.apply(null, Object.values(severityCounts));
+        const chart = document.getElementById("severityChart");
+        chart.innerHTML = severityOrder.map(function (severity) {
+          const count = severityCounts[severity] || 0;
+          const percent = maxCount ? Math.round((count / maxCount) * 100) : 0;
+          return '<div class="severity-row">' +
+            '<span class="severity-label"><i class="bi bi-circle-fill"></i>' + severity + '</span>' +
+            '<div class="severity-track"><div class="severity-fill sev-' + severityClass[severity] + '" style="width:' + percent + '%"></div></div>' +
+            '<strong>' + count + '</strong>' +
+            '</div>';
+        }).join("");
+      }
+
+      function renderDomainCards() {
+        const domainCounts = countBy(findings, "domain");
+        const domainCards = document.getElementById("domainCards");
+        domainCards.innerHTML = Object.keys(domainDescriptions).map(function (domain) {
+          const domainFindings = findings.filter(function (finding) {
+            return finding.domain === domain;
+          });
+          const sevCounts = countBy(domainFindings, "severity");
+          return '<article class="domain-card">' +
+            '<h3><i class="bi ' + domainIcons[domain] + '"></i>' + domain + '</h3>' +
+            '<p>' + domainDescriptions[domain] + '</p>' +
+            '<div class="domain-counts">' +
+            '<span class="pill">' + (domainCounts[domain] || 0) + ' findings</span>' +
+            '<span class="pill high">' + (sevCounts.HIGH || 0) + ' high</span>' +
+            '<span class="pill medium">' + (sevCounts.MEDIUM || 0) + ' medium</span>' +
+            '<span class="pill low">' + (sevCounts.LOW || 0) + ' low</span>' +
+            '</div>' +
+            '</article>';
+        }).join("");
+      }
+
+      function filteredFindings() {
+        if (activeFilter === "ALL") return findings;
+        return findings.filter(function (finding) {
+          return finding.severity === activeFilter || finding.domain === activeFilter;
+        });
+      }
+
+      function renderFindings() {
+        const visibleFindings = filteredFindings();
+        if (!visibleFindings.some(function (finding) { return finding.id === activeFindingId; })) {
+          activeFindingId = visibleFindings[0] ? visibleFindings[0].id : findings[0].id;
+        }
+
+        findingList.innerHTML = visibleFindings.map(function (finding) {
+          return '<button type="button" class="finding-card' + (finding.id === activeFindingId ? ' active' : '') + '" data-id="' + finding.id + '">' +
+            '<span class="finding-topline">' +
+            '<span class="finding-id">' + finding.id + '</span>' +
+            severityPill(finding.severity) +
+            '</span>' +
+            '<p><strong>' + finding.domain + '</strong><br>' + finding.deficiency + '</p>' +
+            '</button>';
+        }).join("");
+
+        findingList.querySelectorAll(".finding-card").forEach(function (button) {
+          button.addEventListener("click", function () {
+            activeFindingId = button.dataset.id;
+            renderFindings();
+            renderDetail();
+          });
+        });
+      }
+
+      function renderDetail() {
+        const finding = findings.find(function (item) {
+          return item.id === activeFindingId;
+        });
+        if (!finding) return;
+
+        findingDetail.innerHTML =
+          '<h2>' + finding.id + ' - ' + finding.domain + '</h2>' +
+          '<div class="detail-meta">' +
+          severityPill(finding.severity) +
+          '<span class="pill"><i class="bi ' + domainIcons[finding.domain] + '"></i>' + finding.domain + '</span>' +
+          '</div>' +
+          '<div class="detail-section">' +
+          '<h3><i class="bi bi-diagram-2"></i> Simulated Baseline</h3>' +
+          '<p>' + finding.baseline + '</p>' +
+          '</div>' +
+          '<div class="detail-section">' +
+          '<h3><i class="bi bi-exclamation-octagon"></i> Control Gap</h3>' +
+          '<p>' + finding.deficiency + '</p>' +
+          '</div>' +
+          '<div class="detail-section">' +
+          '<h3><i class="bi bi-tools"></i> Remediation Strategy</h3>' +
+          '<p>' + finding.remediation + '</p>' +
+          '</div>';
+      }
+
+      document.querySelectorAll(".filter-btn").forEach(function (button) {
+        button.addEventListener("click", function () {
+          activeFilter = button.dataset.filter;
+          document.querySelectorAll(".filter-btn").forEach(function (btn) {
+            btn.classList.toggle("active", btn === button);
+          });
+          renderFindings();
+          renderDetail();
+        });
+      });
+
+      renderMetrics();
+      renderSeverityChart();
+      renderDomainCards();
+      renderFindings();
+      renderDetail();
+    });
+  </script>
 </body>
 
 </html>
