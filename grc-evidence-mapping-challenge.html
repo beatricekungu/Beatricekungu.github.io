@@ -4,198 +4,333 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>GRC Evidence Mapping Challenge | Beatrice Kungu</title>
-  <meta name="description" content="Interactive GRC evidence mapping challenge by Beatrice Kungu.">
-  <meta name="keywords" content="GRC, audit evidence, NIST, compliance, control mapping, Beatrice Kungu">
+  <title>Incident Triage Simulator | Beatrice Kungu</title>
+  <meta name="description" content="Interactive incident triage simulator demonstrating severity assignment, escalation paths, privacy compliance, and cybersecurity response judgment.">
+  <meta name="keywords" content="incident triage, GRC, privacy compliance, incident response, cybersecurity portfolio, Beatrice Kungu">
 
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#0f172a",
+            panel: "#ffffff",
+            brand: "#4f46e5",
+            brandDark: "#3730a3"
+          },
+          boxShadow: {
+            soft: "0 24px 60px rgba(15, 23, 42, 0.12)"
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Poppins:ital,wght@0,100;0,300;0,500;0,600;0,700;0,800&family=Raleway:ital,wght@0,400;0,600;0,700;0,800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
-  <link href="assets/css/main.css" rel="stylesheet">
-  <link href="assets/css/project-labs.css" rel="stylesheet">
+    .queue-grid {
+      background-image:
+        linear-gradient(rgba(79, 70, 229, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79, 70, 229, 0.08) 1px, transparent 1px);
+      background-size: 38px 38px;
+    }
+  </style>
 </head>
 
-<body class="portfolio-details-page lab-page">
-
-  <header id="header" class="header d-flex align-items-center light-background sticky-top">
-    <div class="container position-relative d-flex align-items-center justify-content-between">
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a class="nav-link scrollto" href="index.html">Home</a></li>
-          <li><a class="nav-link scrollto" href="about.html">About</a></li>
-          <li><a class="nav-link scrollto active" href="portfolio.html">Projects</a></li>
-          <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
-          <li class="ms-auto"></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <div class="header-resume d-flex align-items-center">
-        <a href="assets/Bkungu.Resume.pdf" target="_blank" class="btn btn-lg d-flex align-items-center" style="background-color: #1387C1; border-color: #1387C1; color: #ffffff; border-radius: 30px; font-weight: 600; padding: 8px 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-          <i class="bi bi-file-earmark-pdf-fill" style="font-size: 1.5rem; margin-right: 8px;"></i>
-          View Resume
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <main class="main">
-    <section class="lab-main" data-evidence-lab>
-      <div class="lab-shell">
-        <div class="lab-hero">
-          <div class="lab-panel" data-aos="fade-up">
-            <span class="lab-eyebrow"><i class="bi bi-clipboard2-check"></i> GRC audit-readiness lab</span>
-            <h1>GRC Evidence Mapping Challenge</h1>
-            <p class="lab-lede">An interactive control-mapping exercise that shows how I translate real-world artifacts into audit-ready evidence for security, compliance, and risk conversations.</p>
-            <div class="lab-tags">
-              <span><i class="bi bi-diagram-3"></i> Control Mapping</span>
-              <span><i class="bi bi-folder-check"></i> Evidence Review</span>
-              <span><i class="bi bi-patch-check"></i> NIST-Aligned</span>
-            </div>
-          </div>
-
-          <aside class="lab-panel lab-visual" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/portfolio/CCO.jpg" alt="SQL evidence screenshot showing compliance role testing">
-            <div class="lab-visual-body">
-              <div class="lab-meter-row">
-                <span>Audit readiness</span>
-                <strong id="grc-score">0%</strong>
-              </div>
-              <div class="lab-meter" aria-hidden="true">
-                <div id="grc-score-meter" class="lab-meter-fill"></div>
-              </div>
-              <p id="grc-feedback" class="mt-3 mb-0">Select an evidence artifact, then choose the control it proves.</p>
-            </div>
-          </aside>
+<body class="min-h-screen bg-slate-100 text-slate-900 queue-grid">
+  <main class="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 py-6 sm:px-6 lg:px-8">
+    <header class="mb-6 rounded-2xl border border-slate-200 bg-white shadow-soft">
+      <div class="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+        <div>
+          <a href="portfolio.html" class="mb-3 inline-flex text-sm font-semibold text-indigo-700 hover:text-indigo-900">Back to Projects</a>
+          <h1 class="text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">Simba Security Solutions: Triage Queue</h1>
+          <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600">Classify incidents by severity and escalation path to show strategic incident response and privacy compliance judgment.</p>
         </div>
-
-        <div class="lab-kpis" data-aos="fade-up" data-aos-delay="150">
-          <div class="lab-kpi">
-            <i class="bi bi-link-45deg"></i>
-            <div><strong id="grc-mapped">0/5</strong><span>Evidence mapped</span></div>
-          </div>
-          <div class="lab-kpi">
-            <i class="bi bi-shield-check"></i>
-            <div><strong>5</strong><span>Controls in scope</span></div>
-          </div>
-          <div class="lab-kpi">
-            <i class="bi bi-file-earmark-check"></i>
-            <div><strong>1</strong><span>Audit packet goal</span></div>
-          </div>
-        </div>
-
-        <div class="lab-grid">
-          <div class="lab-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="d-flex flex-wrap justify-content-between gap-3 align-items-center mb-3">
-              <div>
-                <h2 class="h3 mb-2">Evidence Artifacts</h2>
-                <p class="mb-0">Click an artifact, then map it to the control it supports.</p>
-              </div>
-              <button id="grc-reset" class="lab-button" type="button"><i class="bi bi-arrow-clockwise"></i> Reset</button>
-            </div>
-
-            <div class="lab-evidence-grid">
-              <button class="lab-evidence" type="button" data-evidence="ac2">
-                <strong><i class="bi bi-people"></i> Quarterly access review export</strong>
-                <span>Manager attestations, disabled accounts, and privileged access exceptions.</span>
-              </button>
-              <button class="lab-evidence" type="button" data-evidence="ir4">
-                <strong><i class="bi bi-chat-square-text"></i> Incident bridge timeline</strong>
-                <span>Detection time, containment decision, owner handoff, and lessons learned.</span>
-              </button>
-              <button class="lab-evidence" type="button" data-evidence="ra5">
-                <strong><i class="bi bi-bug"></i> Vulnerability scan report</strong>
-                <span>Critical findings, remediation owner, SLA target, and retest status.</span>
-              </button>
-              <button class="lab-evidence" type="button" data-evidence="cp9">
-                <strong><i class="bi bi-cloud-arrow-down"></i> Restore test screenshot</strong>
-                <span>Backup source, restore timestamp, validation query, and RTO note.</span>
-              </button>
-              <button class="lab-evidence" type="button" data-evidence="au6">
-                <strong><i class="bi bi-search"></i> Audit log query export</strong>
-                <span>Security events reviewed, anomalies noted, and reviewer signoff captured.</span>
-              </button>
-            </div>
-          </div>
-
-          <aside class="lab-log" data-aos="fade-up" data-aos-delay="250">
-            <h2 class="h4 mb-3">Control Story</h2>
-            <ul>
-              <li>Shows how evidence supports control language.</li>
-              <li>Highlights missing proof before an audit.</li>
-              <li>Creates a cleaner conversation between GRC, security, and operations.</li>
-            </ul>
-            <div class="mt-4">
-              <span id="grc-status" class="lab-status"><i class="bi bi-folder-check"></i> Evidence mapping in progress</span>
-            </div>
-          </aside>
-        </div>
-
-        <div class="lab-card mt-4" data-aos="fade-up" data-aos-delay="300">
-          <h2 class="h3 mb-3">Map to Controls</h2>
-          <div class="lab-drop-grid">
-            <button class="lab-drop" type="button" data-control="ac2">
-              <strong>AC-02 Account Management</strong>
-              <span data-drop-result>Awaiting evidence</span>
-            </button>
-            <button class="lab-drop" type="button" data-control="ir4">
-              <strong>IR-04 Incident Handling</strong>
-              <span data-drop-result>Awaiting evidence</span>
-            </button>
-            <button class="lab-drop" type="button" data-control="ra5">
-              <strong>RA-05 Vulnerability Monitoring</strong>
-              <span data-drop-result>Awaiting evidence</span>
-            </button>
-            <button class="lab-drop" type="button" data-control="cp9">
-              <strong>CP-09 System Backup</strong>
-              <span data-drop-result>Awaiting evidence</span>
-            </button>
-            <button class="lab-drop" type="button" data-control="au6">
-              <strong>AU-06 Audit Review</strong>
-              <span data-drop-result>Awaiting evidence</span>
-            </button>
-          </div>
+        <div class="rounded-2xl border border-indigo-100 bg-indigo-50 px-5 py-4 text-center">
+          <p class="text-xs font-bold uppercase tracking-wide text-indigo-700">Score</p>
+          <p id="scoreTracker" class="mt-1 text-2xl font-black text-indigo-950">0 / 3 Resolved</p>
         </div>
       </div>
+    </header>
+
+    <section class="grid flex-1 gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
+      <aside class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+        <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Queue Status</p>
+        <div id="queueSteps" class="mt-5 space-y-3"></div>
+
+        <div class="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+          <p class="text-sm font-bold text-slate-950">Triage Standard</p>
+          <p class="mt-2 text-sm leading-6 text-slate-600">Good triage routes the work to the right accountable team without under-prioritizing regulatory or active-exfiltration risk.</p>
+        </div>
+      </aside>
+
+      <section id="stage" class="rounded-2xl border border-slate-200 bg-white shadow-soft"></section>
     </section>
   </main>
 
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>&copy; <span>Copyright</span> <strong class="px-1 sitename">FolioOne</strong> <span>All Rights Reserved<br></span></p>
-      </div>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> | <a href="https://bootstrapmade.com/tools/">DevTools</a>
-      </div>
-    </div>
-  </footer>
+  <script>
+    /*
+      Incident Triage Simulator
+      ------------------------------------------------------------
+      This script intentionally keeps all data and logic in one place
+      so new scenarios can be added later with minimal effort.
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  <div id="preloader"></div>
+      To add another scenario:
+      1. Copy one scenario object inside the scenarios array.
+      2. Update title, description, hint, correctSeverities, correctPaths,
+         successMessage, and failureMessage.
+      3. The UI, score tracker, queue steps, and final screen update automatically.
+    */
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/project-labs.js"></script>
+    const scenarios = [
+      {
+        title: "Bug Bounty (XSS)",
+        description: "An external researcher reports a stored Cross-Site Scripting (XSS) vulnerability on the customer help portal. It potentially impacts session cookies for 10-50 logged-in users.",
+        hint: "Target the remediation team. Priority is standard for web vulnerabilities.",
+        correctSeverities: ["Medium", "High"],
+        correctPaths: ["Engineering"],
+        successMessage: "Correct. Bug bounties are standard engineering remediation tasks. Good job not over-escalating.",
+        failureMessage: "Inappropriate escalation. Marking this as Critical or routing to Legal delays the actual code fix and causes alert fatigue."
+      },
+      {
+        title: "AI Model PII Leak",
+        description: "A production customer support AI chatbot is inadvertently leaking customer email addresses and physical addresses in its training data responses. This is a clear regulatory violation under FTC guidelines.",
+        hint: "Requires regulatory oversight and immediate containment.",
+        correctSeverities: ["Critical"],
+        correctPaths: ["Legal & Privacy", "Cross-Functional CIRT"],
+        successMessage: "Excellent. PII leaks require immediate Legal escalation and Critical priority to mitigate regulatory fines (e.g., GDPR/CCPA) and notify affected users.",
+        failureMessage: "Regulatory Risk! PII leaks are not just engineering bugs. They require immediate Legal escalation and Critical priority to manage compliance and user notification."
+      },
+      {
+        title: "Telemetry Alert (Data Exfiltration)",
+        description: "Splunk monitoring shows a sudden 5GB outbound data transfer from an internal HR analytics server to an unrecognized IP address in an offshore region.",
+        hint: "Potential exfiltration in progress. Needs technical containment.",
+        correctSeverities: ["High", "Critical"],
+        correctPaths: ["Cross-Functional CIRT"],
+        successMessage: "Spot on. Data exfiltration requires a coordinated incident response involving security, engineering, and potentially legal depending on what data was lost.",
+        failureMessage: "Too slow. Large outbound spikes from HR servers indicate potential data theft. This requires High/Critical priority and a Cross-Functional team to contain."
+      }
+    ];
+
+    const severityOptions = ["Low", "Medium", "High", "Critical"];
+    const escalationOptions = ["Engineering", "Legal & Privacy", "Cross-Functional CIRT"];
+
+    let currentScenarioIndex = 0;
+    let resolvedCount = 0;
+    let submittedResults = [];
+
+    const stage = document.getElementById("stage");
+    const scoreTracker = document.getElementById("scoreTracker");
+    const queueSteps = document.getElementById("queueSteps");
+
+    function updateScoreTracker() {
+      scoreTracker.textContent = `${resolvedCount} / ${scenarios.length} Resolved`;
+    }
+
+    function renderQueueSteps() {
+      queueSteps.innerHTML = scenarios.map((scenario, index) => {
+        const result = submittedResults[index];
+        const isCurrent = index === currentScenarioIndex;
+        const statusClass = result
+          ? result.isCorrect
+            ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+            : "border-orange-200 bg-orange-50 text-orange-800"
+          : isCurrent
+            ? "border-indigo-200 bg-indigo-50 text-indigo-800"
+            : "border-slate-200 bg-slate-50 text-slate-500";
+        const statusLabel = result ? (result.isCorrect ? "Resolved" : "Needs Review") : isCurrent ? "Active" : "Queued";
+
+        return `
+          <div class="rounded-xl border ${statusClass} p-3">
+            <div class="flex items-center justify-between gap-3">
+              <p class="text-sm font-bold">INC-${String(index + 1).padStart(3, "0")}</p>
+              <span class="rounded-full bg-white/70 px-2 py-1 text-[11px] font-bold">${statusLabel}</span>
+            </div>
+            <p class="mt-2 text-sm font-semibold">${scenario.title}</p>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function getOptionsMarkup(options) {
+      return options.map((option) => `<option value="${option}">${option}</option>`).join("");
+    }
+
+    function renderScenario() {
+      const scenario = scenarios[currentScenarioIndex];
+
+      updateScoreTracker();
+      renderQueueSteps();
+
+      stage.innerHTML = `
+        <article class="p-5 sm:p-7 lg:p-8">
+          <div class="flex flex-col gap-4 border-b border-slate-200 pb-6 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wide text-indigo-700">Incident ${currentScenarioIndex + 1} of ${scenarios.length}</p>
+              <h2 class="mt-2 text-2xl font-black tracking-tight text-slate-950 sm:text-4xl">${scenario.title}</h2>
+            </div>
+            <span class="w-fit rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-bold text-slate-700">Awaiting Triage</span>
+          </div>
+
+          <div class="grid gap-5 py-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Description</p>
+              <p class="mt-3 text-base leading-8 text-slate-700">${scenario.description}</p>
+            </div>
+            <div class="rounded-2xl border border-indigo-100 bg-indigo-50 p-5">
+              <p class="text-xs font-bold uppercase tracking-wide text-indigo-700">Context Hint</p>
+              <p class="mt-3 text-base leading-7 text-indigo-950">${scenario.hint}</p>
+            </div>
+          </div>
+
+          <form id="triageForm" class="rounded-2xl border border-slate-200 bg-white p-5">
+            <div class="grid gap-4 md:grid-cols-2">
+              <label class="block">
+                <span class="text-sm font-bold text-slate-800">Severity</span>
+                <select id="severitySelect" class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-100">
+                  ${getOptionsMarkup(severityOptions)}
+                </select>
+              </label>
+              <label class="block">
+                <span class="text-sm font-bold text-slate-800">Escalation Path</span>
+                <select id="pathSelect" class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-100">
+                  ${getOptionsMarkup(escalationOptions)}
+                </select>
+              </label>
+            </div>
+            <button type="submit" class="mt-5 w-full rounded-xl bg-indigo-600 px-5 py-3 font-bold text-white shadow-lg shadow-indigo-200 transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-200 sm:w-auto">
+              Submit Triage
+            </button>
+          </form>
+
+          <div id="feedbackArea" class="hidden"></div>
+        </article>
+      `;
+
+      document.getElementById("triageForm").addEventListener("submit", handleTriageSubmit);
+    }
+
+    function handleTriageSubmit(event) {
+      event.preventDefault();
+
+      const scenario = scenarios[currentScenarioIndex];
+      const selectedSeverity = document.getElementById("severitySelect").value;
+      const selectedPath = document.getElementById("pathSelect").value;
+
+      /*
+        Evaluation logic:
+        Each scenario defines allowed severities and allowed escalation paths.
+        The answer is correct only when BOTH the selected severity and selected
+        path are included in the scenario's accepted answer lists.
+      */
+      const severityIsCorrect = scenario.correctSeverities.includes(selectedSeverity);
+      const pathIsCorrect = scenario.correctPaths.includes(selectedPath);
+      const isCorrect = severityIsCorrect && pathIsCorrect;
+
+      if (isCorrect) {
+        resolvedCount += 1;
+      }
+
+      submittedResults[currentScenarioIndex] = {
+        isCorrect,
+        selectedSeverity,
+        selectedPath
+      };
+
+      updateScoreTracker();
+      renderQueueSteps();
+      renderFeedback(isCorrect, scenario);
+    }
+
+    function renderFeedback(isCorrect, scenario) {
+      const form = document.getElementById("triageForm");
+      const feedbackArea = document.getElementById("feedbackArea");
+      const isLastScenario = currentScenarioIndex === scenarios.length - 1;
+
+      form.classList.add("hidden");
+      feedbackArea.classList.remove("hidden");
+
+      const colorClasses = isCorrect
+        ? "border-emerald-200 bg-emerald-50 text-emerald-950"
+        : "border-orange-200 bg-orange-50 text-orange-950";
+      const badgeClasses = isCorrect
+        ? "bg-emerald-600 text-white"
+        : "bg-orange-600 text-white";
+      const heading = isCorrect ? "Triage Accepted" : "Triage Needs Review";
+      const message = isCorrect ? scenario.successMessage : scenario.failureMessage;
+      const nextButtonLabel = isLastScenario ? "View Final Score" : "Next Incident";
+
+      feedbackArea.innerHTML = `
+        <div class="rounded-2xl border ${colorClasses} p-5">
+          <span class="inline-flex rounded-full ${badgeClasses} px-3 py-1 text-xs font-black uppercase tracking-wide">${heading}</span>
+          <p class="mt-4 text-base leading-7">${message}</p>
+          <button id="nextButton" type="button" class="mt-5 rounded-xl bg-slate-950 px-5 py-3 font-bold text-white transition hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-200">
+            ${nextButtonLabel}
+          </button>
+        </div>
+      `;
+
+      document.getElementById("nextButton").addEventListener("click", goToNextIncident);
+    }
+
+    function goToNextIncident() {
+      if (currentScenarioIndex < scenarios.length - 1) {
+        currentScenarioIndex += 1;
+        renderScenario();
+        return;
+      }
+
+      renderFinalScreen();
+    }
+
+    function renderFinalScreen() {
+      updateScoreTracker();
+      renderQueueSteps();
+
+      const performanceMessage = resolvedCount === scenarios.length
+        ? "Excellent triage judgment. You balanced engineering remediation, privacy escalation, and coordinated incident response."
+        : "Good simulation run. Review the misses to sharpen severity assignment and escalation judgment.";
+
+      stage.innerHTML = `
+        <section class="flex min-h-[560px] items-center justify-center p-5 sm:p-8">
+          <div class="w-full max-w-3xl rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-soft sm:p-10">
+            <p class="text-xs font-bold uppercase tracking-wide text-indigo-700">Simulation Complete</p>
+            <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-5xl">Final Score: ${resolvedCount} / ${scenarios.length}</h2>
+            <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-600">${performanceMessage}</p>
+
+            <div class="mt-8 grid gap-3 text-left sm:grid-cols-3">
+              ${submittedResults.map((result, index) => `
+                <div class="rounded-2xl border ${result.isCorrect ? "border-emerald-200 bg-emerald-50" : "border-orange-200 bg-orange-50"} p-4">
+                  <p class="text-sm font-black text-slate-950">INC-${String(index + 1).padStart(3, "0")}</p>
+                  <p class="mt-2 text-sm text-slate-700">${scenarios[index].title}</p>
+                  <p class="mt-3 text-xs font-bold ${result.isCorrect ? "text-emerald-700" : "text-orange-700"}">${result.isCorrect ? "Resolved" : "Needs Review"}</p>
+                </div>
+              `).join("")}
+            </div>
+
+            <button id="restartButton" type="button" class="mt-8 rounded-xl bg-indigo-600 px-6 py-3 font-bold text-white shadow-lg shadow-indigo-200 transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-200">
+              Restart Simulation
+            </button>
+          </div>
+        </section>
+      `;
+
+      document.getElementById("restartButton").addEventListener("click", restartSimulation);
+    }
+
+    function restartSimulation() {
+      currentScenarioIndex = 0;
+      resolvedCount = 0;
+      submittedResults = [];
+      renderScenario();
+    }
+
+    renderScenario();
+  </script>
 </body>
 
 </html>
