@@ -817,16 +817,22 @@ section,
 }
 
 .hero .social-links a {
-  width: 45px;
-  height: 45px;
+  width: 52px;
+  height: 52px;
   background: var(--surface-color);
   border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 82%);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--default-color);
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   transition: all 0.3s ease;
+}
+
+.hero .social-links a:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent-color), transparent 40%);
+  outline-offset: 4px;
 }
 
 .hero .social-links a:hover {
