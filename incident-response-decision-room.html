@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Incident Response Decision Room | Beatrice Kungu</title>
-  <meta name="description" content="Interactive incident response decision room by Beatrice Kungu.">
+  <meta name="description" content="Incident response case study by Beatrice Kungu, documenting triage, containment, evidence preservation, stakeholder communication, and recovery decisions in a simulated identity compromise.">
   <meta name="keywords" content="incident response, cybersecurity, containment, escalation, executive reporting, Beatrice Kungu">
 
   <link href="assets/img/favicon.png" rel="icon">
@@ -25,7 +25,7 @@
   <link href="assets/css/project-labs.css" rel="stylesheet">
 </head>
 
-<body class="portfolio-details-page lab-page">
+<body class="portfolio-details-page lab-page ir-decision-page">
 
   <header id="header" class="header d-flex align-items-center light-background sticky-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
@@ -54,9 +54,9 @@
       <div class="lab-shell">
         <div class="lab-hero">
           <div class="lab-panel" data-aos="fade-up">
-            <span class="lab-eyebrow"><i class="bi bi-broadcast-pin"></i> Cybersecurity response lab</span>
+            <span class="lab-eyebrow"><i class="bi bi-broadcast-pin"></i> Incident response case study &middot; simulated environment</span>
             <h1>Incident Response Decision Room</h1>
-            <p class="lab-lede">A scenario-based decision game showing how I think through triage, containment, evidence preservation, stakeholder communication, and executive reporting during a security event.</p>
+            <p class="lab-lede">I created this project to show the judgment behind an incident response—not just the final dashboard. It documents how identity, database, and network signals become a defensible sequence of triage, containment, evidence preservation, stakeholder communication, and recovery decisions.</p>
             <div class="lab-tags">
               <span><i class="bi bi-lightning-charge"></i> Triage</span>
               <span><i class="bi bi-shield-exclamation"></i> Containment</span>
@@ -64,20 +64,53 @@
             </div>
           </div>
 
-          <aside class="lab-panel lab-visual" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/portfolio/cyber 5.jpg" alt="Cybersecurity shield and lock visual for incident response">
-            <div class="lab-visual-body">
-              <div class="lab-meter-row">
-                <span>Response confidence</span>
-                <strong id="ir-confidence">0%</strong>
+          <aside class="lab-panel ir-briefing" data-aos="fade-up" data-aos-delay="100" aria-label="Simulated incident brief">
+            <div class="ir-briefing-head">
+              <div>
+                <span class="ir-case-label">Case IR-0047</span>
+                <h2>Initial Incident Brief</h2>
               </div>
-              <div class="lab-meter" aria-hidden="true">
-                <div id="ir-risk-meter" class="lab-meter-fill"></div>
-              </div>
-              <p class="mt-3 mb-0">Choose the best response in each stage to lower residual risk.</p>
+              <span class="ir-simulation-badge">Fictional scenario</span>
+            </div>
+            <dl class="ir-briefing-grid">
+              <div><dt>Detection source</dt><dd>Identity provider + database audit logs</dd></div>
+              <div><dt>Impacted asset</dt><dd>Privileged account and sensitive dataset</dd></div>
+              <div><dt>Initial severity</dt><dd>High &mdash; possible unauthorized export</dd></div>
+              <div><dt>Response objective</dt><dd>Contain access while preserving evidence</dd></div>
+            </dl>
+            <div class="lab-meter-row">
+              <span>Response confidence</span>
+              <strong id="ir-confidence">0%</strong>
+            </div>
+            <div class="lab-meter" aria-hidden="true">
+              <div id="ir-risk-meter" class="lab-meter-fill"></div>
             </div>
           </aside>
         </div>
+
+        <section class="ir-project-context" aria-labelledby="ir-project-context-title" data-aos="fade-up" data-aos-delay="125">
+          <div class="ir-context-heading">
+            <span>Project foundation</span>
+            <h2 id="ir-project-context-title">Why this case study exists</h2>
+          </div>
+          <div class="ir-context-grid">
+            <article>
+              <span class="ir-context-icon icon-circle" aria-hidden="true"><i class="bi bi-bullseye"></i></span>
+              <h3>Purpose</h3>
+              <p>Translate incident response concepts into a repeatable workflow that a security analyst, business owner, or auditor can follow from first alert through closure.</p>
+            </article>
+            <article>
+              <span class="ir-context-icon icon-square" aria-hidden="true"><i class="bi bi-input-cursor-text"></i></span>
+              <h3>Scope and assumptions</h3>
+              <p>The organization, account, and event are simulated. The decision logic is modeled on common identity-compromise signals, least-privilege containment, evidence handling, and role-based escalation.</p>
+            </article>
+            <article>
+              <span class="ir-context-icon icon-rectangle" aria-hidden="true"><i class="bi bi-file-earmark-check"></i></span>
+              <h3>Project outputs</h3>
+              <p>A five-stage response runbook, an evidence checklist, a residual-risk view, and an executive summary that connects technical actions to business exposure.</p>
+            </article>
+          </div>
+        </section>
 
         <div class="lab-kpis" data-aos="fade-up" data-aos-delay="150">
           <div class="lab-kpi">
@@ -98,8 +131,9 @@
           <div class="lab-card" data-aos="fade-up" data-aos-delay="200">
             <div class="d-flex flex-wrap justify-content-between gap-3 align-items-center mb-3">
               <div>
+                <span class="ir-workstream">Response workstream</span>
                 <h2 class="h3 mb-2">Scenario: Suspicious Login and Data Access Spike</h2>
-                <p class="mb-0">A privileged account shows impossible travel and a sudden export from a sensitive dataset.</p>
+                <p class="mb-0">At 09:14 ET, a privileged account triggered an impossible-travel alert. Seven minutes later, database audit logs recorded an unusually large export from a sensitive dataset. The user has not yet been contacted, and the active session may still be valid.</p>
               </div>
               <span id="ir-status" class="lab-status"><i class="bi bi-broadcast-pin"></i> Response still developing</span>
             </div>

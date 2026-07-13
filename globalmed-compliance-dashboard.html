@@ -29,15 +29,15 @@
 
   <style>
     .gap-dashboard-page {
-      --glass-bg: linear-gradient(145deg, rgba(17, 24, 39, 0.72), rgba(17, 24, 39, 0.48) 48%, rgba(29, 155, 190, 0.08));
-      --glass-border: rgba(216, 226, 238, 0.18);
+      --glass-bg: linear-gradient(145deg, rgba(20, 38, 36, 0.82), rgba(16, 31, 30, 0.66) 48%, rgba(117, 187, 164, 0.08));
+      --glass-border: rgba(171, 214, 199, 0.2);
       --glass-highlight: rgba(248, 250, 252, 0.16);
-      --glass-shadow: 0 24px 70px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(248, 250, 252, 0.12);
+      --glass-shadow: 0 24px 70px rgba(3, 12, 11, 0.42), inset 0 1px 0 rgba(248, 250, 252, 0.1);
       color: #d8e2ee;
       background:
-        linear-gradient(115deg, rgba(29, 155, 190, 0.12), transparent 34%),
-        linear-gradient(250deg, rgba(15, 23, 42, 0.72), transparent 42%),
-        linear-gradient(135deg, #0b1120 0%, #111827 52%, #1e1e1e 100%);
+        radial-gradient(circle at 14% 18%, rgba(117, 187, 164, 0.15), transparent 28%),
+        linear-gradient(250deg, rgba(37, 55, 49, 0.7), transparent 44%),
+        linear-gradient(135deg, #0d1717 0%, #142220 52%, #1a2522 100%);
       background-attachment: fixed;
       min-height: 100vh;
       position: relative;
@@ -52,8 +52,8 @@
       z-index: 0;
       pointer-events: none;
       background:
-        linear-gradient(120deg, transparent 0%, rgba(248, 250, 252, 0.055) 18%, transparent 34%),
-        linear-gradient(300deg, transparent 0%, rgba(29, 155, 190, 0.08) 58%, transparent 76%);
+        linear-gradient(120deg, transparent 0%, rgba(248, 250, 252, 0.045) 18%, transparent 34%),
+        repeating-linear-gradient(90deg, rgba(171, 214, 199, 0.025) 0 1px, transparent 1px 84px);
       opacity: 0.9;
     }
 
@@ -63,6 +63,12 @@
       padding: 54px 0 72px;
       position: relative;
       z-index: 1;
+    }
+
+    .gap-dashboard-page section {
+      padding: 0;
+      background: transparent;
+      overflow: visible;
     }
 
     .gap-hero {
@@ -634,6 +640,7 @@
   <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
 
   <li class="ms-auto"></li>
+        </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 

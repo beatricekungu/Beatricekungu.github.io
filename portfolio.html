@@ -55,6 +55,7 @@
   <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
   
   <li class="ms-auto"></li>
+        </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
@@ -91,7 +92,7 @@
           </ul><!-- End Portfolio Filters -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloud">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloud project-theme-azure">
               <a href="azure-unmasking.html" class="portfolio-card portfolio-card-link" aria-label="View Azure SQL Dynamic Data Masking PoC case study">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/azure-sql.jpg" alt="Azure SQL security dashboard showing masked database fields" class="img-fluid">
@@ -100,6 +101,7 @@
                   </div>
                 </div>
                 <div class="portfolio-info">
+                  <span class="project-marker marker-square" aria-hidden="true"><i class="bi bi-database-lock"></i></span>
                   <h4>Azure SQL Dynamic Data Masking PoC</h4>
                   <p>Protected sensitive database fields with role-aware masking and audit-ready cloud security controls.</p>
                   <div class="portfolio-tags">
@@ -110,45 +112,7 @@
               </a>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloud filter-dba">
-              <a href="azure-sql-dba-command-center.html" class="portfolio-card portfolio-card-link" aria-label="View Azure SQL DBA Operations Command Center interactive lab">
-                <div class="portfolio-img">
-                  <img src="assets/img/portfolio/azure-sql-dba-command-center-thumbnail.jpg" alt="Azure SQL DBA operations command center with monitoring, recovery, and audit evidence panels" class="img-fluid">
-                  <div class="portfolio-overlay">
-                    <span class="portfolio-card-action"><i class="bi bi-arrow-up-right"></i></span>
-                  </div>
-                </div>
-                <div class="portfolio-info">
-                  <h4>Azure SQL DBA Operations Command Center</h4>
-                  <p>Built an interactive DBA readiness simulator for securing, monitoring, tuning, recovering, and documenting Azure SQL operations.</p>
-                  <div class="portfolio-tags">
-                    <span>Azure DBA</span>
-                    <span>Operations</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-grc">
-              <a href="globalmed-compliance-dashboard.html" class="portfolio-card portfolio-card-link" aria-label="View Cybersecurity Program Gap Assessment dashboard">
-                <div class="portfolio-img">
-                  <img src="assets/img/portfolio/cybersecurity-gap-assessment-thumbnail.png" alt="Cybersecurity program gap assessment dashboard with GRC risk metrics" class="img-fluid">
-                  <div class="portfolio-overlay">
-                    <span class="portfolio-card-action"><i class="bi bi-arrow-up-right"></i></span>
-                  </div>
-                </div>
-                <div class="portfolio-info">
-                  <h4>Cybersecurity Program Gap Assessment</h4>
-                  <p>Converted a simulated federal benefits risk register into an executive-ready GRC dashboard and remediation roadmap.</p>
-                  <div class="portfolio-tags">
-                    <span>GRC</span>
-                    <span>NIST</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-grc">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-grc project-theme-triage">
               <a href="grc-evidence-mapping-challenge.html" class="portfolio-card portfolio-card-link" aria-label="View Incident Triage Simulator interactive lab">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/grc-evidence-mapping-challenge-thumbnail.jpg" alt="Incident triage simulator visual with control matrix and response workflow elements" class="img-fluid">
@@ -157,6 +121,7 @@
                   </div>
                 </div>
                 <div class="portfolio-info">
+                  <span class="project-marker marker-circle" aria-hidden="true"><i class="bi bi-inboxes"></i></span>
                   <h4>Incident Triage Simulator</h4>
                   <p>Built a 10-incident triage queue testing severity, escalation, privacy risk, and coordinated response decisions.</p>
                   <div class="portfolio-tags">
@@ -167,7 +132,47 @@
               </a>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-secops">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-grc project-theme-grc">
+              <a href="globalmed-compliance-dashboard.html" class="portfolio-card portfolio-card-link" aria-label="View Cybersecurity Program Gap Assessment dashboard">
+                <div class="portfolio-img">
+                  <img src="assets/img/portfolio/cybersecurity-gap-assessment-thumbnail.png" alt="Cybersecurity program gap assessment dashboard with GRC risk metrics" class="img-fluid">
+                  <div class="portfolio-overlay">
+                    <span class="portfolio-card-action"><i class="bi bi-arrow-up-right"></i></span>
+                  </div>
+                </div>
+                <div class="portfolio-info">
+                  <span class="project-marker marker-rectangle" aria-hidden="true"><i class="bi bi-clipboard-data"></i></span>
+                  <h4>Cybersecurity Program Gap Assessment</h4>
+                  <p>Converted a simulated federal benefits risk register into an executive-ready GRC dashboard and remediation roadmap.</p>
+                  <div class="portfolio-tags">
+                    <span>GRC</span>
+                    <span>NIST</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloud filter-dba project-theme-dba">
+              <a href="azure-sql-dba-command-center.html" class="portfolio-card portfolio-card-link" aria-label="View Azure SQL DBA Operations Command Center interactive lab">
+                <div class="portfolio-img">
+                  <img src="assets/img/portfolio/azure-sql-dba-command-center-thumbnail.jpg" alt="Azure SQL DBA operations command center with monitoring, recovery, and audit evidence panels" class="img-fluid">
+                  <div class="portfolio-overlay">
+                    <span class="portfolio-card-action"><i class="bi bi-arrow-up-right"></i></span>
+                  </div>
+                </div>
+                <div class="portfolio-info">
+                  <span class="project-marker marker-soft-square" aria-hidden="true"><i class="bi bi-server"></i></span>
+                  <h4>Azure SQL DBA Operations Command Center</h4>
+                  <p>Built an interactive DBA readiness simulator for securing, monitoring, tuning, recovering, and documenting Azure SQL operations.</p>
+                  <div class="portfolio-tags">
+                    <span>Azure DBA</span>
+                    <span>Operations</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-secops project-theme-powerbi">
               <a href="cyberattack-financial-exposure.html" class="portfolio-card portfolio-card-link" aria-label="View Cyberattack Financial Exposure Dashboard case study">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/Cyber security financial.jpg" alt="Cybersecurity financial exposure dashboard with threat metrics" class="img-fluid">
@@ -176,17 +181,21 @@
                   </div>
                 </div>
                 <div class="portfolio-info">
+                  <div class="project-label-row">
+                    <span class="project-marker marker-bars" aria-hidden="true"><i class="bi bi-bar-chart-fill"></i></span>
+                    <span class="project-status">Power BI project in development</span>
+                  </div>
                   <h4>Cyberattack Financial Exposure Dashboard</h4>
-                  <p>Connected threat activity to operational and financial impact for executive-level security reporting.</p>
+                  <p>Building a Power BI model that connects cyberattack activity to operational disruption and estimated financial exposure.</p>
                   <div class="portfolio-tags">
-                    <span>Threat Intelligence</span>
-                    <span>Analytics</span>
+                    <span>Power BI</span>
+                    <span>In Development</span>
                   </div>
                 </div>
               </a>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-secops">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-secops project-theme-response">
               <a href="incident-response-decision-room.html" class="portfolio-card portfolio-card-link" aria-label="View Incident Response Decision Room interactive lab">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/incident-response-decision-room-thumbnail.jpg" alt="Incident response decision room with alert timeline, containment panels, and risk meter" class="img-fluid">
@@ -195,8 +204,9 @@
                   </div>
                 </div>
                 <div class="portfolio-info">
+                  <span class="project-marker marker-ring" aria-hidden="true"><i class="bi bi-broadcast-pin"></i></span>
                   <h4>Incident Response Decision Room</h4>
-                  <p>Designed a scenario game that tests triage, containment, evidence preservation, communication, and executive reporting.</p>
+                  <p>Created a documented response case study that turns identity and data-access signals into defensible containment, evidence, and communication decisions.</p>
                   <div class="portfolio-tags">
                     <span>IR</span>
                     <span>Risk</span>
@@ -205,7 +215,7 @@
               </a>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-engineering">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-engineering project-theme-identity">
               <a href="enterprise-iam-rbac.html" class="portfolio-card portfolio-card-link" aria-label="View Identity Governance From Operations to Architecture case study">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/Image1.png" alt="Identity governance workflow moving from manual provisioning to RBAC architecture" class="img-fluid">
@@ -214,8 +224,9 @@
                   </div>
                 </div>
                 <div class="portfolio-info">
+                  <span class="project-marker marker-notch" aria-hidden="true"><i class="bi bi-person-badge"></i></span>
                   <h4>Identity Governance: From Operations to Architecture</h4>
-                  <p>Transitioning from manual access provisioning workflows to automated, secure enterprise RBAC matrix design.</p>
+                  <p>Connects hands-on access provisioning experience with a later secure-by-design RBAC architecture and segregation-of-duties model.</p>
                   <div class="portfolio-tags">
                     <span>IAM</span>
                     <span>RBAC</span>
@@ -224,44 +235,10 @@
               </a>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-engineering">
-              <a href="saas-incident-response-pipeline.html" class="portfolio-card portfolio-card-link" aria-label="View SaaS Incident Response Pipeline case study">
-                <div class="portfolio-img">
-                  <img src="assets/img/portfolio/SaaS incident-pipeline.jpg" alt="SaaS incident response pipeline workflow" class="img-fluid">
-                  <div class="portfolio-overlay">
-                    <span class="portfolio-card-action"><i class="bi bi-arrow-up-right"></i></span>
-                  </div>
-                </div>
-                <div class="portfolio-info">
-                  <h4>SaaS Incident Response Pipeline</h4>
-                  <p>Automated telemetry intake, triage steps, and ticket routing to reduce manual incident handoffs.</p>
-                  <div class="portfolio-tags">
-                    <span>Automation</span>
-                    <span>Incident Response</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloud">
-              <a href="enterprise-sql-performance.html" class="portfolio-card portfolio-card-link" aria-label="View Enterprise SQL Performance Optimization case study">
-                <div class="portfolio-img">
-                  <img src="assets/img/portfolio/performance tuning.jpg" alt="SQL performance tuning dashboard with execution plan analysis" class="img-fluid">
-                  <div class="portfolio-overlay">
-                    <span class="portfolio-card-action"><i class="bi bi-arrow-up-right"></i></span>
-                  </div>
-                </div>
-                <div class="portfolio-info">
-                  <h4>Enterprise SQL Performance Optimization</h4>
-                  <p>Analyzed execution plans and indexing opportunities to improve database performance and reliability.</p>
-                  <div class="portfolio-tags">
-                    <span>SQL</span>
-                    <span>Optimization</span>
-                  </div>
-                </div>
-              </a>
-            </div>
           </div><!-- End Portfolio Items Container -->
+
+          <!-- Draft projects are intentionally excluded from the public gallery until complete:
+               SaaS Incident Response Pipeline and Enterprise SQL Performance Optimization. -->
 
         </div>
 

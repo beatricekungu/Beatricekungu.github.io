@@ -2334,6 +2334,88 @@ section,
   padding: 20px;
 }
 
+.portfolio .project-marker {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--project-accent, var(--accent-color));
+  background: color-mix(in srgb, var(--project-accent, var(--accent-color)), transparent 88%);
+  border: 1px solid color-mix(in srgb, var(--project-accent, var(--accent-color)), transparent 54%);
+  font-size: 1.15rem;
+}
+
+.portfolio .marker-square {
+  border-radius: 3px;
+}
+
+.portfolio .marker-circle,
+.portfolio .marker-ring {
+  border-radius: 50%;
+}
+
+.portfolio .marker-rectangle {
+  width: 58px;
+  border-radius: 5px;
+}
+
+.portfolio .marker-soft-square {
+  border-radius: 13px;
+}
+
+.portfolio .marker-bars {
+  width: 52px;
+  height: 38px;
+  border-radius: 2px 10px 2px 10px;
+}
+
+.portfolio .marker-ring {
+  background: transparent;
+  border-width: 3px;
+}
+
+.portfolio .marker-notch {
+  width: 54px;
+  border-radius: 2px;
+  clip-path: polygon(0 0, 82% 0, 100% 25%, 100% 100%, 0 100%);
+}
+
+.portfolio .project-label-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.portfolio .project-status {
+  display: inline-flex;
+  padding: 5px 9px;
+  border: 1px solid rgba(242, 200, 17, 0.42);
+  border-radius: 999px;
+  color: #f8df74;
+  background: rgba(242, 200, 17, 0.09);
+  font-size: 0.7rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.portfolio .project-theme-azure { --project-accent: #39b9e6; }
+.portfolio .project-theme-triage { --project-accent: #63b3a6; }
+.portfolio .project-theme-grc { --project-accent: #d4aa63; }
+.portfolio .project-theme-dba { --project-accent: #818cf8; }
+.portfolio .project-theme-powerbi { --project-accent: #f2c811; }
+.portfolio .project-theme-response { --project-accent: #f28b66; }
+.portfolio .project-theme-identity { --project-accent: #c084fc; }
+
+.portfolio .portfolio-item .portfolio-card {
+  border-top: 3px solid color-mix(in srgb, var(--project-accent, var(--accent-color)), transparent 22%);
+}
+
 .portfolio .portfolio-card .portfolio-info h4 {
   font-size: 1.2rem;
   font-weight: 700;
