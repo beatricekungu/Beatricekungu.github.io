@@ -40,4 +40,4 @@ I bridge the gap between technical security work and business risk. My portfolio
 
 ## Explore My Work
 
-Visit my [project portfolio](https://beatricekungu.github.io/portfolio.html) to explore the interactive case studies, dashboards, and security simulations behind this repository.
+Visit my [project portfolio](https://beatricekungu.github.io/projects/) to explore the interactive case studies, dashboards, and security simulations behind this repository.
