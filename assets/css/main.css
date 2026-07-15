@@ -779,6 +779,10 @@ section,
   border: 2px solid;
 }
 
+.hero .hero-actions .btn i {
+  margin-right: 6px;
+}
+
 .hero .hero-actions .btn.btn-primary {
   background: var(--accent-color);
   color: var(--contrast-color);
@@ -2939,6 +2943,23 @@ section,
 .contact .contact-form p {
   color: color-mix(in srgb, var(--default-color), transparent 25%);
   margin-bottom: 2rem;
+}
+
+.contact .contact-schedule {
+  margin: -0.75rem 0 2rem;
+}
+
+.contact .contact-form .calendly-btn {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 12px 26px rgba(19, 135, 193, 0.22);
+}
+
+.contact .contact-form .calendly-btn:hover {
+  background-color: color-mix(in srgb, var(--accent-color), #000 12%);
+  border-color: color-mix(in srgb, var(--accent-color), #000 12%);
+  transform: translateY(-2px);
 }
 
 .contact .contact-form .form-control,
