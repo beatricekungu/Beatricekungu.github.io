@@ -97,6 +97,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
       gap: 12px;
       margin-top: 22px;
     }
@@ -120,6 +121,30 @@
 
     .powerbi-live-link:hover,
     .powerbi-live-link:focus {
+      color: #ffffff;
+      background: var(--powerbi-accent-hover);
+      border-color: var(--powerbi-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(11, 52, 88, 0.36);
+    }
+
+    .powerbi-icon-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      color: #ffffff;
+      background: var(--powerbi-accent);
+      border: 1px solid rgba(156, 201, 230, 0.6);
+      border-radius: 50%;
+      font-size: 1.35rem;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
+      transition: all 0.25s ease;
+    }
+
+    .powerbi-icon-link:hover,
+    .powerbi-icon-link:focus {
       color: #ffffff;
       background: var(--powerbi-accent-hover);
       border-color: var(--powerbi-accent-hover);
@@ -527,6 +552,9 @@
             <a class="powerbi-live-link" href="https://app.powerbi.com/view?r=eyJrIjoiYTZmOTc5ZDQtMjQ2NS00ZTA4LTk4MTEtY2M3MThlMTI1N2NiIiwidCI6IjY3NzQ1OGU2LThjNTItNDYxMy05ZmRiLTJjYzgzN2Q1ZTRlZiJ9" target="_blank" rel="noopener">
               <i class="bi bi-box-arrow-up-right"></i>
               View Live Power BI Report
+            </a>
+            <a class="powerbi-icon-link" href="https://github.com/beatricekungu/Hospital-Financial-Exposure-Dashboard" target="_blank" rel="noopener" aria-label="View GitHub repository" title="View GitHub repository">
+              <i class="bi bi-github"></i>
             </a>
           </div>
           <div class="powerbi-report-embed" aria-label="Embedded MGH Hospital Dashboard Power BI report">
