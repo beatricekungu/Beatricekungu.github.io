@@ -980,7 +980,7 @@ section,
 }
 
 .home-name-spark {
-  color: #f2c811;
+  color: #9cc9e6;
   font-size: 1.05rem;
   line-height: 1;
 }
@@ -1500,8 +1500,8 @@ section,
 .skill-powerbi {
   right: -8%;
   bottom: 23%;
-  color: #fff3b8;
-  border-color: rgba(242, 200, 17, 0.5);
+  color: #d8e2ee;
+  border-color: rgba(11, 52, 88, 0.6);
   border-radius: 999px 12px 999px 999px;
   animation-delay: -3.5s;
 }
@@ -3627,7 +3627,7 @@ section,
 .portfolio .project-theme-triage { --project-accent: #63b3a6; }
 .portfolio .project-theme-grc { --project-accent: #d4aa63; }
 .portfolio .project-theme-dba { --project-accent: #818cf8; }
-.portfolio .project-theme-powerbi { --project-accent: #f2c811; }
+.portfolio .project-theme-powerbi { --project-accent: #0B3458; }
 .portfolio .project-theme-response { --project-accent: #f28b66; }
 .portfolio .project-theme-identity { --project-accent: #c084fc; }
 

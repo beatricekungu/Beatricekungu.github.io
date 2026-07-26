@@ -39,10 +39,16 @@
     .powerbi-build-page {
       min-height: 78vh;
       padding: 64px 0 80px;
+      --powerbi-accent: #0B3458;
+      --powerbi-accent-hover: #14527f;
+      --powerbi-accent-soft: rgba(11, 52, 88, 0.42);
+      --powerbi-accent-line: rgba(127, 179, 213, 0.32);
+      --powerbi-accent-text: #9cc9e6;
+      --powerbi-surface: rgba(18, 27, 45, 0.94);
       background:
-        linear-gradient(115deg, rgba(242, 200, 17, 0.1), transparent 32%),
+        linear-gradient(115deg, rgba(11, 52, 88, 0.42), transparent 32%),
         repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 88px),
-        #171717;
+        #0b1120;
     }
 
     .powerbi-shell {
@@ -53,10 +59,10 @@
     .powerbi-dashboard-slot {
       margin-bottom: 28px;
       padding: clamp(28px, 5vw, 56px);
-      border: 1px dashed rgba(242, 200, 17, 0.42);
+      border: 1px dashed var(--powerbi-accent-line);
       background:
-        linear-gradient(135deg, rgba(242, 200, 17, 0.08), transparent 34%),
-        rgba(31, 31, 31, 0.92);
+        linear-gradient(135deg, rgba(11, 52, 88, 0.28), transparent 34%),
+        var(--powerbi-surface);
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
       text-align: center;
     }
@@ -67,7 +73,7 @@
       align-items: center;
       gap: 8px;
       margin-bottom: 14px;
-      color: #f2c811;
+      color: var(--powerbi-accent-text);
       font-size: 0.74rem;
       font-weight: 800;
       letter-spacing: 0.08em;
@@ -102,9 +108,9 @@
       gap: 8px;
       min-height: 44px;
       padding: 10px 18px;
-      color: #171717;
-      background: #f2c811;
-      border: 1px solid #f2c811;
+      color: #ffffff;
+      background: var(--powerbi-accent);
+      border: 1px solid var(--powerbi-accent);
       border-radius: 999px;
       font-size: 0.9rem;
       font-weight: 800;
@@ -114,11 +120,11 @@
 
     .powerbi-live-link:hover,
     .powerbi-live-link:focus {
-      color: #171717;
-      background: #ffe066;
-      border-color: #ffe066;
+      color: #ffffff;
+      background: var(--powerbi-accent-hover);
+      border-color: var(--powerbi-accent-hover);
       transform: translateY(-2px);
-      box-shadow: 0 14px 28px rgba(242, 200, 17, 0.22);
+      box-shadow: 0 14px 28px rgba(11, 52, 88, 0.36);
     }
 
     .powerbi-report-embed {
@@ -127,7 +133,7 @@
       aspect-ratio: 16 / 9;
       min-height: 420px;
       overflow: hidden;
-      border: 1px solid rgba(242, 200, 17, 0.24);
+      border: 1px solid var(--powerbi-accent-line);
       border-radius: 8px;
       background: #0f172a;
       box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
@@ -156,11 +162,12 @@
     .powerbi-copy,
     .powerbi-model,
     .powerbi-context,
+    .powerbi-screenshots,
     .powerbi-question-card,
     .powerbi-game-card,
     .powerbi-plan article {
-      border: 1px solid rgba(242, 200, 17, 0.22);
-      background: rgba(31, 31, 31, 0.92);
+      border: 1px solid var(--powerbi-accent-line);
+      background: var(--powerbi-surface);
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
     }
 
@@ -174,10 +181,10 @@
       gap: 8px;
       min-height: 30px;
       padding: 4px 12px;
-      color: #f8df74;
-      border: 1px solid rgba(242, 200, 17, 0.42);
+      color: #d8e2ee;
+      border: 1px solid var(--powerbi-accent-line);
       border-radius: 999px;
-      background: rgba(242, 200, 17, 0.08);
+      background: var(--powerbi-accent-soft);
       font-size: 0.76rem;
       font-weight: 800;
       line-height: 1.2;
@@ -212,10 +219,10 @@
       align-items: center;
       min-height: 30px;
       padding: 4px 12px;
-      color: #f2c811;
-      border: 1px solid rgba(242, 200, 17, 0.24);
+      color: #d8e2ee;
+      border: 1px solid var(--powerbi-accent-line);
       border-radius: 999px;
-      background: rgba(242, 200, 17, 0.08);
+      background: rgba(11, 52, 88, 0.34);
       font-size: 0.8rem;
       font-weight: 700;
       line-height: 1.2;
@@ -238,7 +245,7 @@
 
     .powerbi-logo-bars span {
       width: 28px;
-      background: #f2c811;
+      background: var(--powerbi-accent);
       border-radius: 3px 3px 0 0;
     }
 
@@ -287,16 +294,76 @@
       padding: 26px;
     }
 
+    .powerbi-screenshots {
+      margin-top: 28px;
+      padding: 26px;
+    }
+
     .powerbi-context h2,
+    .powerbi-screenshots h2,
     .powerbi-question-card h3,
     .powerbi-game-card h2 {
       color: #ffffff;
     }
 
+    .powerbi-screenshots > p,
     .powerbi-context p {
       margin-bottom: 0;
       color: #c9c9c9;
       line-height: 1.75;
+    }
+
+    .powerbi-screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .powerbi-screenshot-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--powerbi-accent-line);
+      border-radius: 8px;
+      background: rgba(11, 52, 88, 0.24);
+      color: #d8e2ee;
+      text-decoration: none;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .powerbi-screenshot-card:hover,
+    .powerbi-screenshot-card:focus {
+      color: #ffffff;
+      border-color: rgba(156, 201, 230, 0.72);
+      transform: translateY(-4px);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.34);
+    }
+
+    .powerbi-screenshot-card img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: #f8fafc;
+      display: block;
+    }
+
+    .powerbi-screenshot-card span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 10px 14px;
+      color: inherit;
+      font-size: 0.88rem;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .powerbi-screenshot-card i {
+      color: var(--powerbi-accent-text);
+      font-size: 1rem;
     }
 
     .powerbi-question-grid {
@@ -308,7 +375,7 @@
 
     .powerbi-question-card {
       padding: 20px;
-      border-left: 4px solid #f2c811;
+      border-left: 4px solid var(--powerbi-accent);
     }
 
     .powerbi-question-icon {
@@ -319,16 +386,16 @@
       align-items: center;
       justify-content: center;
       border-radius: 8px;
-      color: #171717;
-      background: #f2c811;
+      color: #ffffff;
+      background: var(--powerbi-accent);
       font-size: 1.35rem;
-      box-shadow: 0 12px 24px rgba(242, 200, 17, 0.18);
+      box-shadow: 0 12px 24px rgba(11, 52, 88, 0.34);
     }
 
     .powerbi-question-card strong {
       display: block;
       margin-bottom: 10px;
-      color: #f2c811;
+      color: var(--powerbi-accent-text);
       font-size: 0.75rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -344,7 +411,7 @@
     .powerbi-game-card {
       margin-top: 28px;
       padding: 26px;
-      border-top: 4px solid #f2c811;
+      border-top: 4px solid var(--powerbi-accent);
     }
 
     .powerbi-game-card p {
@@ -366,10 +433,10 @@
       gap: 8px;
       min-height: 30px;
       padding: 4px 12px;
-      color: #f2c811;
-      border: 1px solid rgba(242, 200, 17, 0.24);
+      color: #d8e2ee;
+      border: 1px solid var(--powerbi-accent-line);
       border-radius: 999px;
-      background: rgba(242, 200, 17, 0.08);
+      background: rgba(11, 52, 88, 0.34);
       font-size: 0.8rem;
       font-weight: 700;
       line-height: 1.2;
@@ -384,11 +451,11 @@
 
     .powerbi-plan article {
       padding: 24px;
-      border-top: 4px solid #f2c811;
+      border-top: 4px solid var(--powerbi-accent);
     }
 
     .powerbi-plan article span {
-      color: #f2c811;
+      color: var(--powerbi-accent-text);
       font-size: 0.74rem;
       font-weight: 800;
       letter-spacing: 0.08em;
@@ -411,6 +478,7 @@
     @media (max-width: 900px) {
       .powerbi-hero,
       .powerbi-plan-grid,
+      .powerbi-screenshot-grid,
       .powerbi-question-grid {
         grid-template-columns: 1fr;
       }
@@ -463,6 +531,26 @@
           </div>
           <div class="powerbi-report-embed" aria-label="Embedded MGH Hospital Dashboard Power BI report">
             <iframe title="MGH Hospital Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiYTZmOTc5ZDQtMjQ2NS00ZTA4LTk4MTEtY2M3MThlMTI1N2NiIiwidCI6IjY3NzQ1OGU2LThjNTItNDYxMy05ZmRiLTJjYzgzN2Q1ZTRlZiJ9" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="powerbi-screenshots" aria-labelledby="powerbi-screenshots-title">
+          <span class="powerbi-status"><i class="bi bi-arrows-fullscreen"></i> Real project screenshots</span>
+          <h2 id="powerbi-screenshots-title">Click to zoom into the report evidence</h2>
+          <p>These are actual Power BI project screenshots from the published dashboard, data model, and DAX measures layer so hiring managers can inspect the work behind the case study.</p>
+          <div class="powerbi-screenshot-grid" aria-label="Power BI dashboard screenshots">
+            <a class="glightbox powerbi-screenshot-card" href="assets/img/portfolio/hospital-dashboard-overview.png" data-gallery="hospital-powerbi-screenshots" data-title="Published dashboard overview">
+              <img src="assets/img/portfolio/hospital-dashboard-overview.png" alt="Published Power BI dashboard overview with patient admissions, repeat visits, encounter class, demographics, geography, and patient snapshot visuals">
+              <span><i class="bi bi-zoom-in"></i> Dashboard overview</span>
+            </a>
+            <a class="glightbox powerbi-screenshot-card" href="assets/img/portfolio/hospital-data-model-architecture.png" data-gallery="hospital-powerbi-screenshots" data-title="Power BI model relationships">
+              <img src="assets/img/portfolio/hospital-data-model-architecture.png" alt="Power BI model relationships connecting encounters, organizations, patients, payers, procedures, date, refresh info, and measures tables">
+              <span><i class="bi bi-diagram-3"></i> Data model architecture</span>
+            </a>
+            <a class="glightbox powerbi-screenshot-card" href="assets/img/portfolio/hospital-measures-layer-highlight.png" data-gallery="hospital-powerbi-screenshots" data-title="Measures table and KPI logic">
+              <img src="assets/img/portfolio/hospital-measures-layer-highlight.png" alt="Power BI model screenshot highlighting the measures table used for admissions, readmissions, average cost, coverage, and length-of-stay KPIs">
+              <span><i class="bi bi-calculator"></i> Measures and KPI logic</span>
+            </a>
           </div>
         </div>
 
