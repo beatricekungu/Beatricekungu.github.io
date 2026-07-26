@@ -446,13 +446,16 @@
       margin-bottom: 18px;
     }
 
-    .powerbi-game-steps {
+    .powerbi-game-header {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
     }
 
-    .powerbi-game-steps span {
+    .powerbi-game-score {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -467,9 +470,140 @@
       line-height: 1.2;
     }
 
+    .powerbi-game-progress {
+      width: 100%;
+      height: 8px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      margin-bottom: 22px;
+    }
+
+    .powerbi-game-progress span {
+      display: block;
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #9cc9e6, #ffffff);
+      transition: width 0.3s ease;
+    }
+
+    .powerbi-game-stage {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .powerbi-game-prompt,
+    .powerbi-game-feedback {
+      min-height: 190px;
+      padding: 20px;
+      border: 1px solid var(--powerbi-accent-line);
+      border-radius: 8px;
+      background: rgba(11, 52, 88, 0.24);
+    }
+
+    .powerbi-game-prompt strong {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: var(--powerbi-accent-text);
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .powerbi-game-prompt h3,
+    .powerbi-game-feedback h3 {
+      color: #ffffff;
+      font-size: 1.2rem;
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .powerbi-game-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .powerbi-game-option {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 14px;
+      color: #d8e2ee;
+      text-align: left;
+      border: 1px solid var(--powerbi-accent-line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      font-weight: 700;
+      line-height: 1.25;
+      transition: all 0.2s ease;
+    }
+
+    .powerbi-game-option:hover,
+    .powerbi-game-option:focus {
+      color: #ffffff;
+      border-color: rgba(156, 201, 230, 0.72);
+      background: rgba(11, 52, 88, 0.52);
+      transform: translateY(-1px);
+    }
+
+    .powerbi-game-option.is-correct {
+      color: #d1fae5;
+      border-color: rgba(74, 222, 128, 0.72);
+      background: rgba(22, 101, 52, 0.4);
+    }
+
+    .powerbi-game-option.is-incorrect {
+      color: #fee2e2;
+      border-color: rgba(248, 113, 113, 0.72);
+      background: rgba(127, 29, 29, 0.42);
+    }
+
+    .powerbi-game-feedback {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .powerbi-game-feedback[data-state="success"] {
+      border-color: rgba(74, 222, 128, 0.6);
+    }
+
+    .powerbi-game-feedback[data-state="error"] {
+      border-color: rgba(248, 113, 113, 0.6);
+    }
+
+    .powerbi-game-next {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 9px 16px;
+      color: #ffffff;
+      background: var(--powerbi-accent);
+      border: 1px solid var(--powerbi-accent);
+      border-radius: 999px;
+      font-weight: 800;
+      transition: all 0.2s ease;
+    }
+
+    .powerbi-game-next:hover,
+    .powerbi-game-next:focus {
+      background: var(--powerbi-accent-hover);
+      border-color: var(--powerbi-accent-hover);
+      transform: translateY(-1px);
+    }
+
     .powerbi-plan-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 16px;
       margin-top: 20px;
     }
@@ -503,6 +637,8 @@
     @media (max-width: 900px) {
       .powerbi-hero,
       .powerbi-plan-grid,
+      .powerbi-game-stage,
+      .powerbi-game-options,
       .powerbi-screenshot-grid,
       .powerbi-question-grid {
         grid-template-columns: 1fr;
@@ -587,7 +723,7 @@
             <span class="powerbi-status"><i class="bi bi-hospital"></i> Maven Hospital Challenge</span>
             <h1 id="powerbi-project-title">Hospital Financial Exposure Dashboard</h1>
             <p>I built this as a Power BI executive KPI dashboard for the Maven Hospital Challenge. The goal is to translate hospital patient records into leadership-ready insight around admissions, readmissions, length of stay, visit cost, and insurance coverage while documenting the data model, DAX measures, and dashboard design decisions.</p>
-            <div class="powerbi-tags" aria-label="Planned project skills">
+            <div class="powerbi-tags" aria-label="Project skills">
               <span>Power BI</span>
               <span>Power Query</span>
               <span>DAX</span>
@@ -617,60 +753,84 @@
               <div class="powerbi-question-icon" aria-hidden="true"><i class="bi bi-person-plus-fill"></i></div>
               <strong>Question 01</strong>
               <h3>How many patients have been admitted or readmitted over time?</h3>
-              <p>Dashboard lens: trend admissions and readmissions by date to reveal patient volume, demand shifts, and care-continuity signals.</p>
+              <p><b>Executive answer:</b> The overview shows 974 distinct patients, 854 repeat patients, and an 87.7% repeat visit rate, with a yearly patient-volume and readmission trend.</p>
             </article>
             <article class="powerbi-question-card">
               <div class="powerbi-question-icon" aria-hidden="true"><i class="bi bi-clock-history"></i></div>
               <strong>Question 02</strong>
               <h3>How long are patients staying in the hospital, on average?</h3>
-              <p>Dashboard lens: calculate average length of stay and highlight where longer encounters may create capacity or staffing pressure.</p>
+              <p><b>Executive answer:</b> The report includes an Average Length of Stay Hours measure so leaders can monitor capacity pressure and compare stay patterns by patient or encounter group.</p>
             </article>
             <article class="powerbi-question-card">
               <div class="powerbi-question-icon" aria-hidden="true"><i class="bi bi-cash-coin"></i></div>
               <strong>Question 03</strong>
               <h3>How much is the average cost per visit?</h3>
-              <p>Dashboard lens: summarize visit cost patterns so executives can understand financial exposure by encounter, payer, and procedure.</p>
+              <p><b>Executive answer:</b> Average Cost per Visit and Total Claim Cost measures frame visit-level financial exposure across encounter, payer, and procedure views.</p>
             </article>
             <article class="powerbi-question-card">
               <div class="powerbi-question-icon" aria-hidden="true"><i class="bi bi-shield-check"></i></div>
               <strong>Question 04</strong>
               <h3>How many procedures are covered by insurance?</h3>
-              <p>Dashboard lens: compare covered and uncovered procedures to show reimbursement risk, payer dependency, and patient cost burden.</p>
+              <p><b>Executive answer:</b> Insured Procedures, Procedure Coverage Rate, and Coverage Status logic identify covered versus uncovered procedures and reimbursement risk.</p>
             </article>
           </div>
         </div>
 
         <div class="powerbi-plan" aria-labelledby="powerbi-plan-title">
           <h2 id="powerbi-plan-title">What the Power BI dashboard includes</h2>
-          <p>This page documents the core deliverables behind the published report: the model structure, KPI logic, executive view, and business questions the dashboard answers.</p>
+          <p>This page documents the full analytics build behind the published report: source shaping, model design, reusable measure logic, and executive dashboard storytelling.</p>
           <div class="powerbi-plan-grid">
             <article>
-              <span>01 &middot; Data model</span>
-              <h3>Connect patients, encounters, payers, and procedures</h3>
-              <p>Model the hospital challenge tables so patient visits, procedures, payer coverage, costs, and readmissions can be analyzed consistently.</p>
+              <span>01 &middot; Power Query</span>
+              <h3>Prepare clean reporting fields</h3>
+              <p>Shape encounter dates, coverage status, patient demographics, encounter groups, and refresh metadata before modeling.</p>
             </article>
             <article>
-              <span>02 &middot; Measures</span>
-              <h3>Calculate healthcare KPIs clearly</h3>
-              <p>Create documented DAX measures for admissions, readmissions, average stay, average visit cost, procedure counts, and insurance coverage.</p>
+              <span>02 &middot; Data model</span>
+              <h3>Connect the hospital workflow</h3>
+              <p>Relate encounters, patients, payers, procedures, organizations, dates, refresh info, and measures into one analysis layer.</p>
             </article>
             <article>
-              <span>03 &middot; Dashboard</span>
-              <h3>Support executive decisions</h3>
-              <p>Design a focused Power BI view with KPI cards, time trends, cost breakdowns, procedure coverage, and concise executive takeaways.</p>
+              <span>03 &middot; DAX measures</span>
+              <h3>Centralize KPI logic</h3>
+              <p>Build reusable measures for admissions, readmissions, length of stay, average cost, claim cost, and insurance coverage.</p>
+            </article>
+            <article>
+              <span>04 &middot; Report pages</span>
+              <h3>Tell the executive story</h3>
+              <p>Deliver overview, patient, and financial views with KPI cards, trends, mix visuals, geography, and concise takeaways.</p>
             </article>
           </div>
         </div>
 
-        <div class="powerbi-game-card" aria-labelledby="powerbi-game-title">
-          <span class="powerbi-status"><i class="bi bi-controller"></i> Future interactive build</span>
-          <h2 id="powerbi-game-title">Next: Hospital KPI Challenge Game</h2>
-          <p>Now that the dashboard is live, I can turn these four business questions into a mini decision game where a recruiter chooses the right KPI, chart type, and executive takeaway for each hospital performance scenario.</p>
-          <div class="powerbi-game-steps" aria-label="Future game mechanics">
-            <span><i class="bi bi-ui-checks-grid"></i> Pick the KPI</span>
-            <span><i class="bi bi-bar-chart-line"></i> Choose the visual</span>
-            <span><i class="bi bi-lightbulb"></i> Interpret the insight</span>
-            <span><i class="bi bi-trophy"></i> Earn executive-ready score</span>
+        <div class="powerbi-game-card" aria-labelledby="powerbi-game-title" id="hospital-kpi-game">
+          <div class="powerbi-game-header">
+            <div>
+              <span class="powerbi-status"><i class="bi bi-controller"></i> Interactive KPI game</span>
+              <h2 id="powerbi-game-title">Hospital KPI Match Challenge</h2>
+            </div>
+            <span class="powerbi-game-score" id="powerbi-game-score"><i class="bi bi-trophy"></i> 0 / 4 correct</span>
+          </div>
+          <p>Play the role of the analytics consultant. Match each executive question to the KPI or report area that answers it best.</p>
+          <div class="powerbi-game-progress" aria-hidden="true"><span id="powerbi-game-progress"></span></div>
+          <div class="powerbi-game-stage">
+            <div class="powerbi-game-prompt">
+              <strong id="powerbi-game-count"><i class="bi bi-question-circle"></i> Question 1 of 4</strong>
+              <h3 id="powerbi-game-question">Loading challenge...</h3>
+              <p id="powerbi-game-hint">Choose the best KPI.</p>
+            </div>
+            <div class="powerbi-game-feedback" id="powerbi-game-feedback" data-state="neutral">
+              <div>
+                <h3 id="powerbi-game-feedback-title">Select an answer</h3>
+                <p id="powerbi-game-feedback-text">Your feedback will appear here after you choose a KPI.</p>
+              </div>
+              <button class="powerbi-game-next" id="powerbi-game-next" type="button" hidden>
+                <span>Next Question</span>
+                <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+          <div class="powerbi-game-options" id="powerbi-game-options" aria-label="Hospital KPI answer options">
           </div>
         </div>
       </div>
@@ -707,6 +867,184 @@
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const game = document.getElementById('hospital-kpi-game');
+
+      if (!game) {
+        return;
+      }
+
+      const scenarios = [
+        {
+          question: 'The CEO asks: how many patients are returning for care over time?',
+          hint: 'Look for the KPI that connects patient volume to repeat visits.',
+          correct: 'Patient volume and repeat visit rate',
+          options: [
+            'Patient volume and repeat visit rate',
+            'Procedure coverage rate',
+            'Average cost per visit',
+            'Encounter class mix'
+          ],
+          success: 'Correct. The published overview shows 974 distinct patients, 854 repeat patients, and an 87.7% repeat visit rate with the trend line supporting the executive story.',
+          failure: 'Not quite. This question is about patient volume and readmission behavior, so the best answer is the patient-volume and repeat-visit trend.'
+        },
+        {
+          question: 'Operations leadership wants to understand whether stays are creating capacity pressure.',
+          hint: 'Choose the metric that measures how long patients remain in care.',
+          correct: 'Average length of stay hours',
+          options: [
+            'Average encounters per patient',
+            'Average length of stay hours',
+            'Total payer coverage',
+            'Patient geography'
+          ],
+          success: 'Correct. Average Length of Stay Hours helps leaders evaluate utilization, staffing pressure, and bed-capacity risk.',
+          failure: 'Not quite. Capacity pressure is best answered by Average Length of Stay Hours, not geography, payer totals, or encounter frequency alone.'
+        },
+        {
+          question: 'Finance wants to know the visit-level exposure behind hospital activity.',
+          hint: 'Pick the measure that translates encounters into cost impact.',
+          correct: 'Average cost per visit',
+          options: [
+            'Average cost per visit',
+            'Age group sort',
+            'Repeat visit rate',
+            'Refresh date'
+          ],
+          success: 'Correct. Average Cost per Visit and Total Claim Cost explain the financial exposure behind patient encounters.',
+          failure: 'Not quite. The finance question needs the visit-cost measure, supported by claim-cost totals and payer views.'
+        },
+        {
+          question: 'Executives ask where reimbursement risk may appear in procedure activity.',
+          hint: 'Choose the KPI that separates covered and uncovered procedures.',
+          correct: 'Procedure coverage rate',
+          options: [
+            'Procedure coverage rate',
+            'Patient age group',
+            'Encounter date',
+            'Distinct patient count'
+          ],
+          success: 'Correct. Procedure Coverage Rate, Insured Procedures, and Coverage Status show covered versus uncovered work and reimbursement risk.',
+          failure: 'Not quite. Reimbursement risk is best answered through procedure coverage, not patient counts or date fields.'
+        }
+      ];
+
+      const count = document.getElementById('powerbi-game-count');
+      const question = document.getElementById('powerbi-game-question');
+      const hint = document.getElementById('powerbi-game-hint');
+      const options = document.getElementById('powerbi-game-options');
+      const feedback = document.getElementById('powerbi-game-feedback');
+      const feedbackTitle = document.getElementById('powerbi-game-feedback-title');
+      const feedbackText = document.getElementById('powerbi-game-feedback-text');
+      const next = document.getElementById('powerbi-game-next');
+      const scoreLabel = document.getElementById('powerbi-game-score');
+      const progress = document.getElementById('powerbi-game-progress');
+
+      let currentIndex = 0;
+      let score = 0;
+      let answered = false;
+
+      function updateScore() {
+        scoreLabel.innerHTML = `<i class="bi bi-trophy"></i> ${score} / ${scenarios.length} correct`;
+      }
+
+      function renderScenario() {
+        const scenario = scenarios[currentIndex];
+        answered = false;
+        count.innerHTML = `<i class="bi bi-question-circle"></i> Question ${currentIndex + 1} of ${scenarios.length}`;
+        question.textContent = scenario.question;
+        hint.textContent = scenario.hint;
+        feedback.dataset.state = 'neutral';
+        feedbackTitle.textContent = 'Select an answer';
+        feedbackText.textContent = 'Your feedback will appear here after you choose a KPI.';
+        next.hidden = true;
+        next.querySelector('span').textContent = currentIndex === scenarios.length - 1 ? 'Show Final Score' : 'Next Question';
+        progress.style.width = `${(currentIndex / scenarios.length) * 100}%`;
+        options.innerHTML = '';
+
+        scenario.options.forEach((option) => {
+          const button = document.createElement('button');
+          button.className = 'powerbi-game-option';
+          button.type = 'button';
+          button.textContent = option;
+          button.addEventListener('click', () => handleAnswer(button, option));
+          options.appendChild(button);
+        });
+      }
+
+      function handleAnswer(selectedButton, selectedOption) {
+        if (answered) {
+          return;
+        }
+
+        answered = true;
+        const scenario = scenarios[currentIndex];
+        const isCorrect = selectedOption === scenario.correct;
+
+        if (isCorrect) {
+          score += 1;
+          selectedButton.classList.add('is-correct');
+          feedback.dataset.state = 'success';
+          feedbackTitle.textContent = 'Executive-ready answer';
+          feedbackText.textContent = scenario.success;
+        } else {
+          selectedButton.classList.add('is-incorrect');
+          feedback.dataset.state = 'error';
+          feedbackTitle.textContent = 'Try the business question again';
+          feedbackText.textContent = scenario.failure;
+        }
+
+        Array.from(options.children).forEach((button) => {
+          button.disabled = true;
+          if (button.textContent === scenario.correct) {
+            button.classList.add('is-correct');
+          }
+        });
+
+        progress.style.width = `${((currentIndex + 1) / scenarios.length) * 100}%`;
+        updateScore();
+        next.hidden = false;
+      }
+
+      function renderFinalScore() {
+        count.innerHTML = '<i class="bi bi-check-circle"></i> Simulation complete';
+        question.textContent = 'Hospital KPI Match Challenge complete';
+        hint.textContent = 'Use the final score as a quick proof point that the dashboard connects business questions to the right measures.';
+        options.innerHTML = '';
+        feedback.dataset.state = score === scenarios.length ? 'success' : 'neutral';
+        feedbackTitle.textContent = `${score} out of ${scenarios.length} KPI decisions correct`;
+        feedbackText.textContent = score === scenarios.length
+          ? 'Perfect score. You matched every executive question to the right dashboard evidence.'
+          : 'Good practice. The game shows how the dashboard turns executive questions into measurable Power BI decisions.';
+        next.hidden = false;
+        next.querySelector('span').textContent = 'Restart Simulation';
+        progress.style.width = '100%';
+      }
+
+      next.addEventListener('click', () => {
+        if (currentIndex < scenarios.length - 1) {
+          currentIndex += 1;
+          renderScenario();
+          return;
+        }
+
+        if (options.children.length > 0) {
+          renderFinalScore();
+          return;
+        }
+
+        currentIndex = 0;
+        score = 0;
+        updateScore();
+        renderScenario();
+      });
+
+      updateScore();
+      renderScenario();
+    });
+  </script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
