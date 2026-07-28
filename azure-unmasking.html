@@ -14,7 +14,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Azure SQL Dynamic Data Masking PoC | Beatrice Kungu</title>
-  <meta name="description" content="Azure SQL Dynamic Data Masking proof of concept showing role-based PII and PHI protection, control validation, and CISO-ready security evidence.">
+  <meta name="description" content="Azure SQL Dynamic Data Masking proof of concept demonstrating role-based PII and PHI protection with hands-on control validation.">
   <meta name="keywords" content="Azure SQL, Dynamic Data Masking, data privacy, GRC, HIPAA, PCI DSS, cybersecurity portfolio">
 
   <!-- Favicons -->
@@ -68,9 +68,10 @@
 
     .ddm-hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
-      gap: 34px;
+      grid-template-columns: 1fr;
+      gap: 24px;
       align-items: center;
+      max-width: 940px;
       padding-bottom: 34px;
       border-bottom: 1px solid var(--ddm-line);
     }
@@ -93,7 +94,55 @@
     .ddm-lead {
       font-size: 1.08rem;
       color: var(--ddm-muted);
-      margin-bottom: 22px;
+      margin-bottom: 16px;
+    }
+
+    .ddm-disclosure {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin: 0 0 20px;
+      padding: 15px 17px;
+      border: 1px solid color-mix(in srgb, var(--accent-color), transparent 74%);
+      border-left: 4px solid var(--accent-color);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--accent-color), transparent 92%);
+      color: var(--ddm-muted);
+    }
+
+    .ddm-disclosure i {
+      color: var(--accent-color);
+      font-size: 1.15rem;
+      margin-top: 2px;
+    }
+
+    .ddm-disclosure strong {
+      color: var(--heading-color);
+    }
+
+    .ddm-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .ddm-action-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid color-mix(in srgb, var(--accent-color), transparent 70%);
+      border-radius: 7px;
+      color: var(--accent-color);
+      font-weight: 700;
+      background: color-mix(in srgb, var(--accent-color), transparent 93%);
+    }
+
+    .ddm-action-link:hover {
+      color: var(--contrast-color);
+      background: var(--accent-color);
     }
 
     .ddm-chip-row {
@@ -113,15 +162,6 @@
       padding: 7px 13px;
       font-size: 0.9rem;
       font-weight: 600;
-    }
-
-    .ddm-hero-visual {
-      margin: 0;
-      background: var(--ddm-panel);
-      border: 1px solid var(--ddm-line);
-      border-radius: 8px;
-      padding: 12px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.26);
     }
 
     .ddm-zoom-link {
@@ -149,7 +189,6 @@
       line-height: 1;
     }
 
-    .ddm-hero-visual img,
     .ddm-shot img {
       width: 100%;
       height: auto;
@@ -215,6 +254,20 @@
       margin-bottom: 8px;
     }
 
+    .ddm-metric-icon {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      color: var(--ddm-blue);
+      background: color-mix(in srgb, var(--accent-color), transparent 88%);
+      border: 1px solid color-mix(in srgb, var(--accent-color), transparent 76%);
+      font-size: 1.2rem;
+    }
+
     .ddm-metric h3 {
       font-size: 1.02rem;
       margin-bottom: 8px;
@@ -238,6 +291,31 @@
     .ddm-boundary i {
       color: var(--ddm-blue);
       margin-right: 8px;
+    }
+
+    .ddm-why {
+      margin-top: 18px;
+      padding: 22px;
+      border-radius: 8px;
+      border: 1px solid var(--ddm-line);
+      background: var(--ddm-soft);
+    }
+
+    .ddm-why h3 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .ddm-why h3 i {
+      color: var(--ddm-blue);
+    }
+
+    .ddm-why p {
+      color: var(--ddm-muted);
+      margin-bottom: 0;
     }
 
     .ddm-control-table {
@@ -279,7 +357,75 @@
     }
 
     .ddm-evidence-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 1fr);
+      max-width: 900px;
+    }
+
+    .ddm-evidence-toggle {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 5px;
+      border: 1px solid var(--ddm-line);
+      border-radius: 8px;
+      background: var(--ddm-soft);
+    }
+
+    .ddm-evidence-toggle button {
+      border: 0;
+      border-radius: 6px;
+      padding: 9px 14px;
+      color: var(--ddm-muted);
+      background: transparent;
+      font-weight: 700;
+    }
+
+    .ddm-evidence-toggle button.active {
+      color: var(--contrast-color);
+      background: var(--ddm-blue);
+    }
+
+    .ddm-evidence-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 12px;
+      color: var(--ddm-muted);
+      font-size: 0.9rem;
+    }
+
+    .ddm-evidence-note i {
+      color: var(--ddm-blue);
+    }
+
+    .ddm-limitations {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 8px;
+      border: 1px solid color-mix(in srgb, var(--ddm-amber), transparent 62%);
+      border-left: 4px solid var(--ddm-amber);
+      background: color-mix(in srgb, var(--ddm-amber), transparent 92%);
+    }
+
+    .ddm-limitations i {
+      color: var(--ddm-amber);
+      font-size: 1.2rem;
+      margin-top: 2px;
+    }
+
+    .ddm-limitations strong {
+      display: block;
+      color: var(--heading-color);
+      margin-bottom: 5px;
+    }
+
+    .ddm-limitations p {
+      color: var(--ddm-muted);
+      margin: 0;
     }
 
     .ddm-simulator {
@@ -520,6 +666,13 @@
       .ddm-progress {
         width: 100%;
       }
+
+      .ddm-action-link,
+      .ddm-evidence-toggle,
+      .ddm-evidence-toggle button {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
 
@@ -566,22 +719,26 @@
           <div>
             <div class="ddm-eyebrow">Cloud Security Case Study</div>
             <h1>Azure SQL Dynamic Data Masking PoC</h1>
-            <p class="ddm-lead">A GlobalMed proof of concept showing how Azure SQL can reduce accidental exposure of PII, PHI, and payment data through role-aware masking and tightly controlled `UNMASK` access.</p>
+            <p class="ddm-lead">A hands-on proof of concept showing how Azure SQL can reduce accidental exposure of PII, PHI, and payment data through role-aware masking and controlled <code>UNMASK</code> access.</p>
+            <div class="ddm-disclosure">
+              <i class="bi bi-info-circle" aria-hidden="true"></i>
+              <div><strong>Fictional-company disclosure:</strong> GlobalMed is a fictional healthcare company I created for this proof of concept, built on my personal Azure subscription to demonstrate role-based data masking against realistic PII/PHI/payment data.</div>
+            </div>
             <ul class="ddm-chip-row" aria-label="Project skills">
               <li>Azure SQL</li>
               <li>Dynamic Data Masking</li>
               <li>Least Privilege</li>
               <li>Audit Evidence</li>
             </ul>
+            <div class="ddm-hero-actions">
+              <a class="ddm-action-link" href="https://github.com/beatricekungu/globalmed-data-security" target="_blank" rel="noopener">
+                <i class="bi bi-github" aria-hidden="true"></i> View Technical Repository
+              </a>
+              <a class="ddm-action-link" href="https://github.com/beatricekungu/globalmed-data-security/blob/main/assets/executive-overview.pdf" target="_blank" rel="noopener">
+                <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> View Executive Overview
+              </a>
+            </div>
           </div>
-
-          <figure class="ddm-hero-visual">
-            <a href="assets/img/portfolio/Azure Sql.jpg" class="glightbox ddm-zoom-link" data-gallery="azure-ddm" data-title="Azure SQL Dynamic Data Masking project overview">
-              <img src="assets/img/portfolio/Azure Sql.jpg" alt="Azure SQL security dashboard showing protected healthcare data fields">
-              <span class="ddm-zoom-badge" aria-hidden="true"><i class="bi bi-zoom-in"></i></span>
-            </a>
-            <figcaption class="ddm-caption">Project focus: field-level exposure reduction for sensitive healthcare data.</figcaption>
-          </figure>
         </div>
 
         <div class="ddm-section" data-aos="fade-up">
@@ -590,19 +747,22 @@
 
           <div class="ddm-metrics">
             <div class="ddm-metric">
-              <strong>100%</strong>
-              <h3>Sensitive Data Coverage</h3>
-              <span>All classified PII/PHI automatically masked at the database level, ensuring absolute compliance without manual oversight.</span>
+              <span class="ddm-metric-icon"><i class="bi bi-shield-lock" aria-hidden="true"></i></span>
+              <strong>4</strong>
+              <h3>Data Classes Masked</h3>
+              <span>Names, emails, SSNs, and payment cards.</span>
             </div>
             <div class="ddm-metric">
-              <strong>Zero</strong>
-              <h3>Engineering Friction</h3>
-              <span>0 application-code changes required to protect query results, proving security can be implemented without slowing down development.</span>
+              <span class="ddm-metric-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
+              <strong>2</strong>
+              <h3>Roles Tested</h3>
+              <span>Routine support access versus a privileged compliance reviewer with <code>UNMASK</code>.</span>
             </div>
             <div class="ddm-metric">
-              <strong>Zero-Trust</strong>
-              <h3>Access Enforcement</h3>
-              <span>Privileged roles strictly governed by explicit, audited UNMASK permissions, eliminating standing access risks.</span>
+              <span class="ddm-metric-icon"><i class="bi bi-database-check" aria-hidden="true"></i></span>
+              <strong>0</strong>
+              <h3>App-Layer Changes</h3>
+              <span>Masking is enforced at the database layer, not in query logic.</span>
             </div>
           </div>
         </div>
@@ -618,7 +778,7 @@
             </div>
             <div class="ddm-proof">
               <h3><i class="bi bi-person-check"></i>Access Model</h3>
-              <p>Separated routine operational users from privileged compliance reviewers, with `UNMASK` reserved for a high-trust role.</p>
+              <p>Separated routine operational users from privileged compliance reviewers, with <code>UNMASK</code> reserved for a high-trust role. UNMASK permission was granted at the <code>dbo</code> schema scope to the privileged compliance role, cleanly separating routine query access from authorized unmask access.</p>
             </div>
             <div class="ddm-proof">
               <h3><i class="bi bi-clipboard2-check"></i>Validation</h3>
@@ -629,13 +789,18 @@
               <p>Reduced unnecessary data exposure while preserving legitimate workflows for support, billing, clinical, and compliance teams.</p>
             </div>
           </div>
+
+          <div class="ddm-why">
+            <h3><i class="bi bi-diagram-3" aria-hidden="true"></i>Why Dynamic Data Masking</h3>
+            <p>I chose Azure SQL Dynamic Data Masking over alternatives like Row-Level Security or Always Encrypted because DDM directly addresses field-level visibility — showing the same record differently depending on who's querying it — without requiring application or query changes. Row-Level Security controls which rows a user can see, not which field values are exposed within a row, so it wouldn't demonstrate role-based field masking. Always Encrypted provides stronger protection (true encryption at rest) but requires client-side key management and app changes, which was more than this PoC needed to prove the concept.</p>
+          </div>
         </div>
 
         <div class="ddm-section" data-aos="fade-up">
           <h2>Control Mapping</h2>
           <p class="ddm-section-intro">The implementation maps each sensitive data class to a masking rule, a reduced exposure risk, and a controlled privileged-access path.</p>
 
-          <div class="ddm-table-wrap">
+          <div class="ddm-table-wrap" tabindex="0" role="region" aria-label="Scrollable control mapping table">
             <table class="ddm-control-table">
               <thead>
                 <tr>
@@ -680,20 +845,24 @@
           <p class="ddm-section-intro">The screenshots demonstrate the control in action: routine access sees masked values, while the authorized compliance role can view unmasked records for legitimate review.</p>
 
           <div class="ddm-evidence-grid">
-            <figure class="ddm-shot">
-              <a href="assets/img/portfolio/Helpdesk.jpg" class="glightbox ddm-zoom-link" data-gallery="azure-ddm" data-title="HelpDesk support view with sensitive fields masked">
-                <img src="assets/img/portfolio/Helpdesk.jpg" alt="HelpDesk query output with sensitive fields masked">
-                <span class="ddm-zoom-badge" aria-hidden="true"><i class="bi bi-zoom-in"></i></span>
-              </a>
-              <figcaption class="ddm-caption">Routine support context: sensitive fields remain masked.</figcaption>
-            </figure>
-            <figure class="ddm-shot">
-              <a href="assets/img/portfolio/CCO.jpg" class="glightbox ddm-zoom-link" data-gallery="azure-ddm" data-title="Chief Compliance Officer view with authorized UNMASK access">
-                <img src="assets/img/portfolio/CCO.jpg" alt="Chief Compliance Officer query output with authorized unmasked fields">
-                <span class="ddm-zoom-badge" aria-hidden="true"><i class="bi bi-zoom-in"></i></span>
-              </a>
-              <figcaption class="ddm-caption">Privileged compliance context: `UNMASK` access validates authorized review.</figcaption>
-            </figure>
+            <div>
+              <div class="ddm-evidence-toggle" role="group" aria-label="Compare masked and unmasked query output">
+                <button type="button" class="active" data-evidence-view="masked" aria-pressed="true">
+                  <i class="bi bi-eye-slash" aria-hidden="true"></i> Masked Support View
+                </button>
+                <button type="button" data-evidence-view="unmasked" aria-pressed="false">
+                  <i class="bi bi-unlock" aria-hidden="true"></i> Privileged UNMASK View
+                </button>
+              </div>
+              <figure class="ddm-shot">
+                <a id="ddm-evidence-link" href="assets/img/portfolio/Helpdesk.jpg" class="glightbox ddm-zoom-link" data-gallery="azure-ddm" data-title="HelpDesk support view with sensitive fields masked">
+                  <img id="ddm-evidence-image" src="assets/img/portfolio/Helpdesk.jpg" alt="HelpDesk query output with sensitive fields masked">
+                  <span class="ddm-zoom-badge" aria-hidden="true"><i class="bi bi-zoom-in"></i></span>
+                </a>
+                <figcaption class="ddm-caption" id="ddm-evidence-caption">Routine support context: sensitive fields remain masked.</figcaption>
+              </figure>
+              <p class="ddm-evidence-note"><i class="bi bi-info-circle" aria-hidden="true"></i><span>All names, identifiers, and payment values shown in this project are synthetic demonstration data.</span></p>
+            </div>
           </div>
         </div>
 
@@ -704,7 +873,7 @@
           <div class="ddm-boundary-grid">
             <div class="ddm-boundary">
               <h3><i class="bi bi-database-lock"></i>Implemented Scope</h3>
-              <p>Azure SQL Dynamic Data Masking rules for names, email, SSN, and payment fields in the GlobalMed sample table.</p>
+              <p>Azure SQL Dynamic Data Masking rules for names, email, SSN, and payment fields in a fictional healthcare sample table.</p>
             </div>
             <div class="ddm-boundary">
               <h3><i class="bi bi-person-lock"></i>Access Scope</h3>
@@ -717,6 +886,14 @@
             <div class="ddm-boundary">
               <h3><i class="bi bi-diagram-3"></i>Enterprise Integration</h3>
               <p>The next production layer would connect this control to access reviews, audit logging, and incident-response evidence.</p>
+            </div>
+          </div>
+
+          <div class="ddm-limitations">
+            <i class="bi bi-exclamation-triangle" aria-hidden="true"></i>
+            <div>
+              <strong>Limitations</strong>
+              <p>DDM masks query output but does not encrypt the underlying data — a user with direct table access via another tool, or an account with elevated privileges like <code>db_owner</code>, can bypass masking entirely. This control should be paired with access reviews and audit logging in a production environment.</p>
             </div>
           </div>
         </div>
@@ -811,6 +988,45 @@
   <script src="assets/js/main.js"></script>
 
   <script>
+    const evidenceStates = {
+      masked: {
+        src: "assets/img/portfolio/Helpdesk.jpg",
+        alt: "HelpDesk query output with sensitive fields masked",
+        title: "HelpDesk support view with sensitive fields masked",
+        caption: "Routine support context: sensitive fields remain masked."
+      },
+      unmasked: {
+        src: "assets/img/portfolio/CCO.jpg",
+        alt: "Chief Compliance Officer query output with authorized unmasked fields",
+        title: "Chief Compliance Officer view with authorized UNMASK access",
+        caption: "Privileged compliance context: authorized UNMASK access reveals the underlying synthetic values."
+      }
+    };
+
+    const evidenceButtons = document.querySelectorAll("[data-evidence-view]");
+    const evidenceLink = document.getElementById("ddm-evidence-link");
+    const evidenceImage = document.getElementById("ddm-evidence-image");
+    const evidenceCaption = document.getElementById("ddm-evidence-caption");
+
+    function updateEvidenceView(view) {
+      const state = evidenceStates[view];
+      evidenceLink.href = state.src;
+      evidenceLink.dataset.title = state.title;
+      evidenceImage.src = state.src;
+      evidenceImage.alt = state.alt;
+      evidenceCaption.textContent = state.caption;
+
+      evidenceButtons.forEach(button => {
+        const isActive = button.dataset.evidenceView === view;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+    }
+
+    evidenceButtons.forEach(button => {
+      button.addEventListener("click", () => updateEvidenceView(button.dataset.evidenceView));
+    });
+
     const ddmCases = [
       {
         type: "Operational support",
