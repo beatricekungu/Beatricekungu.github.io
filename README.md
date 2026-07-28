@@ -24,10 +24,9 @@ I bridge the gap between technical security work and business risk. My portfolio
 |---|---|---|
 | [Azure SQL Dynamic Data Masking PoC](https://beatricekungu.github.io/azure-unmasking.html) | Azure SQL security, role-aware masking, data privacy, and audit readiness | Complete |
 | [Incident Triage Simulator](https://beatricekungu.github.io/grc-evidence-mapping-challenge.html) | Severity assessment, escalation, privacy risk, and coordinated incident decisions | Complete |
-| [Cybersecurity Program Gap Assessment](https://beatricekungu.github.io/globalmed-compliance-dashboard.html) | GRC, NIST-aligned control assessment, risk prioritization, and remediation planning | Complete |
+| [Federal Benefits Cybersecurity Gap Assessment](https://beatricekungu.github.io/federal-benefits-gap-assessment.html) | Nine documented control findings, NIST-aligned risk prioritization, and three remediation templates | Complete |
 | [Azure SQL DBA Operations Command Center](https://beatricekungu.github.io/azure-sql-dba-command-center.html) | Database security, monitoring, recovery, performance, and operational evidence | Complete |
 | [Cyberattack Financial Exposure Dashboard](https://beatricekungu.github.io/cyberattack-financial-exposure.html) | Power BI, Power Query, DAX, cyber risk, and executive reporting | In development |
-| [Incident Response Decision Room](https://beatricekungu.github.io/incident-response-decision-room.html) | Triage, containment, evidence preservation, recovery, and executive communication | Complete |
 | [Identity Governance: From Operations to Architecture](https://beatricekungu.github.io/enterprise-iam-rbac.html) | Access provisioning, IAM, RBAC, and segregation of duties | Complete |
 
 ## What I Bring
