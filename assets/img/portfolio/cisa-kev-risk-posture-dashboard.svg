@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">CISA KEV Risk Posture Power BI Dashboard Concept</title>
+  <desc id="desc">A polished executive-style dark Power BI dashboard thumbnail for a vulnerability remediation analytics project.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#08111f"/>
+      <stop offset="1" stop-color="#0b3458"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#10243a"/>
+      <stop offset="1" stop-color="#0c1b2b"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#020617" flood-opacity="0.35"/>
+    </filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#d8e2ee" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#grid)"/>
+
+  <rect x="70" y="60" width="1780" height="960" rx="26" fill="#07111f" fill-opacity="0.64" stroke="#9bdcf5" stroke-opacity="0.14" filter="url(#softShadow)"/>
+
+  <rect x="70" y="60" width="250" height="960" rx="26" fill="#06101d"/>
+  <path d="M294 60h26v960h-26z" fill="#06101d"/>
+  <line x1="320" y1="60" x2="320" y2="1020" stroke="#9bdcf5" stroke-opacity="0.12"/>
+
+  <g transform="translate(118 110)">
+    <rect width="154" height="46" rx="10" fill="#f2c811"/>
+    <text x="77" y="30" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="800" fill="#0b1120">Power BI</text>
+  </g>
+  <text x="118" y="205" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="2" fill="#9bdcf5">RISK FILTERS</text>
+
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="118" y="265" fill="#d8e2ee" font-size="17" font-weight="650">Vendor</text>
+    <rect x="118" y="286" width="156" height="40" rx="8" fill="#0d2238" stroke="#244967"/>
+    <text x="136" y="311" fill="#9fb3c8" font-size="14">All vendors</text>
+    <text x="118" y="374" fill="#d8e2ee" font-size="17" font-weight="650">Exploit Status</text>
+    <rect x="118" y="395" width="156" height="40" rx="8" fill="#0d2238" stroke="#244967"/>
+    <text x="136" y="420" fill="#9fb3c8" font-size="14">Known exploited</text>
+    <text x="118" y="483" fill="#d8e2ee" font-size="17" font-weight="650">SLA Window</text>
+    <rect x="118" y="504" width="156" height="40" rx="8" fill="#0d2238" stroke="#244967"/>
+    <text x="136" y="529" fill="#9fb3c8" font-size="14">0-30 days</text>
+    <text x="118" y="592" fill="#d8e2ee" font-size="17" font-weight="650">Risk Tier</text>
+    <rect x="118" y="613" width="156" height="40" rx="8" fill="#0d2238" stroke="#244967"/>
+    <text x="136" y="638" fill="#9fb3c8" font-size="14">High + Critical</text>
+  </g>
+
+  <rect x="118" y="760" width="156" height="138" rx="18" fill="#0d2238" stroke="#244967"/>
+  <text x="196" y="802" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" letter-spacing="1.2" fill="#9bdcf5">PROJECT GOAL</text>
+  <text x="196" y="840" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Prioritize</text>
+  <text x="196" y="866" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">remediation</text>
+  <text x="196" y="892" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">by business risk</text>
+
+  <text x="370" y="130" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="2" fill="#5eead4">EXECUTIVE VULNERABILITY INTELLIGENCE</text>
+  <text x="370" y="176" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="850" fill="#ffffff">CISA KEV Remediation &amp; Risk Posture</text>
+  <text x="370" y="214" font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#b9c7d6">Power BI project concept for exploited vulnerability tracking, SLA pressure, and audit-ready remediation evidence.</text>
+  <rect x="1660" y="120" width="140" height="48" rx="24" fill="#0d2238" stroke="#2e5e82"/>
+  <text x="1730" y="151" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="#9bdcf5">Live Report</text>
+
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <g transform="translate(370 270)">
+      <rect width="330" height="130" rx="18" fill="url(#panel)" stroke="#244967"/>
+      <rect width="6" height="130" rx="3" fill="#5eead4"/>
+      <text x="32" y="38" fill="#9fb3c8" font-size="15" font-weight="800" letter-spacing="1.1">TOTAL KEV ITEMS</text>
+      <text x="32" y="92" fill="#ffffff" font-size="48" font-weight="850">1,052</text>
+      <path d="M235 92c18-52 35-38 48-61 10 24 28 35 28 61z" fill="#5eead4" fill-opacity="0.18" stroke="#5eead4" stroke-width="3"/>
+    </g>
+    <g transform="translate(730 270)">
+      <rect width="330" height="130" rx="18" fill="url(#panel)" stroke="#244967"/>
+      <rect width="6" height="130" rx="3" fill="#f43f5e"/>
+      <text x="32" y="38" fill="#9fb3c8" font-size="15" font-weight="800" letter-spacing="1.1">CRITICAL OVERDUE</text>
+      <text x="32" y="92" fill="#ffffff" font-size="48" font-weight="850">127</text>
+      <circle cx="270" cy="66" r="34" fill="#f43f5e" fill-opacity="0.15" stroke="#f43f5e" stroke-width="3"/>
+      <text x="270" y="78" text-anchor="middle" fill="#f43f5e" font-size="36" font-weight="900">!</text>
+    </g>
+    <g transform="translate(1090 270)">
+      <rect width="330" height="130" rx="18" fill="url(#panel)" stroke="#244967"/>
+      <rect width="6" height="130" rx="3" fill="#38bdf8"/>
+      <text x="32" y="38" fill="#9fb3c8" font-size="15" font-weight="800" letter-spacing="1.1">VENDORS AFFECTED</text>
+      <text x="32" y="92" fill="#ffffff" font-size="48" font-weight="850">42</text>
+      <rect x="235" y="42" width="74" height="52" rx="10" fill="#38bdf8" fill-opacity="0.15" stroke="#38bdf8" stroke-width="3"/>
+      <path d="M252 61h40M252 76h26" stroke="#38bdf8" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <g transform="translate(1450 270)">
+      <rect width="330" height="130" rx="18" fill="url(#panel)" stroke="#244967"/>
+      <rect width="6" height="130" rx="3" fill="#f59e0b"/>
+      <text x="32" y="38" fill="#9fb3c8" font-size="15" font-weight="800" letter-spacing="1.1">SLA COMPLIANCE</text>
+      <text x="32" y="92" fill="#ffffff" font-size="48" font-weight="850">78%</text>
+      <path d="M238 92a42 42 0 1 1 70 0" fill="none" stroke="#244967" stroke-width="13" stroke-linecap="round"/>
+      <path d="M238 92a42 42 0 0 1 58-39" fill="none" stroke="#f59e0b" stroke-width="13" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="370" y="435" width="650" height="260" rx="18" fill="url(#panel)" stroke="#244967"/>
+    <text x="405" y="480" fill="#ffffff" font-size="20" font-weight="800">Exploit Activity Over Time</text>
+    <text x="405" y="510" fill="#9fb3c8" font-size="15">KEV additions and remediation closures by month</text>
+    <g stroke="#244967" stroke-width="1">
+      <line x1="405" y1="560" x2="975" y2="560"/><line x1="405" y1="610" x2="975" y2="610"/><line x1="405" y1="660" x2="975" y2="660"/>
+    </g>
+    <path d="M415 640 C455 570 490 610 530 550 C570 500 610 620 650 560 C700 470 740 510 780 468 C820 520 850 545 885 490 C925 430 950 480 975 448" fill="none" stroke="#5eead4" stroke-width="6" stroke-linecap="round"/>
+    <path d="M415 666 C465 650 505 640 548 625 C610 610 650 615 696 585 C735 560 790 575 826 538 C875 515 920 530 975 500" fill="none" stroke="#f59e0b" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 12"/>
+
+    <rect x="1055" y="435" width="725" height="260" rx="18" fill="url(#panel)" stroke="#244967"/>
+    <text x="1090" y="480" fill="#ffffff" font-size="20" font-weight="800">Risk Mix by Remediation Status</text>
+    <circle cx="1250" cy="585" r="86" fill="none" stroke="#f43f5e" stroke-width="36" stroke-dasharray="270 540" transform="rotate(-90 1250 585)"/>
+    <circle cx="1250" cy="585" r="86" fill="none" stroke="#f59e0b" stroke-width="36" stroke-dasharray="170 540" stroke-dashoffset="-270" transform="rotate(-90 1250 585)"/>
+    <circle cx="1250" cy="585" r="86" fill="none" stroke="#5eead4" stroke-width="36" stroke-dasharray="100 540" stroke-dashoffset="-440" transform="rotate(-90 1250 585)"/>
+    <text x="1250" y="575" text-anchor="middle" fill="#ffffff" font-size="38" font-weight="850">22%</text>
+    <text x="1250" y="607" text-anchor="middle" fill="#9fb3c8" font-size="14">overdue</text>
+    <rect x="1420" y="520" width="18" height="18" rx="4" fill="#f43f5e"/><text x="1450" y="535" fill="#d8e2ee" font-size="16">Overdue critical</text>
+    <rect x="1420" y="570" width="18" height="18" rx="4" fill="#f59e0b"/><text x="1450" y="585" fill="#d8e2ee" font-size="16">Due within SLA</text>
+    <rect x="1420" y="620" width="18" height="18" rx="4" fill="#5eead4"/><text x="1450" y="635" fill="#d8e2ee" font-size="16">Remediated</text>
+
+    <rect x="370" y="730" width="650" height="230" rx="18" fill="url(#panel)" stroke="#244967"/>
+    <text x="405" y="775" fill="#ffffff" font-size="20" font-weight="800">Top Affected Vendors</text>
+    <g font-size="15" fill="#d8e2ee">
+      <text x="405" y="830">Microsoft</text><rect x="555" y="812" width="390" height="24" rx="8" fill="#38bdf8"/>
+      <text x="405" y="875">Cisco</text><rect x="555" y="857" width="310" height="24" rx="8" fill="#5eead4"/>
+      <text x="405" y="920">VMware</text><rect x="555" y="902" width="250" height="24" rx="8" fill="#f59e0b"/>
+    </g>
+
+    <rect x="1055" y="730" width="725" height="230" rx="18" fill="url(#panel)" stroke="#244967"/>
+    <text x="1090" y="775" fill="#ffffff" font-size="20" font-weight="800">Audit Evidence Output</text>
+    <rect x="1090" y="815" width="650" height="48" rx="10" fill="#07111f" stroke="#244967"/>
+    <rect x="1090" y="872" width="650" height="48" rx="10" fill="#07111f" stroke="#244967"/>
+    <rect x="1090" y="929" width="650" height="48" rx="10" fill="#07111f" stroke="#244967"/>
+    <text x="1116" y="846" fill="#5eead4" font-size="16" font-weight="750">Control evidence: owner, SLA, exception, remediation status</text>
+    <text x="1116" y="903" fill="#d8e2ee" font-size="16">Executive summary: risk exposure reduced by priority queue</text>
+    <text x="1116" y="960" fill="#d8e2ee" font-size="16">Operational drilldown: CVE, vendor, product, deadline, action</text>
+  </g>
+</svg>
