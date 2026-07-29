@@ -16,7 +16,7 @@
 I bridge the gap between technical security work and business risk. My portfolio focuses on building secure, compliant, and audit-ready environments through cloud database security, governance and compliance assessments, identity governance, incident response, automation, and executive-ready analytics.
 
 [![View Portfolio](https://img.shields.io/badge/View%20My%20Portfolio-1387C1?style=for-the-badge&logo=githubpages&logoColor=ffffff)](https://beatricekungu.github.io/)
-[![View Resume](https://img.shields.io/badge/View%20Resume-374151?style=for-the-badge&logo=adobeacrobatreader&logoColor=ffffff)](https://beatricekungu.github.io/assets/Bkungu.Resume.pdf)
+[![View Resume](https://img.shields.io/badge/View%20Resume-374151?style=for-the-badge&logo=adobeacrobatreader&logoColor=ffffff)](https://beatricekungu.github.io/assets/resume.pdf)
 
 ## Featured Projects
 
