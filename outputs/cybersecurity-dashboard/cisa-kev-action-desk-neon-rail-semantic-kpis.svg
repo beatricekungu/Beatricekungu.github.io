@@ -1,0 +1,279 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <!-- Subtle Hexagon Pattern -->
+    <pattern id="hex" width="60" height="34.64" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 60 17.32 L 60 51.96 L 30 69.28 L 0 51.96 L 0 17.32 Z" fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.02"/>
+    </pattern>
+    <!-- Radial Gradient for overall lighting -->
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00E6A4" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#090E17" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="cyberGlowTeal" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00E6A4" stop-opacity="0.14"/>
+      <stop offset="55%" stop-color="#00E6A4" stop-opacity="0.035"/>
+      <stop offset="100%" stop-color="#00E6A4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cyberGlowViolet" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="scanBeam" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00E6A4" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00E6A4" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#00E6A4" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="microGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#3B82F6" stroke-width="0.45" stroke-opacity="0.035"/>
+      <circle cx="0" cy="0" r="1" fill="#00E6A4" fill-opacity="0.08"/>
+    </pattern>
+    <filter id="neonTeal" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Base Canvas Background (Deep Navy) -->
+  <rect width="1920" height="1080" fill="#090E17" />
+  <rect width="1920" height="1080" fill="url(#hex)" />
+  <rect width="1920" height="1080" fill="url(#glow)" />
+  <rect x="280" width="1640" height="1080" fill="url(#microGrid)" opacity="0.65"/>
+  <ellipse cx="1160" cy="140" rx="560" ry="310" fill="url(#cyberGlowTeal)"/>
+  <ellipse cx="1760" cy="820" rx="430" ry="360" fill="url(#cyberGlowViolet)"/>
+  <path d="M300 880 C520 700 620 940 850 760 S1240 570 1440 720 S1740 920 1920 735"
+        fill="none" stroke="#00E6A4" stroke-width="1.2" stroke-opacity="0.055"/>
+  <path d="M280 230 L790 0 M860 1080 L1570 0 M1390 1080 L1920 285"
+        fill="none" stroke="url(#scanBeam)" stroke-width="80" opacity="0.24"/>
+  <g fill="#00E6A4" opacity="0.18">
+    <circle cx="438" cy="846" r="2"/><circle cx="850" cy="760" r="2"/>
+    <circle cx="1240" cy="638" r="2"/><circle cx="1440" cy="720" r="2"/>
+    <circle cx="1740" cy="858" r="2"/>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- LEFT SIDEBAR -->
+  <!-- ========================================== -->
+  <rect x="0" y="0" width="280" height="1080" fill="#0C1322" />
+  <line x1="280" y1="0" x2="280" y2="1080" stroke="#1E2B45" stroke-width="1"/>
+
+  <!-- ANIMATED LOGO SECTION -->
+  <ellipse cx="140" cy="141" rx="38" ry="9" fill="#00E6A4" opacity="0.08" filter="url(#neonTeal)"/>
+  <g transform="translate(140, 90)">
+    <animateTransform attributeName="transform" type="translate" values="140,90; 140,80; 140,90" dur="4s" repeatCount="indefinite" />
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#00E6A4" stroke-width="1" opacity="0.3" filter="url(#neonTeal)"/>
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#00E6A4" stroke-width="2" stroke-dasharray="10 4">
+      <animateTransform attributeName="transform" type="rotate" values="0; 360" dur="20s" repeatCount="indefinite" />
+    </circle>
+    <path d="M 0 -22 L 20 -12 V 5 C 20 18 0 28 0 28 C 0 28 -20 18 -20 5 V -12 Z" fill="#00E6A4" fill-opacity="0.1" stroke="#00E6A4" stroke-width="2" filter="url(#neonTeal)"/>
+    <path d="M -8 2 L -2 8 L 10 -4" fill="none" stroke="#00E6A4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="40" stroke-dashoffset="40">
+      <animate attributeName="stroke-dashoffset" values="40; 0; 0; 40; 40" keyTimes="0; 0.2; 0.8; 0.9; 1" dur="5s" repeatCount="indefinite" />
+    </path>
+  </g>
+
+  <text x="140" y="180" fill="#64748B" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" letter-spacing="2" text-anchor="middle">THREAT OPERATIONS</text>
+  <text x="140" y="200" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" letter-spacing="1" text-anchor="middle">SENTRY GRID</text>
+
+  <!-- ========================================== -->
+  <!-- NAVIGATION (STATE UPDATED FOR PAGE 2)      -->
+  <!-- ========================================== -->
+  
+  <!-- Overview (Now Inactive / Gray) -->
+  <g transform="translate(45, 263)" fill="none" stroke="#64748B" stroke-width="1.5">
+    <rect x="0" y="0" width="8" height="8" rx="1"/>
+    <rect x="12" y="0" width="8" height="8" rx="1"/>
+    <rect x="0" y="12" width="8" height="8" rx="1"/>
+    <rect x="12" y="12" width="8" height="8" rx="1"/>
+  </g>
+  <text x="75" y="278" fill="#64748B" font-family="Segoe UI, sans-serif" font-size="14">Overview</text>
+
+  <!-- Triage & Action Desk (Now Active / Neon Green) -->
+  <rect x="25" y="330" width="230" height="46" rx="6" fill="#00E6A4" fill-opacity="0.1" stroke="#00E6A4" stroke-width="1"/>
+  <rect x="25" y="330" width="4" height="46" rx="2" fill="#00E6A4"/>
+  <g transform="translate(45, 343)" fill="none" stroke="#00E6A4" stroke-width="1.5">
+    <circle cx="9" cy="9" r="9"/>
+    <circle cx="9" cy="9" r="3"/>
+  </g>
+  <text x="75" y="358" fill="#00E6A4" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold">Triage &amp; Action Desk</text>
+
+  <!-- ========================================== -->
+
+  <!-- FILTERS AREA -->
+  <text x="30" y="450" fill="#00E6A4" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">GLOBAL FILTERS</text>
+  
+  <text x="30" y="490" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12">Tech Stack (Vendor &gt; Product)</text>
+  <rect x="30" y="500" width="220" height="40" rx="4" fill="#090E17" stroke="#1E2B45" stroke-width="1"/>
+  
+  <text x="30" y="570" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12">Remediation Deadline</text>
+  <rect x="30" y="580" width="220" height="40" rx="4" fill="#090E17" stroke="#1E2B45" stroke-width="1"/>
+
+  <text x="30" y="650" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12">Ransomware Linked</text>
+  <rect x="30" y="660" width="220" height="40" rx="4" fill="#090E17" stroke="#1E2B45" stroke-width="1"/>
+
+  <text x="30" y="730" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12">Vulnerability Type (CWE)</text>
+  <rect x="30" y="740" width="220" height="40" rx="4" fill="#090E17" stroke="#1E2B45" stroke-width="1"/>
+
+  <!-- HUGE FOOTER ICONS -->
+  <rect x="40" y="940" width="90" height="90" rx="16" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <text x="85" y="1000" fill="#64748B" font-family="Segoe UI, sans-serif" font-size="44" font-weight="bold" text-anchor="middle">in</text>
+
+  <rect x="150" y="940" width="90" height="90" rx="16" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" fill="#64748B" transform="translate(169, 959) scale(2.2)"/>
+  <text x="140" y="1060" fill="#64748B" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" text-anchor="middle" letter-spacing="0.35">Built by Beatrice Kungu.</text>
+
+  <!-- ========================================== -->
+  <!-- MAIN CANVAS AREA: PAGE 2                   -->
+  <!-- ========================================== -->
+  
+  <text x="320" y="70" fill="#00E6A4" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" letter-spacing="2">TRIAGE &amp; ACTION DESK</text>
+  <text x="320" y="110" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="32" font-weight="bold">Active Vulnerability Queue</text>
+
+  <rect x="1790" y="70" width="100" height="36" rx="18" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <path d="M 1808 88 A 5 5 0 1 1 1813 93 L 1808 93" fill="none" stroke="#94A3B8" stroke-width="1.5"/>
+  <path d="M 1808 88 L 1805 85 M 1808 88 L 1811 85" fill="none" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="1825" y="93" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="13">Reset</text>
+
+  <!-- ======================================================= -->
+  <!-- ACTION-ORIENTED KPI CARDS (Page 2 specific)           -->
+  <!-- ======================================================= -->
+  
+  <!-- 1. CRITICAL DUE < 48H (Red) -->
+  <rect x="320" y="160" width="370" height="140" rx="12" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <g fill="none" stroke="#F43F5E" stroke-linejoin="round" filter="url(#neonTeal)">
+    <path d="M320 274 V286 Q320 300 334 300 H392 L408 288 H602 L618 300 H676 Q690 300 690 286 V274"
+          stroke-width="2.2" stroke-opacity="0.9"/>
+    <path d="M414 294 L426 284 H584 L596 294 Z" fill="#F43F5E" fill-opacity="0.08"
+          stroke-width="2.8" stroke-opacity="0.95"/>
+  </g>
+  <text x="350" y="195" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">CRITICAL DUE &lt; 48H</text>
+  <!-- Semantic KPI capsule; keep the number window empty for a Power BI Card visual -->
+  <g aria-label="Critical Due semantic KPI capsule">
+    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-3; 0,0" dur="4s" repeatCount="indefinite"/>
+    <rect x="350" y="210" width="200" height="62" rx="31" fill="#21152A" stroke="#F43F5E" stroke-opacity="0.56"/>
+    <rect x="400" y="218" width="136" height="30" rx="15" fill="#190E1A" stroke="#F43F5E" stroke-opacity="0.14"/>
+    <path d="M376 226 V222 M376 258 V254 M362 240 H358 M394 240 H390 M366 230 L363 227 M386 250 L389 253 M386 230 L389 227 M366 250 L363 253" stroke="#FB7185" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M376 230 L379 237 L386 240 L379 243 L376 250 L373 243 L366 240 L373 237 Z" fill="#FB7185" filter="url(#neonTeal)"/>
+    <text x="404" y="263" fill="#FB7185" font-family="Segoe UI, sans-serif" font-size="9" font-weight="700" letter-spacing="0.95">IMMEDIATE ACTION</text>
+  </g>
+  
+  <g transform="translate(625, 230)">
+    <circle cx="0" cy="0" r="50" fill="#F43F5E" fill-opacity="0.1"/>
+    <g transform="scale(3.5)" fill="none" stroke="#F43F5E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="0" cy="0" r="8"/>
+      <path d="M 0 -4 V 1 M 0 3 V 3.5"/>
+    </g>
+  </g>
+
+  <!-- 2. HIGH PRIORITY TASKS (Orange) -->
+  <rect x="720" y="160" width="370" height="140" rx="12" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <g fill="none" stroke="#F59E0B" stroke-linejoin="round" filter="url(#neonTeal)">
+    <path d="M720 274 V286 Q720 300 734 300 H792 L808 288 H1002 L1018 300 H1076 Q1090 300 1090 286 V274"
+          stroke-width="2.2" stroke-opacity="0.9"/>
+    <path d="M814 294 L826 284 H984 L996 294 Z" fill="#F59E0B" fill-opacity="0.08"
+          stroke-width="2.8" stroke-opacity="0.95"/>
+  </g>
+  <text x="750" y="195" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">HIGH PRIORITY TASKS</text>
+  <g aria-label="High Priority Tasks semantic KPI capsule">
+    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-3; 0,0" dur="4.4s" repeatCount="indefinite"/>
+    <rect x="750" y="210" width="200" height="62" rx="31" fill="#261D13" stroke="#F59E0B" stroke-opacity="0.56"/>
+    <rect x="800" y="218" width="136" height="30" rx="15" fill="#1B140B" stroke="#F59E0B" stroke-opacity="0.14"/>
+    <path d="M767 250 L776 242 L785 250 M767 244 L776 236 L785 244" fill="none" stroke="#FBBF24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M776 226 L779 233 L786 236 L779 239 L776 246 L773 239 L766 236 L773 233 Z" fill="#FBBF24" filter="url(#neonTeal)"/>
+    <text x="804" y="263" fill="#FBBF24" font-family="Segoe UI, sans-serif" font-size="9" font-weight="700" letter-spacing="0.95">PRIORITY QUEUE</text>
+  </g>
+  
+  <g transform="translate(1025, 230)">
+    <circle cx="0" cy="0" r="50" fill="#F59E0B" fill-opacity="0.1"/>
+    <g transform="scale(3)" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 0 -8 L -7 -3 V 3 C -7 7 0 10 0 10 C 0 10 7 7 7 3 V -3 Z"/>
+      <line x1="-3" y1="-1" x2="3" y2="5"/>
+      <line x1="3" y1="-1" x2="-3" y2="5"/>
+    </g>
+  </g>
+
+  <!-- 3. PATCHES AVAILABLE (Teal) -->
+  <rect x="1120" y="160" width="370" height="140" rx="12" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <g fill="none" stroke="#00E6A4" stroke-linejoin="round" filter="url(#neonTeal)">
+    <path d="M1120 274 V286 Q1120 300 1134 300 H1192 L1208 288 H1402 L1418 300 H1476 Q1490 300 1490 286 V274"
+          stroke-width="2.2" stroke-opacity="0.9"/>
+    <path d="M1214 294 L1226 284 H1384 L1396 294 Z" fill="#00E6A4" fill-opacity="0.08"
+          stroke-width="2.8" stroke-opacity="0.95"/>
+  </g>
+  <text x="1150" y="195" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">PATCHES AVAILABLE</text>
+  <g aria-label="Patches Available semantic KPI capsule">
+    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-3; 0,0" dur="3.8s" repeatCount="indefinite"/>
+    <rect x="1150" y="210" width="200" height="62" rx="31" fill="#0D2133" stroke="#00E6A4" stroke-opacity="0.52"/>
+    <rect x="1200" y="218" width="136" height="30" rx="15" fill="#071522" stroke="#00E6A4" stroke-opacity="0.12"/>
+    <path d="M1163 240 A13 13 0 1 1 1176 253" fill="none" stroke="#7DD3FC" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="9 4"/>
+    <path d="M1176 230 L1179 237 L1186 240 L1179 243 L1176 250 L1173 243 L1166 240 L1173 237 Z" fill="#7DD3FC" filter="url(#neonTeal)"/>
+    <path d="M1181 249 L1184 252 L1190 245" fill="none" stroke="#00E6A4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1204" y="263" fill="#7DD3FC" font-family="Segoe UI, sans-serif" font-size="9" font-weight="700" letter-spacing="1.05">FIX READY</text>
+  </g>
+  
+  <g transform="translate(1425, 230)">
+    <circle cx="0" cy="0" r="50" fill="#00E6A4" fill-opacity="0.1"/>
+    <g transform="scale(3.2)" fill="none" stroke="#00E6A4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 0 -6 V 4 M -4 0 L 0 4 L 4 0"/>
+      <path d="M -6 8 H 6"/>
+    </g>
+  </g>
+
+  <!-- 4. REMEDIATION IN PROGRESS (Purple) -->
+  <rect x="1520" y="160" width="370" height="140" rx="12" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <g fill="none" stroke="#8B5CF6" stroke-linejoin="round" filter="url(#neonTeal)">
+    <path d="M1520 274 V286 Q1520 300 1534 300 H1592 L1608 288 H1802 L1818 300 H1876 Q1890 300 1890 286 V274"
+          stroke-width="2.2" stroke-opacity="0.9"/>
+    <path d="M1614 294 L1626 284 H1784 L1796 294 Z" fill="#8B5CF6" fill-opacity="0.08"
+          stroke-width="2.8" stroke-opacity="0.95"/>
+  </g>
+  <text x="1550" y="195" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">REMEDIATION IN PROGRESS</text>
+  <g aria-label="Remediation In Progress semantic KPI capsule">
+    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-3; 0,0" dur="4.6s" repeatCount="indefinite"/>
+    <rect x="1550" y="210" width="200" height="62" rx="31" fill="#18172F" stroke="#8B5CF6" stroke-opacity="0.56"/>
+    <rect x="1600" y="218" width="136" height="30" rx="15" fill="#111126" stroke="#8B5CF6" stroke-opacity="0.14"/>
+    <circle cx="1576" cy="240" r="15" fill="none" stroke="#A78BFA" stroke-width="1.6" stroke-dasharray="4 4"/>
+    <path d="M1576 230 L1579 237 L1586 240 L1579 243 L1576 250 L1573 243 L1566 240 L1573 237 Z" fill="#A78BFA" filter="url(#neonTeal)"/>
+    <text x="1604" y="263" fill="#A78BFA" font-family="Segoe UI, sans-serif" font-size="9" font-weight="700" letter-spacing="0.95">WORK UNDERWAY</text>
+  </g>
+  
+  <g transform="translate(1825, 230)">
+    <circle cx="0" cy="0" r="50" fill="#8B5CF6" fill-opacity="0.1"/>
+    <g transform="scale(3.2)" fill="none" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="0" cy="0" r="4"/>
+      <path d="M 0 -8 V -4 M 0 4 V 8 M -8 0 H -4 M 4 0 H 8 M -5 -5 L -3 -3 M 3 3 L 5 5 M 5 -5 L 3 -3 M -3 3 L -5 5"/>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- MASSIVE TABLE CONTAINER FOR ACTION DESK    -->
+  <!-- ========================================== -->
+  <rect x="320" y="330" width="1570" height="710" rx="10" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  
+  <!-- Table Header Background and Line -->
+  <rect x="321" y="331" width="1568" height="50" rx="10" fill="#182338"/>
+  <line x1="320" y1="381" x2="1890" y2="381" stroke="#1E2B45" stroke-width="2"/>
+
+  <!-- Table Column Headers -->
+  <text x="360" y="362" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">CVE ID</text>
+  <text x="560" y="362" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">VENDOR &amp; PRODUCT</text>
+  <text x="960" y="362" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">CVSS SCORE</text>
+  <text x="1160" y="362" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">RANSOMWARE</text>
+  <text x="1360" y="362" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">DUE DATE</text>
+  <text x="1660" y="362" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">STATUS</text>
+
+  <!-- Empty Table Row Guidelines (Subtle) -->
+  <line x1="340" y1="440" x2="1870" y2="440" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="340" y1="500" x2="1870" y2="500" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="340" y1="560" x2="1870" y2="560" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="340" y1="620" x2="1870" y2="620" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="340" y1="680" x2="1870" y2="680" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="340" y1="740" x2="1870" y2="740" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="340" y1="800" x2="1870" y2="800" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="340" y1="860" x2="1870" y2="860" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="340" y1="920" x2="1870" y2="920" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="340" y1="980" x2="1870" y2="980" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  
+  <text x="1105" y="680" fill="#475569" font-family="Segoe UI, sans-serif" font-size="14" text-anchor="middle">Awaiting Table Data Connection</text>
+</svg>

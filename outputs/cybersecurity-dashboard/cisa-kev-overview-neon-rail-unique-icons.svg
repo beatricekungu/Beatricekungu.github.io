@@ -1,0 +1,320 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <!-- Subtle Hexagon Pattern -->
+    <pattern id="hex" width="60" height="34.64" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 60 17.32 L 60 51.96 L 30 69.28 L 0 51.96 L 0 17.32 Z" fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.02"/>
+    </pattern>
+    <!-- Radial Gradient for overall lighting -->
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00E6A4" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#090E17" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="cyberGlowTeal" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00E6A4" stop-opacity="0.14"/>
+      <stop offset="55%" stop-color="#00E6A4" stop-opacity="0.035"/>
+      <stop offset="100%" stop-color="#00E6A4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cyberGlowViolet" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="scanBeam" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00E6A4" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00E6A4" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#00E6A4" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="microGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#3B82F6" stroke-width="0.45" stroke-opacity="0.035"/>
+      <circle cx="0" cy="0" r="1" fill="#00E6A4" fill-opacity="0.08"/>
+    </pattern>
+    <filter id="neonTeal" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Base Canvas Background (Deep Navy) -->
+  <rect width="1920" height="1080" fill="#090E17" />
+  <rect width="1920" height="1080" fill="url(#hex)" />
+  <rect width="1920" height="1080" fill="url(#glow)" />
+  <rect x="280" width="1640" height="1080" fill="url(#microGrid)" opacity="0.65"/>
+  <ellipse cx="1160" cy="140" rx="560" ry="310" fill="url(#cyberGlowTeal)"/>
+  <ellipse cx="1760" cy="820" rx="430" ry="360" fill="url(#cyberGlowViolet)"/>
+  <path d="M300 880 C520 700 620 940 850 760 S1240 570 1440 720 S1740 920 1920 735"
+        fill="none" stroke="#00E6A4" stroke-width="1.2" stroke-opacity="0.055"/>
+  <path d="M280 230 L790 0 M860 1080 L1570 0 M1390 1080 L1920 285"
+        fill="none" stroke="url(#scanBeam)" stroke-width="80" opacity="0.24"/>
+  <g fill="#00E6A4" opacity="0.18">
+    <circle cx="438" cy="846" r="2"/><circle cx="850" cy="760" r="2"/>
+    <circle cx="1240" cy="638" r="2"/><circle cx="1440" cy="720" r="2"/>
+    <circle cx="1740" cy="858" r="2"/>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- LEFT SIDEBAR -->
+  <!-- ========================================== -->
+  <rect x="0" y="0" width="280" height="1080" fill="#0C1322" />
+  <line x1="280" y1="0" x2="280" y2="1080" stroke="#1E2B45" stroke-width="1"/>
+
+  <!-- ANIMATED LOGO SECTION -->
+  <ellipse cx="140" cy="141" rx="38" ry="9" fill="#00E6A4" opacity="0.08" filter="url(#neonTeal)"/>
+  <g transform="translate(140, 90)">
+    <animateTransform attributeName="transform" type="translate" values="140,90; 140,80; 140,90" dur="4s" repeatCount="indefinite" />
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#00E6A4" stroke-width="1" opacity="0.3" filter="url(#neonTeal)"/>
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#00E6A4" stroke-width="2" stroke-dasharray="10 4">
+      <animateTransform attributeName="transform" type="rotate" values="0; 360" dur="20s" repeatCount="indefinite" />
+    </circle>
+    <path d="M 0 -22 L 20 -12 V 5 C 20 18 0 28 0 28 C 0 28 -20 18 -20 5 V -12 Z" fill="#00E6A4" fill-opacity="0.1" stroke="#00E6A4" stroke-width="2" filter="url(#neonTeal)"/>
+    <path d="M -8 2 L -2 8 L 10 -4" fill="none" stroke="#00E6A4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="40" stroke-dashoffset="40">
+      <animate attributeName="stroke-dashoffset" values="40; 0; 0; 40; 40" keyTimes="0; 0.2; 0.8; 0.9; 1" dur="5s" repeatCount="indefinite" />
+    </path>
+  </g>
+
+  <text x="140" y="180" fill="#64748B" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" letter-spacing="2" text-anchor="middle">THREAT OPERATIONS</text>
+  <text x="140" y="200" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" letter-spacing="1" text-anchor="middle">SENTRY GRID</text>
+
+  <!-- NAVIGATION -->
+  <rect x="25" y="250" width="230" height="46" rx="6" fill="#00E6A4" fill-opacity="0.1" stroke="#00E6A4" stroke-width="1"/>
+  <rect x="25" y="250" width="4" height="46" rx="2" fill="#00E6A4"/>
+  <g transform="translate(45, 263)" fill="none" stroke="#00E6A4" stroke-width="1.5">
+    <rect x="0" y="0" width="8" height="8" rx="1"/>
+    <rect x="12" y="0" width="8" height="8" rx="1"/>
+    <rect x="0" y="12" width="8" height="8" rx="1"/>
+    <rect x="12" y="12" width="8" height="8" rx="1"/>
+  </g>
+  <text x="75" y="278" fill="#00E6A4" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold">Overview</text>
+
+  <g transform="translate(45, 343)" fill="none" stroke="#64748B" stroke-width="1.5">
+    <circle cx="9" cy="9" r="9"/>
+    <circle cx="9" cy="9" r="3"/>
+  </g>
+  <text x="75" y="358" fill="#64748B" font-family="Segoe UI, sans-serif" font-size="14">Triage &amp; Action Desk</text>
+
+  <!-- FILTERS AREA -->
+  <text x="30" y="450" fill="#00E6A4" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">GLOBAL FILTERS</text>
+  
+  <text x="30" y="490" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12">Tech Stack (Vendor &gt; Product)</text>
+  <rect x="30" y="500" width="220" height="40" rx="4" fill="#090E17" stroke="#1E2B45" stroke-width="1"/>
+  
+  <text x="30" y="570" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12">Remediation Deadline</text>
+  <rect x="30" y="580" width="220" height="40" rx="4" fill="#090E17" stroke="#1E2B45" stroke-width="1"/>
+
+  <text x="30" y="650" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12">Ransomware Linked</text>
+  <rect x="30" y="660" width="220" height="40" rx="4" fill="#090E17" stroke="#1E2B45" stroke-width="1"/>
+
+  <text x="30" y="730" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="12">Vulnerability Type (CWE)</text>
+  <rect x="30" y="740" width="220" height="40" rx="4" fill="#090E17" stroke="#1E2B45" stroke-width="1"/>
+
+  <!-- HUGE FOOTER ICONS FOR BUTTON CLICKS -->
+  <rect x="40" y="940" width="90" height="90" rx="16" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <text x="85" y="1000" fill="#64748B" font-family="Segoe UI, sans-serif" font-size="44" font-weight="bold" text-anchor="middle">in</text>
+
+  <rect x="150" y="940" width="90" height="90" rx="16" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" fill="#64748B" transform="translate(169, 959) scale(2.2)"/>
+  <text x="140" y="1060" fill="#64748B" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" text-anchor="middle" letter-spacing="0.35">Built by Beatrice Kungu.</text>
+
+  <!-- ========================================== -->
+  <!-- MAIN CANVAS AREA                           -->
+  <!-- ========================================== -->
+  
+  <text x="320" y="42" fill="#00E6A4" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" letter-spacing="2">EXECUTIVE SUMMARY</text>
+  <text x="320" y="80" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="32" font-weight="bold">CISA KEV Remediation &amp; Risk Posture</text>
+
+  <rect x="1790" y="42" width="100" height="36" rx="18" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <path d="M 1808 60 A 5 5 0 1 1 1813 65 L 1808 65" fill="none" stroke="#94A3B8" stroke-width="1.5"/>
+  <path d="M 1808 60 L 1805 57 M 1808 60 L 1811 57" fill="none" stroke="#94A3B8" stroke-width="1.5"/>
+  <text x="1825" y="65" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="13">Reset</text>
+
+  <!-- ======================================================= -->
+  <!-- WIDE KPI CARDS WITH MASSIVE ICONS                       -->
+  <!-- ======================================================= -->
+  
+  <!-- 1. TOTAL CVES (Solid Bug Icon) -->
+  <rect x="320" y="120" width="370" height="180" rx="12" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <g fill="none" stroke="#00E6A4" stroke-linejoin="round" filter="url(#neonTeal)">
+    <path d="M320 274 V286 Q320 300 334 300 H392 L408 288 H602 L618 300 H676 Q690 300 690 286 V274"
+          stroke-width="2.2" stroke-opacity="0.9"/>
+    <path d="M414 294 L426 284 H584 L596 294 Z" fill="#00E6A4" fill-opacity="0.08"
+          stroke-width="2.8" stroke-opacity="0.95"/>
+  </g>
+  <text x="350" y="158" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">TOTAL CVES</text>
+  <!-- Semantic KPI capsule; keep the number window empty for a Power BI Card visual -->
+  <g aria-label="Total CVEs semantic KPI capsule">
+    <path d="M418 180 H536 Q550 180 550 194 V216 Q550 230 536 230 H418 L405 217 V193 Z" fill="#071522" stroke="#00E6A4" stroke-opacity="0.34"/>
+    <path d="M376 226 L388 233 V247 L376 254 L364 247 V233 Z" fill="#082C35" stroke="#7DD3FC" stroke-opacity="0.8" transform="translate(0,-34)"/>
+    <circle cx="376" cy="206" r="7" fill="none" stroke="#7DD3FC" stroke-width="1.5"/>
+    <circle cx="376" cy="206" r="2" fill="none" stroke="#7DD3FC" stroke-width="1.5"/>
+    <path d="M376 195 V199 M376 213 V217 M365 206 H369 M383 206 H387" fill="none" stroke="#7DD3FC" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="405" y="255" fill="#7DD3FC" font-family="Segoe UI, sans-serif" font-size="9" font-weight="700" letter-spacing="1.25">KEV CATALOG</text>
+    <line x1="480" y1="252" x2="550" y2="252" stroke="#00E6A4" stroke-width="1" stroke-opacity="0.42"/>
+  </g>
+  
+  <g transform="translate(625, 230)">
+    <circle cx="0" cy="0" r="50" fill="#00E6A4" fill-opacity="0.1"/>
+    <!-- New Solid Bug matched to uploaded image -->
+    <g transform="scale(1.15)">
+      <g fill="#00E6A4">
+        <!-- Head -->
+        <path d="M -12 -8 C -12 -20 12 -20 12 -8 Z" />
+        <!-- Body Left (Split shell) -->
+        <path d="M -14 -5 C -14 -5 -14 12 -14 12 C -14 24 -4 30 -2 30 L -2 -5 Z" />
+        <!-- Body Right (Split shell) -->
+        <path d="M 14 -5 C 14 -5 14 12 14 12 C 14 24 4 30 2 30 L 2 -5 Z" />
+      </g>
+      <!-- Antennas & Legs -->
+      <g stroke="#00E6A4" stroke-width="4.5" stroke-linecap="round" fill="none">
+        <!-- Antennas -->
+        <path d="M -5 -16 L -9 -24 M 5 -16 L 9 -24" />
+        <!-- Legs Left -->
+        <path d="M -15 -1 C -23 -1 -23 -9 -23 -9" />
+        <path d="M -15 8 L -25 8" />
+        <path d="M -13 17 C -21 17 -21 27 -21 27" />
+        <!-- Legs Right -->
+        <path d="M 15 -1 C 23 -1 23 -9 23 -9" />
+        <path d="M 15 8 L 25 8" />
+        <path d="M 13 17 C 21 17 21 27 21 27" />
+      </g>
+    </g>
+  </g>
+
+  <!-- 2. RANSOMWARE (Red - Scaled Up) -->
+  <rect x="720" y="120" width="370" height="180" rx="12" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <g fill="none" stroke="#F43F5E" stroke-linejoin="round" filter="url(#neonTeal)">
+    <path d="M720 274 V286 Q720 300 734 300 H792 L808 288 H1002 L1018 300 H1076 Q1090 300 1090 286 V274"
+          stroke-width="2.2" stroke-opacity="0.9"/>
+    <path d="M814 294 L826 284 H984 L996 294 Z" fill="#F43F5E" fill-opacity="0.08"
+          stroke-width="2.8" stroke-opacity="0.95"/>
+  </g>
+  <text x="750" y="158" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">RANSOMWARE LINKED</text>
+  <g aria-label="Ransomware Linked semantic KPI capsule">
+    <circle cx="776" cy="206" r="23" fill="#F43F5E" fill-opacity="0.07" stroke="#F43F5E" stroke-opacity="0.36"/>
+    <path d="M818 180 H936 Q950 180 950 194 V216 Q950 230 936 230 H818 L805 217 V193 Z" fill="#190E1A" stroke="#F43F5E" stroke-opacity="0.36"/>
+    <path d="M770 210 L767 213 A4 4 0 0 1 761 207 L765 203 A4 4 0 0 1 771 203" fill="none" stroke="#FB7185" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M782 202 L785 199 A4 4 0 0 1 791 205 L787 209 A4 4 0 0 1 781 209" fill="none" stroke="#FB7185" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M772 211 L780 203" fill="none" stroke="#FB7185" stroke-width="1.5" stroke-dasharray="2 3" stroke-linecap="round"/>
+    <circle cx="776" cy="206" r="1.4" fill="#FB7185" filter="url(#neonTeal)"/>
+    <text x="805" y="255" fill="#FB7185" font-family="Segoe UI, sans-serif" font-size="9" font-weight="700" letter-spacing="1.15">THREAT LINKED</text>
+    <line x1="895" y1="252" x2="950" y2="252" stroke="#F43F5E" stroke-width="1" stroke-opacity="0.42"/>
+  </g>
+  
+  <g transform="translate(1025, 230)">
+    <circle cx="0" cy="0" r="50" fill="#F43F5E" fill-opacity="0.1"/>
+    <g transform="scale(3.8)" fill="none" stroke="#F43F5E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="-7" y="-2" width="14" height="11" rx="2"/>
+      <path d="M -4 -2 V -5 C -4 -7.5, 4 -7.5, 4 -5 V -2"/>
+      <circle cx="0" cy="3.5" r="1.5" fill="#F43F5E"/>
+      <path d="M 0 5 V 6.5"/>
+    </g>
+  </g>
+
+  <!-- 3. EXPOSED PRODUCTS (Purple - Scaled Up) -->
+  <rect x="1120" y="120" width="370" height="180" rx="12" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <g fill="none" stroke="#8B5CF6" stroke-linejoin="round" filter="url(#neonTeal)">
+    <path d="M1120 274 V286 Q1120 300 1134 300 H1192 L1208 288 H1402 L1418 300 H1476 Q1490 300 1490 286 V274"
+          stroke-width="2.2" stroke-opacity="0.9"/>
+    <path d="M1214 294 L1226 284 H1384 L1396 294 Z" fill="#8B5CF6" fill-opacity="0.08"
+          stroke-width="2.8" stroke-opacity="0.95"/>
+  </g>
+  <text x="1150" y="158" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">EXPOSED PRODUCTS</text>
+  <g aria-label="Exposed Products semantic KPI capsule">
+    <circle cx="1176" cy="206" r="23" fill="#8B5CF6" fill-opacity="0.07" stroke="#8B5CF6" stroke-opacity="0.38"/>
+    <path d="M1218 180 H1336 Q1350 180 1350 194 V216 Q1350 230 1336 230 H1218 L1205 217 V193 Z" fill="#111126" stroke="#8B5CF6" stroke-opacity="0.38"/>
+    <g transform="translate(0,-34)">
+      <path d="M1176 240 L1166 230 M1176 240 L1186 230 M1176 240 L1176 252" stroke="#A78BFA" stroke-width="1.2" stroke-opacity="0.75"/>
+      <circle cx="1166" cy="230" r="2.5" fill="#A78BFA"/><circle cx="1186" cy="230" r="2.5" fill="#A78BFA"/><circle cx="1176" cy="252" r="2.5" fill="#A78BFA"/>
+      <circle cx="1176" cy="240" r="4" fill="none" stroke="#A78BFA" stroke-width="1.6" filter="url(#neonTeal)"/>
+    </g>
+    <text x="1205" y="255" fill="#A78BFA" font-family="Segoe UI, sans-serif" font-size="9" font-weight="700" letter-spacing="1.05">ATTACK SURFACE</text>
+    <line x1="1299" y1="252" x2="1350" y2="252" stroke="#8B5CF6" stroke-width="1" stroke-opacity="0.42"/>
+  </g>
+  
+  <g transform="translate(1425, 230)">
+    <circle cx="0" cy="0" r="50" fill="#8B5CF6" fill-opacity="0.1"/>
+    <g transform="scale(3.6)" fill="none" stroke="#8B5CF6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="-8" y="-7" width="16" height="4" rx="1"/>
+      <rect x="-8" y="0" width="16" height="4" rx="1"/>
+      <rect x="-8" y="7" width="16" height="4" rx="1"/>
+      <line x1="-4" y1="-5" x2="-4" y2="-5" stroke-width="2"/>
+      <line x1="-4" y1="2" x2="-4" y2="2" stroke-width="2"/>
+      <line x1="-4" y1="9" x2="-4" y2="9" stroke-width="2"/>
+    </g>
+  </g>
+
+  <!-- 4. REMEDIATION DUE (Orange - Scaled Up) -->
+  <rect x="1520" y="120" width="370" height="180" rx="12" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <g fill="none" stroke="#F59E0B" stroke-linejoin="round" filter="url(#neonTeal)">
+    <path d="M1520 274 V286 Q1520 300 1534 300 H1592 L1608 288 H1802 L1818 300 H1876 Q1890 300 1890 286 V274"
+          stroke-width="2.2" stroke-opacity="0.9"/>
+    <path d="M1614 294 L1626 284 H1784 L1796 294 Z" fill="#F59E0B" fill-opacity="0.08"
+          stroke-width="2.8" stroke-opacity="0.95"/>
+  </g>
+  <text x="1550" y="158" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">REMEDIATION DUE</text>
+  <g aria-label="Remediation Due semantic KPI capsule">
+    <circle cx="1576" cy="206" r="23" fill="#F59E0B" fill-opacity="0.07" stroke="#F59E0B" stroke-opacity="0.38"/>
+    <path d="M1618 180 H1736 Q1750 180 1750 194 V216 Q1750 230 1736 230 H1618 L1605 217 V193 Z" fill="#1B140B" stroke="#F59E0B" stroke-opacity="0.38"/>
+    <path d="M1569 195 H1583 M1569 217 H1583 M1570 195 C1570 200 1573 202 1576 206 C1573 210 1570 212 1570 217 M1582 195 C1582 200 1579 202 1576 206 C1579 210 1582 212 1582 217" fill="none" stroke="#FBBF24" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonTeal)"/>
+    <text x="1605" y="255" fill="#FBBF24" font-family="Segoe UI, sans-serif" font-size="9" font-weight="700" letter-spacing="1.15">SLA WINDOW</text>
+    <line x1="1680" y1="252" x2="1750" y2="252" stroke="#F59E0B" stroke-width="1" stroke-opacity="0.42"/>
+  </g>
+  
+  <g transform="translate(1825, 230)">
+    <circle cx="0" cy="0" r="50" fill="#F59E0B" fill-opacity="0.1"/>
+    <g transform="scale(3.6)" fill="none" stroke="#F59E0B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="0" cy="0" r="8"/>
+      <polyline points="0,-4 0,0 3,2"/>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- MAIN CHART AREAS                           -->
+  <!-- ========================================== -->
+  
+  <!-- Row 1 -->
+  <rect x="320" y="330" width="770" height="340" rx="10" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <text x="350" y="370" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">EXPLOIT IDENTIFICATION OVER TIME</text>
+  
+  <line x1="350" y1="420" x2="1060" y2="420" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="350" y1="490" x2="1060" y2="490" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="350" y1="560" x2="1060" y2="560" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="350" y1="630" x2="1060" y2="630" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <rect x="1120" y="330" width="770" height="340" rx="10" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <text x="1150" y="370" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">RANSOMWARE EXPLOITATION RATIO</text>
+  
+  <circle cx="1505" cy="505" r="15" fill="none" stroke="#1E2B45" stroke-width="3" stroke-dasharray="6 4"/>
+  <text x="1505" y="545" fill="#475569" font-family="Segoe UI, sans-serif" font-size="12" text-anchor="middle">Awaiting data connection</text>
+
+  <!-- Row 2 -->
+  <rect x="320" y="700" width="770" height="340" rx="10" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <text x="350" y="740" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">TOP EXPLOITED VENDORS &amp; PRODUCTS</text>
+
+  <!-- Bar chart time controls -->
+  <rect x="790" y="716" width="116" height="34" rx="7" fill="#0B1321" stroke="#2B3A58" stroke-width="1"/>
+  <text x="805" y="738" fill="#94A3B8" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600">YEAR</text>
+  <path d="M886 730 l5 5 5-5" fill="none" stroke="#00E6A4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g font-family="Segoe UI, sans-serif" font-size="10" font-weight="700" text-anchor="middle">
+    <rect x="916" y="716" width="31" height="34" rx="7" fill="#00E6A4" fill-opacity="0.15" stroke="#00E6A4"/>
+    <text x="931.5" y="738" fill="#00E6A4">Q1</text>
+    <rect x="952" y="716" width="31" height="34" rx="7" fill="#0B1321" stroke="#2B3A58"/>
+    <text x="967.5" y="738" fill="#94A3B8">Q2</text>
+    <rect x="988" y="716" width="31" height="34" rx="7" fill="#0B1321" stroke="#2B3A58"/>
+    <text x="1003.5" y="738" fill="#94A3B8">Q3</text>
+    <rect x="1024" y="716" width="31" height="34" rx="7" fill="#0B1321" stroke="#2B3A58"/>
+    <text x="1039.5" y="738" fill="#94A3B8">Q4</text>
+  </g>
+  
+  <line x1="430" y1="780" x2="430" y2="1010" stroke="#1E2B45" stroke-width="1"/>
+  <line x1="350" y1="820" x2="1060" y2="820" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="350" y1="880" x2="1060" y2="880" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="350" y1="940" x2="1060" y2="940" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="350" y1="1000" x2="1060" y2="1000" stroke="#1E2B45" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <rect x="1120" y="700" width="770" height="340" rx="10" fill="#121B2B" stroke="#1E2B45" stroke-width="1"/>
+  <text x="1150" y="740" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">REMEDIATION SLA COMPLIANCE</text>
+  
+  <path d="M 1485 900 A 20 20 0 0 1 1525 900" fill="none" stroke="#1E2B45" stroke-width="4" stroke-linecap="round"/>
+  <text x="1505" y="930" fill="#475569" font-family="Segoe UI, sans-serif" font-size="12" text-anchor="middle">Awaiting data connection</text>
+</svg>

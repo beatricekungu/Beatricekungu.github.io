@@ -15,9 +15,15 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <base href="../">
   <title>Projects | Beatrice Kungu</title>
-  <meta name="description" content="Cybersecurity, GRC, cloud security, and data analytics projects by Beatrice Kungu.">
+  <meta name="description" content="Eight cybersecurity, GRC, cloud, Power BI, AI deployment, identity, and database engineering projects by Beatrice Kungu.">
   <meta name="keywords" content="cybersecurity projects, GRC, cloud security, data analytics, Beatrice Kungu">
   <link rel="canonical" href="https://beatricekungu.github.io/projects/">
+  <meta property="og:title" content="Projects | Beatrice Kungu">
+  <meta property="og:description" content="Explore eight security, analytics, identity, AI deployment, and database engineering projects built for practical enterprise outcomes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://beatricekungu.github.io/projects/">
+  <meta property="og:image" content="https://beatricekungu.github.io/assets/img/portfolio/beatrice-kungu-ai-portfolio-thumbnail.png">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -36,7 +42,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/main.css?v=2026-08-05-project-grid" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: FolioOne
@@ -87,7 +93,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Projects</h2>
-        <p>A curated selection of cybersecurity, GRC, cloud security, and data analytics work focused on resilient, audit-ready enterprise environments.</p>
+        <p>Eight projects spanning cybersecurity, GRC, cloud security, Power BI, identity, AI deployment, and database engineering—organized around practical, audit-ready enterprise outcomes.</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -117,7 +123,7 @@
           </ul><!-- End Portfolio Filters -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloud project-theme-azure">
+            <div class="col-lg-3 col-md-6 portfolio-item isotope-item filter-cloud project-theme-azure">
               <a href="azure-unmasking.html" class="portfolio-card portfolio-card-link" aria-label="View Azure SQL Dynamic Data Masking PoC case study">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/azure-sql-ddm-evidence-thumbnail.jpg" alt="Real Azure SQL query results showing sensitive database fields masked for a routine support role" class="img-fluid">
@@ -126,7 +132,10 @@
                   </div>
                 </div>
                 <div class="portfolio-info">
-                  <span class="project-marker marker-square" aria-hidden="true"><i class="bi bi-database-lock"></i></span>
+                  <div class="project-label-row">
+                    <span class="project-marker marker-square" aria-hidden="true"><i class="bi bi-database-lock"></i></span>
+                    <span class="project-status">Complete</span>
+                  </div>
                   <h4>Azure SQL Dynamic Data Masking PoC</h4>
                   <p>Protected sensitive database fields with role-aware masking and audit-ready cloud security controls.</p>
                   <div class="portfolio-tags">
@@ -137,7 +146,30 @@
               </a>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-secops project-theme-powerbi">
+            <div class="col-lg-3 col-md-6 portfolio-item isotope-item filter-secops project-theme-cisa">
+              <a href="cisa-kev-vulnerability-risk-posture.html" class="portfolio-card portfolio-card-link" aria-label="View CISA KEV Vulnerability Risk Posture Power BI project">
+                <div class="portfolio-img">
+                  <img src="assets/img/portfolio/cisa-kev-risk-posture-thumbnail.png" alt="CISA KEV vulnerability risk posture dashboard concept with risk, remediation, and exposure panels" class="img-fluid">
+                  <div class="portfolio-overlay">
+                    <span class="portfolio-card-action"><i class="bi bi-arrow-up-right"></i></span>
+                  </div>
+                </div>
+                <div class="portfolio-info">
+                  <div class="project-label-row">
+                    <span class="project-marker marker-bars" aria-hidden="true"><i class="bi bi-shield-exclamation"></i></span>
+                    <span class="project-status">Power BI coming soon</span>
+                  </div>
+                  <h4>CISA KEV Vulnerability Risk Posture</h4>
+                  <p>Enriched 1,655 known-exploited CVEs with CVSS and EPSS intelligence for risk-based remediation reporting.</p>
+                  <div class="portfolio-tags">
+                    <span>Power BI</span>
+                    <span>CISA KEV</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-lg-3 col-md-6 portfolio-item isotope-item filter-secops project-theme-powerbi">
               <a href="cyberattack-financial-exposure.html" class="portfolio-card portfolio-card-link" aria-label="View Hospital Financial Exposure Dashboard case study">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/hospital-powerbi-dashboard-thumbnail.jpg" alt="Published Hospital Financial Exposure Power BI dashboard with patient, admissions, cost, and coverage insights" class="img-fluid">
@@ -160,7 +192,7 @@
               </a>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-grc project-theme-triage">
+            <div class="col-lg-3 col-md-6 portfolio-item isotope-item filter-grc project-theme-triage">
               <a href="grc-evidence-mapping-challenge.html" class="portfolio-card portfolio-card-link" aria-label="View Incident Triage Simulator interactive lab">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/grc-evidence-mapping-challenge-thumbnail.jpg" alt="Incident triage simulator visual with control matrix and response workflow elements" class="img-fluid">
@@ -169,7 +201,10 @@
                   </div>
                 </div>
                 <div class="portfolio-info">
-                  <span class="project-marker marker-circle" aria-hidden="true"><i class="bi bi-inboxes"></i></span>
+                  <div class="project-label-row">
+                    <span class="project-marker marker-circle" aria-hidden="true"><i class="bi bi-inboxes"></i></span>
+                    <span class="project-status">Interactive lab</span>
+                  </div>
                   <h4>Incident Triage Simulator</h4>
                   <p>Built a 10-incident triage queue testing severity, escalation, privacy risk, and coordinated response decisions.</p>
                   <div class="portfolio-tags">
@@ -180,27 +215,7 @@
               </a>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cloud filter-dba project-theme-dba">
-              <a href="azure-sql-dba-command-center.html" class="portfolio-card portfolio-card-link" aria-label="View Azure SQL DBA Operations Command Center interactive lab">
-                <div class="portfolio-img">
-                  <img src="assets/img/portfolio/azure-sql-dba-command-center-thumbnail.jpg" alt="Azure SQL DBA operations command center with monitoring, recovery, and audit evidence panels" class="img-fluid">
-                  <div class="portfolio-overlay">
-                    <span class="portfolio-card-action"><i class="bi bi-arrow-up-right"></i></span>
-                  </div>
-                </div>
-                <div class="portfolio-info">
-                  <span class="project-marker marker-soft-square" aria-hidden="true"><i class="bi bi-server"></i></span>
-                  <h4>Azure SQL DBA Operations Command Center</h4>
-                  <p>Built an interactive DBA readiness simulator for securing, monitoring, tuning, recovering, and documenting Azure SQL operations.</p>
-                  <div class="portfolio-tags">
-                    <span>Azure DBA</span>
-                    <span>Operations</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-grc project-theme-grc">
+            <div class="col-lg-3 col-md-6 portfolio-item isotope-item filter-grc project-theme-grc">
               <a href="federal-benefits-gap-assessment.html" class="portfolio-card portfolio-card-link" aria-label="View Federal Benefits Case Management Portal Cybersecurity Gap Assessment">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/federal-benefits-gap-assessment-thumbnail.jpg" alt="Federal Benefits cybersecurity gap assessment composed from the real assessment cover and risk register" class="img-fluid">
@@ -209,9 +224,12 @@
                   </div>
                 </div>
                 <div class="portfolio-info">
-                  <span class="project-marker marker-rectangle" aria-hidden="true"><i class="bi bi-clipboard-data"></i></span>
+                  <div class="project-label-row">
+                    <span class="project-marker marker-rectangle" aria-hidden="true"><i class="bi bi-clipboard-data"></i></span>
+                    <span class="project-status">Complete</span>
+                  </div>
                   <h4>Federal Benefits Cybersecurity Gap Assessment</h4>
-                  <p>Assessed nine control gaps across access control, incident response, and vulnerability management, then built an evidence-backed remediation roadmap.</p>
+                  <p>Assessed nine control gaps and built an evidence-backed remediation roadmap aligned to NIST priorities.</p>
                   <div class="portfolio-tags">
                     <span>GRC</span>
                     <span>NIST</span>
@@ -220,7 +238,7 @@
               </a>
             </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-engineering project-theme-identity">
+            <div class="col-lg-3 col-md-6 portfolio-item isotope-item filter-engineering project-theme-identity">
               <a href="enterprise-iam-rbac.html" class="portfolio-card portfolio-card-link" aria-label="View Identity Governance From Operations to Architecture case study">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/Image1.png" alt="Identity governance workflow moving from manual provisioning to RBAC architecture" class="img-fluid">
@@ -229,9 +247,12 @@
                   </div>
                 </div>
                 <div class="portfolio-info">
-                  <span class="project-marker marker-notch" aria-hidden="true"><i class="bi bi-person-badge"></i></span>
+                  <div class="project-label-row">
+                    <span class="project-marker marker-notch" aria-hidden="true"><i class="bi bi-person-badge"></i></span>
+                    <span class="project-status">Complete</span>
+                  </div>
                   <h4>Identity Governance: From Operations to Architecture</h4>
-                  <p>Connects hands-on access provisioning experience with a later secure-by-design RBAC architecture and segregation-of-duties model.</p>
+                  <p>Connected access-provisioning experience with secure RBAC architecture and segregation-of-duties controls.</p>
                   <div class="portfolio-tags">
                     <span>IAM</span>
                     <span>RBAC</span>
@@ -240,10 +261,55 @@
               </a>
             </div>
 
+            <div class="col-lg-3 col-md-6 portfolio-item isotope-item filter-secops filter-engineering project-theme-secureops">
+              <a href="secureops-ai-deployment-lab.html" class="portfolio-card portfolio-card-link" aria-label="View the planned SecureOps AI Deployment Lab project roadmap">
+                <div class="portfolio-img">
+                  <img src="assets/img/portfolio/secureops-ai-deployment-lab-thumbnail.png" alt="SecureOps AI deployment lifecycle interface moving from customer discovery through production monitoring" class="img-fluid">
+                  <div class="portfolio-overlay">
+                    <span class="portfolio-card-action"><i class="bi bi-arrow-up-right"></i></span>
+                  </div>
+                </div>
+                <div class="portfolio-info">
+                  <div class="project-label-row">
+                    <span class="project-marker marker-ring" aria-hidden="true"><i class="bi bi-stars"></i></span>
+                    <span class="project-status">Planned project</span>
+                  </div>
+                  <h4>SecureOps AI Deployment Lab</h4>
+                  <p>A customer-led, full-stack AI deployment from discovery and scoping through evaluations, rollout, and adoption.</p>
+                  <div class="portfolio-tags">
+                    <span>AI Deployment</span>
+                    <span>Full Stack</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-lg-3 col-md-6 portfolio-item isotope-item filter-dba filter-engineering project-theme-sqlperf">
+              <a href="enterprise-sql-performance.html" class="portfolio-card portfolio-card-link" aria-label="View the planned Enterprise SQL Performance Optimization project roadmap">
+                <div class="portfolio-img">
+                  <img src="assets/img/portfolio/enterprise-sql-performance-thumbnail.png" alt="Enterprise SQL performance engineering dashboard with query plans, latency trends, blocking sessions, and optimization workflow" class="img-fluid">
+                  <div class="portfolio-overlay">
+                    <span class="portfolio-card-action"><i class="bi bi-arrow-up-right"></i></span>
+                  </div>
+                </div>
+                <div class="portfolio-info">
+                  <div class="project-label-row">
+                    <span class="project-marker marker-soft-square" aria-hidden="true"><i class="bi bi-speedometer2"></i></span>
+                    <span class="project-status">Planned project</span>
+                  </div>
+                  <h4>Enterprise SQL Performance Optimization</h4>
+                  <p>A measurement-first tuning project covering workload baselines, query plans, indexes, safe changes, and verified gains.</p>
+                  <div class="portfolio-tags">
+                    <span>SQL</span>
+                    <span>Performance</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
           </div><!-- End Portfolio Items Container -->
 
-          <!-- Draft projects are intentionally excluded from the public gallery until complete:
-               SaaS Incident Response Pipeline and Enterprise SQL Performance Optimization. -->
+          <!-- SaaS Incident Response Pipeline remains an intentionally hidden draft. -->
 
         </div>
 

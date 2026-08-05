@@ -2,94 +2,164 @@
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XD1M4HVZLD"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){window.dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-XD1M4HVZLD');
   </script>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta name="robots" content="noindex, nofollow">
   <title>Enterprise SQL Performance Optimization | Beatrice Kungu</title>
-  <meta name="description" content="Enterprise SQL Performance Optimization project by Beatrice Kungu.">
-  <meta name="keywords" content="SQL optimization, database performance, execution plans, Beatrice Kungu">
+  <meta name="description" content="Planned enterprise SQL performance engineering project covering workload baselines, execution plans, indexing, safe changes, and verified improvement.">
+  <meta name="keywords" content="SQL performance optimization, execution plans, Query Store, indexing, database engineering, performance testing">
+  <link rel="canonical" href="https://beatricekungu.github.io/enterprise-sql-performance.html">
+  <meta property="og:title" content="Enterprise SQL Performance Optimization | Beatrice Kungu">
+  <meta property="og:description" content="A planned measurement-first SQL tuning project with safe change control and before-and-after performance evidence.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://beatricekungu.github.io/assets/img/portfolio/enterprise-sql-performance-thumbnail.png">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Poppins:wght@400;500;600;700;800&family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/main.css?v=2026-08-05-project-grid" rel="stylesheet">
+  <link href="assets/css/project-labs.css?v=2026-08-05-roadmaps" rel="stylesheet">
 </head>
 
-<body class="portfolio-details-page">
-
+<body class="portfolio-details-page lab-page project-roadmap-page sql-performance-page">
   <header id="header" class="header d-flex align-items-center light-background sticky-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
-
+      <a href="index.html" class="home-name-badge" aria-label="Beatrice Kungu home"><span class="home-name-spark" aria-hidden="true">&#10022;</span><span>Beatrice Kungu</span></a>
       <nav id="navmenu" class="navmenu">
         <ul>
-  <li><a class="nav-link scrollto" href="index.html">Home</a></li>
-  <li><a class="nav-link scrollto" href="about/">About</a></li>
-  <li><a class="nav-link scrollto active" href="projects/">Projects</a></li>
-  <li><a class="nav-link scrollto" href="contact/">Contact</a></li>
-  
-  <li class="ms-auto"></li>
+          <li><a class="nav-link scrollto" href="index.html">Home</a></li>
+          <li><a class="nav-link scrollto" href="about/">About</a></li>
+          <li><a class="nav-link scrollto active" href="projects/">Projects</a></li>
+          <li><a class="nav-link scrollto" href="contact/">Contact</a></li>
+          <li class="ms-auto"></li>
+        </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
-    <div class="header-resume d-flex align-items-center">
-  <a href="assets/resume.pdf?v=2026-07-29" target="_blank" class="btn btn-lg d-flex align-items-center" style="background-color: #1387C1; border-color: #1387C1; color: #ffffff; border-radius: 30px; font-weight: 600; padding: 8px 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    <i class="bi bi-file-earmark-pdf-fill" style="font-size: 1.5rem; margin-right: 8px;"></i>
-    View Resume
-  </a>
-</div>
+      <div class="header-resume d-flex align-items-center">
+        <a href="assets/resume.pdf?v=2026-07-29" target="_blank" class="btn btn-lg d-flex align-items-center" style="background-color:#1387C1;border-color:#1387C1;color:#fff;border-radius:30px;font-weight:600;padding:8px 24px;">
+          <i class="bi bi-file-earmark-pdf-fill" style="font-size:1.5rem;margin-right:8px;"></i>View Resume
+        </a>
+      </div>
     </div>
   </header>
 
   <main class="main">
-    <section class="section" style="min-height: 60vh;">
-      <div class="container">
+    <section class="lab-main">
+      <div class="lab-shell">
+        <div class="lab-hero">
+          <div class="lab-panel" data-aos="fade-up">
+            <span class="lab-eyebrow"><i class="bi bi-speedometer2"></i> Planned database engineering project</span>
+            <h1>Enterprise SQL Performance Optimization</h1>
+            <p class="lab-lede">A measurement-first tuning project designed to show how I will baseline a realistic workload, diagnose query and concurrency bottlenecks, implement controlled improvements, and prove the result with repeatable before-and-after evidence.</p>
+            <div class="lab-tags">
+              <span><i class="bi bi-database"></i> SQL</span>
+              <span><i class="bi bi-diagram-2"></i> Execution Plans</span>
+              <span><i class="bi bi-bar-chart-line"></i> Query Store</span>
+              <span><i class="bi bi-bezier2"></i> Index Strategy</span>
+              <span><i class="bi bi-arrow-repeat"></i> Safe Change</span>
+            </div>
+          </div>
+          <aside class="lab-panel lab-visual" data-aos="fade-up" data-aos-delay="100">
+            <img src="assets/img/portfolio/enterprise-sql-performance-thumbnail.png" alt="Enterprise SQL performance engineering dashboard with workload, execution plan, and optimization evidence">
+            <div class="lab-visual-body">
+              <span class="lab-status status-planned"><i class="bi bi-map"></i> Planned project</span>
+              <p class="mt-3 mb-0">The project will publish the workload generator, schema, diagnostic queries, tuning decisions, validation results, rollback evidence, and a recruiter-friendly technical case study.</p>
+            </div>
+          </aside>
+        </div>
+
+        <div class="lab-kpis" data-aos="fade-up" data-aos-delay="150">
+          <div class="lab-kpi"><i class="bi bi-list-ol"></i><div><strong>5</strong><span>Optimization stages</span></div></div>
+          <div class="lab-kpi"><i class="bi bi-clipboard-pulse"></i><div><strong>6</strong><span>Baseline signal families</span></div></div>
+          <div class="lab-kpi"><i class="bi bi-check2-all"></i><div><strong>1</strong><span>Repeatable evidence package</span></div></div>
+        </div>
+
+        <section class="plan-section" aria-labelledby="sql-scenario-title">
+          <div class="plan-section-heading">
+            <div><span class="lab-eyebrow">Engineering scenario</span><h2 id="sql-scenario-title">A transactional workload slowing under growth</h2></div>
+            <p>The planned environment will simulate an enterprise order and service workload with skewed data, reporting queries, concurrent updates, blocking, missing indexes, parameter sensitivity, and regression-prone changes.</p>
+          </div>
+          <div class="plan-grid">
+            <article class="plan-card"><i class="bi bi-graph-down-arrow"></i><h3>Symptoms</h3><p>Rising p95 latency, intermittent timeouts, inconsistent plans, expensive scans, blocking sessions, and resource pressure during mixed workloads.</p></article>
+            <article class="plan-card"><i class="bi bi-shield-exclamation"></i><h3>Constraints</h3><p>Maintain correctness and availability, avoid speculative indexes, limit write overhead, document rollback, and test every change against the same workload.</p></article>
+            <article class="plan-card"><i class="bi bi-trophy"></i><h3>Definition of success</h3><p>Demonstrate material performance improvement without hiding regressions, trading away data integrity, or relying on one unrepeatable benchmark run.</p></article>
+          </div>
+        </section>
+
+        <section class="plan-section" aria-labelledby="sql-workflow-title">
+          <div class="plan-section-heading"><div><span class="lab-eyebrow">Optimization workflow</span><h2 id="sql-workflow-title">A controlled path from evidence to verified change</h2></div></div>
+          <div class="plan-grid">
+            <article class="plan-card plan-phase"><span class="plan-number">Stage 01</span><h3>Identify</h3><p>Capture top resource consumers, wait patterns, blocked sessions, timeouts, workload shape, and business-critical query paths.</p></article>
+            <article class="plan-card plan-phase"><span class="plan-number">Stage 02</span><h3>Analyze</h3><p>Inspect actual execution plans, cardinality estimates, scans, lookups, join choices, spills, parameter behavior, and query design.</p></article>
+            <article class="plan-card plan-phase"><span class="plan-number">Stage 03</span><h3>Recommend</h3><p>Rank query rewrites, index changes, statistics maintenance, plan stabilization, and configuration options by expected value and risk.</p></article>
+            <article class="plan-card plan-phase"><span class="plan-number">Stage 04</span><h3>Implement safely</h3><p>Apply one controlled change at a time in a staging environment with approvals, monitoring criteria, and a tested rollback path.</p></article>
+            <article class="plan-card plan-phase"><span class="plan-number">Stage 05</span><h3>Validate</h3><p>Replay the same workload, compare distributions instead of single averages, check write cost and regressions, and document the final decision.</p></article>
+            <article class="plan-card plan-phase"><span class="plan-number">Evidence</span><h3>Communicate</h3><p>Publish the diagnostic story, before-and-after measures, trade-offs, artifacts, and recommendations in an executive and engineering view.</p></article>
+          </div>
+        </section>
+
+        <section class="plan-section" aria-labelledby="sql-baseline-title">
+          <div class="plan-section-heading"><div><span class="lab-eyebrow">Baseline design</span><h2 id="sql-baseline-title">Signals captured before any tuning decision</h2></div></div>
+          <div class="plan-grid plan-grid-4">
+            <article class="plan-card"><i class="bi bi-stopwatch"></i><h3>Latency</h3><p>Median, p95, and p99 duration by query family plus timeout and retry rates.</p></article>
+            <article class="plan-card"><i class="bi bi-cpu"></i><h3>Resource use</h3><p>CPU, logical reads, physical reads, memory grants, temp activity, and log pressure.</p></article>
+            <article class="plan-card"><i class="bi bi-diagram-3"></i><h3>Plan behavior</h3><p>Plan changes, estimate accuracy, scan and seek patterns, join operators, spills, and forced-plan history.</p></article>
+            <article class="plan-card"><i class="bi bi-lock"></i><h3>Concurrency</h3><p>Blocking chains, deadlocks, lock waits, transaction duration, and isolation-level effects.</p></article>
+          </div>
+        </section>
+
+        <section class="plan-section" aria-labelledby="sql-experiments-title">
+          <div class="plan-section-heading"><div><span class="lab-eyebrow">Experiment backlog</span><h2 id="sql-experiments-title">Changes to test—not assumptions to declare</h2></div></div>
+          <div class="plan-table-wrap">
+            <table class="plan-table">
+              <thead><tr><th>Experiment</th><th>Hypothesis</th><th>Guardrail</th><th>Evidence</th></tr></thead>
+              <tbody>
+                <tr><td>Targeted covering index</td><td>Reduce reads and eliminate expensive lookups on a frequent customer-order query.</td><td>Measure storage and write overhead; reject redundant indexes.</td><td>Plan comparison, logical reads, duration distribution, write benchmark.</td></tr>
+                <tr><td>Sargable query rewrite</td><td>Enable index access by removing a function from a filtered predicate.</td><td>Prove identical result sets and preserve application behavior.</td><td>Unit checks, actual plan, row estimates, CPU, reads, and latency.</td></tr>
+                <tr><td>Statistics strategy</td><td>Improve cardinality estimates on skewed data and stabilize join selection.</td><td>Document maintenance cost and avoid masking data-model problems.</td><td>Estimate-to-actual variance, plan stability, compilation impact.</td></tr>
+                <tr><td>Parameter sensitivity treatment</td><td>Reduce extreme latency variance across small and large parameter values.</td><td>Test representative distributions and monitor compilation cost.</td><td>Multi-parameter replay, Query Store history, p95 and p99 comparison.</td></tr>
+                <tr><td>Transaction redesign</td><td>Shorten lock duration and reduce blocking in concurrent updates.</td><td>Preserve atomicity and validate failure recovery.</td><td>Blocking graph, throughput, deadlock events, correctness tests.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="plan-section" aria-labelledby="sql-deliverables-title">
+          <div class="plan-section-heading"><div><span class="lab-eyebrow">Planned deliverables</span><h2 id="sql-deliverables-title">A portfolio-ready evidence package</h2></div></div>
+          <div class="plan-grid">
+            <article class="plan-card"><i class="bi bi-github"></i><h3>Reproducible lab</h3><p>Schema, synthetic data generator, workload runner, environment instructions, versioned SQL, and automated validation checks.</p></article>
+            <article class="plan-card"><i class="bi bi-file-earmark-code"></i><h3>Diagnostic toolkit</h3><p>Query Store views, plan-analysis queries, waits and blocking captures, index review, and baseline export scripts.</p></article>
+            <article class="plan-card"><i class="bi bi-journal-check"></i><h3>Decision record</h3><p>Problem statement, hypotheses, rejected options, change approvals, rollback steps, and trade-off explanations.</p></article>
+            <article class="plan-card"><i class="bi bi-bar-chart-line-fill"></i><h3>Results dashboard</h3><p>Before-and-after latency, throughput, resource use, plan behavior, concurrency, and confidence intervals.</p></article>
+            <article class="plan-card"><i class="bi bi-file-earmark-text"></i><h3>Executive summary</h3><p>A concise narrative translating technical tuning into customer experience, operational risk, and capacity outcomes.</p></article>
+            <article class="plan-card"><i class="bi bi-arrow-counterclockwise"></i><h3>Operations handoff</h3><p>Monitoring thresholds, regression alerts, ownership, maintenance schedule, known limits, and recovery instructions.</p></article>
+          </div>
+        </section>
+
+        <section class="plan-section">
+          <div class="plan-note"><strong>Integrity of the case study:</strong> target improvements will not be advertised before testing. Final claims will include the workload, environment, number of runs, comparison method, regressions checked, and limits of the result.</div>
+        </section>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>&copy; 2026 <strong class="px-1 sitename">Beatrice Kungu</strong>. <span>All Rights Reserved.<br></span></p>
-      </div>
-      <div class="social-links d-flex justify-content-center">
-      </div>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> | <a href="https://bootstrapmade.com/tools/">DevTools</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scroll Top -->
+  <footer id="footer" class="footer"><div class="container"><div class="copyright text-center"><p>&copy; 2026 <strong class="px-1 sitename">Beatrice Kungu</strong>. <span>All Rights Reserved.</span></p></div><div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> | <a href="https://bootstrapmade.com/tools/">DevTools</a></div></div></footer>
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
   <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
@@ -100,10 +170,7 @@
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-
-  <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-
 </body>
 
 </html>

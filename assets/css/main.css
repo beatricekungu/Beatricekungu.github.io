@@ -3707,6 +3707,9 @@ section,
 .portfolio .project-theme-grc { --project-accent: #d4aa63; }
 .portfolio .project-theme-dba { --project-accent: #818cf8; }
 .portfolio .project-theme-powerbi { --project-accent: #0B3458; }
+.portfolio .project-theme-cisa { --project-accent: #00d7e8; }
+.portfolio .project-theme-secureops { --project-accent: #8b5cf6; }
+.portfolio .project-theme-sqlperf { --project-accent: #38bdf8; }
 .portfolio .project-theme-response { --project-accent: #f28b66; }
 .portfolio .project-theme-identity { --project-accent: #c084fc; }
 
@@ -3751,9 +3754,33 @@ section,
   color: color-mix(in srgb, var(--project-accent, var(--accent-color)), #ffffff 12%);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .portfolio .portfolio-card .portfolio-info {
-    min-height: 214px;
+    height: 292px;
+  }
+
+  .portfolio .portfolio-card .portfolio-info h4 {
+    min-height: 4.68rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .portfolio .portfolio-card .portfolio-info p {
+    flex: 0 0 4.2rem;
+    height: 4.2rem;
+    min-height: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .portfolio .portfolio-card .portfolio-info {
+    min-height: 250px;
   }
 
   .portfolio .portfolio-card .portfolio-info h4 {

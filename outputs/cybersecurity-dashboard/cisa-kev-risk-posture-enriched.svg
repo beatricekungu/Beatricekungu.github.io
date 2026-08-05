@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07101D"/><stop offset="0.52" stop-color="#090E17"/><stop offset="1" stop-color="#071422"/>
+    </linearGradient>
+    <radialGradient id="cyanAura"><stop offset="0" stop-color="#00E5FF" stop-opacity=".12"/><stop offset="1" stop-color="#00E5FF" stop-opacity="0"/></radialGradient>
+    <radialGradient id="violetAura"><stop offset="0" stop-color="#A855F7" stop-opacity=".12"/><stop offset="1" stop-color="#A855F7" stop-opacity="0"/></radialGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#131E31"/><stop offset="1" stop-color="#0E1727"/></linearGradient>
+    <pattern id="hex" width="52" height="30" patternUnits="userSpaceOnUse">
+      <path d="M13 0h26l13 15-13 15H13L0 15z" fill="none" stroke="#5B759B" stroke-width=".55" stroke-opacity=".07"/>
+    </pattern>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0v28" fill="none" stroke="#00E5FF" stroke-width=".45" stroke-opacity=".035"/><circle r="1" fill="#00E5FF" fill-opacity=".08"/>
+    </pattern>
+    <filter id="glowC" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#000814" flood-opacity=".48"/></filter>
+    <symbol id="chevron" viewBox="0 0 18 10"><path d="M1 1l8 8 8-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#hex)"/>
+  <rect x="360" width="1560" height="1080" fill="url(#grid)"/>
+  <ellipse cx="1040" cy="100" rx="610" ry="330" fill="url(#cyanAura)"/>
+  <ellipse cx="1790" cy="920" rx="500" ry="400" fill="url(#violetAura)"/>
+  <path d="M360 935C620 735 760 1010 1010 790s420-140 560-8 235 80 350-8" fill="none" stroke="#00E5FF" stroke-opacity=".07" stroke-width="1.2"/>
+  <path d="M430 0l570 1080M1030 0l570 1080M1500 0l420 790" stroke="#00E5FF" stroke-opacity=".025" stroke-width="78"/>
+  <g opacity=".22" fill="#00E5FF"><circle cx="520" cy="852" r="2"/><circle cx="1010" cy="790" r="2"/><circle cx="1570" cy="782" r="2"/><circle cx="1810" cy="800" r="2"/></g>
+
+  <!-- SIDEBAR -->
+  <rect width="360" height="1080" fill="#0B1321"/>
+  <rect x="359" width="1" height="1080" fill="#20314C"/>
+  <path d="M340 0h20v190M340 890h20v190" fill="none" stroke="#00E5FF" stroke-opacity=".22"/>
+
+  <!-- Floating shield identity -->
+  <ellipse cx="180" cy="142" rx="53" ry="12" fill="#00E5FF" fill-opacity=".09" filter="url(#glowC)"/>
+  <g transform="translate(180 92)">
+    <animateTransform attributeName="transform" type="translate" values="180 92;180 81;180 92" dur="4s" repeatCount="indefinite"/>
+    <circle r="56" fill="#071927" stroke="#00E5FF" stroke-opacity=".22"/>
+    <circle r="49" fill="none" stroke="#00E5FF" stroke-width="1.4" stroke-dasharray="12 7" opacity=".72">
+      <animateTransform attributeName="transform" type="rotate" values="0;360" dur="22s" repeatCount="indefinite"/>
+    </circle>
+    <path d="M0-30l27 13v23C27 27 0 39 0 39S-27 27-27 6v-23z" fill="#00E5FF" fill-opacity=".08" stroke="#00E5FF" stroke-width="2.2" filter="url(#glowC)"/>
+    <path d="M-11 4l8 9 16-19" fill="none" stroke="#7DD3FC" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="180" y="177" fill="#6E84A5" font-family="Segoe UI,sans-serif" font-size="10" font-weight="700" letter-spacing="2.6" text-anchor="middle">THREAT OPERATIONS</text>
+  <text x="180" y="201" fill="#F3F7FF" font-family="Segoe UI,sans-serif" font-size="20" font-weight="700" letter-spacing="1.4" text-anchor="middle">SENTRY GRID</text>
+
+  <!-- NAV -->
+  <g font-family="Segoe UI,sans-serif">
+    <rect x="24" y="236" width="312" height="48" rx="9" fill="#00E5FF" fill-opacity=".08" stroke="#00E5FF" stroke-opacity=".36"/>
+    <rect x="24" y="236" width="4" height="48" rx="2" fill="#00E5FF" filter="url(#glowC)"/>
+    <g transform="translate(48 250)" fill="none" stroke="#00E5FF" stroke-width="1.5"><rect width="9" height="9" rx="1"/><rect x="14" width="9" height="9" rx="1"/><rect y="14" width="9" height="9" rx="1"/><rect x="14" y="14" width="9" height="9" rx="1"/></g>
+    <text x="87" y="266" fill="#00E5FF" font-size="14" font-weight="700">Risk Posture Overview</text>
+    <g transform="translate(50 318)" fill="none" stroke="#6E84A5" stroke-width="1.5"><circle cx="10" cy="10" r="10"/><path d="M10 4v7l5 3"/></g>
+    <text x="87" y="334" fill="#8092AD" font-size="14">Exploit Prioritization</text>
+  </g>
+
+  <!-- FILTERS -->
+  <g font-family="Segoe UI,sans-serif">
+    <g transform="translate(28 393)" fill="none" stroke="#00E5FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M1 1h22l-8 9v8l-6 3V10z"/><path d="M18 1v3" opacity=".35"/>
+    </g>
+    <text x="62" y="410" fill="#00E5FF" font-size="12" font-weight="800" letter-spacing="1.8">FILTERS</text>
+    <line x1="125" y1="406" x2="330" y2="406" stroke="#1E3652"/>
+
+    <text x="30" y="448" fill="#9BB0CB" font-size="11.5">Tech Stack (Vendor &gt; Product)</text>
+    <rect x="30" y="458" width="300" height="44" rx="6" fill="#080F19" stroke="#263A57"/>
+
+    <text x="30" y="526" fill="#9BB0CB" font-size="11.5">CISA Deadline</text>
+    <rect x="30" y="536" width="300" height="44" rx="6" fill="#080F19" stroke="#263A57"/><line x1="180" y1="536" x2="180" y2="580" stroke="#263A57"/>
+
+    <text x="30" y="604" fill="#9BB0CB" font-size="11.5">Ransomware Linked</text>
+    <rect x="30" y="614" width="300" height="44" rx="6" fill="#080F19" stroke="#263A57"/><line x1="180" y1="614" x2="180" y2="658" stroke="#263A57"/>
+
+    <text x="30" y="682" fill="#9BB0CB" font-size="11.5">CVSS Severity</text>
+    <rect x="30" y="692" width="300" height="44" rx="6" fill="#080F19" stroke="#263A57"/>
+
+    <text x="30" y="760" fill="#9BB0CB" font-size="11.5">Risk Tier</text>
+    <rect x="30" y="770" width="300" height="44" rx="6" fill="#080F19" stroke="#263A57"/>
+
+    <text x="30" y="838" fill="#9BB0CB" font-size="11.5">Vulnerability Type (CWE)</text>
+    <rect x="30" y="848" width="300" height="44" rx="6" fill="#080F19" stroke="#263A57"/>
+  </g>
+
+  <!-- Footer buttons -->
+  <g font-family="Segoe UI,sans-serif">
+    <rect x="97" y="938" width="74" height="68" rx="13" fill="#111C2D" stroke="#263A57"/><text x="134" y="982" fill="#8FA3BE" font-size="30" font-weight="800" text-anchor="middle">in</text>
+    <rect x="189" y="938" width="74" height="68" rx="13" fill="#111C2D" stroke="#263A57"/>
+    <path d="M12 0c-6.6 0-12 5.4-12 12 0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 016 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0024 12C24 5.4 18.6 0 12 0z" fill="#8FA3BE" transform="translate(200 948) scale(2.2)"/>
+    <text x="180" y="1043" fill="#657A98" font-size="11" font-weight="600" text-anchor="middle" letter-spacing=".4">Built by Beatrice Kungu</text>
+  </g>
+
+  <!-- HEADER -->
+  <g font-family="Segoe UI,sans-serif">
+    <text x="400" y="39" fill="#00E5FF" font-size="11" font-weight="800" letter-spacing="2.3">EXECUTIVE RISK INTELLIGENCE</text>
+    <text x="400" y="77" fill="#F4F8FF" font-size="31" font-weight="750">Cybersecurity Vulnerability Risk Posture</text>
+    <text x="400" y="102" fill="#758AA7" font-size="12">CISA KEV  •  NVD CVSS  •  FIRST EPSS</text>
+    <rect x="1694" y="47" width="166" height="39" rx="19.5" fill="#101B2C" stroke="#263A57"/>
+    <path d="M1715 66a7 7 0 107 7M1715 66l-1-6m1 6l6-1" fill="none" stroke="#00E5FF" stroke-width="1.6" stroke-linecap="round"/>
+    <text x="1741" y="71" fill="#9BB0CB" font-size="12" font-weight="600">CLEAR FILTERS</text>
+  </g>
+
+  <!-- KPI 1 -->
+  <g filter="url(#shadow)" font-family="Segoe UI,sans-serif">
+    <rect x="400" y="130" width="350" height="184" rx="15" fill="url(#panel)" stroke="#243754"/>
+    <path d="M400 278v19q0 17 17 17h68l17-13h146l17 13h68q17 0 17-17v-19" fill="none" stroke="#00E5FF" stroke-width="2.4" stroke-opacity=".86" filter="url(#glowC)"/>
+    <path d="M510 307l13-10h106l13 10z" fill="#00E5FF" fill-opacity=".09" stroke="#00E5FF" stroke-width="2.4"/>
+    <text x="427" y="164" fill="#A5B7CE" font-size="12.5" font-weight="800" letter-spacing="1.1">TOTAL KEVs</text>
+    <circle cx="452" cy="220" r="22" fill="#00E5FF" fill-opacity=".07" stroke="#00E5FF" stroke-opacity=".42"/>
+    <circle cx="452" cy="220" r="10" fill="none" stroke="#7DD3FC" stroke-width="1.8"/><circle cx="452" cy="220" r="3" fill="none" stroke="#7DD3FC" stroke-width="1.6"/><path d="M452 204v6m0 20v6m-16-16h6m20 0h6" stroke="#7DD3FC" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M493 190h123q14 0 14 14v31q0 14-14 14H493l-14-14v-31z" fill="#071521" stroke="#00E5FF" stroke-opacity=".42"/>
+    <text x="480" y="271" fill="#7DD3FC" font-size="9" font-weight="800" letter-spacing="1.25">CONFIRMED EXPLOITATION</text><line x1="610" y1="268" x2="674" y2="268" stroke="#00E5FF" stroke-opacity=".45"/>
+    <circle cx="696" cy="221" r="42" fill="#00E5FF" fill-opacity=".08"/>
+    <g transform="translate(696 221)" fill="none" stroke="#00E5FF" stroke-width="3.5" stroke-linecap="round"><circle r="17"/><circle r="5"/><path d="M0-28v7m0 42v7m-28-28h7m42 0h7"/></g>
+  </g>
+
+  <!-- KPI 2 -->
+  <g filter="url(#shadow)" font-family="Segoe UI,sans-serif">
+    <rect x="770" y="130" width="350" height="184" rx="15" fill="url(#panel)" stroke="#243754"/>
+    <path d="M770 278v19q0 17 17 17h68l17-13h146l17 13h68q17 0 17-17v-19" fill="none" stroke="#FF2A5F" stroke-width="2.4" stroke-opacity=".86"/>
+    <path d="M880 307l13-10h106l13 10z" fill="#FF2A5F" fill-opacity=".09" stroke="#FF2A5F" stroke-width="2.4"/>
+    <text x="797" y="164" fill="#A5B7CE" font-size="12.5" font-weight="800" letter-spacing="1.1">CRITICAL CVSS KEVs</text>
+    <circle cx="822" cy="220" r="22" fill="#FF2A5F" fill-opacity=".07" stroke="#FF2A5F" stroke-opacity=".42"/>
+    <path d="M822 205l14 7v10c0 10-14 16-14 16s-14-6-14-16v-10z" fill="none" stroke="#FB7185" stroke-width="1.7"/><path d="M822 213v10m0 6v1" stroke="#FB7185" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M863 190h123q14 0 14 14v31q0 14-14 14H863l-14-14v-31z" fill="#190D17" stroke="#FF2A5F" stroke-opacity=".42"/>
+    <text x="850" y="271" fill="#FB7185" font-size="9" font-weight="800" letter-spacing="1.25">CVSS 9.0–10.0</text><line x1="953" y1="268" x2="1044" y2="268" stroke="#FF2A5F" stroke-opacity=".45"/>
+    <circle cx="1066" cy="221" r="42" fill="#FF2A5F" fill-opacity=".08"/>
+    <g transform="translate(1066 221)" fill="none" stroke="#FF2A5F" stroke-width="4" stroke-linecap="round"><path d="M0-27l24 11v16c0 18-24 29-24 29S-24 18-24 0v-16z"/><path d="M0-12v17m0 10v1"/></g>
+  </g>
+
+  <!-- KPI 3 -->
+  <g filter="url(#shadow)" font-family="Segoe UI,sans-serif">
+    <rect x="1140" y="130" width="350" height="184" rx="15" fill="url(#panel)" stroke="#243754"/>
+    <path d="M1140 278v19q0 17 17 17h68l17-13h146l17 13h68q17 0 17-17v-19" fill="none" stroke="#F59E0B" stroke-width="2.4" stroke-opacity=".86"/>
+    <path d="M1250 307l13-10h106l13 10z" fill="#F59E0B" fill-opacity=".09" stroke="#F59E0B" stroke-width="2.4"/>
+    <text x="1167" y="164" fill="#A5B7CE" font-size="12.5" font-weight="800" letter-spacing="1.1">HIGH EPSS KEVs</text>
+    <circle cx="1192" cy="220" r="22" fill="#F59E0B" fill-opacity=".07" stroke="#F59E0B" stroke-opacity=".42"/>
+    <path d="M1180 230l8-8 7 5 10-14" fill="none" stroke="#FBBF24" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M1199 213h6v6" fill="none" stroke="#FBBF24" stroke-width="2.1"/>
+    <path d="M1233 190h123q14 0 14 14v31q0 14-14 14h-123l-14-14v-31z" fill="#1A140A" stroke="#F59E0B" stroke-opacity=".42"/>
+    <text x="1220" y="271" fill="#FBBF24" font-size="9" font-weight="800" letter-spacing="1.25">EPSS ≥ 70%</text><line x1="1304" y1="268" x2="1414" y2="268" stroke="#F59E0B" stroke-opacity=".45"/>
+    <circle cx="1436" cy="221" r="42" fill="#F59E0B" fill-opacity=".08"/>
+    <g transform="translate(1436 221)" fill="none" stroke="#F59E0B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M-25 20l14-15 11 8 23-31"/><path d="M10-18h13v13"/><path d="M-26 28h53"/></g>
+  </g>
+
+  <!-- KPI 4 -->
+  <g filter="url(#shadow)" font-family="Segoe UI,sans-serif">
+    <rect x="1510" y="130" width="350" height="184" rx="15" fill="url(#panel)" stroke="#243754"/>
+    <path d="M1510 278v19q0 17 17 17h68l17-13h146l17 13h68q17 0 17-17v-19" fill="none" stroke="#A855F7" stroke-width="2.4" stroke-opacity=".86"/>
+    <path d="M1620 307l13-10h106l13 10z" fill="#A855F7" fill-opacity=".09" stroke="#A855F7" stroke-width="2.4"/>
+    <text x="1537" y="164" fill="#A5B7CE" font-size="12.5" font-weight="800" letter-spacing="1.1">RANSOMWARE LINKED</text>
+    <circle cx="1562" cy="220" r="22" fill="#A855F7" fill-opacity=".07" stroke="#A855F7" stroke-opacity=".42"/>
+    <path d="M1554 224l-4 4a5 5 0 01-7-7l5-5a5 5 0 017 0m14 0l4-4a5 5 0 017 7l-5 5a5 5 0 01-7 0m-8 4l12-12" fill="none" stroke="#C084FC" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M1603 190h123q14 0 14 14v31q0 14-14 14h-123l-14-14v-31z" fill="#130D22" stroke="#A855F7" stroke-opacity=".42"/>
+    <text x="1590" y="271" fill="#C084FC" font-size="9" font-weight="800" letter-spacing="1.15">CAMPAIGN ASSOCIATION</text><line x1="1726" y1="268" x2="1784" y2="268" stroke="#A855F7" stroke-opacity=".45"/>
+    <circle cx="1806" cy="221" r="42" fill="#A855F7" fill-opacity=".08"/>
+    <g transform="translate(1806 221)" fill="none" stroke="#A855F7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="-22" y="-7" width="44" height="34" rx="6"/><path d="M-13-7v-9c0-16 26-16 26 0v9"/><circle cy="9" r="4"/><path d="M0 13v7"/></g>
+  </g>
+
+  <!-- CHART PANELS -->
+  <g font-family="Segoe UI,sans-serif">
+    <rect x="400" y="346" width="710" height="314" rx="14" fill="url(#panel)" stroke="#213450"/>
+    <path d="M400 400h710" stroke="#213450"/><path d="M424 421h662M424 479h662M424 537h662M424 595h662" stroke="#27405D" stroke-opacity=".55" stroke-dasharray="4 6"/>
+    <text x="428" y="380" fill="#F3F7FF" font-size="13" font-weight="750" letter-spacing="1">KEV ADDITIONS OVER TIME</text>
+    <circle cx="1080" cy="375" r="3" fill="#00E5FF"/><text x="1068" y="379" fill="#7F94B0" font-size="9" text-anchor="end">DATE ADDED</text>
+
+    <rect x="1130" y="346" width="730" height="314" rx="14" fill="url(#panel)" stroke="#213450"/>
+    <path d="M1130 400h730" stroke="#213450"/>
+    <text x="1158" y="380" fill="#F3F7FF" font-size="13" font-weight="750" letter-spacing="1">CVSS SEVERITY × EPSS PROFILE</text>
+    <g transform="translate(1495 520)" opacity=".36"><circle r="70" fill="none" stroke="#263A57" stroke-width="22" stroke-dasharray="75 18 45 18 30 18"/><circle r="35" fill="#0A1320" stroke="#00E5FF" stroke-opacity=".25"/><path d="M-18 0h36M0-18v36" stroke="#00E5FF" stroke-opacity=".32"/></g>
+
+    <rect x="400" y="686" width="710" height="350" rx="14" fill="url(#panel)" stroke="#213450"/>
+    <path d="M400 746h710" stroke="#213450"/>
+    <text x="428" y="722" fill="#F3F7FF" font-size="13" font-weight="750" letter-spacing="1">TOP VENDORS &amp; PRODUCTS</text>
+    <rect x="762" y="700" width="112" height="32" rx="7" fill="#091321" stroke="#2A405E"/><text x="778" y="721" fill="#9BB0CB" font-size="10" font-weight="700">YEAR</text><use href="#chevron" x="846" y="712" width="13" height="8" style="color:#00E5FF"/>
+    <g font-size="9" font-weight="800" text-anchor="middle"><rect x="884" y="700" width="42" height="32" rx="7" fill="#00E5FF" fill-opacity=".12" stroke="#00E5FF"/><text x="905" y="721" fill="#00E5FF">Q1</text><rect x="932" y="700" width="42" height="32" rx="7" fill="#091321" stroke="#2A405E"/><text x="953" y="721" fill="#8EA2BD">Q2</text><rect x="980" y="700" width="42" height="32" rx="7" fill="#091321" stroke="#2A405E"/><text x="1001" y="721" fill="#8EA2BD">Q3</text><rect x="1028" y="700" width="42" height="32" rx="7" fill="#091321" stroke="#2A405E"/><text x="1049" y="721" fill="#8EA2BD">Q4</text></g>
+    <path d="M440 792h635M440 850h635M440 908h635M440 966h635M512 775v230" stroke="#27405D" stroke-opacity=".55" stroke-dasharray="4 6"/>
+
+    <rect x="1130" y="686" width="730" height="350" rx="14" fill="url(#panel)" stroke="#213450"/>
+    <path d="M1130 746h730" stroke="#213450"/>
+    <text x="1158" y="722" fill="#F3F7FF" font-size="13" font-weight="750" letter-spacing="1">RANSOMWARE &amp; RISK TIER DISTRIBUTION</text>
+    <g opacity=".32"><rect x="1180" y="802" width="590" height="26" rx="5" fill="#1C2B42"/><rect x="1180" y="854" width="470" height="26" rx="5" fill="#1C2B42"/><rect x="1180" y="906" width="340" height="26" rx="5" fill="#1C2B42"/><rect x="1180" y="958" width="235" height="26" rx="5" fill="#1C2B42"/></g>
+  </g>
+</svg>

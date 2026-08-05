@@ -408,6 +408,182 @@
   margin-top: 2px;
 }
 
+/* Detailed project roadmaps and evidence-led case studies */
+.project-roadmap-page .lab-main {
+  background:
+    radial-gradient(circle at 78% 9%, color-mix(in srgb, var(--accent-color), transparent 83%), transparent 28%),
+    linear-gradient(145deg, rgba(8, 15, 29, 0.96), rgba(11, 19, 35, 0.98));
+}
+
+.project-roadmap-page .lab-visual img {
+  height: 350px;
+  min-height: 0;
+}
+
+.project-roadmap-page .lab-panel,
+.project-roadmap-page .lab-card,
+.project-roadmap-page .lab-kpi,
+.project-roadmap-page .lab-summary {
+  backdrop-filter: blur(12px);
+}
+
+.plan-section {
+  margin-top: 24px;
+}
+
+.plan-section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.plan-section-heading h2 {
+  margin: 0;
+  color: var(--heading-color);
+  font-size: clamp(1.45rem, 3vw, 2.15rem);
+}
+
+.plan-section-heading p {
+  max-width: 720px;
+  margin: 0;
+  color: color-mix(in srgb, var(--default-color), transparent 22%);
+  line-height: 1.65;
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.plan-grid.plan-grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.plan-card {
+  min-height: 100%;
+  padding: 20px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 84%);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(18, 28, 48, 0.9), rgba(10, 18, 33, 0.82));
+}
+
+.plan-card i {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 45%);
+  border-radius: 8px;
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 89%);
+  font-size: 1.1rem;
+}
+
+.plan-card h3 {
+  margin: 0 0 9px;
+  color: var(--heading-color);
+  font-size: 1.02rem;
+}
+
+.plan-card p,
+.plan-card li {
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  font-size: 0.9rem;
+  line-height: 1.62;
+}
+
+.plan-card p:last-child {
+  margin-bottom: 0;
+}
+
+.plan-card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.plan-phase {
+  position: relative;
+  padding-top: 56px;
+}
+
+.plan-number {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  color: var(--accent-color);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.plan-note {
+  padding: 18px 20px;
+  border-left: 4px solid var(--accent-color);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  color: color-mix(in srgb, var(--default-color), transparent 10%);
+  line-height: 1.65;
+}
+
+.plan-note strong {
+  color: var(--heading-color);
+}
+
+.plan-table-wrap {
+  overflow-x: auto;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 84%);
+  border-radius: 8px;
+}
+
+.plan-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  background: rgba(10, 18, 33, 0.78);
+}
+
+.plan-table th,
+.plan-table td {
+  padding: 15px 16px;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  text-align: left;
+  vertical-align: top;
+}
+
+.plan-table th {
+  color: var(--accent-color);
+  font-size: 0.75rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.plan-table td {
+  color: color-mix(in srgb, var(--default-color), transparent 16%);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.plan-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.status-planned {
+  color: #c4b5fd;
+  background-color: rgba(139, 92, 246, 0.12);
+  border-color: rgba(139, 92, 246, 0.42);
+}
+
+.cisa-roadmap-page { --accent-color: #22d3ee; }
+.secureops-roadmap-page { --accent-color: #a78bfa; }
+.sql-performance-page { --accent-color: #38bdf8; }
+
 /* Incident Response Decision Room: case-file visual language */
 .ir-decision-page {
   --accent-color: #f28b66;
@@ -587,6 +763,16 @@
   .ir-context-grid {
     grid-template-columns: 1fr;
   }
+
+  .plan-grid,
+  .plan-grid.plan-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-roadmap-page .lab-visual img {
+    min-height: 0;
+    height: 320px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -621,5 +807,10 @@
   .ir-briefing-grid div {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+
+  .plan-grid,
+  .plan-grid.plan-grid-4 {
+    grid-template-columns: 1fr;
   }
 }
