@@ -1,0 +1,38 @@
+table 'Risk Driver'
+	lineageTag: c001d92d-685d-4929-82ed-01dff6998592
+
+	column Driver
+		lineageTag: 2524b050-30cc-4f8a-bea2-abe7cf31c83c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Driver]
+		sortByColumn: 'Sort Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sort Order'
+		formatString: 0
+		lineageTag: ee4fb733-1113-4815-a55c-dc1500e914b0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Sort Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Risk Driver' = calculated
+		mode: import
+		source =
+				
+				DATATABLE (
+				    "Driver", STRING,
+				    "Sort Order", INTEGER,
+				    {
+				        { "NETWORK", 1 },
+				        { "LOW COMPLEXITY", 2 },
+				        { "NO PRIVILEGES", 3 },
+				        { "NO USER ACTION", 4 }
+				    }
+				)
+
+	annotation PBI_Id = 3166acef303f4676addf68b512ea7f6d
+

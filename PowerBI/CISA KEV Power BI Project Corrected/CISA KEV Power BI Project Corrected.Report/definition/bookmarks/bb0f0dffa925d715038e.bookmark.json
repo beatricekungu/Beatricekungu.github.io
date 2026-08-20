@@ -1,0 +1,363 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "Clear Filters - Page 2",
+  "name": "bb0f0dffa925d715038e",
+  "options": {
+    "targetVisualNames": [],
+    "suppressActiveSection": true,
+    "suppressDisplay": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "2ae25510e510b8dd0b29",
+    "sections": {
+      "2ae25510e510b8dd0b29": {
+        "visualContainers": {
+          "698a5226150c5094a230": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "92102147967a923a3770",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Exploit Signals"
+                        }
+                      },
+                      "Property": "Exploit Signal CVEs"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2ebd45d3c12d8a7b294c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Exploit Signals"
+                        }
+                      },
+                      "Property": "Exploit Signal Rate"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2c0055666acd88d408ed",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Exploit Signals"
+                        }
+                      },
+                      "Property": "Selected KEVs"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "cef9be2095c60b7c839d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Exploit Signals"
+                        }
+                      },
+                      "Property": "Signal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+              "objects": {}
+            }
+          },
+          "a993a4acd0b369dec459": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "4539446e085adcbe1d20",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CISA_KEV"
+                        }
+                      },
+                      "Property": "CVE ID"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "acd24cef3a0b01e90a08",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CISA_KEV"
+                        }
+                      },
+                      "Property": "Matrix CVSS"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f9a899e2ec0894881327",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CISA_KEV"
+                        }
+                      },
+                      "Property": "Matrix Bubble Size"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "3c91db608c40150a0d00",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CISA_KEV"
+                        }
+                      },
+                      "Property": "Suggested Risk Tier"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4d53fc6202a5db940298",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CISA_KEV"
+                        }
+                      },
+                      "Property": "Matrix EPSS Percent"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "scatterChartByAkvelon6CFB0DAB29E746BE850B6DFD1E2789FD",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CISA_KEV"
+                        }
+                      },
+                      "Property": "Matrix CVSS"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CISA_KEV"
+                        }
+                      },
+                      "Property": "CVE ID"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "b69578f0b1790ae1aee0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e8bd3ef97e1317156003",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CISA_KEV"
+                        }
+                      },
+                      "Property": "Suggested Risk Tier"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e0c084496d27556482b9",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CISA_KEV"
+                        }
+                      },
+                      "Property": "Critical CVSS KEVs"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f3fb4cbf874b030328e7",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CISA_KEV"
+                        }
+                      },
+                      "Property": "High EPSS KEVs"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a5f72a42e68d2164291e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "CISA_KEV"
+                            }
+                          },
+                          "Property": "Ransomware"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2b83889c8915b3020000",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "CISA_KEV"
+                            }
+                          },
+                          "Property": "CVE ID"
+                        }
+                      },
+                      "Function": 5
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "donutChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CISA_KEV"
+                        }
+                      },
+                      "Property": "Suggested Risk Tier"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CISA_KEV"
+                        }
+                      },
+                      "Property": "Suggested Risk Tier"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "b00c062b340cc07030c3": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "88ba1976a0c80ce298b7": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "ca657da76340b3b82eb9": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "true"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "bade97183ade0310cd06",
+  "position": {
+    "x": 262.40963855421688,
+    "y": 574.36515291936973,
+    "z": 1000,
+    "height": 45.8758109360519,
+    "width": 891.8257645968489,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Security teams need a consistent way to prioritize known exploited vulnerabilities using severity, exploitation likelihood, ransomware association, and triage urgency.",
+                    "textStyle": {
+                      "color": "#ffffff"
+                    }
+                  },
+                  {
+                    "value": " "
+                  },
+                  {
+                    "value": "Relying on CVSS scores alone can make it harder to focus limited resources on vulnerabilities that pose the greatest risk.",
+                    "textStyle": {
+                      "color": "#ffffff"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

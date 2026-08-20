@@ -1,0 +1,361 @@
+table '_All Measures'
+	lineageTag: 16f7e212-dff1-4529-b81e-5c32afbeab53
+
+	measure 'Total CVEs' =
+			
+			CALCULATE (
+			    DISTINCTCOUNT ( 'CISA_KEV'[CVE ID] ),
+			    'CISA_KEV'[CVE ID] <> BLANK()
+			)
+		formatString: 0
+		lineageTag: 22dd97d7-cad0-4575-8b7f-c02d89a8d5ea
+
+	measure 'Exposed Products' = DISTINCTCOUNT('CISA_KEV'[Product])
+		formatString: 0
+		lineageTag: ce346c31-8725-4566-916d-965d3a4c9e23
+
+	measure 'Overdue Remediation' =
+			
+			CALCULATE(
+			    [Total CVEs],
+			    'CISA_KEV'[SLA Status ] = "Overdue"
+			)
+		formatString: 0
+		lineageTag: 19ec8ebf-82fc-44eb-bdfb-1482db523418
+
+	measure 'Critical Due 48H' =
+			
+			VAR StartDate = TODAY()
+			VAR EndDate = StartDate + 2
+			RETURN
+			    COALESCE(
+			        CALCULATE(
+			            DISTINCTCOUNT('CISA_KEV'[CVE ID]),
+			            FILTER(
+			                'CISA_KEV',
+			                NOT ISBLANK('CISA_KEV'[CISA Due Date])
+			                    && 'CISA_KEV'[CISA Due Date] >= StartDate
+			                    && 'CISA_KEV'[CISA Due Date] <= EndDate
+			            )
+			        ),
+			        0
+			    )
+		formatString: 0
+		lineageTag: 058bbe7f-28ce-46c4-83b0-a2baab8f9c8c
+
+	measure 'High Priority Tasks' =
+			
+			VAR StartDate = TODAY() + 2
+			VAR EndDate = TODAY() + 7
+			RETURN
+			    COALESCE(
+			        CALCULATE(
+			            DISTINCTCOUNT('CISA_KEV'[CVE ID]),
+			            FILTER(
+			                'CISA_KEV',
+			                NOT ISBLANK('CISA_KEV'[CISA Due Date])
+			                    && 'CISA_KEV'[CISA Due Date] > StartDate
+			                    && 'CISA_KEV'[CISA Due Date] <= EndDate
+			            )
+			        ),
+			        0
+			    )
+		formatString: 0
+		lineageTag: 2a40436a-ae64-471f-8de3-32c784bcd897
+
+	measure 'Patches Available' =
+			
+			COALESCE(
+			    CALCULATE(
+			        DISTINCTCOUNT('CISA_KEV'[CVE ID]),
+			        FILTER(
+			            'CISA_KEV',
+			            VAR ActionText =
+			                LOWER(COALESCE('CISA_KEV'[Required Action], ""))
+			            RETURN
+			                CONTAINSSTRING(ActionText, "patch")
+			                    || CONTAINSSTRING(ActionText, "update")
+			                    || CONTAINSSTRING(ActionText, "upgrade")
+			                    || CONTAINSSTRING(ActionText, "install")
+			        )
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: 4fb6722a-013f-4ec2-94a5-efa01b17f259
+
+	measure 'Remediation In Progress' =
+			
+			VAR CurrentDate = TODAY()
+			RETURN
+			    COALESCE(
+			        CALCULATE(
+			            DISTINCTCOUNT('CISA_KEV'[CVE ID]),
+			            FILTER(
+			                'CISA_KEV',
+			                NOT ISBLANK('CISA_KEV'[Required Action])
+			                    && NOT ISBLANK('CISA_KEV'[CISA Due Date])
+			                    && 'CISA_KEV'[CISA Due Date] >= CurrentDate
+			            )
+			        ),
+			        0
+			    )
+		formatString: 0
+		lineageTag: 0654fa03-da39-486b-9c64-0bfb3334a4b9
+
+	measure 'KPI Color - Total KEVs' = "#00E5FF"
+		lineageTag: f594f9a9-2b05-47e7-a3f0-800dfbd70a72
+
+	measure 'Risk Driver KEVs' =
+			
+			VAR SelectedDriver =
+			    SELECTEDVALUE ( 'Risk Driver'[Driver] )
+			RETURN
+			    SWITCH (
+			        SelectedDriver,
+			        "NETWORK",
+			            CALCULATE (
+			                [Total CVEs],
+			                KEEPFILTERS ( 'CISA_KEV'[Attack Vector] = "NETWORK" )
+			            ),
+			        "LOW COMPLEXITY",
+			            CALCULATE (
+			                [Total CVEs],
+			                KEEPFILTERS ( 'CISA_KEV'[Attack Complexity] = "LOW" )
+			            ),
+			        "NO PRIVILEGES",
+			            CALCULATE (
+			                [Total CVEs],
+			                KEEPFILTERS ( 'CISA_KEV'[Privileges Required] = "NONE" )
+			            ),
+			        "NO USER ACTION",
+			            CALCULATE (
+			                [Total CVEs],
+			                KEEPFILTERS ( 'CISA_KEV'[User Interaction] = "NONE" )
+			            )
+			    )
+		lineageTag: d2488f5c-3eba-4122-8ee7-c06340610715
+
+	measure 'Risk Driver Share %' =
+			
+			DIVIDE (
+			    [Risk Driver KEVs],
+			    [Total CVEs],
+			    0
+			)
+		lineageTag: 317a16b7-d7a7-4857-8aab-26381c217424
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Risk Driver Color' =
+			
+			SWITCH (
+			    SELECTEDVALUE ( 'Risk Driver'[Driver] ),
+			    "NETWORK", "#FF2A5F",
+			    "LOW COMPLEXITY", "#F59E0B",
+			    "NO PRIVILEGES", "#00E5FF",
+			    "NO USER ACTION", "#A855F7",
+			    "#64748B"
+			)
+		lineageTag: 5db53097-31c2-4866-b050-26edfd189630
+
+	measure 'Ransomware Linked' =
+			
+			-- KEVs confirmed as used in known ransomware campaigns
+			COALESCE(
+			    CALCULATE(
+			        [Total KEVs],
+			        'CISA_KEV'[Ransomware] = "Known"
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: 82341380-cb26-4038-8c76-9ffdb7e41b1c
+
+	measure 'Remote Zero Click KEVs' =
+			
+			CALCULATE (
+			    [Total CVEs],
+			    KEEPFILTERS ( 'CISA_KEV'[Attack Vector] = "NETWORK" ),
+			    KEEPFILTERS ( 'CISA_KEV'[User Interaction] = "NONE" )
+			)
+		formatString: 0
+		lineageTag: 5f64201b-d2c7-49e6-8d3d-cb393114497e
+
+	measure 'Privilege Free Remote Card' =
+			
+			VAR CVECount =
+			    CALCULATE (
+			        [Total CVEs],
+			        KEEPFILTERS ( 'CISA_KEV'[Attack Vector] = "NETWORK" ),
+			        KEEPFILTERS ( 'CISA_KEV'[Privileges Required] = "NONE" )
+			    )
+			RETURN
+			    FORMAT ( CVECount, "#,##0" )
+		lineageTag: 57dd754e-44e1-469e-8d72-2345e425054e
+
+	measure 'Critical Ransomware KEVs' =
+			
+			CALCULATE (
+			    [Total CVEs],
+			    KEEPFILTERS ( 'CISA_KEV'[CVSS Severity] = "CRITICAL" ),
+			    KEEPFILTERS ( 'CISA_KEV'[Ransomware] = "Known" )
+			)
+		formatString: 0
+		lineageTag: 354943de-e98c-4a05-8924-67dd079d3d55
+
+	measure 'Critical Likely KEVs' =
+			
+			CALCULATE (
+			    [Total CVEs],
+			    KEEPFILTERS ( 'CISA_KEV'[CVSS Base Score] >= 9 ),
+			    KEEPFILTERS ( 'CISA_KEV'[EPSS Score] >= 0.70 )
+			)
+		formatString: 0
+		lineageTag: bb3754d9-e033-4e92-ac6a-481ff4ca4a5f
+
+	measure 'Average EPSS Bucket' =
+			
+			AVERAGE ( 'CISA_KEV'[EPSS Bucket] )
+		formatString: 0%;-0%;0%
+		lineageTag: 9e402972-de6e-41c5-adc5-2f7b56af3172
+
+	measure 'Average CVSS Bucket' =
+			
+			AVERAGEX (
+			    'CISA_KEV',
+			    DIVIDE (
+			        INT ( 'CISA_KEV'[CVSS Base Score] * 2 ),
+			        2
+			    )
+			)
+		formatString: 0.0
+		lineageTag: 087bba1c-fa23-43bd-8fa7-2a46719b9fb1
+
+	measure 'CISA Due Date Passed' =
+			
+			VAR CurrentDate = TODAY()
+			VAR PassedCount =
+			    COALESCE(
+			        CALCULATE(
+			            DISTINCTCOUNT('CISA_KEV'[CVE ID]),
+			            KEEPFILTERS(
+			                FILTER(
+			                    'CISA_KEV',
+			                    NOT ISBLANK('CISA_KEV'[CISA Due Date])
+			                        && 'CISA_KEV'[CISA Due Date] < CurrentDate
+			                )
+			            )
+			        ),
+			        0
+			    )
+			RETURN
+			    FORMAT(PassedCount, "#,0")
+		lineageTag: 2b418b33-f391-4dc2-b187-328f1b7911f2
+
+	measure 'KEVs Due Within 30 Days' =
+			
+			VAR CurrentDate = TODAY ()
+			VAR Deadline = CurrentDate + 30
+			RETURN
+			    COALESCE (
+			        CALCULATE (
+			            DISTINCTCOUNT ( 'CISA_KEV'[CVE ID] ),
+			            KEEPFILTERS (
+			                FILTER (
+			                    'CISA_KEV',
+			                    NOT ISBLANK ( 'CISA_KEV'[CISA Due Date] )
+			                        && 'CISA_KEV'[CISA Due Date] >= CurrentDate
+			                        && 'CISA_KEV'[CISA Due Date] <= Deadline
+			                )
+			            )
+			        ),
+			        0
+			    )
+		formatString: 0
+		lineageTag: 677fa1a8-c0da-4082-9f73-602e366980fe
+
+	measure 'Ransomware Attention' =
+			
+			VAR Deadline = TODAY () + 30
+			RETURN
+			    COALESCE (
+			        CALCULATE (
+			            DISTINCTCOUNT ( 'CISA_KEV'[CVE ID] ),
+			            KEEPFILTERS (
+			                FILTER (
+			                    'CISA_KEV',
+			                    'CISA_KEV'[Known vs Unknown] = "Known"
+			                        && NOT ISBLANK ( 'CISA_KEV'[CISA Due Date] )
+			                        && 'CISA_KEV'[CISA Due Date] <= Deadline
+			                )
+			            )
+			        ),
+			        0
+			    )
+		formatString: 0
+		lineageTag: 96b892ab-43d2-4749-a4c7-8cb430b37b06
+
+	measure 'Critical Focus' =
+			
+			VAR Deadline = TODAY () + 30
+			RETURN
+			    COALESCE (
+			        CALCULATE (
+			            DISTINCTCOUNT ( 'CISA_KEV'[CVE ID] ),
+			            KEEPFILTERS (
+			                FILTER (
+			                    'CISA_KEV',
+			                    'CISA_KEV'[CVSS Severity] = "CRITICAL"
+			                        && NOT ISBLANK ( 'CISA_KEV'[CISA Due Date] )
+			                        && 'CISA_KEV'[CISA Due Date] <= Deadline
+			                )
+			            )
+			        ),
+			        0
+			    )
+		formatString: 0
+		lineageTag: 51150e0c-948f-4d26-9f68-d5322b28c4f7
+
+	measure 'CISA Due Today or Future' =
+			
+			VAR CurrentDate = TODAY()
+			RETURN
+			    CALCULATE(
+			        DISTINCTCOUNT('CISA_KEV'[CVE ID]),
+			        FILTER(
+			            'CISA_KEV',
+			            NOT ISBLANK('CISA_KEV'[CISA Due Date])
+			                && 'CISA_KEV'[CISA Due Date] >= CurrentDate
+			        )
+			    )
+		formatString: 0
+		lineageTag: 59f7794d-ef20-402a-8da1-6fcb4137b0c5
+
+	measure 'CISA Due Date Missing' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT('CISA_KEV'[CVE ID]),
+			    FILTER(
+			        'CISA_KEV',
+			        ISBLANK('CISA_KEV'[CISA Due Date])
+			    )
+			)
+		formatString: 0
+		lineageTag: abf7aba5-2ebd-417b-85e9-281022d44e90
+
+	partition '_All Measures' = m
+		mode: import
+		source =
+				let
+				  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"Column1"})
+				in
+				  #"Removed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

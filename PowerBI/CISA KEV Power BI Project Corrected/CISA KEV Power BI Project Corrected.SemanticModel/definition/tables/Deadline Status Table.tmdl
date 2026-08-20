@@ -1,0 +1,37 @@
+table 'Deadline Status Table'
+	lineageTag: 146407fa-d53f-4a5b-a57e-a9a1e8c0e100
+
+	column 'Deadline Status'
+		lineageTag: 188f0304-8df1-4509-a415-31d6ceed29c3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Deadline Status]
+		sortByColumn: 'Sort Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sort Order'
+		formatString: 0
+		lineageTag: ee2acee7-d187-44a7-bf8d-9a9a22b9fdb2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Sort Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Deadline Status Table' = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Deadline Status", STRING,
+				    "Sort Order", INTEGER,
+				    {
+				        {"Date Passed", 1},
+				        {"Due Within 30 Days", 2},
+				        {"Future", 3}
+				    }
+				)
+
+	annotation PBI_Id = 5b4baa6147914285845c55834642a1ae
+

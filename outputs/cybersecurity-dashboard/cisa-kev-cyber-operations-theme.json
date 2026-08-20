@@ -1,0 +1,16 @@
+{
+  "name": "CISA KEV Cyber Operations",
+  "dataColors": [
+    "#00E5FF",
+    "#FF2A5F",
+    "#F59E0B",
+    "#A855F7",
+    "#3B82F6",
+    "#22D3EE",
+    "#FB7185",
+    "#C084FC"
+  ],
+  "background": "#07111E",
+  "foreground": "#F4F8FF",
+  "tableAccent": "#00E5FF"
+}

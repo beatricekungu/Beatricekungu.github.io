@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1980" height="1020" viewBox="0 0 1980 1020">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#06111E"/><stop offset=".48" stop-color="#090E18"/><stop offset="1" stop-color="#101020"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#141E30"/><stop offset="1" stop-color="#0E1727"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#101E31"/><stop offset=".55" stop-color="#101827"/><stop offset="1" stop-color="#151225"/>
+    </linearGradient>
+    <linearGradient id="spectrum" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#00E5FF"/><stop offset=".34" stop-color="#22D3EE"/><stop offset=".68" stop-color="#A855F7"/><stop offset="1" stop-color="#FF2A5F"/>
+    </linearGradient>
+    <radialGradient id="auraC"><stop stop-color="#00E5FF" stop-opacity=".13"/><stop offset="1" stop-color="#00E5FF" stop-opacity="0"/></radialGradient>
+    <radialGradient id="auraV"><stop stop-color="#A855F7" stop-opacity=".12"/><stop offset="1" stop-color="#A855F7" stop-opacity="0"/></radialGradient>
+    <radialGradient id="orb"><stop stop-color="#00E5FF" stop-opacity=".16"/><stop offset=".52" stop-color="#A855F7" stop-opacity=".06"/><stop offset="1" stop-color="#07111E" stop-opacity="0"/></radialGradient>
+    <pattern id="hex" width="56" height="32" patternUnits="userSpaceOnUse">
+      <path d="M14 0h28l14 16-14 16H14L0 16z" fill="none" stroke="#6C83A3" stroke-width=".5" stroke-opacity=".055"/>
+    </pattern>
+    <pattern id="micro" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0v30" fill="none" stroke="#00E5FF" stroke-opacity=".024" stroke-width=".5"/>
+    </pattern>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="10" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000714" flood-opacity=".55"/>
+    </filter>
+    <symbol id="source-card" viewBox="0 0 260 62">
+      <rect x=".5" y=".5" width="259" height="61" rx="9" fill="#101B2C" stroke="#263A57"/>
+      <path d="M0 49v5q0 8 8 8h40l8-7h148l8 7h40q8 0 8-8v-5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-opacity=".58"/>
+    </symbol>
+    <symbol id="node" viewBox="0 0 280 118">
+      <rect x=".5" y=".5" width="279" height="117" rx="13" fill="#0B1625" stroke="#263954"/>
+      <rect x="1" y="1" width="5" height="116" rx="2.5" fill="currentColor" fill-opacity=".92"/>
+      <circle cx="49" cy="58" r="27" fill="currentColor" fill-opacity=".09" stroke="currentColor" stroke-opacity=".22"/>
+    </symbol>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1980" height="1020" fill="url(#bg)"/>
+  <rect width="1980" height="1020" fill="url(#hex)"/>
+  <rect x="330" width="1650" height="1020" fill="url(#micro)"/>
+  <ellipse cx="1080" cy="95" rx="660" ry="330" fill="url(#auraC)"/>
+  <ellipse cx="1790" cy="830" rx="500" ry="390" fill="url(#auraV)"/>
+  <path d="M330 910c205-190 420 85 655-116s432-91 584 27 276 32 411-82" fill="none" stroke="url(#spectrum)" stroke-opacity=".07" stroke-width="1.2"/>
+  <path d="M470 0l520 1020m320-1020l420 1020" stroke="#00E5FF" stroke-opacity=".016" stroke-width="84"/>
+
+  <!-- Sidebar -->
+  <rect width="330" height="1020" fill="#0B1321"/>
+  <rect x="329" width="1" height="1020" fill="#223652"/>
+  <ellipse cx="165" cy="120" rx="47" ry="10" fill="#00E5FF" fill-opacity=".08" filter="url(#glow)"/>
+  <g transform="translate(165 76)">
+    <animateTransform attributeName="transform" type="translate" values="165 76;165 68;165 76" dur="4s" repeatCount="indefinite"/>
+    <circle r="47" fill="#071824" stroke="#00E5FF" stroke-opacity=".24"/>
+    <circle r="41" fill="none" stroke="#00E5FF" stroke-width="1.3" stroke-dasharray="10 6">
+      <animateTransform attributeName="transform" type="rotate" values="0;360" dur="20s" repeatCount="indefinite"/>
+    </circle>
+    <path d="M0-25l23 11v19c0 18-23 29-23 29S-23 23-23 5v-19z" fill="#00E5FF" fill-opacity=".075" stroke="#00E5FF" stroke-width="2"/>
+    <path d="M-9 3l7 8 14-17" fill="none" stroke="#7DD3FC" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="165" y="153" fill="#6F85A4" font-family="Segoe UI,sans-serif" font-size="9.5" font-weight="700" letter-spacing="2.3" text-anchor="middle">THREAT OPERATIONS</text>
+  <text x="165" y="176" fill="#F3F7FF" font-family="Segoe UI,sans-serif" font-size="19" font-weight="700" letter-spacing="1.2" text-anchor="middle">SENTRY GRID</text>
+
+  <!-- Navigation -->
+  <g font-family="Segoe UI,sans-serif">
+    <rect x="22" y="210" width="286" height="46" rx="8" fill="#00E5FF" fill-opacity=".075" stroke="#00E5FF" stroke-opacity=".38"/>
+    <rect x="22" y="210" width="4" height="46" rx="2" fill="#00E5FF" filter="url(#glow)"/>
+    <g transform="translate(45 222)" fill="none" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 1h14l4 4v17H3z"/><path d="M17 1v5h4M7 11h10M7 16h8"/></g>
+    <text x="78" y="239" fill="#00E5FF" font-size="13.5" font-weight="700">Executive Brief</text>
+
+    <g transform="translate(44 278)" fill="none" stroke="#7186A3" stroke-width="1.4"><rect width="8" height="8" rx="1"/><rect x="13" width="8" height="8" rx="1"/><rect y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></g>
+    <text x="78" y="293" fill="#7F92AC" font-size="13.5">Risk Posture Overview</text>
+    <g transform="translate(46 335)" fill="none" stroke="#7186A3" stroke-width="1.4"><circle cx="9" cy="9" r="9"/><path d="M9 4v6l4 3"/></g>
+    <text x="78" y="349" fill="#7F92AC" font-size="13.5">KEV Triage</text>
+  </g>
+
+  <!-- Sidebar data foundation -->
+  <g font-family="Segoe UI,sans-serif">
+    <g transform="translate(25 407)" fill="none" stroke="#00E5FF" stroke-width="1.7" stroke-linecap="round"><ellipse cx="11" cy="4" rx="9" ry="3"/><path d="M2 4v8c0 2 4 4 9 4s9-2 9-4V4M2 12v8c0 2 4 4 9 4s9-2 9-4v-8"/></g>
+    <text x="57" y="425" fill="#00E5FF" font-size="11.5" font-weight="800" letter-spacing="1.7">DATA FOUNDATION</text>
+    <line x1="178" y1="421" x2="305" y2="421" stroke="#1F3550"/>
+
+    <g style="color:#00E5FF"><use href="#source-card" x="25" y="448" width="280" height="62"/><g transform="translate(43 464)" fill="none" stroke="#00E5FF" stroke-width="1.6"><circle cx="14" cy="14" r="12"/><path d="M14 7v14M7 14h14"/></g><text x="86" y="472" fill="#F3F7FF" font-size="12.5" font-weight="700">CISA KEV</text><text x="86" y="491" fill="#7389A6" font-size="10">Confirmed exploitation</text></g>
+    <g style="color:#F59E0B"><use href="#source-card" x="25" y="522" width="280" height="62"/><g transform="translate(43 538)" fill="none" stroke="#F59E0B" stroke-width="1.6"><path d="M14 1l12 6v8c0 9-12 14-12 14S2 24 2 15V7z"/><path d="M8 15h12"/></g><text x="86" y="546" fill="#F3F7FF" font-size="12.5" font-weight="700">NVD CVSS</text><text x="86" y="565" fill="#7389A6" font-size="10">Technical impact</text></g>
+    <g style="color:#A855F7"><use href="#source-card" x="25" y="596" width="280" height="62"/><g transform="translate(43 612)" fill="none" stroke="#A855F7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 24l7-7 5 4 12-14"/><path d="M20 7h6v6"/></g><text x="86" y="620" fill="#F3F7FF" font-size="12.5" font-weight="700">FIRST EPSS</text><text x="86" y="639" fill="#7389A6" font-size="10">Exploit probability</text></g>
+
+    <rect x="25" y="689" width="280" height="88" rx="12" fill="#07121F" stroke="#263A57"/>
+    <circle cx="53" cy="717" r="8" fill="#22C55E" fill-opacity=".16" stroke="#22C55E"/><circle cx="53" cy="717" r="3" fill="#22C55E" filter="url(#glow)"/>
+    <text x="72" y="721" fill="#D8E4F2" font-size="11.5" font-weight="700">MODEL STATUS</text>
+    <text x="44" y="750" fill="#7086A3" font-size="10.5">Three-source enrichment pipeline</text>
+    <text x="44" y="766" fill="#7086A3" font-size="10.5">Filter-aware decision intelligence</text>
+  </g>
+
+  <!-- Footer -->
+  <g font-family="Segoe UI,sans-serif">
+    <rect x="82" y="859" width="70" height="64" rx="12" fill="#111C2D" stroke="#263A57"/><text x="117" y="901" fill="#91A5C0" font-size="28" font-weight="800" text-anchor="middle">in</text>
+    <rect x="178" y="859" width="70" height="64" rx="12" fill="#111C2D" stroke="#263A57"/>
+    <path d="M12 0c-6.6 0-12 5.4-12 12 0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 016 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0024 12C24 5.4 18.6 0 12 0z" fill="#91A5C0" transform="translate(188 868) scale(2.05)"/>
+    <text x="165" y="967" fill="#687D99" font-size="10.5" font-weight="600" text-anchor="middle">Built by Beatrice Kungu</text>
+  </g>
+
+  <!-- Header -->
+  <g font-family="Segoe UI,sans-serif">
+    <text x="370" y="35" fill="#00E5FF" font-size="10.5" font-weight="800" letter-spacing="2.2">PROGRAM CONTEXT &amp; ANALYTIC DESIGN</text>
+    <text x="370" y="72" fill="#F4F8FF" font-size="30" font-weight="750">Executive Brief &amp; Methodology</text>
+    <text x="370" y="96" fill="#768BA7" font-size="11.5">CISA KEV &#8226; NVD CVSS &#8226; FIRST EPSS &#8226; Risk-based vulnerability prioritization</text>
+    <rect x="1766" y="42" width="164" height="39" rx="19.5" fill="#101B2C" stroke="#00E5FF" stroke-opacity=".28"/>
+    <g transform="translate(1784 51)" fill="none" stroke="#00E5FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v5M10 15v.3"/></g>
+    <text x="1816" y="67" fill="#A7B8CE" font-size="11" font-weight="700">READ ME FIRST</text>
+  </g>
+
+  <!-- Executive brief hero -->
+  <g font-family="Segoe UI,sans-serif" filter="url(#shadow)">
+    <rect x="370" y="120" width="985" height="285" rx="15" fill="url(#hero)" stroke="#263954"/>
+    <rect x="370" y="120" width="6" height="285" rx="3" fill="url(#spectrum)"/>
+    <path d="M398 175h929" stroke="#263954"/>
+    <text x="402" y="153" fill="#F3F7FF" font-size="13" font-weight="800" letter-spacing="1.05">EXECUTIVE BRIEF</text>
+    <text x="1324" y="153" fill="#7C9AC7" font-size="9" font-weight="700" letter-spacing=".8" text-anchor="end">PURPOSE &#8226; AUDIENCE &#8226; DECISION CONTEXT</text>
+
+    <!-- Deliberately empty editable narrative zone -->
+    <rect x="402" y="198" width="585" height="172" rx="11" fill="#08131F" fill-opacity=".64" stroke="#263954" stroke-dasharray="5 6"/>
+    <path d="M430 235h493M430 271h520M430 307h466M430 343h510" stroke="#29415F" stroke-opacity=".36" stroke-width="1"/>
+
+    <!-- Floating intelligence orb -->
+    <g transform="translate(1165 284)">
+      <ellipse rx="158" ry="112" fill="url(#orb)"/>
+      <circle r="79" fill="#071824" fill-opacity=".7" stroke="#00E5FF" stroke-opacity=".22"/>
+      <circle r="66" fill="none" stroke="url(#spectrum)" stroke-width="1.3" stroke-dasharray="11 8">
+        <animateTransform attributeName="transform" type="rotate" values="0;360" dur="28s" repeatCount="indefinite"/>
+      </circle>
+      <ellipse rx="105" ry="35" fill="none" stroke="#A855F7" stroke-opacity=".25" stroke-width="1.1" transform="rotate(-15)">
+        <animateTransform attributeName="transform" type="rotate" values="-15;345" dur="34s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse rx="42" ry="103" fill="none" stroke="#00E5FF" stroke-opacity=".22" stroke-width="1.1" transform="rotate(42)">
+        <animateTransform attributeName="transform" type="rotate" values="42;-318" dur="38s" repeatCount="indefinite"/>
+      </ellipse>
+      <path d="M0-38l34 16v27c0 27-34 43-34 43S-34 32-34 5v-27z" fill="#00E5FF" fill-opacity=".08" stroke="#00E5FF" stroke-width="2.2"/>
+      <path d="M-14 3l11 12L17-10" fill="none" stroke="#7DD3FC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="-91" cy="-45" r="5" fill="#FF2A5F" filter="url(#glow)"><animate attributeName="opacity" values=".45;1;.45" dur="2.8s" repeatCount="indefinite"/></circle>
+      <circle cx="102" cy="-20" r="5" fill="#F59E0B" filter="url(#glow)"><animate attributeName="opacity" values="1;.4;1" dur="3.2s" repeatCount="indefinite"/></circle>
+      <circle cx="74" cy="82" r="5" fill="#A855F7" filter="url(#glow)"><animate attributeName="opacity" values=".45;1;.45" dur="3.6s" repeatCount="indefinite"/></circle>
+      <text x="-124" y="-58" fill="#FB7185" font-size="8" font-weight="800" letter-spacing="1">EXPLOITATION</text>
+      <text x="83" y="-31" fill="#FBBF24" font-size="8" font-weight="800" letter-spacing="1">IMPACT</text>
+      <text x="86" y="99" fill="#C084FC" font-size="8" font-weight="800" letter-spacing="1">LIKELIHOOD</text>
+    </g>
+  </g>
+
+  <!-- Dashboard at a glance -->
+  <g font-family="Segoe UI,sans-serif" filter="url(#shadow)">
+    <rect x="1375" y="120" width="555" height="285" rx="15" fill="url(#panel)" stroke="#263954"/>
+    <path d="M1375 175h555" stroke="#263954"/>
+    <text x="1404" y="153" fill="#F3F7FF" font-size="13" font-weight="800" letter-spacing="1.05">DASHBOARD AT A GLANCE</text>
+    <text x="1900" y="153" fill="#7C9AC7" font-size="9" font-weight="700" letter-spacing=".8" text-anchor="end">THREE-PAGE DECISION STORY</text>
+
+    <g transform="translate(1404 194)">
+      <rect width="498" height="53" rx="10" fill="#08131F" stroke="#00E5FF" stroke-opacity=".27"/>
+      <circle cx="27" cy="26.5" r="15" fill="#00E5FF" fill-opacity=".10" stroke="#00E5FF" stroke-opacity=".3"/><text x="27" y="31" fill="#00E5FF" font-size="11" font-weight="800" text-anchor="middle">01</text>
+      <text x="58" y="23" fill="#F3F7FF" font-size="11.5" font-weight="750">EXECUTIVE BRIEF</text><text x="58" y="40" fill="#7389A6" font-size="9.5">Context, definitions and analytic method</text>
+      <path d="M465 20l8 7-8 7" fill="none" stroke="#00E5FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(1404 257)">
+      <rect width="498" height="53" rx="10" fill="#08131F" stroke="#22D3EE" stroke-opacity=".23"/>
+      <circle cx="27" cy="26.5" r="15" fill="#22D3EE" fill-opacity=".09" stroke="#22D3EE" stroke-opacity=".27"/><text x="27" y="31" fill="#22D3EE" font-size="11" font-weight="800" text-anchor="middle">02</text>
+      <text x="58" y="23" fill="#F3F7FF" font-size="11.5" font-weight="750">RISK POSTURE OVERVIEW</text><text x="58" y="40" fill="#7389A6" font-size="9.5">Exposure, severity and affected technology</text>
+      <path d="M465 20l8 7-8 7" fill="none" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(1404 320)">
+      <rect width="498" height="53" rx="10" fill="#08131F" stroke="#A855F7" stroke-opacity=".27"/>
+      <circle cx="27" cy="26.5" r="15" fill="#A855F7" fill-opacity=".10" stroke="#A855F7" stroke-opacity=".3"/><text x="27" y="31" fill="#C084FC" font-size="11" font-weight="800" text-anchor="middle">03</text>
+      <text x="58" y="23" fill="#F3F7FF" font-size="11.5" font-weight="750">KEV TRIAGE &amp; PRIORITIZATION</text><text x="58" y="40" fill="#7389A6" font-size="9.5">Likelihood, impact and remediation focus</text>
+      <path d="M465 20l8 7-8 7" fill="none" stroke="#A855F7" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- Evidence-to-action methodology -->
+  <g font-family="Segoe UI,sans-serif" filter="url(#shadow)">
+    <rect x="370" y="430" width="1560" height="260" rx="15" fill="url(#panel)" stroke="#263954"/>
+    <path d="M370 482h1560" stroke="#263954"/>
+    <text x="400" y="464" fill="#F3F7FF" font-size="13" font-weight="800" letter-spacing="1.05">EVIDENCE-TO-ACTION METHOD</text>
+    <text x="1900" y="464" fill="#7C9AC7" font-size="9" font-weight="700" letter-spacing=".8" text-anchor="end">ENRICH &#8226; SCORE &#8226; PRIORITIZE &#8226; ACT</text>
+
+    <path d="M665 586H804M1092 586h139M1519 586h118" stroke="#405775" stroke-width="1.5" stroke-dasharray="5 6"/>
+    <path d="M790 580l14 6-14 6M1217 580l14 6-14 6M1623 580l14 6-14 6" fill="none" stroke="#7DD3FC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="718" cy="586" r="3" fill="#00E5FF" filter="url(#glow)"><animate attributeName="cx" values="680;786;680" dur="3.4s" repeatCount="indefinite"/></circle>
+    <circle cx="1142" cy="586" r="3" fill="#A855F7" filter="url(#glow)"><animate attributeName="cx" values="1107;1209;1107" dur="3.8s" repeatCount="indefinite"/></circle>
+    <circle cx="1567" cy="586" r="3" fill="#FF2A5F" filter="url(#glow)"><animate attributeName="cx" values="1533;1615;1533" dur="3.2s" repeatCount="indefinite"/></circle>
+
+    <g style="color:#00E5FF"><use href="#node" x="400" y="522" width="265" height="118"/><g transform="translate(424 550)" fill="none" stroke="#00E5FF" stroke-width="1.8"><circle cx="25" cy="25" r="17"/><path d="M25 14v22M14 25h22"/></g><text x="484" y="554" fill="#00E5FF" font-size="9" font-weight="800" letter-spacing="1.3">01 &#8226; SCOPE</text><text x="484" y="578" fill="#F3F7FF" font-size="13" font-weight="750">CISA KEV</text><text x="484" y="598" fill="#7389A6" font-size="10">Confirmed exploitation</text><text x="484" y="614" fill="#7389A6" font-size="10">defines the risk universe</text></g>
+    <g style="color:#F59E0B"><use href="#node" x="814" y="522" width="278" height="118"/><g transform="translate(838 550)" fill="none" stroke="#F59E0B" stroke-width="1.8"><path d="M25 6l18 8v13c0 14-18 22-18 22S7 41 7 27V14z"/><path d="M16 28h18"/></g><text x="898" y="554" fill="#F59E0B" font-size="9" font-weight="800" letter-spacing="1.3">02 &#8226; ENRICH</text><text x="898" y="578" fill="#F3F7FF" font-size="13" font-weight="750">NVD CVSS</text><text x="898" y="598" fill="#7389A6" font-size="10">Severity and attack</text><text x="898" y="614" fill="#7389A6" font-size="10">condition context</text></g>
+    <g style="color:#A855F7"><use href="#node" x="1231" y="522" width="288" height="118"/><g transform="translate(1255 550)" fill="none" stroke="#A855F7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 42l12-12 9 7 17-22"/><path d="M37 15h8v8"/></g><text x="1315" y="554" fill="#C084FC" font-size="9" font-weight="800" letter-spacing="1.3">03 &#8226; PREDICT</text><text x="1315" y="578" fill="#F3F7FF" font-size="13" font-weight="750">FIRST EPSS</text><text x="1315" y="598" fill="#7389A6" font-size="10">Probability of exploitation</text><text x="1315" y="614" fill="#7389A6" font-size="10">in the next 30 days</text></g>
+    <g style="color:#FF2A5F"><use href="#node" x="1637" y="522" width="265" height="118"/><g transform="translate(1661 550)" fill="none" stroke="#FF2A5F" stroke-width="1.8" stroke-linecap="round"><circle cx="25" cy="25" r="18"/><circle cx="25" cy="25" r="8"/><path d="M25 7v7M43 25h-7M25 43v-7M7 25h7"/></g><text x="1721" y="554" fill="#FB7185" font-size="9" font-weight="800" letter-spacing="1.3">04 &#8226; DECIDE</text><text x="1721" y="578" fill="#F3F7FF" font-size="13" font-weight="750">PRIORITY TIER</text><text x="1721" y="598" fill="#7389A6" font-size="10">Convert evidence into</text><text x="1721" y="614" fill="#7389A6" font-size="10">remediation action</text></g>
+  </g>
+
+  <!-- Bottom writing and reference panels -->
+  <g font-family="Segoe UI,sans-serif" filter="url(#shadow)">
+    <!-- Key definitions, deliberately blank -->
+    <rect x="370" y="715" width="500" height="275" rx="15" fill="url(#panel)" stroke="#263954"/>
+    <path d="M370 767h500" stroke="#263954"/>
+    <text x="400" y="749" fill="#F3F7FF" font-size="13" font-weight="800" letter-spacing="1.05">KEY DEFINITIONS</text>
+    <text x="842" y="749" fill="#7C9AC7" font-size="9" font-weight="700" letter-spacing=".8" text-anchor="end">ADD YOUR PLAIN-LANGUAGE NOTES</text>
+    <g>
+      <rect x="400" y="790" width="62" height="30" rx="15" fill="#00E5FF" fill-opacity=".08" stroke="#00E5FF" stroke-opacity=".34"/><text x="431" y="809" fill="#7DD3FC" font-size="10" font-weight="800" text-anchor="middle">KEV</text><path d="M480 805h350" stroke="#29415F" stroke-opacity=".7" stroke-dasharray="4 6"/>
+      <rect x="400" y="837" width="62" height="30" rx="15" fill="#F59E0B" fill-opacity=".08" stroke="#F59E0B" stroke-opacity=".34"/><text x="431" y="856" fill="#FBBF24" font-size="10" font-weight="800" text-anchor="middle">CVSS</text><path d="M480 852h350" stroke="#29415F" stroke-opacity=".7" stroke-dasharray="4 6"/>
+      <rect x="400" y="884" width="62" height="30" rx="15" fill="#A855F7" fill-opacity=".08" stroke="#A855F7" stroke-opacity=".34"/><text x="431" y="903" fill="#C084FC" font-size="10" font-weight="800" text-anchor="middle">EPSS</text><path d="M480 899h350" stroke="#29415F" stroke-opacity=".7" stroke-dasharray="4 6"/>
+      <rect x="400" y="931" width="62" height="30" rx="15" fill="#22D3EE" fill-opacity=".08" stroke="#22D3EE" stroke-opacity=".34"/><text x="431" y="950" fill="#67E8F9" font-size="10" font-weight="800" text-anchor="middle">CWE</text><path d="M480 946h350" stroke="#29415F" stroke-opacity=".7" stroke-dasharray="4 6"/>
+    </g>
+
+    <!-- Governance notes, deliberately blank -->
+    <rect x="890" y="715" width="500" height="275" rx="15" fill="url(#panel)" stroke="#263954"/>
+    <path d="M890 767h500" stroke="#263954"/>
+    <text x="920" y="749" fill="#F3F7FF" font-size="13" font-weight="800" letter-spacing="1.05">GOVERNANCE NOTES</text>
+    <text x="1362" y="749" fill="#7C9AC7" font-size="9" font-weight="700" letter-spacing=".8" text-anchor="end">SCOPE &#8226; ASSUMPTIONS &#8226; LIMITATIONS</text>
+    <g transform="translate(920 790)">
+      <rect width="440" height="47" rx="9" fill="#08131F" fill-opacity=".7" stroke="#263954" stroke-dasharray="5 6"/><circle cx="22" cy="23.5" r="8" fill="#00E5FF" fill-opacity=".09" stroke="#00E5FF" stroke-opacity=".4"/><path d="M20 23h4M22 21v4" stroke="#00E5FF" stroke-width="1.2"/>
+      <rect y="58" width="440" height="47" rx="9" fill="#08131F" fill-opacity=".7" stroke="#263954" stroke-dasharray="5 6"/><circle cx="22" cy="81.5" r="8" fill="#F59E0B" fill-opacity=".09" stroke="#F59E0B" stroke-opacity=".4"/><path d="M18 82h8" stroke="#F59E0B" stroke-width="1.2"/>
+      <rect y="116" width="440" height="47" rx="9" fill="#08131F" fill-opacity=".7" stroke="#263954" stroke-dasharray="5 6"/><circle cx="22" cy="139.5" r="8" fill="#A855F7" fill-opacity=".09" stroke="#A855F7" stroke-opacity=".4"/><path d="M19 136l6 7M25 136l-6 7" stroke="#A855F7" stroke-width="1.2"/>
+    </g>
+
+    <!-- Signal legend -->
+    <rect x="1410" y="715" width="520" height="275" rx="15" fill="url(#panel)" stroke="#263954"/>
+    <path d="M1410 767h520" stroke="#263954"/>
+    <text x="1440" y="749" fill="#F3F7FF" font-size="13" font-weight="800" letter-spacing="1.05">SIGNAL LEGEND</text>
+    <text x="1902" y="749" fill="#7C9AC7" font-size="9" font-weight="700" letter-spacing=".8" text-anchor="end">CONSISTENT ACROSS ALL PAGES</text>
+    <g transform="translate(1440 792)">
+      <rect width="215" height="70" rx="11" fill="#08131F" stroke="#FF2A5F" stroke-opacity=".28"/><circle cx="30" cy="27" r="10" fill="#FF2A5F" fill-opacity=".16" stroke="#FF2A5F"/><path d="M30 21v8M30 34v1" stroke="#FF2A5F" stroke-width="1.6" stroke-linecap="round"/><text x="52" y="25" fill="#FB7185" font-size="10" font-weight="800">RED</text><text x="52" y="43" fill="#D7E1EE" font-size="10.5">Immediate triage</text><text x="52" y="57" fill="#7086A3" font-size="8.5">Critical impact</text>
+      <rect x="230" width="230" height="70" rx="11" fill="#08131F" stroke="#F59E0B" stroke-opacity=".28"/><circle cx="260" cy="27" r="10" fill="#F59E0B" fill-opacity=".16" stroke="#F59E0B"/><path d="M255 30l5-9 5 9z" fill="none" stroke="#F59E0B" stroke-width="1.4"/><text x="282" y="25" fill="#FBBF24" font-size="10" font-weight="800">AMBER</text><text x="282" y="43" fill="#D7E1EE" font-size="10.5">Elevated likelihood</text><text x="282" y="57" fill="#7086A3" font-size="8.5">Priority attention</text>
+      <rect y="84" width="215" height="70" rx="11" fill="#08131F" stroke="#00E5FF" stroke-opacity=".28"/><circle cx="30" cy="111" r="10" fill="#00E5FF" fill-opacity=".16" stroke="#00E5FF"/><path d="M25 111l4 4 7-9" fill="none" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round"/><text x="52" y="109" fill="#7DD3FC" font-size="10" font-weight="800">CYAN</text><text x="52" y="127" fill="#D7E1EE" font-size="10.5">Confirmed exposure</text><text x="52" y="141" fill="#7086A3" font-size="8.5">Attack conditions</text>
+      <rect x="230" y="84" width="230" height="70" rx="11" fill="#08131F" stroke="#A855F7" stroke-opacity=".28"/><circle cx="260" cy="111" r="10" fill="#A855F7" fill-opacity=".16" stroke="#A855F7"/><path d="M256 108h8v7h-8zM258 108v-2c0-3 4-3 4 0v2" fill="none" stroke="#A855F7" stroke-width="1.3"/><text x="282" y="109" fill="#C084FC" font-size="10" font-weight="800">PURPLE</text><text x="282" y="127" fill="#D7E1EE" font-size="10.5">Campaign context</text><text x="282" y="141" fill="#7086A3" font-size="8.5">Workflow tracking</text>
+    </g>
+  </g>
+</svg>

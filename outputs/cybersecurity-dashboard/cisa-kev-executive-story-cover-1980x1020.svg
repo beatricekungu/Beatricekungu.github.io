@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1980" height="1020" viewBox="0 0 1980 1020">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07111E"/><stop offset=".58" stop-color="#090E17"/><stop offset="1" stop-color="#0D1221"/></linearGradient>
+    <linearGradient id="leftWash" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0D1929"/><stop offset="1" stop-color="#09111D"/></linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071522"/><stop offset=".48" stop-color="#0A1625"/><stop offset="1" stop-color="#171127"/></linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111D2F"/><stop offset="1" stop-color="#0C1625"/></linearGradient>
+    <linearGradient id="cyanPurple" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00E5FF"/><stop offset=".58" stop-color="#22D3EE"/><stop offset="1" stop-color="#A855F7"/></linearGradient>
+    <linearGradient id="purpleRed" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#A855F7"/><stop offset="1" stop-color="#FF2A5F"/></linearGradient>
+    <radialGradient id="auraC"><stop stop-color="#00E5FF" stop-opacity=".18"/><stop offset="1" stop-color="#00E5FF" stop-opacity="0"/></radialGradient>
+    <radialGradient id="auraV"><stop stop-color="#A855F7" stop-opacity=".16"/><stop offset="1" stop-color="#A855F7" stop-opacity="0"/></radialGradient>
+    <radialGradient id="core"><stop stop-color="#00E5FF" stop-opacity=".18"/><stop offset=".48" stop-color="#0A2131" stop-opacity=".82"/><stop offset="1" stop-color="#07111E"/></radialGradient>
+    <pattern id="hex" width="56" height="32" patternUnits="userSpaceOnUse"><path d="M14 0h28l14 16-14 16H14L0 16z" fill="none" stroke="#6C83A3" stroke-width=".5" stroke-opacity=".055"/></pattern>
+    <pattern id="micro" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0v28" fill="none" stroke="#00E5FF" stroke-opacity=".026" stroke-width=".5"/></pattern>
+    <filter id="glow" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="4" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="strongGlow" x="-90%" y="-90%" width="280%" height="280%"><feGaussianBlur stdDeviation="12" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%"><feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000611" flood-opacity=".58"/></filter>
+    <clipPath id="heroClip"><rect x="1230" y="28" width="722" height="964" rx="22"/></clipPath>
+  </defs>
+
+  <!-- Cover background -->
+  <rect width="1980" height="1020" fill="url(#bg)"/><rect width="1980" height="1020" fill="url(#hex)"/>
+  <ellipse cx="920" cy="50" rx="760" ry="340" fill="url(#auraC)"/><ellipse cx="1750" cy="820" rx="500" ry="440" fill="url(#auraV)"/>
+  <path d="M0 900c260-210 520 68 785-122s520-82 702 62 300 48 493-80" fill="none" stroke="#00E5FF" stroke-opacity=".05" stroke-width="1.2"/>
+  <rect x="28" y="28" width="1924" height="964" rx="22" fill="none" stroke="#263954" stroke-width="1.4"/>
+
+  <!-- Left editorial field -->
+  <path d="M28 28h1202v964H28z" fill="url(#leftWash)" fill-opacity=".62"/>
+  <rect x="28" y="28" width="6" height="964" rx="3" fill="url(#cyanPurple)"/>
+  <rect x="1229" y="28" width="1" height="964" fill="#263954"/>
+  <rect x="34" y="28" width="1195" height="964" fill="url(#micro)" opacity=".55"/>
+
+  <!-- Brand -->
+  <g font-family="Segoe UI,sans-serif">
+    <g transform="translate(72 62)" fill="none" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="28" cy="28" r="28" fill="#071824" stroke-opacity=".5"/><circle cx="28" cy="28" r="22" stroke-dasharray="6 5" stroke-opacity=".8"/>
+      <path d="M28 14l13 6v10c0 11-13 17-13 17S15 41 15 30V20z" fill="#00E5FF" fill-opacity=".08"/><path d="M22 29l5 6 9-11"/>
+    </g>
+    <text x="142" y="79" fill="#6F85A4" font-size="9.5" font-weight="800" letter-spacing="2.3">THREAT OPERATIONS</text>
+    <text x="142" y="105" fill="#F3F7FF" font-size="20" font-weight="750" letter-spacing="1.3">SENTRY GRID</text>
+    <text x="1178" y="80" fill="#00E5FF" font-size="10" font-weight="800" letter-spacing="2" text-anchor="end">EXECUTIVE INTELLIGENCE REPORT</text>
+    <line x1="72" y1="132" x2="1178" y2="132" stroke="#263954"/>
+  </g>
+
+  <!-- Report title -->
+  <g font-family="Segoe UI,sans-serif">
+    <text x="72" y="184" fill="#00E5FF" font-size="11" font-weight="800" letter-spacing="2.4">KNOWN EXPLOITATION &#8226; EXPOSURE &#8226; RISK TRIAGE</text>
+    <text x="72" y="238" fill="#F4F8FF" font-size="43" font-weight="760" letter-spacing="-.5">Known Exploited Vulnerability</text>
+    <text x="72" y="287" fill="#F4F8FF" font-size="43" font-weight="760" letter-spacing="-.5">Intelligence</text>
+    <text x="72" y="318" fill="#8EA3BE" font-size="12.5">An executive view of confirmed exploitation, technical severity, exploit likelihood, and ransomware association.</text>
+  </g>
+
+  <!-- Executive summary writing zone -->
+  <g font-family="Segoe UI,sans-serif">
+    <text x="72" y="360" fill="#F3F7FF" font-size="16" font-weight="750">Executive Summary</text>
+    <text x="1178" y="359" fill="#6F85A4" font-size="9" font-weight="700" letter-spacing="1.2" text-anchor="end">PROJECT CONTEXT &#8226; PURPOSE &#8226; VALUE</text>
+    <line x1="72" y1="377" x2="1178" y2="377" stroke="#263954"/>
+    <rect x="72" y="395" width="1106" height="150" rx="12" fill="#07121F" fill-opacity=".72" stroke="#263954" stroke-dasharray="5 7"/>
+    <!-- Intentionally empty for editable Power BI executive-summary text -->
+    <text display="none" x="94" y="420" fill="#DCE6F2" font-size="10.4">
+      <tspan x="94" dy="0">Security teams often rely on CVSS severity to prioritize vulnerabilities, but severity alone does not show whether a vulnerability is actively</tspan>
+      <tspan x="94" dy="16">exploited or how likely exploitation may be. This can make it difficult for security and GRC teams to identify issues requiring immediate attention.</tspan>
+      <tspan x="94" dy="22">This portfolio project applies a risk-based approach using public CISA KEV, NIST NVD, and FIRST EPSS data. Evidence of confirmed exploitation,</tspan>
+      <tspan x="94" dy="16">technical severity, exploitation probability, and ransomware association is combined in a three-page Power BI dashboard to support risk</tspan>
+      <tspan x="94" dy="16">discussions, remediation planning, and resource prioritization.</tspan>
+      <tspan x="94" dy="22" fill="#91A6C1">This dashboard is a portfolio analysis and was not deployed within an organization or connected to an internal security environment.</tspan>
+    </text>
+  </g>
+
+  <!-- Challenge callout directly beneath the summary -->
+  <g font-family="Segoe UI,sans-serif">
+    <rect x="72" y="561" width="1106" height="74" rx="12" fill="#FF2A5F" fill-opacity=".045" stroke="#FF2A5F" stroke-opacity=".28"/>
+    <rect x="72" y="561" width="5" height="74" rx="2.5" fill="#FF2A5F" filter="url(#glow)"/>
+    <g transform="translate(96 580)" fill="none" stroke="#FF2A5F" stroke-width="1.7" stroke-linecap="round"><circle cx="15" cy="15" r="14"/><path d="M15 8v9M15 22v1"/></g>
+    <text x="137" y="593" fill="#FB7185" font-size="10" font-weight="800" letter-spacing="1.2">THE CHALLENGE</text>
+    <rect x="264" y="576" width="886" height="44" rx="8" fill="#07121F" fill-opacity=".72" stroke="#263954" stroke-dasharray="5 6"/>
+    <!-- Intentionally empty for editable Power BI challenge text -->
+    <text display="none" x="280" y="590" fill="#DCE6F2" font-size="9.5">
+      <tspan x="280" dy="0">Security teams need a consistent way to prioritize known exploited vulnerabilities using severity, exploitation likelihood,</tspan>
+      <tspan x="280" dy="13">ransomware association, and remediation urgency. Relying on CVSS scores alone can make it harder to focus limited</tspan>
+      <tspan x="280" dy="13">resources on vulnerabilities that pose the greatest risk.</tspan>
+    </text>
+  </g>
+
+  <!-- Prioritized insights and compact glossary -->
+  <g font-family="Segoe UI,sans-serif">
+    <rect x="72" y="655" width="770" height="295" rx="14" fill="url(#panel)" stroke="#263954"/>
+    <path d="M72 706h770" stroke="#263954"/>
+    <text x="98" y="688" fill="#F3F7FF" font-size="13" font-weight="800" letter-spacing=".9">KEY INSIGHTS</text>
+    <text x="816" y="688" fill="#6F85A4" font-size="8.5" font-weight="700" letter-spacing=".8" text-anchor="end">FILTER-AWARE FINDINGS</text>
+    <!-- Intentionally empty for editable Power BI key-insight content -->
+    <g transform="translate(98 727)">
+      <circle cx="21" cy="25" r="20" fill="#FF2A5F" fill-opacity=".10" stroke="#FF2A5F" stroke-opacity=".5"/><text x="21" y="29" fill="#FB7185" font-size="10" font-weight="800" text-anchor="middle">01</text><text x="55" y="19" fill="#FB7185" font-size="8.5" font-weight="800" letter-spacing="1">CRITICAL EXPOSURE</text><rect x="55" y="28" width="646" height="39" rx="8" fill="#07121F" stroke="#263954" stroke-dasharray="5 6"/>
+      <text display="none" x="70" y="43" fill="#C8D4E4" font-size="8.4"><tspan x="70">35% of known exploited vulnerabilities are rated Critical, with CVSS scores from 9.0 to 10.0.</tspan><tspan x="70" dy="12">This highlights a substantial concentration of confirmed exploitation within the highest severity category.</tspan></text>
+      <circle cx="21" cy="101" r="20" fill="#F59E0B" fill-opacity=".10" stroke="#F59E0B" stroke-opacity=".5"/><text x="21" y="105" fill="#FBBF24" font-size="10" font-weight="800" text-anchor="middle">02</text><text x="55" y="95" fill="#FBBF24" font-size="8.5" font-weight="800" letter-spacing="1">EXPLOIT LIKELIHOOD</text><rect x="55" y="104" width="646" height="39" rx="8" fill="#07121F" stroke="#263954" stroke-dasharray="5 6"/>
+      <text display="none" x="70" y="119" fill="#C8D4E4" font-size="8.4"><tspan x="70">40% of known exploited vulnerabilities have an EPSS probability of at least 70%. This indicates a significant</tspan><tspan x="70" dy="12">concentration of vulnerabilities with strong potential for continued attacker activity overall.</tspan></text>
+      <circle cx="21" cy="177" r="20" fill="#A855F7" fill-opacity=".10" stroke="#A855F7" stroke-opacity=".5"/><text x="21" y="181" fill="#C084FC" font-size="10" font-weight="800" text-anchor="middle">03</text><text x="55" y="171" fill="#C084FC" font-size="8.5" font-weight="800" letter-spacing="1">RANSOMWARE ASSOCIATION</text><rect x="55" y="180" width="646" height="39" rx="8" fill="#07121F" stroke="#263954" stroke-dasharray="5 6"/>
+      <text display="none" x="70" y="195" fill="#C8D4E4" font-size="8.4"><tspan x="70">20% of known exploited vulnerabilities are associated with known ransomware use. This highlights a meaningful</tspan><tspan x="70" dy="12">concentration of vulnerabilities that may contribute to disruptive attacks and business impact.</tspan></text>
+    </g>
+
+    <rect x="862" y="655" width="316" height="295" rx="14" fill="url(#panel)" stroke="#263954"/>
+    <path d="M862 706h316" stroke="#263954"/>
+    <text x="888" y="688" fill="#F3F7FF" font-size="13" font-weight="800" letter-spacing=".9">GLOSSARY</text>
+    <text x="1152" y="688" fill="#6F85A4" font-size="7.4" font-weight="700" letter-spacing=".85" text-anchor="end">KEY RISK METRICS</text>
+    <g transform="translate(888 731)">
+      <text x="0" y="0" fill="#7DD3FC" font-size="11" font-weight="850">KEV</text><text x="42" y="0" fill="#F3F7FF" font-size="10.8" font-weight="650">Known Exploited Vulnerabilities</text>
+      <line x1="0" y1="24" x2="270" y2="24" stroke="#263954"/>
+      <text x="0" y="55" fill="#FBBF24" font-size="11" font-weight="850">CVSS</text><text x="46" y="55" fill="#F3F7FF" font-size="10.5" font-weight="650">Common Vulnerability Scoring System</text>
+      <line x1="0" y1="79" x2="270" y2="79" stroke="#263954"/>
+      <text x="0" y="110" fill="#C084FC" font-size="11" font-weight="850">EPSS</text><text x="46" y="110" fill="#F3F7FF" font-size="10.5" font-weight="650">Exploit Prediction Scoring System</text>
+      <line x1="0" y1="134" x2="270" y2="134" stroke="#263954"/>
+      <text x="0" y="165" fill="#67E8F9" font-size="11" font-weight="850">CWE</text><text x="42" y="165" fill="#F3F7FF" font-size="10.8" font-weight="650">Common Weakness Enumeration</text>
+    </g>
+  </g>
+
+  <!-- Coverage -->
+  <text x="72" y="978" fill="#6F85A4" font-family="Segoe UI,sans-serif" font-size="9.5" font-weight="650">Coverage: CISA KEV &#8226; NVD CVSS &#8226; FIRST EPSS &#8226; Vendor/Product &#8226; CWE &#8226; Ransomware</text>
+
+  <!-- Cinematic hero panel -->
+  <g clip-path="url(#heroClip)">
+    <rect x="1230" y="28" width="722" height="964" fill="url(#hero)"/>
+    <rect x="1230" y="28" width="722" height="964" fill="url(#hex)" opacity=".65"/>
+    <ellipse cx="1600" cy="340" rx="430" ry="390" fill="url(#auraC)"/>
+    <ellipse cx="1810" cy="670" rx="360" ry="430" fill="url(#auraV)"/>
+    <path d="M1200 835c150-130 260-67 375-172s230-92 410-20" fill="none" stroke="url(#cyanPurple)" stroke-opacity=".18" stroke-width="2"/>
+    <path d="M1240 150l670 690M1430 30l522 565" stroke="#00E5FF" stroke-opacity=".025" stroke-width="70"/>
+  </g>
+
+  <!-- Hero source line -->
+  <g font-family="Segoe UI,sans-serif">
+    <text x="1275" y="79" fill="#7C9AC7" font-size="9.5" font-weight="800" letter-spacing="1.6">EVIDENCE LAYER</text>
+    <text x="1908" y="79" fill="#00E5FF" font-size="9.5" font-weight="800" letter-spacing="1.2" text-anchor="end">CISA &#8226; NVD &#8226; FIRST</text>
+    <line x1="1275" y1="99" x2="1908" y2="99" stroke="#263954"/>
+  </g>
+
+  <!-- Floating security intelligence system -->
+  <g transform="translate(1592 350)">
+    <ellipse cy="185" rx="218" ry="38" fill="#00E5FF" fill-opacity=".06" filter="url(#strongGlow)"/>
+    <circle r="248" fill="url(#core)" stroke="#00E5FF" stroke-opacity=".09"/>
+    <circle r="214" fill="none" stroke="#00E5FF" stroke-opacity=".18" stroke-width="1.4" stroke-dasharray="16 10"><animateTransform attributeName="transform" type="rotate" values="0;360" dur="46s" repeatCount="indefinite"/></circle>
+    <circle r="178" fill="none" stroke="#A855F7" stroke-opacity=".22" stroke-width="1.4" stroke-dasharray="10 12"><animateTransform attributeName="transform" type="rotate" values="360;0" dur="38s" repeatCount="indefinite"/></circle>
+    <ellipse rx="255" ry="78" fill="none" stroke="#00E5FF" stroke-opacity=".17" stroke-width="1.2" transform="rotate(-13)"><animateTransform attributeName="transform" type="rotate" values="-13;347" dur="58s" repeatCount="indefinite"/></ellipse>
+    <ellipse rx="98" ry="248" fill="none" stroke="#A855F7" stroke-opacity=".16" stroke-width="1.2" transform="rotate(42)"><animateTransform attributeName="transform" type="rotate" values="42;-318" dur="64s" repeatCount="indefinite"/></ellipse>
+    <circle r="132" fill="#071824" fill-opacity=".86" stroke="url(#cyanPurple)" stroke-width="2.2"/>
+    <circle r="116" fill="none" stroke="#00E5FF" stroke-opacity=".24" stroke-dasharray="8 7"/>
+    <path d="M0-78l74 35v57c0 60-74 94-74 94S-74 74-74 14v-57z" fill="#00E5FF" fill-opacity=".08" stroke="#00E5FF" stroke-width="4" filter="url(#glow)"/>
+    <path d="M-31 10l24 27L38-21" fill="none" stroke="#7DD3FC" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Floating semantic icons -->
+    <g transform="translate(-220 -122)" fill="none" stroke="#FF2A5F" stroke-width="2.2" stroke-linecap="round" filter="url(#glow)"><animateTransform attributeName="transform" type="translate" values="-220 -122;-220 -134;-220 -122" dur="4.2s" begin="-.8s" repeatCount="indefinite"/><circle r="31" fill="#FF2A5F" fill-opacity=".08"/><circle r="17"/><circle r="6"/><path d="M6-6l20-20m-9 0h9v9"/></g>
+    <g transform="translate(220 -108)" fill="none" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"><animateTransform attributeName="transform" type="translate" values="220 -108;220 -119;220 -108" dur="4.8s" begin="-2s" repeatCount="indefinite"/><circle r="31" fill="#F59E0B" fill-opacity=".08"/><path d="M-17-2A18 18 0 0 1 13-13"/><path d="M13-20v7H6"/><path d="M17 2A18 18 0 0 1-13 13"/><path d="M-13 20v-7h7"/></g>
+    <g transform="translate(-225 128)" fill="none" stroke="#00E5FF" stroke-width="2.2" stroke-linecap="round" filter="url(#glow)"><animateTransform attributeName="transform" type="translate" values="-225 128;-225 116;-225 128" dur="5.1s" begin="-1.4s" repeatCount="indefinite"/><circle r="31" fill="#00E5FF" fill-opacity=".08"/><path d="M-17 15V-15M-17 15h35M-10 7l9-10 8 6 12-15"/></g>
+    <g transform="translate(225 133)" fill="none" stroke="#A855F7" stroke-width="2.2" stroke-linecap="round" filter="url(#glow)"><animateTransform attributeName="transform" type="translate" values="225 133;225 121;225 133" dur="4.5s" begin="-2.6s" repeatCount="indefinite"/><circle r="31" fill="#A855F7" fill-opacity=".08"/><rect x="-16" y="-5" width="32" height="25" rx="4"/><path d="M-9-5v-7c0-13 18-13 18 0v7"/><circle cy="7" r="3"/></g>
+
+    <circle cx="-161" cy="-185" r="5" fill="#FF2A5F" filter="url(#glow)"><animate attributeName="opacity" values=".35;1;.35" dur="2.8s" repeatCount="indefinite"/></circle>
+    <circle cx="178" cy="-165" r="5" fill="#F59E0B" filter="url(#glow)"><animate attributeName="opacity" values="1;.35;1" dur="3.2s" repeatCount="indefinite"/></circle>
+    <circle cx="-175" cy="178" r="5" fill="#00E5FF" filter="url(#glow)"><animate attributeName="opacity" values=".35;1;.35" dur="3.5s" repeatCount="indefinite"/></circle>
+    <circle cx="170" cy="185" r="5" fill="#A855F7" filter="url(#glow)"><animate attributeName="opacity" values="1;.35;1" dur="3.8s" repeatCount="indefinite"/></circle>
+  </g>
+
+  <!-- Explore the analysis -->
+  <g font-family="Segoe UI,sans-serif" filter="url(#shadow)">
+    <rect x="1305" y="620" width="573" height="160" rx="15" fill="#0A1524" fill-opacity=".9" stroke="#263954"/>
+    <path d="M1305 662h573" stroke="#263954"/>
+    <text x="1330" y="647" fill="#F3F7FF" font-size="11.5" font-weight="800" letter-spacing="1">EXPLORE THE ANALYSIS</text>
+    <text x="1852" y="647" fill="#8EA3BE" font-size="9.2" font-weight="750" letter-spacing=".9" text-anchor="end">REPORT NAVIGATION</text>
+    <g transform="translate(1330 675)">
+      <rect width="523" height="43" rx="9" fill="#07121F" stroke="#00E5FF" stroke-opacity=".3"/><circle cx="25" cy="21.5" r="13" fill="#00E5FF" fill-opacity=".1" stroke="#00E5FF" stroke-opacity=".4"/><text x="25" y="25" fill="#00E5FF" font-size="8.5" font-weight="800" text-anchor="middle">01</text><text x="51" y="17" fill="#F3F7FF" font-size="11.5" font-weight="800">VULNERABILITY OVERVIEW</text><text x="51" y="33" fill="#9BAEC7" font-size="10" font-weight="650">Exposure, severity, likelihood, and affected technology</text><path d="M492 15l7 6-7 6" fill="none" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect y="51" width="523" height="43" rx="9" fill="#07121F" stroke="#A855F7" stroke-opacity=".3"/><circle cx="25" cy="72.5" r="13" fill="#A855F7" fill-opacity=".1" stroke="#A855F7" stroke-opacity=".4"/><text x="25" y="76" fill="#C084FC" font-size="8.5" font-weight="800" text-anchor="middle">02</text><text x="51" y="68" fill="#F3F7FF" font-size="11.5" font-weight="800">EXPOSURE &amp; RISK TRIAGE</text><text x="51" y="84" fill="#9BAEC7" font-size="10" font-weight="650">Risk signals, attack conditions, and triage priorities</text><path d="M492 66l7 6-7 6" fill="none" stroke="#A855F7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- Explore report CTA -->
+  <g font-family="Segoe UI,sans-serif">
+    <rect x="1275" y="792" width="633" height="62" rx="31" fill="#00E5FF" fill-opacity=".08" stroke="#00E5FF" stroke-opacity=".55"/>
+    <rect x="1275" y="792" width="6" height="62" rx="3" fill="#00E5FF" filter="url(#glow)"/>
+    <text x="1310" y="830" fill="#F3F7FF" font-size="13" font-weight="800" letter-spacing=".85">START WITH VULNERABILITY OVERVIEW</text>
+    <path d="M1847 812l14 11-14 11M1829 823h31" fill="none" stroke="#00E5FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  </g>
+
+  <!-- Empty portfolio-context writing zone for an editable Power BI text box -->
+  <g font-family="Segoe UI,sans-serif" filter="url(#shadow)">
+    <rect x="1275" y="866" width="633" height="110" rx="14" fill="#FF2A5F" fill-opacity=".035" stroke="#FF2A5F" stroke-opacity=".38"/>
+    <rect x="1275" y="866" width="5" height="110" rx="2.5" fill="#FF2A5F"/>
+    <circle cx="1301" cy="891" r="10" fill="#FF2A5F" fill-opacity=".08" stroke="#FF2A5F" stroke-opacity=".75"/>
+    <text x="1301" y="895" fill="#FB7185" font-size="11" font-weight="800" text-anchor="middle">i</text>
+    <text x="1320" y="894" fill="#FB7185" font-size="9.5" font-weight="850" letter-spacing="1">PORTFOLIO CONTEXT</text>
+    <rect x="1295" y="907" width="595" height="54" rx="8" fill="#07121F" stroke="#263954" stroke-dasharray="5 6"/>
+  </g>
+
+  <!-- Attribution -->
+  <text x="1908" y="1001" fill="#687D99" font-family="Segoe UI,sans-serif" font-size="9.5" font-weight="650" text-anchor="end">Built by Beatrice Kungu</text>
+</svg>

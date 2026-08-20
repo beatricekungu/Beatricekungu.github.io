@@ -1,0 +1,78 @@
+table DateTable
+	lineageTag: ccca260a-79e0-443a-a21b-b853666a4ad5
+
+	column Date
+		formatString: General Date
+		lineageTag: 6f4b7fe6-7a4c-4c94-a164-0ed0112f4271
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: 6d18daee-5aaf-4f36-9977-f6f63a40c377
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: 3ded7ddb-ad9d-4b82-b967-9c81800ebb7b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		formatString: 0
+		lineageTag: b889cd74-7192-4b99-b63c-3ed8a0085bc7
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		lineageTag: 1ead3f4e-611a-4b3e-b2eb-c5e8815c68af
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Short'
+		lineageTag: c7b41693-0be9-4f3c-879c-d77c5c430daf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Short]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year-Month
+		lineageTag: 008bd2e3-71ae-4175-864e-03d946075119
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year-Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DateTable = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS (
+				    CALENDARAUTO(),
+				    "Year", YEAR([Date]),
+				    "Quarter", "Q" & FORMAT([Date], "Q"),
+				    "Month Number", MONTH([Date]),
+				    "Month Name", FORMAT([Date], "MMMM"),
+				    "Month Short", FORMAT([Date], "MMM"),
+				    "Year-Month", FORMAT([Date], "YYYY-MM")
+				)
+
+	annotation PBI_Id = 7db0e76d56344712807565b3e236261b
+

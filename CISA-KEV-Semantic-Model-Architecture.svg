@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1980" height="1020" viewBox="0 0 1980 1020" role="img" aria-labelledby="title desc">
+  <title id="title">CISA KEV Intelligence Semantic Model Architecture</title>
+  <desc id="desc">A dark cybersecurity-themed diagram showing CISA KEV as the central intelligence fact table, connected to CVE enrichment, date, deadline status, measures, and analytical support tables.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#06101C"/><stop offset=".52" stop-color="#081422"/><stop offset="1" stop-color="#100C20"/></linearGradient>
+    <linearGradient id="header" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#00E5FF"/><stop offset=".5" stop-color="#60A5FA"/><stop offset="1" stop-color="#A855F7"/></linearGradient>
+    <linearGradient id="core" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#122238"/><stop offset="1" stop-color="#0B1626"/></linearGradient>
+    <pattern id="hex" width="72" height="62" patternUnits="userSpaceOnUse"><path d="M18 1h36l17 30-17 30H18L1 31z" fill="none" stroke="#7DD3FC" stroke-opacity=".035"/></pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000814" flood-opacity=".55"/></filter>
+    <filter id="cyanGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <marker id="arrowC" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0l10 5-10 5z" fill="#00E5FF"/></marker>
+    <marker id="arrowP" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0l10 5-10 5z" fill="#A855F7"/></marker>
+    <style>
+      .ui{font-family:'Segoe UI',Arial,sans-serif}.title{fill:#F7FAFF;font-size:30px;font-weight:750}.eyebrow{font-size:10px;font-weight:800;letter-spacing:2.4px}.subtitle{fill:#8EA3BE;font-size:12px}.panel{fill:#0C1828;stroke:#263A57;stroke-width:1.2}.panel-title{fill:#F4F8FF;font-size:14px;font-weight:750}.panel-kicker{font-size:8px;font-weight:800;letter-spacing:1.4px}.field{fill:#C8D4E4;font-size:11px}.field-muted{fill:#7F94B0;font-size:9.5px}.key{fill:#7DD3FC;font-size:9px;font-weight:800}.rel-label{fill:#B8C8DA;font-size:9px;font-weight:700}.small{fill:#8197B4;font-size:9px}.mini-title{fill:#E8EEF7;font-size:11px;font-weight:750}.value{fill:#F8FAFC;font-size:12px;font-weight:800}
+    </style>
+  </defs>
+
+  <rect width="1980" height="1020" fill="url(#bg)"/>
+  <rect width="1980" height="1020" fill="url(#hex)"/>
+  <ellipse cx="980" cy="500" rx="660" ry="430" fill="#00E5FF" fill-opacity=".025"/>
+  <ellipse cx="1670" cy="770" rx="430" ry="330" fill="#A855F7" fill-opacity=".035"/>
+
+  <g class="ui">
+    <rect x="44" y="34" width="8" height="92" rx="4" fill="#00E5FF" filter="url(#cyanGlow)"/>
+    <text x="78" y="56" class="eyebrow" fill="#00E5FF">CYBERSECURITY DATA ARCHITECTURE</text>
+    <text x="78" y="94" class="title">CISA KEV Intelligence Semantic Model</text>
+    <text x="78" y="119" class="subtitle">Public vulnerability intelligence structured for exposure analysis, exploit prioritization, and executive risk reporting</text>
+
+    <g transform="translate(1512 48)">
+      <rect width="400" height="68" rx="16" fill="#0D1A2B" stroke="#29415F"/>
+      <text x="24" y="26" class="panel-kicker" fill="#7DD3FC">MODEL PROFILE</text>
+      <text x="24" y="50" class="value">8 tables</text><circle cx="105" cy="46" r="3" fill="#334B69"/>
+      <text x="120" y="50" class="value">3 relationships</text><circle cx="245" cy="46" r="3" fill="#334B69"/>
+      <text x="260" y="50" class="value">Measure-driven logic</text>
+    </g>
+
+    <!-- Evidence sources -->
+    <g filter="url(#shadow)">
+      <rect x="58" y="184" width="300" height="690" rx="20" class="panel"/>
+      <rect x="58" y="184" width="5" height="690" rx="2.5" fill="#00E5FF"/>
+      <text x="86" y="222" class="panel-kicker" fill="#00E5FF">EVIDENCE LAYER</text>
+      <text x="86" y="250" class="panel-title">Public Intelligence Sources</text>
+      <line x1="86" y1="270" x2="330" y2="270" stroke="#263A57"/>
+
+      <g transform="translate(86 302)">
+        <rect width="244" height="116" rx="14" fill="#0A1523" stroke="#00E5FF" stroke-opacity=".36"/>
+        <g transform="translate(24 28)" fill="none" stroke="#00E5FF" stroke-width="2"><ellipse cx="16" cy="5" rx="16" ry="5"/><path d="M0 5v28c0 7 32 7 32 0V5M0 18c0 7 32 7 32 0"/></g>
+        <text x="72" y="37" class="mini-title">CISA KEV Catalog</text>
+        <text x="72" y="58" class="field-muted">Confirmed exploitation</text>
+        <text x="72" y="75" class="field-muted">Vendor, product, due date</text>
+        <text x="72" y="92" class="field-muted">Ransomware association</text>
+      </g>
+      <g transform="translate(86 442)">
+        <rect width="244" height="116" rx="14" fill="#0A1523" stroke="#A855F7" stroke-opacity=".38"/>
+        <g transform="translate(25 28)" fill="none" stroke="#C084FC" stroke-width="2"><path d="M16 0l17 8v13c0 14-17 22-17 22S-1 35-1 21V8z"/><path d="M8 21l6 6 11-14"/></g>
+        <text x="72" y="37" class="mini-title">NIST NVD</text>
+        <text x="72" y="58" class="field-muted">CVSS base score</text>
+        <text x="72" y="75" class="field-muted">Severity and impacts</text>
+        <text x="72" y="92" class="field-muted">Attack characteristics</text>
+      </g>
+      <g transform="translate(86 582)">
+        <rect width="244" height="116" rx="14" fill="#0A1523" stroke="#F59E0B" stroke-opacity=".42"/>
+        <g transform="translate(23 30)" fill="none" stroke="#FBBF24" stroke-width="2"><path d="M0 40V0M0 40h42M6 32l10-13 9 7L40 5"/><circle cx="40" cy="5" r="3"/></g>
+        <text x="72" y="37" class="mini-title">FIRST EPSS</text>
+        <text x="72" y="58" class="field-muted">Exploit probability</text>
+        <text x="72" y="75" class="field-muted">Percentile ranking</text>
+        <text x="72" y="92" class="field-muted">Scoring date</text>
+      </g>
+      <rect x="86" y="734" width="244" height="96" rx="14" fill="#07121F" stroke="#263A57" stroke-dasharray="5 6"/>
+      <text x="108" y="765" class="panel-kicker" fill="#7C9AC7">TRANSFORMATION</text>
+      <text x="108" y="790" class="mini-title">Power Query enrichment</text>
+      <text x="108" y="811" class="field-muted">Clean • merge • classify • model</text>
+    </g>
+
+    <!-- Physical relationship lines -->
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M358 515H425V405H758" stroke="#00E5FF" stroke-width="2" stroke-opacity=".56" marker-end="url(#arrowC)"/>
+      <path d="M692 325H726Q758 325 758 357" stroke="#F59E0B" stroke-width="2" stroke-opacity=".65" marker-end="url(#arrowC)"/>
+      <path d="M692 665H726Q758 665 758 625" stroke="#FBBF24" stroke-width="2" stroke-opacity=".65" marker-end="url(#arrowC)"/>
+      <path d="M1368 408H1242" stroke="#A855F7" stroke-width="2.4" stroke-opacity=".75" marker-start="url(#arrowP)" marker-end="url(#arrowP)"/>
+      <path d="M1000 695V748" stroke="#00E5FF" stroke-width="1.7" stroke-opacity=".55" stroke-dasharray="6 7"/>
+      <path d="M1368 824H1240" stroke="#A855F7" stroke-width="1.7" stroke-opacity=".55" stroke-dasharray="6 7"/>
+    </g>
+    <g>
+      <rect x="512" y="391" width="148" height="25" rx="12.5" fill="#07121F" stroke="#24405F"/><text x="586" y="408" class="rel-label" text-anchor="middle">Public evidence flow</text>
+      <rect x="704" y="298" width="78" height="24" rx="12" fill="#171725" stroke="#6B5320"/><text x="743" y="314" class="rel-label" text-anchor="middle">1 → *</text>
+      <rect x="704" y="640" width="78" height="24" rx="12" fill="#171725" stroke="#6B5320"/><text x="743" y="656" class="rel-label" text-anchor="middle">1 → *</text>
+      <rect x="1253" y="386" width="104" height="25" rx="12.5" fill="#141224" stroke="#5E3A85"/><text x="1305" y="403" class="rel-label" text-anchor="middle">1 ↔ 1</text>
+      <text x="1014" y="726" class="small">DAX measure layer</text>
+      <text x="1260" y="810" class="small">virtual relationships</text>
+    </g>
+
+    <!-- Date dimension -->
+    <g filter="url(#shadow)">
+      <rect x="430" y="194" width="262" height="252" rx="18" class="panel"/>
+      <rect x="430" y="194" width="262" height="5" rx="2.5" fill="#F59E0B"/>
+      <text x="456" y="228" class="panel-kicker" fill="#FBBF24">DATE DIMENSION</text>
+      <text x="456" y="255" class="panel-title">DateTable</text>
+      <line x1="456" y1="271" x2="666" y2="271" stroke="#263A57"/>
+      <text x="456" y="299" class="key">PK</text><text x="490" y="299" class="field">Date</text>
+      <text x="490" y="327" class="field">Year</text>
+      <text x="490" y="355" class="field">Quarter</text>
+      <text x="490" y="383" class="field">Month Name</text>
+      <text x="490" y="411" class="field">Year-Month</text>
+    </g>
+
+    <!-- Deadline dimension -->
+    <g filter="url(#shadow)">
+      <rect x="430" y="558" width="262" height="218" rx="18" class="panel"/>
+      <rect x="430" y="558" width="262" height="5" rx="2.5" fill="#FACC15"/>
+      <text x="456" y="592" class="panel-kicker" fill="#FDE047">STATUS DIMENSION</text>
+      <text x="456" y="619" class="panel-title">Deadline Status</text>
+      <line x1="456" y1="635" x2="666" y2="635" stroke="#263A57"/>
+      <text x="456" y="665" class="key">PK</text><text x="490" y="665" class="field">Deadline Status</text>
+      <text x="490" y="695" class="field">Sort Order</text>
+      <rect x="456" y="719" width="184" height="34" rx="9" fill="#FACC15" fill-opacity=".07" stroke="#FACC15" stroke-opacity=".28"/>
+      <text x="548" y="741" class="field-muted" text-anchor="middle">Date Passed • Future</text>
+    </g>
+
+    <!-- Central fact table -->
+    <g filter="url(#shadow)">
+      <rect x="758" y="244" width="484" height="452" rx="22" fill="url(#core)" stroke="#00E5FF" stroke-opacity=".58" stroke-width="1.5"/>
+      <rect x="758" y="244" width="8" height="452" rx="4" fill="#00E5FF"/>
+      <text x="790" y="281" class="panel-kicker" fill="#00E5FF">INTELLIGENCE FACT TABLE</text>
+      <text x="790" y="315" fill="#F8FAFC" font-size="20" font-weight="800">CISA_KEV</text>
+      <text x="1210" y="315" class="panel-kicker" fill="#6EDDEC" text-anchor="end">ANALYTICAL HUB</text>
+      <line x1="790" y1="333" x2="1210" y2="333" stroke="#2A465F"/>
+      <g>
+        <rect x="790" y="352" width="388" height="38" rx="10" fill="#00E5FF" fill-opacity=".065" stroke="#00E5FF" stroke-opacity=".22"/>
+        <text x="808" y="376" class="key">PK</text><text x="848" y="376" class="field">CVE ID</text>
+        <text x="790" y="419" class="field">Date Added</text><text x="1040" y="419" class="field-muted">Catalog timeline</text>
+        <text x="790" y="455" class="field">CISA Due Date</text><text x="1040" y="455" class="field-muted">Required action timing</text>
+        <text x="790" y="491" class="field">Vendor Project + Product</text><text x="1040" y="491" class="field-muted">Technology exposure</text>
+        <text x="790" y="527" class="field">Ransomware</text><text x="1040" y="527" class="field-muted">Known campaign use</text>
+        <text x="790" y="563" class="field">CWEs</text><text x="1040" y="563" class="field-muted">Weakness classification</text>
+        <text x="790" y="599" class="field">Required Action</text><text x="1040" y="599" class="field-muted">CISA guidance</text>
+        <text x="790" y="635" class="field">Deadline Status</text><text x="1040" y="635" class="field-muted">Risk timing segment</text>
+      </g>
+      <rect x="790" y="656" width="388" height="22" rx="11" fill="#00E5FF" fill-opacity=".08"/>
+      <text x="984" y="671" class="small" text-anchor="middle">One record per known exploited vulnerability</text>
+    </g>
+
+    <!-- Enrichment table -->
+    <g filter="url(#shadow)">
+      <rect x="1368" y="194" width="512" height="438" rx="20" class="panel"/>
+      <rect x="1368" y="194" width="8" height="438" rx="4" fill="#A855F7"/>
+      <text x="1400" y="230" class="panel-kicker" fill="#C084FC">ENRICHMENT DIMENSION</text>
+      <text x="1400" y="262" class="panel-title">CVE Enrichment</text>
+      <text x="1848" y="262" class="panel-kicker" fill="#9F7AEA" text-anchor="end">NVD + EPSS</text>
+      <line x1="1400" y1="280" x2="1848" y2="280" stroke="#33294D"/>
+      <rect x="1400" y="300" width="416" height="38" rx="10" fill="#A855F7" fill-opacity=".07" stroke="#A855F7" stroke-opacity=".24"/>
+      <text x="1418" y="324" class="key" fill="#D8B4FE">PK</text><text x="1458" y="324" class="field">CVE ID</text>
+      <text x="1400" y="372" class="field">CVSS Base Score</text><text x="1650" y="372" class="field-muted">Technical severity</text>
+      <text x="1400" y="408" class="field">CVSS Severity</text><text x="1650" y="408" class="field-muted">Critical • High • Medium • Low</text>
+      <text x="1400" y="444" class="field">EPSS Score</text><text x="1650" y="444" class="field-muted">Exploit probability</text>
+      <text x="1400" y="480" class="field">Attack Vector</text><text x="1650" y="480" class="field-muted">Network exposure</text>
+      <text x="1400" y="516" class="field">Attack Complexity</text><text x="1650" y="516" class="field-muted">Exploitation effort</text>
+      <text x="1400" y="552" class="field">Privileges Required</text><text x="1650" y="552" class="field-muted">Access prerequisite</text>
+      <text x="1400" y="588" class="field">User Interaction</text><text x="1650" y="588" class="field-muted">Victim action required</text>
+    </g>
+
+    <!-- Measure layer -->
+    <g filter="url(#shadow)">
+      <rect x="758" y="748" width="484" height="186" rx="20" class="panel"/>
+      <rect x="758" y="748" width="484" height="5" rx="2.5" fill="url(#header)"/>
+      <text x="790" y="784" class="panel-kicker" fill="#7DD3FC">SEMANTIC MEASURE LAYER</text>
+      <text x="790" y="814" class="panel-title">_All Measures</text>
+      <line x1="790" y1="830" x2="1210" y2="830" stroke="#263A57"/>
+      <g class="field">
+        <text x="790" y="858">Total KEVs</text><text x="948" y="858">Critical CVSS KEVs</text><text x="1105" y="858">High EPSS KEVs</text>
+        <text x="790" y="890">Ransomware Linked</text><text x="948" y="890">Remote Zero-Click</text><text x="1105" y="890">Risk Driver Share</text>
+      </g>
+      <text x="790" y="916" class="field-muted">Filter-aware KPIs • prioritization logic • visual color measures</text>
+    </g>
+
+    <!-- Disconnected analytical tables -->
+    <g filter="url(#shadow)">
+      <rect x="1368" y="674" width="512" height="260" rx="20" class="panel"/>
+      <text x="1400" y="710" class="panel-kicker" fill="#C084FC">MEASURE-DRIVEN ANALYTICAL TABLES</text>
+      <text x="1400" y="739" class="panel-title">Segmentation &amp; presentation logic</text>
+      <line x1="1400" y1="754" x2="1848" y2="754" stroke="#33294D"/>
+      <g transform="translate(1400 778)">
+        <rect width="138" height="112" rx="14" fill="#A855F7" fill-opacity=".065" stroke="#A855F7" stroke-opacity=".25"/>
+        <circle cx="22" cy="24" r="8" fill="#A855F7" fill-opacity=".2" stroke="#C084FC"/><text x="42" y="28" class="mini-title">Risk Driver</text>
+        <text x="16" y="57" class="field-muted">Network</text><text x="16" y="76" class="field-muted">Low complexity</text><text x="16" y="95" class="field-muted">No privileges</text>
+      </g>
+      <g transform="translate(1555 778)">
+        <rect width="138" height="112" rx="14" fill="#00E5FF" fill-opacity=".05" stroke="#00E5FF" stroke-opacity=".24"/>
+        <circle cx="22" cy="24" r="8" fill="#00E5FF" fill-opacity=".18" stroke="#7DD3FC"/><text x="42" y="28" class="mini-title">Exploit Signals</text>
+        <text x="16" y="57" class="field-muted">Signal rates</text><text x="16" y="76" class="field-muted">Selected KEVs</text><text x="16" y="95" class="field-muted">Sort order</text>
+      </g>
+      <g transform="translate(1710 778)">
+        <rect width="138" height="112" rx="14" fill="#FF2A5F" fill-opacity=".05" stroke="#FF2A5F" stroke-opacity=".24"/>
+        <circle cx="22" cy="24" r="8" fill="#FF2A5F" fill-opacity=".18" stroke="#FB7185"/><text x="42" y="28" class="mini-title">Triage Segment</text>
+        <text x="16" y="57" class="field-muted">Priority signals</text><text x="16" y="76" class="field-muted">Technology rank</text><text x="16" y="95" class="field-muted">Segment counts</text>
+      </g>
+      <text x="1400" y="916" class="field-muted">Disconnected tables evaluated through DAX measures and filter context</text>
+    </g>
+
+    <!-- Legend and attribution -->
+    <g transform="translate(58 950)">
+      <line x1="0" y1="0" x2="48" y2="0" stroke="#00E5FF" stroke-width="2"/><text x="60" y="4" class="small">Physical model relationship</text>
+      <line x1="248" y1="0" x2="296" y2="0" stroke="#A855F7" stroke-width="2" stroke-dasharray="6 7"/><text x="308" y="4" class="small">Measure-driven logic</text>
+      <circle cx="522" r="4" fill="#F59E0B"/><text x="536" y="4" class="small">One-side dimension</text>
+      <circle cx="700" r="4" fill="#00E5FF"/><text x="714" y="4" class="small">Many-side intelligence hub</text>
+    </g>
+    <text x="1912" y="976" class="small" text-anchor="end">Designed and modeled by Beatrice Kungu</text>
+  </g>
+</svg>

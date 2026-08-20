@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "92905c0070ea5ac91e17",
+  "position": {
+    "x": 74.31881371640408,
+    "y": 391.77942539388323,
+    "z": 0,
+    "height": 160.56533827618165,
+    "width": 1102.8544949026877,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Organizations often rely on CVSS severity scores to prioritize vulnerabilities, but severity alone does not show whether a vulnerability is being actively exploited or how likely exploitation may be. This can make it difficult for security and GRC teams to determine which issues require immediate attention.",
+                    "textStyle": {
+                      "color": "#ffffff"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "I built this portfolio project to explore a more risk-based approach to vulnerability prioritization. Using public data from CISA KEV, NIST NVD and FIRST EPSS, I combined evidence of active exploitation, technical severity and exploitation probability in a two-page Power BI dashboard. The project demonstrates how public vulnerability intelligence can be transformed into clear insights that support risk discussions, triage decisions and resource prioritization.",
+                    "textStyle": {
+                      "color": "#ffffff"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "This dashboard was created as a portfolio analysis and was not deployed within an organization or connected to a company’s internal security environment.",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "color": "#ffffff"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

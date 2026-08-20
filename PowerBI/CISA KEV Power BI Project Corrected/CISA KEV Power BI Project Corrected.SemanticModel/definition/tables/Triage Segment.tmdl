@@ -1,0 +1,140 @@
+table 'Triage Segment'
+	lineageTag: 1b3fa964-8e28-4f5a-9bb2-e5643103237a
+
+	measure 'Triage Segment KEVs' =
+			
+			VAR SelectedSegment =
+			    SELECTEDVALUE ( 'Triage Segment'[Triage Segment] )
+			VAR Result =
+			    SWITCH (
+			        SelectedSegment,
+			
+			        "CRITICAL + LIKELY",
+			            CALCULATE (
+			                [Total CVEs],
+			                KEEPFILTERS ( 'CISA_KEV'[CVSS Base Score] >= 9 ),
+			                KEEPFILTERS ( 'CISA_KEV'[EPSS Score] >= 0.70 )
+			            ),
+			
+			        "REMOTE ZERO-CLICK",
+			            CALCULATE (
+			                [Total CVEs],
+			                KEEPFILTERS ( 'CISA_KEV'[Attack Vector] = "NETWORK" ),
+			                KEEPFILTERS ( 'CISA_KEV'[User Interaction] = "NONE" )
+			            ),
+			
+			        "PRIV-FREE REMOTE",
+			            CALCULATE (
+			                [Total CVEs],
+			                KEEPFILTERS ( 'CISA_KEV'[Attack Vector] = "NETWORK" ),
+			                KEEPFILTERS ( 'CISA_KEV'[Privileges Required] = "NONE" )
+			            ),
+			
+			        "CRITICAL RANSOMWARE",
+			            CALCULATE (
+			                [Total CVEs],
+			                KEEPFILTERS ( 'CISA_KEV'[CVSS Base Score] >= 9 ),
+			                KEEPFILTERS ( 'CISA_KEV'[Ransomware] = "Known" )
+			            )
+			    )
+			RETURN
+			    COALESCE ( Result, 0 )
+		formatString: 0
+		lineageTag: baaf9ba3-115b-42c8-a99e-4ab841b844c7
+
+	measure 'Technology KEVs' =
+			
+			[Total CVEs]
+		formatString: 0
+		lineageTag: 527f532c-6c7f-4aa2-b0ab-3eadba0f0e80
+
+	measure 'Technology Rank' =
+			
+			VAR CurrentTechnologyKEVs =
+			    [Technology KEVs]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( CurrentTechnologyKEVs ),
+			        RANKX (
+			            ALLSELECTED ( 'CISA_KEV'[Tech Stack Filter] ),
+			            CALCULATE ( [Technology KEVs] ),
+			            CurrentTechnologyKEVs,
+			            DESC,
+			            DENSE
+			        )
+			    )
+		formatString: 0
+		lineageTag: d86e311b-d5f8-4ce9-8e3a-7852c0330db8
+
+	column 'Triage Segment'
+		lineageTag: 091b6951-1279-45b0-aaac-7e3a1d658b74
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Triage Segment]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sort Order'
+		formatString: 0
+		lineageTag: d347d5ff-6f0b-408f-9105-4cec2d6a4278
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Sort Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		lineageTag: 3d5471db-f2e4-4b04-bc39-46c2c1d396e4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Color]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Definition
+		lineageTag: 9291dd28-217b-4c03-ad6c-cdb20b11fd24
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Definition]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Triage Segment' = calculated
+		mode: import
+		source =
+				
+				DATATABLE (
+				    "Triage Segment", STRING,
+				    "Sort Order", INTEGER,
+				    "Color", STRING,
+				    "Definition", STRING,
+				    {
+				        {
+				            "CRITICAL + LIKELY",
+				            1,
+				            "#FF2A5F",
+				            "CVSS 9.0–10.0 and EPSS ≥ 70%"
+				        },
+				        {
+				            "REMOTE ZERO-CLICK",
+				            2,
+				            "#F59E0B",
+				            "Network attack vector with no user interaction"
+				        },
+				        {
+				            "PRIV-FREE REMOTE",
+				            3,
+				            "#00E5FF",
+				            "Network attack vector with no privileges required"
+				        },
+				        {
+				            "CRITICAL RANSOMWARE",
+				            4,
+				            "#A855F7",
+				            "Critical severity with known ransomware association"
+				        }
+				    }
+				)
+
+	annotation PBI_Id = 8e3f6ffb01514bd69f89072c24c25391
+

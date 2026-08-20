@@ -1,0 +1,14 @@
+relationship AutoDetected_5c1f7dee-8d20-42e1-8dbb-5122ec9daedf
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'CVE Enrichment'.'CVE ID'
+	toColumn: CISA_KEV.'CVE ID'
+
+relationship 569dd1a4-e40c-4d7c-a9e6-e4783dbd6774
+	fromColumn: CISA_KEV.'Date Added'
+	toColumn: DateTable.Date
+
+relationship 9fd8df42-c1a2-b65d-8256-fdf66d8d2346
+	fromColumn: CISA_KEV.'Deadline Status'
+	toColumn: 'Deadline Status Table'.'Deadline Status'
+

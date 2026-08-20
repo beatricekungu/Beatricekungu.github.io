@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CISA KEV Power BI Project"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "bcb0df71-ae61-4d51-82a6-803021143f9b"
+  }
+}

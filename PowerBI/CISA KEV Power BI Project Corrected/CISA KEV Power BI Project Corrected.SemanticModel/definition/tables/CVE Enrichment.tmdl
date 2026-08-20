@@ -1,0 +1,163 @@
+table 'CVE Enrichment'
+	lineageTag: aab9e03f-2124-416b-b615-e3e519093e9c
+
+	column 'CVE ID'
+		dataType: string
+		lineageTag: 17c4fa5a-d4d0-4b55-9053-f9d13832452a
+		summarizeBy: none
+		sourceColumn: CVE ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CVSS Version'
+		dataType: string
+		lineageTag: 132d74e3-2ff9-4155-b110-be5d4450e6ff
+		summarizeBy: none
+		sourceColumn: CVSS Version
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CVSS Base Score'
+		dataType: double
+		lineageTag: 9d082896-c2d4-4a27-8e7e-dddc4d534a4d
+		summarizeBy: sum
+		sourceColumn: CVSS Base Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'CVSS Severity'
+		dataType: string
+		lineageTag: ba9661cd-3683-484d-958f-5c474839d4a5
+		summarizeBy: none
+		sourceColumn: CVSS Severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attack Vector'
+		dataType: string
+		lineageTag: 440a29c6-88ea-49d3-b717-6955010a6d94
+		summarizeBy: none
+		sourceColumn: Attack Vector
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attack Complexity'
+		dataType: string
+		lineageTag: 34f355f6-e854-4cd0-a8ad-ef570f5b9225
+		summarizeBy: none
+		sourceColumn: Attack Complexity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Privileges Required'
+		dataType: string
+		lineageTag: 62fd4c22-5e22-4067-b51a-6274712e1008
+		summarizeBy: none
+		sourceColumn: Privileges Required
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'User Interaction'
+		dataType: string
+		lineageTag: b56bfff0-d7b7-4072-8404-cd83a366cb6f
+		summarizeBy: none
+		sourceColumn: User Interaction
+
+		annotation SummarizationSetBy = Automatic
+
+	column Scope
+		dataType: string
+		lineageTag: 741ae012-f051-4d1f-9f59-580384a00543
+		summarizeBy: none
+		sourceColumn: Scope
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Confidentiality Impact'
+		dataType: string
+		lineageTag: 59304c44-66d5-48b5-9cac-39cad65ba8f8
+		summarizeBy: none
+		sourceColumn: Confidentiality Impact
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Integrity Impact'
+		dataType: string
+		lineageTag: ba706de1-6954-4ac3-a67b-de09923bb98d
+		summarizeBy: none
+		sourceColumn: Integrity Impact
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Availability Impact'
+		dataType: string
+		lineageTag: d7c35960-20bb-45f8-b9e4-eff5f5ba8b98
+		summarizeBy: none
+		sourceColumn: Availability Impact
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EPSS Score'
+		dataType: double
+		lineageTag: 11494469-eaa0-45ea-a565-1d9e6933337c
+		summarizeBy: sum
+		sourceColumn: EPSS Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'EPSS Percentile'
+		dataType: double
+		lineageTag: ee8f798c-0530-4c46-a06c-905fca06de4d
+		summarizeBy: sum
+		sourceColumn: EPSS Percentile
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'EPSS Score Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: aae43ff8-2456-41ed-ba63-ab8a8af08520
+		summarizeBy: none
+		sourceColumn: EPSS Score Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Suggested Risk Tier'
+		dataType: string
+		lineageTag: f9e7ac3b-8bca-47dd-8140-c26f14cb147a
+		summarizeBy: none
+		sourceColumn: Suggested Risk Tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source
+		dataType: string
+		lineageTag: 044c76d5-491d-47ec-900f-80cfb96967ee
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'CVE Enrichment' = m
+		mode: import
+		source =
+				let
+				  Source = Excel.Workbook(File.Contents("C:\Users\Bkung\OneDrive\Documents\GitHub\Beatricekungu.github.io\outputs\cve_enrichment\CVE_Enrichment.xlsx"), null, true),
+				  #"Navigation 1" = Source{[Item = "CVE Enrichment", Kind = "Sheet"]}[Data],
+				  #"Promoted headers" = Table.PromoteHeaders(#"Navigation 1", [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"CVE ID", type text}, {"CVSS Version", type text}, {"CVSS Base Score", type number}, {"CVSS Severity", type text}, {"Attack Vector", type text}, {"Attack Complexity", type text}, {"Privileges Required", type text}, {"User Interaction", type text}, {"Scope", type text}, {"Confidentiality Impact", type text}, {"Integrity Impact", type text}, {"Availability Impact", type text}, {"EPSS Score", type number}, {"EPSS Percentile", type number}, {"EPSS Score Date", type date}, {"Suggested Risk Tier", type text}, {"Source", type text}})
+				in
+				  #"Changed column type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

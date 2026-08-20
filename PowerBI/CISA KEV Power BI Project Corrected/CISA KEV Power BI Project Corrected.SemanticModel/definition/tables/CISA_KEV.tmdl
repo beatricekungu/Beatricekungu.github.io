@@ -1,0 +1,608 @@
+table CISA_KEV
+	lineageTag: 51c5af74-cfe1-4edf-9c0b-3f0a9dbca9c7
+
+	measure 'Deadline Selected Color' =
+			
+			VAR Deadline =
+			    SELECTEDVALUE ( 'CISA_KEV'[Deadline Filter] )
+			RETURN
+			    SWITCH (
+			        TRUE(),
+			        Deadline = "OVERDUE", "#FF2A5F",
+			        Deadline = "DUE ≤30D", "#F59E0B",
+			        "#080F19"
+			    )
+		lineageTag: 30c1cc3e-0c35-4c67-96bc-9c1ab68782a5
+
+	measure 'KEV Additions' =
+			
+			DISTINCTCOUNT ( 'CISA_KEV'[CVE ID] )
+		formatString: 0
+		lineageTag: 55b88e08-7f00-4e48-847c-a7c23a04d685
+
+	measure 'Critical CVSS KEVs' =
+			
+			CALCULATE (
+			    [Total CVEs],
+			    KEEPFILTERS ( 'CISA_KEV'[CVSS Severity] = "CRITICAL" )
+			)
+		lineageTag: e6852ffa-4b5d-493f-9238-c9b3376be0e9
+
+	measure 'High EPSS KEVs' =
+			
+			CALCULATE (
+			    [Total CVEs],
+			    KEEPFILTERS ( 'CISA_KEV'[EPSS Score] >= 0.70 )
+			)
+		lineageTag: d662c6bd-5f8b-4476-99db-926be4712a20
+
+	measure 'Severity Share %' =
+			
+			DIVIDE (
+			    [Total CVEs],
+			    CALCULATE (
+			        [Total CVEs],
+			        REMOVEFILTERS ( 'CISA_KEV'[CVSS Severity] )
+			    ),
+			    0
+			)
+		lineageTag: 52345025-dcb7-49c0-8098-887f1adbee0d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Risk Tier Share %' =
+			
+			DIVIDE (
+			    [Total CVEs],
+			    CALCULATE (
+			        [Total CVEs],
+			        REMOVEFILTERS ( 'CISA_KEV'[Suggested Risk Tier] )
+			    ),
+			    0
+			)
+		lineageTag: 0dab4070-c67e-456a-aed3-c30a71d32a0c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Tech Stack Bar Color' =
+			
+			VAR RankPosition =
+			    RANKX (
+			        ALLSELECTED ( 'CISA_KEV'[Tech Stack Filter] ),
+			        [Total CVEs],
+			        ,
+			        DESC,
+			        DENSE
+			    )
+			RETURN
+			    SWITCH (
+			        TRUE(),
+			        RankPosition = 1, "#00E5FF",
+			        RankPosition <= 3, "#38BDF8",
+			        "#2563EB"
+			    )
+		lineageTag: 5e4a6ee6-72e6-4d79-b315-c04620ea945d
+
+	measure 'CVE Bubble Size' = 1
+		formatString: 0
+		lineageTag: ac8dc7d9-61c1-49ec-aae5-b18b925e3d49
+
+	measure 'Matrix CVSS' =
+			
+			MAX('CISA_KEV'[CVSS Base Score])
+		formatString: 0.0
+		lineageTag: d9ecb82e-b322-4afd-98be-88f0e6913cb4
+
+	measure 'Matrix EPSS' =
+			
+			MAX('CISA_KEV'[EPSS Score])
+		formatString: 0.0
+		lineageTag: aab4d870-157c-48a4-87d2-0cf80c80470e
+
+	measure 'Matrix Bubble Size' =
+			
+			1
+		formatString: 0
+		lineageTag: 6da0cfd4-a1ea-45fc-9842-12f322f62b5c
+
+	measure 'Matrix EPSS Percent' =
+			
+			MAX('CISA_KEV'[EPSS Score]) * 100
+		formatString: 0.00
+		lineageTag: 93d7dd53-ce3f-4b9e-a0ec-c154328a011b
+
+	measure 'Total KEVs' =
+			
+			COALESCE(
+			    DISTINCTCOUNT('CISA_KEV'[CVE ID]),
+			    0
+			)
+		formatString: 0
+		lineageTag: b20faf83-c523-41f2-a755-4dcb95b84b6c
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Total KEVs Card' =
+			
+			FORMAT([Total KEVs], "#,##0")
+		lineageTag: 5d1e1cf2-3909-4e3a-8f84-0eb2e4d3da48
+
+	measure 'Critical CVSS KEV' =
+			
+			-- KEVs with a critical CVSS score of 9.0–10.0
+			COALESCE(
+			    CALCULATE(
+			        [Total KEVs],
+			        'CISA_KEV'[CVSS Base Score] >= 9
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: 41423826-eb4c-455b-892e-73ad6d964b2f
+
+	measure Measure
+		lineageTag: 9e104cac-1d22-4202-a67d-5e46b979495b
+
+	measure 'Governance Lens Count' =
+			
+			VAR SelectedStatus =
+			    SELECTEDVALUE ( 'CISA_KEV'[Deadline Status] )
+			RETURN
+			COALESCE (
+			    CALCULATE (
+			        COUNT ( 'CISA_KEV'[CVE ID] ),
+			        'CISA_KEV'[Deadline Status] = SelectedStatus
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: b0d01a25-40f3-4c84-a889-52a41a2c79b5
+
+	column 'CVE ID'
+		dataType: string
+		lineageTag: 0996175e-26de-4a16-af01-595455780270
+		summarizeBy: none
+		sourceColumn: CVE ID
+
+		annotation SummarizationSetBy = User
+
+	column 'Vendor Project'
+		dataType: string
+		lineageTag: f2871781-cf49-4bce-81f6-e13b6e7b0162
+		summarizeBy: none
+		sourceColumn: Vendor Project
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product
+		dataType: string
+		lineageTag: a56f2b37-21bf-416e-92a3-44a8ac3a9f39
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vulnerability Name'
+		dataType: string
+		lineageTag: 36e0205f-1eda-41de-b403-ceff02840816
+		summarizeBy: none
+		sourceColumn: Vulnerability Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Added'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: db474acb-54e0-47c2-8c2b-2365dacba813
+		summarizeBy: none
+		sourceColumn: Date Added
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Short Description'
+		dataType: string
+		lineageTag: 384ccfed-6e29-487f-aeb7-6656844c087e
+		summarizeBy: none
+		sourceColumn: Short Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Required Action'
+		dataType: string
+		lineageTag: 65d5ff56-b96c-491a-a94d-bd1b4abb187a
+		summarizeBy: none
+		sourceColumn: Required Action
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CISA Due Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 09519425-9d86-47a6-b848-0bdb3dd4cd7a
+		summarizeBy: none
+		sourceColumn: CISA Due Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ransomware
+		dataType: string
+		lineageTag: dcfdd2fe-4e4f-4db8-8c00-9cd8b2fd51e6
+		summarizeBy: none
+		sourceColumn: Ransomware
+
+		annotation SummarizationSetBy = Automatic
+
+	column Notes
+		dataType: string
+		lineageTag: 29ac8c66-57fa-4440-8109-dd9879f19bac
+		summarizeBy: none
+		sourceColumn: Notes
+
+		annotation SummarizationSetBy = Automatic
+
+	column CWEs
+		dataType: string
+		lineageTag: 84b7cc10-095f-460a-b98c-7ee2d0596bbf
+		summarizeBy: none
+		sourceColumn: CWEs
+
+		annotation SummarizationSetBy = Automatic
+
+	column Merged
+		dataType: string
+		lineageTag: 7a43052a-eea8-4f83-a300-d1f332518585
+		summarizeBy: none
+		sourceColumn: Merged
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Known vs Unknown'
+		dataType: string
+		lineageTag: 54bed4c2-2813-4640-8111-47365b194431
+		summarizeBy: none
+		sourceColumn: Known vs Unknown
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SLA Status '
+		dataType: string
+		lineageTag: c51deff8-937f-4db5-910f-ac63a390c454
+		summarizeBy: none
+		sourceColumn: "SLA Status "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Stack Filter' =
+			
+			VAR VendorName =
+			    TRIM(
+			        COALESCE(
+			            'CISA_KEV'[Vendor Project],
+			            "Unknown Vendor"
+			        )
+			    )
+			VAR ProductName =
+			    TRIM(
+			        COALESCE(
+			            'CISA_KEV'[Product],
+			            "Unknown Product"
+			        )
+			    )
+			RETURN
+			    VendorName & " > " & ProductName
+		lineageTag: b54f9531-de44-4c04-90ff-9c659ee6343f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Deadline Filter' =
+			
+			VAR DueDate = CISA_KEV[CISA Due Date]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(DueDate), BLANK(),
+			        DueDate < TODAY(), "OVERDUE",
+			        DueDate <= TODAY() + 30, "DUE ≤30D",
+			        BLANK()
+			    )
+		lineageTag: 5f8a67a9-48d3-4423-95da-4b66f6cb98ec
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CVSS Version'
+		dataType: string
+		lineageTag: 7c9f3c69-73e9-4aaf-bf97-6a3f604b9289
+		summarizeBy: none
+		sourceColumn: CVSS Version
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CVSS Base Score'
+		dataType: double
+		formatString: 0.0
+		lineageTag: c5299dc1-6d95-4516-a25e-2369aa716dde
+		summarizeBy: none
+		sourceColumn: CVSS Base Score
+
+		annotation SummarizationSetBy = User
+
+	column 'CVSS Severity'
+		dataType: string
+		lineageTag: a0b35f8e-c141-4a7b-9e80-9fdbba87fae7
+		summarizeBy: none
+		sourceColumn: CVSS Severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attack Vector'
+		dataType: string
+		lineageTag: 76d8bd77-fd65-44d4-a36f-40ba2b478168
+		summarizeBy: none
+		sourceColumn: Attack Vector
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attack Complexity'
+		dataType: string
+		lineageTag: 6df44522-01fb-4588-9486-07005af52321
+		summarizeBy: none
+		sourceColumn: Attack Complexity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Privileges Required'
+		dataType: string
+		lineageTag: 31f72b45-5c8f-4906-9af2-a1b73a3d151e
+		summarizeBy: none
+		sourceColumn: Privileges Required
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'User Interaction'
+		dataType: string
+		lineageTag: f878aebb-998a-4987-b096-b209b564786c
+		summarizeBy: none
+		sourceColumn: User Interaction
+
+		annotation SummarizationSetBy = Automatic
+
+	column Scope
+		dataType: string
+		lineageTag: 1cc55615-83fc-497f-9d51-a983fb9bcc38
+		summarizeBy: none
+		sourceColumn: Scope
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Confidentiality Impact'
+		dataType: string
+		lineageTag: ac184f0a-1046-418b-bd8a-0350f755926b
+		summarizeBy: none
+		sourceColumn: Confidentiality Impact
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Integrity Impact'
+		dataType: string
+		lineageTag: 24ba4e3a-44a1-4c9b-b844-d07d8a57efea
+		summarizeBy: none
+		sourceColumn: Integrity Impact
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Availability Impact'
+		dataType: string
+		lineageTag: 91a7ad52-636d-48ea-ad19-ba4e2c99013d
+		summarizeBy: none
+		sourceColumn: Availability Impact
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EPSS Score'
+		dataType: double
+		formatString: 0%;-0%;0%
+		lineageTag: 7c82c1a8-da6c-4ba5-bd06-f8423fedbbfd
+		summarizeBy: none
+		sourceColumn: EPSS Score
+
+		annotation SummarizationSetBy = User
+
+	column 'EPSS Percentile'
+		dataType: double
+		lineageTag: 7554bb58-d047-4f2d-a682-5810154d9590
+		summarizeBy: sum
+		sourceColumn: EPSS Percentile
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'EPSS Score Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 30a788a3-62dd-404b-b4c4-dbcd9bcbfe11
+		summarizeBy: none
+		sourceColumn: EPSS Score Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Suggested Risk Tier'
+		dataType: string
+		lineageTag: 0e14470f-e6a0-43c2-9f28-c185d4b84fae
+		summarizeBy: none
+		sourceColumn: Suggested Risk Tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source
+		dataType: string
+		lineageTag: 8fd45b59-d409-45e5-ba06-26890a6cb1f8
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CVSS Severity Sort' =
+			
+			SWITCH (
+			    UPPER ( 'CISA_KEV'[CVSS Severity] ),
+			    "CRITICAL", 1,
+			    "HIGH", 2,
+			    "MEDIUM", 3,
+			    "LOW", 4,
+			    "UNAVAILABLE", 5,
+			    99
+			)
+		formatString: 0
+		lineageTag: 26cd63fb-5d3d-4307-b545-e9fcf4a68de3
+		summarizeBy: sum
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Risk Tier Sort' =
+			
+			SWITCH (
+			    'CISA_KEV'[Suggested Risk Tier],
+			    "Emergency", 1,
+			    "Urgent", 2,
+			    "High", 3,
+			    99
+			)
+		formatString: 0
+		lineageTag: 4d608334-b1af-4a0f-bf8d-14d8bf20fec0
+		summarizeBy: sum
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CVSS Bucket' =
+			
+			DIVIDE (
+			    INT ( 'CISA_KEV'[CVSS Base Score] * 2 ),
+			    2
+			)
+		lineageTag: 42a0b708-7fa4-4729-bf0e-e917df5f3d1a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'EPSS Bucket' =
+			
+			DIVIDE (
+			    INT ( 'CISA_KEV'[EPSS Score] * 10 ),
+			    10
+			)
+		lineageTag: 8cc49b97-5b43-4f84-a897-e8a8e8c57d4d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'CVE Matrix Group' =
+			
+			FORMAT ( 'CISA_KEV'[CVSS Bucket], "0.0" )
+			    & " CVSS | "
+			    & FORMAT ( 'CISA_KEV'[EPSS Bucket], "0%" )
+			    & " EPSS"
+		lineageTag: 481c3014-05ef-4386-81d3-bb1cc2d99e38
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Due Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d6c9f55e-d984-4907-8167-d36f6c07e2fc
+		summarizeBy: none
+		sourceColumn: Due Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Deadline Status' =
+			
+			VAR DueDate = 'CISA_KEV'[CISA Due Date]
+			RETURN
+			IF(
+			    ISBLANK(DueDate),
+			    "No Due Date",
+			    SWITCH(
+			        TRUE(),
+			        DueDate < DATE(2026, 8, 12), "Date Passed",
+			        DueDate <= DATE(2026, 9, 11), "Due Within 30 Days",
+			        "Future"
+			    )
+			)
+		lineageTag: 87e6fe33-4de3-4f93-940d-348df0fdf0c0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Deadline Status Sort' =
+			
+			SWITCH(
+			    'CISA_KEV'[Deadline Status],
+			    "Date Passed", 1,
+			    "Due Within 30 Days", 2,
+			    "Future", 3,
+			    "No Due Date", 4,
+			    99
+			)
+		formatString: 0
+		lineageTag: d265f9b2-25b6-49d0-a22d-e54d17e5ec69
+		summarizeBy: none
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = User
+
+	column 'Priority Tier Sort'
+		type: calculated
+		lineageTag: fbbcf3ec-f366-46b8-9bd2-761c311f982a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CISA_KEV = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("C:\Users\Bkung\OneDrive\Documents\CISA KEV Power BI Project\known_exploited_vulnerabilities.csv"), [Delimiter = ",", Columns = 11, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"cveID", type text}, {"vendorProject", type text}, {"product", type text}, {"vulnerabilityName", type text}, {"dateAdded", type date}, {"shortDescription", type text}, {"requiredAction", type text}, {"dueDate", type date}, {"knownRansomwareCampaignUse", type text}, {"notes", type text}, {"cwes", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed column type",{{"cveID", "CVE ID"}, {"vendorProject", "Vendor Project"}, {"product", "Product"}, {"vulnerabilityName", "Vulnerability Name"}, {"dateAdded", "Date Added"}, {"shortDescription", "Short Description"}, {"requiredAction", "Required Action"}, {"dueDate", "Due Date"}, {"knownRansomwareCampaignUse", "Known Ransomware Campaign Use"}, {"notes", "Notes"}, {"cwes", "CWEs"}}),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Renamed Columns", "Merged", each Text.Combine({[Vendor Project], [Product]}, " - "), type text),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Inserted Merged Column",{{"Known Ransomware Campaign Use", "Ransomware"}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Renamed Columns1", "Ransomware", "Ransomware - Copy"),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Duplicated Column",{{"Ransomware - Copy", "Known vs Unknown"}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns2","Known","Yes",Replacer.ReplaceText,{"Known vs Unknown"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Unknown","No",Replacer.ReplaceText,{"Known vs Unknown"}),
+				    #"Added Custom" = Table.AddColumn(#"Replaced Value1", "SLA Status ", each if [Due Date] < Date.From(DateTime.LocalNow()) then "Overdue" else "On Track"),
+				    #"Merged Queries" = Table.NestedJoin(#"Added Custom", {"CVE ID"}, #"CVE Enrichment", {"CVE ID"}, "CVE Enrichment", JoinKind.LeftOuter),
+				    #"Expanded CVE Enrichment" = Table.ExpandTableColumn(#"Merged Queries", "CVE Enrichment", {"CVSS Version", "CVSS Base Score", "CVSS Severity", "Attack Vector", "Attack Complexity", "Privileges Required", "User Interaction", "Scope", "Confidentiality Impact", "Integrity Impact", "Availability Impact", "EPSS Score", "EPSS Percentile", "EPSS Score Date", "Suggested Risk Tier", "Source"}, {"CVSS Version", "CVSS Base Score", "CVSS Severity", "Attack Vector", "Attack Complexity", "Privileges Required", "User Interaction", "Scope", "Confidentiality Impact", "Integrity Impact", "Availability Impact", "EPSS Score", "EPSS Percentile", "EPSS Score Date", "Suggested Risk Tier", "Source"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Expanded CVE Enrichment", each true),
+				    #"Renamed Columns3" = Table.RenameColumns(#"Filtered Rows",{{"Due Date", "CISA Due Date"}}),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Renamed Columns3", "CISA Due Date", "CISA Due Date - Copy"),
+				    #"Renamed Columns4" = Table.RenameColumns(#"Duplicated Column1",{{"CISA Due Date - Copy", "Due Date"}})
+				in
+				    #"Renamed Columns4"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
