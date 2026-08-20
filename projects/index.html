@@ -43,6 +43,11 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css?v=2026-08-05-project-grid" rel="stylesheet">
+  <style>
+    .portfolio-item.has-repo-link { position: relative; }
+    .project-repo-corner { position: absolute; right: 24px; top: 14px; z-index: 5; width: 39px; height: 39px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(0,229,255,.5); border-radius: 50%; color: #e6fbff; background: rgba(7,17,30,.9); box-shadow: 0 8px 22px rgba(0,0,0,.3); transition: .25s ease; }
+    .project-repo-corner:hover, .project-repo-corner:focus { color: #06111e; background: #00e5ff; transform: translateY(-2px); }
+  </style>
 
   <!-- =======================================================
   * Template Name: FolioOne
@@ -146,7 +151,7 @@
               </a>
             </div>
 
-            <div class="col-lg-3 col-md-6 portfolio-item isotope-item filter-secops project-theme-cisa">
+            <div class="col-lg-3 col-md-6 portfolio-item isotope-item filter-secops project-theme-cisa has-repo-link">
               <a href="cisa-kev-vulnerability-risk-posture.html" class="portfolio-card portfolio-card-link" aria-label="View Known Exploited Vulnerability Intelligence Power BI project">
                 <div class="portfolio-img">
                   <img src="assets/img/portfolio/cisa-kev-risk-posture-thumbnail.png" alt="Known Exploited Vulnerability Intelligence Power BI dashboard with exposure and risk triage visuals" class="img-fluid">
@@ -167,6 +172,7 @@
                   </div>
                 </div>
               </a>
+              <a class="project-repo-corner" href="https://github.com/beatricekungu/CISA-KEV-Vulnerability-Intelligence" target="_blank" rel="noopener" aria-label="Open the CISA KEV Vulnerability Intelligence GitHub repository" title="View GitHub repository"><i class="bi bi-github"></i></a>
             </div>
 
             <div class="col-lg-3 col-md-6 portfolio-item isotope-item filter-secops project-theme-powerbi">
