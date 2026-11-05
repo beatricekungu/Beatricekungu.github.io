@@ -15,6 +15,7 @@
   function toggleScrolled() {
     const selectBody = document.querySelector('body');
     const selectHeader = document.querySelector('#header');
+    if (!selectHeader) return;
     if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
     window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
   }
@@ -80,13 +81,15 @@
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
-  });
+  }
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
@@ -95,6 +98,7 @@
    * Animation on scroll function and init
    */
   function aosInit() {
+    if (typeof AOS === 'undefined') return;
     AOS.init({
       duration: 600,
       easing: 'ease-in-out',
@@ -140,7 +144,9 @@
   /**
    * Initiate Pure Counter
    */
-  new PureCounter();
+  if (typeof PureCounter !== 'undefined') {
+    new PureCounter();
+  }
 
   /**
    * Init swiper sliders
@@ -197,8 +203,35 @@
   /**
    * Initiate glightbox
    */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
+  if (typeof GLightbox !== 'undefined') {
+    GLightbox({
+      selector: '.glightbox'
+    });
+  }
+
+  /**
+   * Measure the recruiter journey without collecting form content.
+   */
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a');
+    if (!link || typeof window.gtag !== 'function') return;
+
+    const href = link.getAttribute('href') || '';
+    let eventName = '';
+    let destination = href;
+
+    if (href.includes('resume.pdf')) eventName = 'resume_view';
+    else if (href.includes('github.com')) eventName = 'github_click';
+    else if (href.includes('linkedin.com')) eventName = 'linkedin_click';
+    else if (href.includes('calendly.com')) eventName = 'schedule_click';
+    else if (href.startsWith('mailto:')) eventName = 'email_click';
+    else if (link.classList.contains('portfolio-card-link')) eventName = 'project_view';
+
+    if (!eventName) return;
+    window.gtag('event', eventName, {
+      link_url: destination,
+      link_text: link.textContent.trim().replace(/\s+/g, ' ').slice(0, 100)
+    });
   });
 
 })();
