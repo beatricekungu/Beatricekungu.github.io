@@ -3726,7 +3726,7 @@ section,
 .portfolio .project-label-row {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 12px;
   margin-bottom: 16px;
 }
@@ -3736,28 +3736,11 @@ section,
   margin-bottom: 0;
 }
 
-.portfolio .project-status {
-  display: inline-flex;
-  align-items: center;
-  min-height: 30px;
-  padding: 4px 12px;
-  border: 1px solid color-mix(in srgb, var(--project-accent, var(--accent-color)), transparent 62%);
-  border-radius: 999px;
-  color: color-mix(in srgb, var(--project-accent, var(--accent-color)), #ffffff 16%);
-  background: color-mix(in srgb, var(--project-accent, var(--accent-color)), transparent 90%);
-  font-size: 0.7rem;
-  font-weight: 800;
-  line-height: 1.25;
-  text-align: right;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
 .portfolio .project-theme-azure { --project-accent: #39b9e6; }
 .portfolio .project-theme-triage { --project-accent: #63b3a6; }
 .portfolio .project-theme-grc { --project-accent: #d4aa63; }
 .portfolio .project-theme-dba { --project-accent: #818cf8; }
-.portfolio .project-theme-powerbi { --project-accent: #0B3458; }
+.portfolio .project-theme-powerbi { --project-accent: #f2c811; }
 .portfolio .project-theme-cisa { --project-accent: #00d7e8; }
 .portfolio .project-theme-secureops { --project-accent: #8b5cf6; }
 .portfolio .project-theme-sqlperf { --project-accent: #38bdf8; }
