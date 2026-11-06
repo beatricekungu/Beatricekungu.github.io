@@ -3747,6 +3747,10 @@ section,
 .portfolio .project-theme-response { --project-accent: #f28b66; }
 .portfolio .project-theme-identity { --project-accent: #c084fc; }
 
+.portfolio .project-theme-cisa .portfolio-img img {
+  object-position: right top;
+}
+
 .portfolio .portfolio-item .portfolio-card {
   border-top: 3px solid color-mix(in srgb, var(--project-accent, var(--accent-color)), transparent 22%);
 }
